@@ -1,0 +1,18 @@
+site_name: Sitekick Docs
+repo_url: https://github.com/SitekickRemastered/Docs
+site_url: https://docs.sitekickremastered.com
+copyright: Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc. Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.
+dev_addr: '0.0.0.0:8014'
+language: en
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.tabs.annotation
+    - content.code.copy
