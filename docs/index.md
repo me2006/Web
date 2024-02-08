@@ -1,18 +1,6 @@
----
-title: Main Page
-description: Main page for the Sitekick Remastered Wiki.
-published: true
-date: 2023-11-16T00:35:46.066Z
-tags: home, home page, homepage, main, main page, wiki
-editor: markdown
-dateCreated: 2023-11-03T19:34:03.269Z
----
-
 > Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc.
-{.is-warning}
 
 > Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.
-{.is-success}
 
 ## Remastered? What happened to the original?
 
@@ -27,7 +15,7 @@ You can check out the Remastered version [here](https://sitekickremastered.com/)
 - [Chipendium *Information about every Chip in the game.*](/Home/Sitekick/Chipendium)
 - [Chip Codes *A list of all known codes*](/Home/Sitekick/Chipendium/Codes)
 - [FAQ*Frequently Asked Questions*](/Home/FAQ)
-{.links-list}
+
 
 ## Popular Links
 - [Join the Team *Help Contribute to the Sitekick Remastered project*](https://sitekickremastered.com/join-the-team/)
@@ -36,4 +24,3 @@ You can check out the Remastered version [here](https://sitekickremastered.com/)
 - [Metrics *See realtime metrics about the game*](https://sitekickremastered.com/metrics/)
 - [Server Status *View server, bot, and website status in realtime*](https://status.sitekickremastered.com/status/site)
 - [Changelog *See the game's update history and changelog*](https://sitekickremastered.com/change-log/)
-{.links-list}
