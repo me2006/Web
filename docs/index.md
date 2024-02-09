@@ -1,8 +1,6 @@
-> Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc.
-{.is-warning}
+!!! failure "Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc."
+!!! success "Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization."
 
-> Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.
-{.is-success}
 
 ## Remastered? What happened to the original?
 
