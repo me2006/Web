@@ -1,10 +1,17 @@
 site_name: Sitekick Remastered
 repo_url: https://github.com/SitekickRemastered/Docs
-site_url: https://docs.sitekickremastered.com/Docs
+site_url: https://docs.sitekickremastered.com/
 dev_addr: '0.0.0.0:8014'
-language: en
+docs_dir: docs
 theme:
+  palette:
+    # Light Mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: purple
+      accent: indigo
   name: material
+  custom_dir: overrides
   features:
     - navigation.tabs
     - navigation.sections
@@ -31,3 +38,36 @@ extra:
       link: https://twitter.com/SitekickGame
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/channel/UCZQ0gBa3SbxwfQ5zp4029PQ
+
+### Example Configuration ###
+
+# Custom Homepage Elements
+home_cover_image: attachments/appicon.png # This path starts at your root mkdocs directory.
+home_tagline: Sitekick Remastered Beta
+home_description: |
+  You can download Sitekick Remastered's open beta from Google Play, Xbox, or the Microsoft Store.
+  <br><br>
+  <strong><span style="color:red;">WARNING: Sitekick Remastered is still in Beta. All chips, xp, and collection lists will be wiped upon the full release.</span></strong>
+
+# Gradient Color
+home_gradient_hsla: hsla(53, 87%, 51%,1)
+
+# Custom Homepage Button(s)
+home_button1_name: Play Sitekick                   # Comment this parameter out to remove the button.
+home_button1_url: Folder1/                       # This path starts at your root mkdocs directory.
+home_button1_theme: md-button md-button--primary # Options: "md-button", "md-button md-button--primary"
+home_button1_icon: people                        # Options: "people", "gear", "image"
+home_button1_blurb: |                            # Short description of this button / section.
+  Placeholder text
+
+home_button2_name: Join Discord   # Comment this parameter out to remove the button.
+home_button2_url: Folder2/    # This path starts at your root mkdocs directory.
+home_button2_theme: md-button # Options: "md-button", "md-button md-button--primary"
+home_button2_icon: gear       # Options: "people", "gear", "image"
+home_button2_blurb: |         # Short description of this button / section.
+  Placeholder nonsense
+
+
+# Homepage Code Execution
+home_execute_js: | # Javascript to execute when accessing the homepage
+  console.log("This is an example!");

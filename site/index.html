@@ -1,3 +1,7 @@
+<!-- Elements added to "home.html" will only be displayed on the home page -->
+
+<!-- Elements added to "main.html" will be displayed on all pages -->
+
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -12,7 +16,7 @@
       
       
       
-        <link rel="next" href="test/">
+        <link rel="next" href="docs/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -20,11 +24,14 @@
     
     
       
-        <title>Sitekick Docs</title>
+        <title>Home - Sitekick Remastered</title>
       
     
     
       <link rel="stylesheet" href="assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,21 +57,26 @@
     
     
     
+    <!-- main.html | Added "navigation.instant" support -->
+    <link rel="canonical" href=".">
+
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="purple" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#remastered-what-happened-to-the-original" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -76,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Sitekick Docs" class="md-header__button md-logo" aria-label="Sitekick Docs" data-md-component="logo">
+    <a href="." title="Sitekick Remastered" class="md-header__button md-logo" aria-label="Sitekick Remastered" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -90,7 +102,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Sitekick Docs
+            Sitekick Remastered
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -102,6 +114,18 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="purple" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
     
     
       <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -167,6 +191,7 @@
     <div class="md-container" data-md-component="container">
       
       
+
         
           
             
@@ -198,6 +223,23 @@
   
   
     <li class="md-tabs__item">
+      <a href="docs/" class="md-tabs__link">
+        
+  
+    
+  
+  Docs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="test/" class="md-tabs__link">
         
   
@@ -216,6 +258,299 @@
           
         
       
+
+
+<!-- Stole this styling from the "up42-py" project (link: https://sdk.up42.com/) -->
+<!-- .tx-container Original Green Gradient: hsla(160deg,47%,55%,1) -->
+<style>
+
+    .md-main {
+        flex-grow: 0
+    }
+
+    .md-main__inner {
+        display: flex;
+        height: 100%;
+    }
+
+    .tx-container {
+        padding-top: .0rem;
+        background: linear-gradient(to bottom, var(--md-primary-fg-color), hsla(53, 87%, 51%,1) 99%,#fff 99%)
+    }
+
+    .tx-hero {
+        margin: 32px 2.8rem;
+        color: var(--md-primary-bg-color);
+        justify-content: center;
+    }
+
+    .tx-hero h1 {
+        margin-bottom: 1rem;
+        color: currentColor;
+        font-weight: 700
+    }
+
+    .tx-hero__content {
+        padding-bottom: 1rem;
+        margin: 0 auto;
+    }
+
+    .tx-hero__image{
+        width:17rem;
+        height:17rem;
+        order:1;
+        padding-right: 2.5rem;
+    }
+
+    .tx-hero .md-button {
+        margin-top: .5rem;
+        margin-right: .5rem;
+        color: var(--md-primary-bg-color)
+    }
+
+    .tx-hero .md-button--primary {
+        background-color: var(--md-primary-bg-color);
+        color: hsla(280deg, 37%, 48%, 1);
+        border-color: var(--md-primary-bg-color)
+    }
+
+    .tx-hero .md-button:focus,
+    .tx-hero .md-button:hover {
+        background-color: var(--md-accent-fg-color);
+        color: var(--md-default-bg-color);
+        border-color: var(--md-accent-fg-color)
+    }
+
+    .feature-item h2 svg {
+        height: 30px;
+        float: left;
+        margin-right: 10px;
+        transform: translateY(10%);
+    }
+
+    .top-hr {
+        margin-top: 42px;
+    }
+
+    .feature-item {
+	border-radius: 20px;
+	margin-top: .5rem;
+        margin-right: .5rem;
+	background-color: var(--md-primary-bg-color);
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        box-sizing: border-box;
+        padding: 0 15px;
+        word-break: break-word
+    }
+
+    .feature-item h2 {
+        color: #333;
+        font-weight: 300;
+        font-size: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: inherit;
+    }
+
+    .feature-item p {
+        font-size: 16px;
+        line-height: 1.8em;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        color: #111;
+        margin: 0 0 10px;
+        display: block;
+    }
+
+    @media screen and (max-width:30em) {
+        .tx-hero h1 {
+            font-size: 1.4rem
+        }
+    }
+
+    @media screen and (min-width:60em) {
+        .md-sidebar--secondary {
+            display: none
+        }
+
+        .tx-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tx-hero__content {
+            max-width: 22rem;
+            margin-top: 3.5rem;
+            margin-bottom: 3.5rem;
+            margin-left: 1.0rem;
+            margin-right: 4.0rem;
+            align-items: center;
+        }
+    }
+
+    @media screen and (min-width:76.25em) {
+        .md-sidebar--primary {
+            display: none
+        }
+
+        .top-hr {
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+        }
+
+        .bottom-hr {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+        }
+
+        .feature-item {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .feature-item:hover {
+            background-color: #526cfe47;
+            border-radius: 3px;
+        }
+    }
+
+    .hr {
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .text-center {
+        text-align: center;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        font-family: 'Lato', sans-serif;
+        font-size: 23px;
+        font-weight: 300;
+        padding-bottom: 10px;
+    }
+
+    .logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row wrap;
+        margin: 0 auto;
+    }
+
+    .logos img {
+        flex: 1 1 auto;
+        padding: 25px;
+        max-height: 130px;
+        vertical-align: middle;
+    }
+
+    .hr-logos {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .md-footer-meta__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 1.0rem;
+    }
+
+    .md-footer-social {
+        padding-top: 20px;
+    }
+</style>
+
+
+<!-- Main site entry button descriptions -->
+<section class="tx-container">
+    <div class="md-grid md-typeset">
+      <div class="tx-hero">
+      
+        <!-- Custom Image -->
+        <div class="tx-hero__image">
+	  <img src="attachments/appicon.png" draggable="false">
+        </div>
+	
+	<!-- Main Tagline -->
+        <div class="tx-hero__content">
+          <h1>Sitekick Remastered Beta</h1>
+          <p>You can download Sitekick Remastered's open beta from Google Play, Xbox, or the Microsoft Store.
+<br><br>
+<strong><span style="color:red;">WARNING: Sitekick Remastered is still in Beta. All chips, xp, and collection lists will be wiped upon the full release.</span></strong>
+</p>
+	  
+	  <!-- Added Buttons (up to 3) --><a href="Folder1/" title="Material | MkDocs" class="md-button md-button--primary">
+            Play Sitekick
+          </a><a href="Folder2/" title="Material | MkDocs" class="md-button">
+            Join Discord
+          </a></div>
+      </div>
+    </div>
+</section>
+
+
+<!-- Main site box descriptions -->
+<div class="top-hr">
+
+    <!-- Start Outer Condition --><div class="feature-item">
+        <h2>
+	    <!-- People Icon --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M16 17v2H2v-2s0-4 7-4 7 4 7 4m-3.5-9.5A3.5 3.5 0 109 11a3.5 3.5 0 003.5-3.5m3.44 5.5A5.32 5.32 0 0118 17v2h4v-2s0-3.63-6.06-4M15 4a3.39 3.39 0 00-1.93.59 5 5 0 010 5.82A3.39 3.39 0 0015 11a3.5 3.5 0 000-7z" />
+            </svg><!-- Gear Icon --><!-- Image Icon --><!-- Button Description -->
+            Play Sitekick
+        </h2>
+        <p>Placeholder text
+</p>
+    </div><!-- End Outer Condition -->
+    
+    <!-- Start Outer Condition --><div class="feature-item">
+        <h2>
+	    <!-- People Icon --><!-- Gear Icon --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M15 17v-3h3v-2l4 3.5-4 3.5v-2h-3m2 1v3h-3v2l-4-3.5 4-3.5v2h3M12 8c-2.21 0-4 1.8-4 4 0 1.91 1.35 3.54 3.21 3.92L16 11.86A3.997 3.997 0 0012 8m0 6c-1.1 0-2-.89-2-2s.9-2 2-2 2 .9 2 2-.89 2-2 2m9.66-5.27l-2-3.46c-.12-.22-.38-.31-.61-.22l-2.49 1c-.51-.41-1.06-.74-1.69-1l-.37-2.63A.506.506 0 0014 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.26-1.17.59-1.69 1L5 5.05c-.23-.09-.5 0-.61.22l-2 3.46c-.13.21-.08.49.11.64L4.57 11l-.07 1 .07 1-2.11 1.63c-.2.15-.25.43-.12.64l2 3.46c.11.27.4.38.66.27l2.5-1c.24.19.5.37.76.53l1.65-1.4c-.77-.33-1.45-.82-2-1.45l-2.41 1-.77-1.3L6.8 13.8a5.55 5.55 0 010-3.6L4.69 8.65l.75-1.3 2.41 1c.78-.9 1.83-1.53 3-1.78l.4-2.57h1.5l.37 2.62c1.17.24 2.22.88 3 1.77l2.41-1 .75 1.3-2.08 1.51c.09.26.16.53.2.8h2l2.1-1.63a.48.48 0 00.16-.64M12 8c-2.21 0-4 1.8-4 4 0 1.91 1.35 3.54 3.21 3.92L16 11.86A3.997 3.997 0 0012 8m0 6c-1.1 0-2-.89-2-2s.9-2 2-2 2 .9 2 2-.89 2-2 2m0-6c-2.21 0-4 1.8-4 4 0 1.91 1.35 3.54 3.21 3.92L16 11.86A3.997 3.997 0 0012 8m0 6c-1.1 0-2-.89-2-2s.9-2 2-2 2 .9 2 2-.89 2-2 2z" />
+            </svg><!-- Image Icon --><!-- Button Description -->
+	    Join Discord
+        </h2>
+        <p>Placeholder nonsense
+</p>
+    </div><!-- End Outer Condition -->
+    
+    <!-- Start Outer Condition --><!-- End Outer Condition -->
+</div>
+
+<div class="top-hr">
+    <div class="hr">
+    </div>
+</div>
+
+
+<!-- Toggleable JavaScript execution --><script>
+document$.subscribe(function() {
+  console.log("'home_execute_js' is enabled:");
+  console.log("This is an example!");
+}).unsubscribe();
+</script>
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
           
@@ -234,13 +569,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Sitekick Docs" class="md-nav__button md-logo" aria-label="Sitekick Docs" data-md-component="logo">
+    <a href="." title="Sitekick Remastered" class="md-nav__button md-logo" aria-label="Sitekick Remastered" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    Sitekick Docs
+    Sitekick Remastered
   </label>
   
     <div class="md-nav__source">
@@ -271,17 +606,6 @@
       
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -292,50 +616,26 @@
 
       </a>
       
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    
       
-        <li class="md-nav__item">
-  <a href="#remastered-what-happened-to-the-original" class="md-nav__link">
-    <span class="md-ellipsis">
-      Remastered? What happened to the original?
-    </span>
-  </a>
-  
-</li>
       
-        <li class="md-nav__item">
-  <a href="#popular-pages" class="md-nav__link">
-    <span class="md-ellipsis">
-      Popular Pages
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#popular-links" class="md-nav__link">
-    <span class="md-ellipsis">
-      Popular Links
-    </span>
-  </a>
   
-</li>
-      
-    </ul>
   
-</nav>
-      
+  
+    <li class="md-nav__item">
+      <a href="docs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docs
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -372,55 +672,6 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-                  
-
-  
-  
-
-
-  <h1>Home</h1>
-
-<blockquote>
-<p>Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc.
-{.is-warning}</p>
-<p>Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.
-{.is-success}</p>
-</blockquote>
-<h2 id="remastered-what-happened-to-the-original">Remastered? What happened to the original?</h2>
-<p>Sitekick was originally a game that overlayed the broader <a href="/Home/YTV/">YTV.com</a> website, an official online portal for the Canadian national children's broadcasting station of the same name. YTV premiered across the country on September 1st, 1988 and remains on the air today.</p>
-<p>Sitekick was originally implemented to the site in 2003 and removed in 2015 following legacy code issues. Despite this, Sitekick is a significant source of nostalgia for many Canadian millennials, and this project aims to preserve knowledge and assets from this time, as well as develop a new full-featured version of the Sitekick game.</p>
-<p>You can check out the Remastered version <a href="https://sitekickremastered.com/">here</a>.</p>
-<h2 id="popular-pages">Popular Pages</h2>
-<ul>
-<li><a href="/Home/Sitekick/Tutorials">Tutorials <em>Brush up on the basics - or maybe even learn something new.</em></a></li>
-<li><a href="/Home/Sitekick/Chipendium">Chipendium <em>Information about every Chip in the game.</em></a></li>
-<li><a href="/Home/Sitekick/Chipendium/Codes">Chip Codes <em>A list of all known codes</em></a></li>
-<li><a href="/Home/FAQ">FAQ<em>Frequently Asked Questions</em></a>
-{.links-list}</li>
-</ul>
-<h2 id="popular-links">Popular Links</h2>
-<ul>
-<li><a href="https://sitekickremastered.com/join-the-team/">Join the Team <em>Help Contribute to the Sitekick Remastered project</em></a></li>
-<li><a href="https://sitekickremastered.com/play/">Download <em>Download links for Google Play, the Microsoft Store, Xbox, and APK for sideloading</em></a></li>
-<li><a href="http://discord.sitekickremastered.com/">Discord <em>Join the community on our Discord server</em></a></li>
-<li><a href="https://sitekickremastered.com/metrics/">Metrics <em>See realtime metrics about the game</em></a></li>
-<li><a href="https://status.sitekickremastered.com/status/site">Server Status <em>View server, bot, and website status in realtime</em></a></li>
-<li><a href="https://sitekickremastered.com/change-log/">Changelog <em>See the game's update history and changelog</em></a>
-{.links-list}</li>
-</ul>
-
-
-
-
-
-
-
-
-
-
-
-
-                
               </article>
             </div>
           
@@ -437,28 +688,6 @@
 </button>
         
       </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-    <div class="md-copyright__highlight">
-      Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc. Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.
-    </div>
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
-</div>
-      
-    </div>
-  </div>
-</footer>
       
     </div>
     <div class="md-dialog" data-md-component="dialog">
