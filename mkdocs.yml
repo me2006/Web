@@ -3,6 +3,13 @@ repo_url: https://github.com/SitekickRemastered/Docs
 site_url: https://docs.sitekickremastered.com/
 dev_addr: '0.0.0.0:8014'
 docs_dir: docs
+nav:
+  - Home: index.md
+  - Blog: /blog/
+  - Docs: /docs/
+  - Changelog: /changelog/
+  - Discord: http://discord.sitekickremastered.com/
+  - Status: https://status.sitekickremastered.com/status/site
 theme:
   palette:
     # Light Mode
@@ -74,3 +81,9 @@ home_execute_js: | # Javascript to execute when accessing the homepage
 
 plugins:
   - blog
+  - tags:
+      tags_file: tags.md 
+
+extra:
+  tags:
+    tag: identifier
