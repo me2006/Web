@@ -45,7 +45,7 @@ markdown_extensions:
 home_cover_image: images/misc/appicon.png
 home_tagline: Sitekick Remastered Beta
 home_description: |
-  Produced by fans, for fans. Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.
+  Produced by fans, for fans. Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.  <br><br>Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc.
 
 # Gradient Color
 home_gradient_hsla: hsla(53, 87%, 51%,1)
