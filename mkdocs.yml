@@ -1,27 +1,34 @@
 site_name: Sitekick Remastered
-repo_url: https://github.com/SitekickRemastered/Docs
+repo_url: https://github.com/SitekickRemastered/Art
+repo_name: SitekickRemastered/Art
 site_url: https://docs.sitekickremastered.com/
 dev_addr: '0.0.0.0:8014'
 docs_dir: docs
 nav:
   - Home: index.md
+  - Download: /docs/download.md
   - Blog: /blog/
   - Docs: /docs/
   - Changelog: /changelog/
   - Discord: http://discord.sitekickremastered.com/
   - Status: https://status.sitekickremastered.com/status/site
 theme:
+  icon:
+    repo: fontawesome/brands/github
+#  logo: /images/misc/logo.png
+  favicon: /images/ico/favicon.ico
   palette:
     # Light Mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: purple
-      accent: indigo
+      primary: deep purple
+      accent: purple
   name: material
   custom_dir: overrides
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.footer
     - toc.integrate
     - navigation.top
     - search.suggest
@@ -33,7 +40,53 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+
+# Custom Homepage Elements
+home_cover_image: images/misc/appicon.png
+home_tagline: Sitekick Remastered Beta
+home_description: |
+  You can download Sitekick Remastered's open beta from Google Play, Xbox, or the Microsoft Store.
+  <br><br>
+  <strong><span style="color:red;">WARNING: Sitekick Remastered is still in Beta. All chips, xp, and collection lists will be wiped upon the full release.</span></strong>
+
+# Gradient Color
+home_gradient_hsla: hsla(53, 87%, 51%,1)
+
+# Custom Homepage Button(s)
+home_button1_name: Play on Android (Recommended)
+home_button1_url: https://play.google.com/store/apps/details?id=com.SitekickRemastered.Sitekick
+home_button1_theme: md-button md-button--primary
+home_button1_icon: 
+home_button1_blurb: |
+  Sitekick Remastered is best experienced on Android. Installed from Google Play, we support new as well as legacy device that run Android 5.1 or higher.<br><br>You can now play Sitekick on your phone, tablet, TV, and even your refrigerator.  You're welcome.
+
+home_button2_name: Download from the Microsoft Store
+home_button2_url: ms-windows-store://pdp/?productid=9P7KL6QQLP4X
+home_button2_theme: md-button md-button--primary
+home_button2_icon: 
+home_button2_blurb: |
+  Don't have an Android? Windows 10 and 11 devices can download Sitekick Remastered from the Microsoft store.
+
+home_button3_name: Get it on Xbox (Experimental)
+home_button3_url: Folder2/
+home_button3_theme: md-button md-button--primary
+home_button3_icon: 
+home_button3_blurb: |
+  Don't have an Android <i>OR</i> a Windows device? You can still play Sitekick Remastered on Xbox.
+
+
+# Homepage Code Execution
+#home_execute_js: | # Javascript to execute when accessing the homepage
+#  console.log("This is an example!");
+
+plugins:
+  - blog
+  - tags:
+      tags_file: tags.md 
+  - search
+
 extra:
+  #generator: false
   social:
     - icon: fontawesome/brands/discord
       link: https://discord.sitekickremastered.com
@@ -45,45 +98,5 @@ extra:
       link: https://twitter.com/SitekickGame
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/channel/UCZQ0gBa3SbxwfQ5zp4029PQ
-
-### Example Configuration ###
-
-# Custom Homepage Elements
-home_cover_image: attachments/appicon.png # This path starts at your root mkdocs directory.
-home_tagline: Sitekick Remastered Beta
-home_description: |
-  You can download Sitekick Remastered's open beta from Google Play, Xbox, or the Microsoft Store.
-  <br><br>
-  <strong><span style="color:red;">WARNING: Sitekick Remastered is still in Beta. All chips, xp, and collection lists will be wiped upon the full release.</span></strong>
-
-# Gradient Color
-home_gradient_hsla: hsla(53, 87%, 51%,1)
-
-# Custom Homepage Button(s)
-home_button1_name: Play Sitekick                   # Comment this parameter out to remove the button.
-home_button1_url: Folder1/                       # This path starts at your root mkdocs directory.
-home_button1_theme: md-button md-button--primary # Options: "md-button", "md-button md-button--primary"
-home_button1_icon: image                        # Options: "people", "gear", "image"
-home_button1_blurb: |                            # Short description of this button / section.
-  Placeholder text
-
-home_button2_name: Join Discord   # Comment this parameter out to remove the button.
-home_button2_url: Folder2/    # This path starts at your root mkdocs directory.
-home_button2_theme: md-button # Options: "md-button", "md-button md-button--primary"
-home_button2_icon: people       # Options: "people", "gear", "image"
-home_button2_blurb: |         # Short description of this button / section.
-  Placeholder nonsense
-
-
-# Homepage Code Execution
-home_execute_js: | # Javascript to execute when accessing the homepage
-  console.log("This is an example!");
-
-plugins:
-  - blog
-  - tags:
-      tags_file: tags.md 
-
-extra:
   tags:
     tag: identifier
