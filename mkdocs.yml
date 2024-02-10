@@ -45,34 +45,25 @@ markdown_extensions:
 home_cover_image: images/misc/appicon.png
 home_tagline: Sitekick Remastered Beta
 home_description: |
-  You can download Sitekick Remastered's open beta from Google Play, Xbox, or the Microsoft Store.
-  <br><br>
-  <strong><span style="color:red;">WARNING: Sitekick Remastered is still in Beta. All chips, xp, and collection lists will be wiped upon the full release.</span></strong>
+  Produced by fans, for fans. Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.
 
 # Gradient Color
 home_gradient_hsla: hsla(53, 87%, 51%,1)
 
 # Custom Homepage Button(s)
-home_button1_name: Play on Android (Recommended)
-home_button1_url: https://play.google.com/store/apps/details?id=com.SitekickRemastered.Sitekick
+home_button1_name: Play now
+home_button1_url: /download/
 home_button1_theme: md-button md-button--primary
 home_button1_icon: 
 home_button1_blurb: |
-  Sitekick Remastered is best experienced on Android. Installed from Google Play, we support new as well as legacy device that run Android 5.1 or higher.<br><br>You can now play Sitekick on your phone, tablet, TV, and even your refrigerator.  You're welcome.
+  Sitekick Remastered is available for Android, Windows, and Xbox.
 
-home_button2_name: Download from the Microsoft Store
-home_button2_url: ms-windows-store://pdp/?productid=9P7KL6QQLP4X
+home_button2_name: Join us on Discord
+home_button2_url: https://discord.sitekickremastered.com/
 home_button2_theme: md-button md-button--primary
 home_button2_icon: 
 home_button2_blurb: |
-  Don't have an Android? Windows 10 and 11 devices can download Sitekick Remastered from the Microsoft store.
-
-home_button3_name: Get it on Xbox (Experimental)
-home_button3_url: Folder2/
-home_button3_theme: md-button md-button--primary
-home_button3_icon: 
-home_button3_blurb: |
-  Don't have an Android <i>OR</i> a Windows device? You can still play Sitekick Remastered on Xbox.
+  Chat and Trade with over 900 other players on our official Discord server.
 
 
 # Homepage Code Execution
