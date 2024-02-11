@@ -1,27 +1,35 @@
-<style>
-/* Grid cards styling */
-.grid.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
+<div class="grid cards" markdown>
 
-.card {
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+-   :fontawesome-solid-user-clock:{ .lg .middle } __Players Online__
 
-.card b {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
-}
-</style>
+    ---
 
-<div id="playerMetrics" class="grid cards" markdown>
+    There are <span id="playersOnline"></span> players online right now!
+
+-   :fontawesome-solid-users:{ .lg .middle } __Total Members__
+
+    ---
+
+    <span id="totalMembers"></span> members have registered since November 29, 2020.
+
+-   :fontawesome-solid-user-plus:{ .lg .middle } __New Players__
+
+    ---
+
+    Today <span id="newPlayers"></span> new players registered.
+
+-   :fontawesome-solid-calendar-check:{ .lg .middle } __Played Today__
+
+    ---
+
+    <span id="playedToday"></span> players logged in today.
+
+-   :fontawesome-solid-arrow-up-right-dots:{ .lg .middle } __Total Chips__
+
+    ---
+
+    There are currently <span id="totalChips"></span> chips in circulation.
+
 </div>
 
 <script>
@@ -44,20 +52,27 @@ function sortObjectKeys(object) {
     }, {});
 }
 
-// Function to display data in Markdown format
+// Function to display data
 async function displayData() {
     const url = 'https://game.sitekickremastered.com/metrics/generic?q=online_players,daily_online_players,daily_registrations,total_players,total_chips';
     const jsonData = await fetchData(url);
     const sortedData = sortObjectKeys(jsonData);
 
+    // Format numbers with commas and make them bold
+    const formattedData = {
+        'online_players': `<strong>${sortedData['online_players'].toLocaleString()}</strong>`,
+        'total_players': `<strong>${sortedData['total_players'].toLocaleString()}</strong>`,
+        'daily_registrations': `<strong>${sortedData['daily_registrations'].toLocaleString()}</strong>`,
+        'daily_online_players': `<strong>${sortedData['daily_online_players'].toLocaleString()}</strong>`,
+        'total_chips': `<strong>${sortedData['total_chips'].toLocaleString()}</strong>`
+    };
+
     // Replace placeholders with fetched data
-    document.getElementById('playerMetrics').innerHTML = `
-        <div class="card"><b>Players Online</b>${sortedData['online_players']}</div>
-        <div class="card"><b>Total Members</b>${sortedData['total_players']}</div>
-        <div class="card"><b>New Players</b>${sortedData['daily_registrations']}</div>
-        <div class="card"><b>Played Today</b>${sortedData['daily_online_players']}</div>
-        <div class="card"><b>Total Chips</b>${sortedData['total_chips']}</div>
-    `;
+    document.getElementById('playersOnline').innerHTML = formattedData['online_players'];
+    document.getElementById('totalMembers').innerHTML = formattedData['total_players'];
+    document.getElementById('newPlayers').innerHTML = formattedData['daily_registrations'];
+    document.getElementById('playedToday').innerHTML = formattedData['daily_online_players'];
+    document.getElementById('totalChips').innerHTML = formattedData['total_chips'];
 }
 
 // Call function to display data when the page loads
