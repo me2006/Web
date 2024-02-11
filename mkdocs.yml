@@ -22,7 +22,7 @@ theme:
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: deep purple
-      accent: purple
+      accent: deep purple
   name: material
   custom_dir: overrides
   features:
@@ -36,10 +36,16 @@ theme:
     - content.tabs.link
     - content.tabs.annotation
     - content.code.copy
+    
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
 
 # Custom Homepage Elements
 home_cover_image: images/misc/appicon.png
