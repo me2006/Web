@@ -1,5 +1,27 @@
-<div id="playerMetrics" style="display: grid; grid-template-columns: auto auto; gap: 20px; text-align: left;">
-    <!-- Data will be inserted here -->
+<style>
+/* Grid cards styling */
+.grid.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card b {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+</style>
+
+<div id="playerMetrics" class="grid cards" markdown>
 </div>
 
 <script>
@@ -30,11 +52,11 @@ async function displayData() {
 
     // Replace placeholders with fetched data
     document.getElementById('playerMetrics').innerHTML = `
-        <div><b>Players Online</b><br>${sortedData['online_players']}</div>
-        <div><b>Total Members</b><br>${sortedData['total_players']}</div>
-        <div><b>New Players</b><br>${sortedData['daily_registrations']}</div>
-        <div><b>Played Today</b><br>${sortedData['daily_online_players']}</div>
-        <div><b>Total Chips</b><br>${sortedData['total_chips']}</div>
+        <div class="card"><b>Players Online</b>${sortedData['online_players']}</div>
+        <div class="card"><b>Total Members</b>${sortedData['total_players']}</div>
+        <div class="card"><b>New Players</b>${sortedData['daily_registrations']}</div>
+        <div class="card"><b>Played Today</b>${sortedData['daily_online_players']}</div>
+        <div class="card"><b>Total Chips</b>${sortedData['total_chips']}</div>
     `;
 }
 
