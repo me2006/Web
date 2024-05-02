@@ -16,7 +16,7 @@ nav:
 theme:
   icon:
     repo: fontawesome/brands/github
-#  logo: /images/misc/logo.png
+  logo: images/misc/logo.svg
   favicon: /images/ico/favicon.ico
   palette:
     # Light Mode
