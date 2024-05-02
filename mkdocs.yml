@@ -20,10 +20,9 @@ theme:
   favicon: /images/ico/favicon.ico
   palette:
     # Light Mode
-    - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: deep purple
-      accent: deep purple
+      primary: custom
+      accent: custom
   name: material
   custom_dir: overrides
   features:
@@ -55,19 +54,19 @@ home_description: |
   Produced by fans, for fans. Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.  <br><br>Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc.
 
 # Gradient Color
-home_gradient_hsla: hsla(53, 87%, 51%,1)
+#home_gradient_hsla: hsla(53, 87%, 51%,1)
 
 # Custom Homepage Button(s)
 home_button1_name: Play now
 home_button1_url: /download/
-home_button1_theme: md-button md-button--primary
+home_button1_theme: md-button
 home_button1_icon: 
 home_button1_blurb: |
   Sitekick Remastered is available for Android, Windows, and Xbox.
 
 home_button2_name: Join us on Discord
 home_button2_url: https://discord.sitekickremastered.com/
-home_button2_theme: md-button md-button--primary
+home_button2_theme: md-button
 home_button2_icon: 
 home_button2_blurb: |
   Chat and Trade with over 900 other players on our official Discord server.
@@ -98,3 +97,5 @@ extra:
       link: https://www.youtube.com/channel/UCZQ0gBa3SbxwfQ5zp4029PQ
   tags:
     tag: identifier
+extra_css:
+  - stylesheets/extra.css
