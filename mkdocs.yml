@@ -49,9 +49,9 @@ markdown_extensions:
 
 # Custom Homepage Elements
 home_cover_image: images/misc/appicon.png
-home_tagline: Sitekick Remastered Beta
+home_tagline: What is Sitekick Remastered?
 home_description: |
-  Produced by fans, for fans. Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.  <br><br>Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc.
+  Sitekick, an online game developed for YTV.com in 2003, was discontinued in 2015 due to legacy code issues. Sitekick Remastered seeks to both preserve its assets and knowledge and create a new, enhanced version of the game.<br><br>Produced by fans, for fans. Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.  <br><br><b>Sitekick Remastered is <u>in no way affiliated</u> with YTV Canada, Inc. and/or Corus Entertainment, Inc.</b>
 
 # Gradient Color
 #home_gradient_hsla: hsla(53, 87%, 51%,1)
