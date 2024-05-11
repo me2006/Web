@@ -1,98 +1,99 @@
-??? success "BETA 0.7.4 - September 7, 2023 (Current Version)"
-    #### BETA 0.7.4: Store Release
-    Compatibility:
+# Changelog
 
-    - Google Play release
-    - Windows Store release
-    - Xbox Store release
+## Sitekick Remastered Open Beta
 
-    Updated:
+### BETA 0.7.4: Store Release <small>September 7, 2023</small>
+Compatibility:
 
-    - Android APK is now intended for emulators only
+- Google Play release
+- Windows Store release
+- Xbox Store release
 
-??? abstract "BETA 0.7.3 - July 1, 2023"
-    #### BETA 0.7.3: Quality of Life
-    Added:
+Updated:
 
-    - Auto-Collection lists
-    - Weekly Collection Lists
-    - Resizable Window (PC only)
-    - Dump auto-refresh
-    - SK-TV 'Online' indicators
-    - SK-TV 'Last Seen' status
-    - SK-TV sorting / filtering options
+- Android APK is now intended for emulators only
 
-    Fixed:
+### BETA 0.7.3: Quality of Life <small>July 1, 2023</small>
+Added:
 
-    - Completed trades no longer ask to cancel
-    - Collection list countdown timing
+- Auto-Collection lists
+- Weekly Collection Lists
+- Resizable Window (PC only)
+- Dump auto-refresh
+- SK-TV 'Online' indicators
+- SK-TV 'Last Seen' status
+- SK-TV sorting / filtering options
 
-    Removed:
+Fixed:
 
-    - Disabled multi-touch
+- Completed trades no longer ask to cancel
+- Collection list countdown timing
 
-??? abstract "BETA 0.7.1 - August 9, 2022"
-    #### BETA 0.7.1: Bug Fixes
-    Fixed:
+Removed:
 
-    - Issue moving chips between empty slots
+- Disabled multi-touch
+
+### BETA 0.7.1: Bug Fixes <small>August 9, 2022</small>
+Fixed:
+
+- Issue moving chips between empty slots
     
-??? abstract "BETA 0.7.0 - August 9, 2022"
-    #### BETA 0.7.0: The UI Update
-    Added:
+### BETA 0.7.0: The UI Update <small>August 9, 2022</small>
+
+Added:
     
-    - SK-TV & Trade Search by player or chip
-    - Collection List shortcut (tap XP bar)
-    - Sitekick renaming
-    - UI animations
-    - Copyright disclaimer on login screen
-    - Volume slider in Settings
-    - Chips can now be dragged to different pages
-    - Auto relogin after session expire
-    - Logout button warning
+- SK-TV & Trade Search by player or chip
+- Collection List shortcut (tap XP bar)
+- Sitekick renaming
+- UI animations
+- Copyright disclaimer on login screen
+- Volume slider in Settings
+- Chips can now be dragged to different pages
+- Auto relogin after session expire
+- Logout button warning
 
-    Updated:
+Updated:
 
-    - New User Interface
-    - Collection List timed events
-    - Collections grouped by status
-    - All servers force true SSL
+- New User Interface
+- Collection List timed events
+- Collections grouped by status
+- All servers force true SSL
 
-??? abstract "BETA 0.6.1 - July 22, 2022"
-    #### BETA 0.6.1: Authicer
-    Added:
+### BETA 0.6.1: Authicer <small>July 22, 2022</small>
 
-    - Authicer (Discord bot) is back online
-    - Linking game account to Discord now available
-    - Nitro boosters now have a gem next to their name on SK-TV & TRADE
-    - New loading screen before logon
+Added:
 
-    Updated:
+- Authicer (Discord bot) is back online
+- Linking game account to Discord now available
+- Nitro boosters now have a gem next to their name on SK-TV & TRADE
+- New loading screen before logon
 
-    - Verified role on Discord required to use game & trading chats
-    - Some chip rarity rebalcing
-    - More error messages will give a real error - less UNKNOWN errors
+Updated:
 
-    Fixed:
+- Verified role on Discord required to use game & trading chats
+- Some chip rarity rebalcing
+- More error messages will give a real error - less UNKNOWN errors
 
-    - The info button on SK-TV now shows accurate information
+Fixed:
+
+- The info button on SK-TV now shows accurate information
     
-??? abstract "BETA 0.6.0 - July 15, 2022"
-    #### BETA 0.6.0: TRADE
-    Added:
+### BETA 0.6.0: Trade <small>July 15, 2022</small>
 
-    - 600+ new chips
-    - 4 new collection lists (Eyes 2.0, Dr. Octagonapus, Knecks, cHipster)
-    - Chipendium now logs every chip you pick up
-    - You can now trade between players
-    - Password resets now functional
-    - 10 new inventory slots
-    - Windows desktop application released
+Added:
 
-    Fixed:
+- 600+ new chips
+- 4 new collection lists (Eyes 2.0, Dr. Octagonapus, Knecks, cHipster)
+- Chipendium now logs every chip you pick up
+- You can now trade between players
+- Password resets now functional
+- 10 new inventory slots
+- Windows desktop application released
 
-    - Account verification emails now functional
+Fixed:
 
-    Removed:
+- Account verification emails now functional
 
-    - Play in browser
+Removed:
+
+- Play in browser
