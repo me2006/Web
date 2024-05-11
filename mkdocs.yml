@@ -8,10 +8,9 @@ copyright: Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and
 nav:
   - Home: index.md
   - Download: /download/
-  - Blog: /blog/
   - Discord: http://discord.sitekickremastered.com/
-  - Status: https://status.sitekickremastered.com/status/site
-  - Wiki: /wiki/
+  - Help: /help/
+  - News: /blog/
 theme:
   icon:
     repo: fontawesome/brands/github
