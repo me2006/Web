@@ -18,6 +18,6 @@ Welcome to the repository for [Sitekick Remastered](https://sitekickremastered.c
 1. ```mkdocs serve```
 1. Open http://localhost:8014/ in your browser
 
-When the server is running, any changes you save will be refreshed on the local server in real time.  Upon committing changes, if your changes are accepted, Github Pages will update the homepage directly >> https://docs.sitekickremastered.com/
+When the server is running, any changes you save will be refreshed on the local server in real time.  Upon committing changes, if your changes are accepted, Github Pages will update the homepage directly >> https://sitekickremastered.com/
 
 Note: Changes to the landing page require refreshing another file or re-running *mkdocs serve*.
