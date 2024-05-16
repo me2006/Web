@@ -20,7 +20,6 @@
     </style>
 </head>
 <body>
-    <h2>Password Reset</h2>
     <p>Enter a new password below:</p>
 
     <input id="txtNewPassword" type="password" placeholder="New Password" onkeyup="validatePassword()" />
