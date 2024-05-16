@@ -77,6 +77,12 @@ home_button2_blurb: |
 plugins:
   - blog
   - search
+  - exclude-search:
+      exclude:
+        - account/*
+        - legal/*
+        - email/*
+        - images/*
 
 extra:
   generator: false
