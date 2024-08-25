@@ -26,19 +26,19 @@ Please read below for more information on each role.
 ??? info "Developer"
     <strong>Obtained by either</strong>
 
-    - Frequently committing to [our Game repository](https://web.archive.org/web/20240327152010/https://github.com/SitekickRemastered/Game).
-    - Frequently committing to [our Bot repositories](https://web.archive.org/web/20240327152010/https://github.com/orgs/SitekickRemastered/repositories) (Kablooey, Authicer, SitePic, Paul).
+    - Frequently committing to [our Game repository](https://github.com/SitekickRemastered/Game).
+    - Frequently committing to [our Bot repositories](https://github.com/orgs/SitekickRemastered/repositories) (Kablooey, Authicer, SitePic, Paul).
     - Granted by development team as code is accepted. You <strong>must</strong> apply for this role.
 
     <strong>Responsibilities</strong>
 
-    - Completes tasks/issues from [our task board](https://web.archive.org/web/20240327152010/https://github.com/orgs/SitekickRemastered/projects/1).
+    - Completes tasks/issues from [our task board](https://github.com/orgs/SitekickRemastered/projects/1).
     - General chat/game moderation.
 
     <strong>Notes</strong>
 
     - All developers are GMs and have access to everything the moderation team does.
-    - [Our Game repository](https://web.archive.org/web/20240327152010/https://github.com/SitekickRemastered/Game) is mostly private at the moment. You must apply for this role and use our private repository if you wish to work on the game or server.
+    - [Our Game repository](https://github.com/SitekickRemastered/Game) is mostly private at the moment. You must apply for this role and use our private repository if you wish to work on the game or server.
     - Our Discord bots are open source. Anyone can contribute code to them.
     - Intermediate programming experience is absolutely required.
 
@@ -80,4 +80,4 @@ Please read below for more information on each role.
 # Any questions?
 We’d love to hear from you.  If you have any other skills or any questions, please reach out to Kablooey on Discord and we’ll chat.
 
-[Message Kablooey](https://web.archive.org/web/20240327152010/https://discordapp.com/channels/@me/653394550580183050){ .md-button .md-button-primary }
+[Message Kablooey](https://discordapp.com/channels/@me/653394550580183050){ .md-button .md-button-primary }
