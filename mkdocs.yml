@@ -11,6 +11,13 @@ nav:
   - Discord: http://discord.sitekickremastered.com/
   - Help: /help/
   - News: /blog/
+  - Wiki:
+    - Sitekick Wiki: wiki/Sitekick_Wiki.md
+    - Getting Started:
+      - Overview: wiki/getting-started/overview.md
+      - Installation: wiki/getting-started/installation.md
+      - First Steps: wiki/getting-started/first-steps.md
+  
 theme:
   icon:
     repo: fontawesome/brands/github
@@ -25,14 +32,22 @@ theme:
   custom_dir: overrides
   features:
     - announce.dismiss
+    - navigation.sections
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.footer
     - navigation.top
+    - navigation.instant
+    - navigation.indexes
+    - navigation.instant.prefetch
+    - navigation.tracking
     - search.suggest
     - content.tabs.link
     - content.tabs.annotation
     - content.code.copy
+    - toc.follow
+   
 markdown_extensions:
   - admonition
   - pymdownx.details
