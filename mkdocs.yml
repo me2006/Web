@@ -1,6 +1,7 @@
 site_name: Sitekick Remastered
 repo_url: https://github.com/SitekickRemastered/Web
 repo_name: SitekickRemastered/Web
+edit_uri: edit/main/docs/
 site_url: https://sitekickremastered.com/
 dev_addr: '0.0.0.0:8014'
 docs_dir: docs
@@ -9,15 +10,64 @@ nav:
   - Home: index.md
   - Download: /download/
   - Discord: http://discord.sitekickremastered.com/
-  - Help: /help/
   - News: /blog/
   - Wiki:
-    - Sitekick Wiki: wiki/Sitekick_Wiki.md
-    - Getting Started:
-      - Overview: wiki/getting-started/overview.md
-      - Installation: wiki/getting-started/installation.md
-      - First Steps: wiki/getting-started/first-steps.md
-  
+      - Wiki Home: wiki/Sitekick_Wiki.md
+      - Development:
+          - Changelog: wiki/development/changelog.md
+          - Exporting Chips: wiki/development/exporting_chips.md
+          - Join the Team: wiki/development/join_the_team.md
+      - Guides & FAQ:
+          - Guides:
+              - Downloading Sitekick Remastered: wiki/guides/downloading.md
+              - Linking with Discord: wiki/guides/discord.md
+              - Registration & Verification: wiki/guides/registration.md
+              - SitePic Discord Bot: wiki/guides/sitepic.md
+          - How to Play:
+              - Change Password: wiki/guides/change_password.md
+              - Customizing Your Sitekick: wiki/guides/customization.md
+              - Delete Account: wiki/guides/delete_account.md
+              - Leveling Up: wiki/guides/experience.md
+              - Obtaining Chips: wiki/guides/obtaining_chips.md
+              - SK-TV: wiki/guides/sk_tv.md
+              - The Chipendium: wiki/chipendium/chipendium.md
+              - Trading: wiki/guides/trading.md
+              - What is a Sitekick?: wiki/guides/what_is_a_sitekick.md
+          - Other Questions & Bug Reports: test.md
+      - Sitekick:
+          - Chipendium:
+              - Overview: wiki/chipendium/chipendium.md
+              - 0001-1000:
+                  - 0001-0100: wiki/chipendium/0001-0100.md
+                  - 0101-0200: wiki/chipendium/0101-0200.md
+                  - 0201-0300: wiki/chipendium/0201-0300.md
+                  - 0301-0400: wiki/chipendium/0301-0400.md
+                  - 0401-0500: wiki/chipendium/0401-0500.md
+                  - 0501-0600: wiki/chipendium/0501-0600.md
+                  - 0601-0700: wiki/chipendium/0601-0700.md
+                  - 0701-0800: wiki/chipendium/0701-0800.md
+                  - 0801-0900: wiki/chipendium/0801-0900.md
+                  - 0901-1000: wiki/chipendium/0901-1000.md
+              - 1001-2000:
+                  - 1001-1100: wiki/chipendium/1001-1100.md
+          - DACE: wiki/sitekick/DACE/dace.md
+          - Games:
+              - Kablooey Flew Throughy: wiki/sitekick/games/kablooey_flew_throughy.md
+              - They Came for the Ooze: wiki/sitekick/games/they_came_for_the_ooze.md
+          - Lore:
+              - Characters:
+                  - Authicer: wiki/sitekick/lore/characters/authicer.md
+                  - Dr. Frantic: wiki/sitekick/lore/characters/dr_frantic.md
+                  - Hamster: wiki/sitekick/lore/characters/hamster.md
+                  - Kablooey: wiki/sitekick/lore/characters/kablooey.md
+                  - Paul: wiki/sitekick/lore/characters/paul.md
+                  - SitePic: wiki/sitekick/lore/characters/sitepic.md
+              - Ooze: wiki/sitekick/lore/ooze.md
+              - The Chip Creator: wiki/sitekick/lore/the_chip_creator.md
+              - YAP! Industries: wiki/sitekick/lore/yap.md
+          - Players:
+              - Robeyblade: wiki/sitekick/players/Robeyblade.md
+
 theme:
   icon:
     repo: fontawesome/brands/github
@@ -31,16 +81,17 @@ theme:
   name: material
   custom_dir: overrides
   features:
+    - content.action.edit
+    - content.action.view
     - announce.dismiss
-    - navigation.sections
+    #- navigation.sections
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.sections
     - navigation.footer
     - navigation.top
     - navigation.instant
     - navigation.indexes
-    - navigation.instant.prefetch
+    #- navigation.instant.prefetch
     - navigation.tracking
     - search.suggest
     - content.tabs.link
