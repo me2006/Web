@@ -1,8 +1,6 @@
 # Changelog
-
-## Sitekick Remastered Open Beta
-
-### BETA 0.7.4: Store Release <small>September 7, 2023</small>
+## **BETA 0.7.4**
+#### Store Release - <small>September 7, 2023</small>
 Compatibility:
 
 - Google Play release
@@ -13,7 +11,9 @@ Updated:
 
 - Android APK is now intended for emulators only
 
-### BETA 0.7.3: Quality of Life <small>July 1, 2023</small>
+## **BETA 0.7.3**
+#### Quality of Life - <small>July 1, 2023</small>
+
 Added:
 
 - Auto-Collection lists
@@ -33,12 +33,14 @@ Removed:
 
 - Disabled multi-touch
 
-### BETA 0.7.1: Bug Fixes <small>August 9, 2022</small>
+## BETA 0.7.1
+#### Bug Fixes - <small>August 9, 2022</small>
 Fixed:
 
 - Issue moving chips between empty slots
     
-### BETA 0.7.0: The UI Update <small>August 9, 2022</small>
+## BETA 0.7.0
+#### The UI Update - <small>August 9, 2022</small>
 
 Added:
     
@@ -59,7 +61,8 @@ Updated:
 - Collections grouped by status
 - All servers force true SSL
 
-### BETA 0.6.1: Authicer <small>July 22, 2022</small>
+## BETA 0.6.1
+#### Authicer - <small>July 22, 2022</small>
 
 Added:
 
@@ -78,7 +81,8 @@ Fixed:
 
 - The info button on SK-TV now shows accurate information
     
-### BETA 0.6.0: Trade <small>July 15, 2022</small>
+## BETA 0.6.0
+#### Trade - <small>July 15, 2022</small>
 
 Added:
 
