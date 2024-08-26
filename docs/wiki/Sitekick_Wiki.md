@@ -3,7 +3,7 @@
 This Wiki should cover all things Sitekick.  Review the menu to the left to find documentation.  If something is missing, you can message Kablooey to have it added:
 <br>
 <br>
-[Message Kablooey](https://web.archive.org/web/20240327152010/https://discordapp.com/channels/@me/653394550580183050){ .md-button .md-button-primary }
+[Message Kablooey](https://discordapp.com/channels/@me/653394550580183050){ .md-button .md-button-primary }
 
 ## Remastered? What happened to the original?
 
