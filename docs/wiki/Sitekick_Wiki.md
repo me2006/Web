@@ -13,11 +13,10 @@ Sitekick was originally implemented to the site in 2003 and removed in 2015 foll
 
 ## Popular Pages
 <div class="grid">
-  <a href="/Sitekick/rules/" class="card">Read the Rules</a>
-  <a href="/join-the-team/" class="card">Join the Team</a>
+  <a href="/wiki/rules/" class="card">Read the Rules</a>
+  <a href="/wiki/development/join_the_team/" class="card">Join the Team</a>
   <a href="/legal/privacy-policy/" class="card">Privacy Policy</a>
   <a href="/legal/terms-of-service/" class="card">Terms of Service</a>
   <a href="/legal/cookies/" class="card">Cookies Policy</a>
-  <a href="/legal/contact-us/" class="card">Contact Us</a>
-  <a href="/legal/about/" class="card">About</a>
+  <a href="/legal/contact_us/" class="card">Contact Us</a>
 </div>
