@@ -23,6 +23,7 @@ nav:
               - Linking with Discord: wiki/guides/discord.md
               - Registration & Verification: wiki/guides/registration.md
               - SitePic Discord Bot: wiki/guides/sitepic.md
+              - What is a Sitekick?: wiki/guides/what_is_a_sitekick.md
           - How to Play:
               - Change Password: wiki/guides/change_password.md
               - Customizing Your Sitekick: wiki/guides/customization.md
@@ -33,7 +34,8 @@ nav:
               - The Chipendium: wiki/chipendium/chipendium.md
               - Trading: wiki/guides/trading.md
               - What is a Sitekick?: wiki/guides/what_is_a_sitekick.md
-          - Other Questions & Bug Reports: test.md
+          - Rules: wiki/rules.md
+          - Other Questions & Bug Reports: wiki/guides/other_questions.md
       - Sitekick:
           - Chipendium:
               - Overview: wiki/chipendium/chipendium.md
@@ -55,6 +57,7 @@ nav:
               - Kablooey Flew Throughy: wiki/sitekick/games/kablooey_flew_throughy.md
               - They Came for the Ooze: wiki/sitekick/games/they_came_for_the_ooze.md
           - Lore:
+              - "Sitekick: Indefinite Closure": legacy/indefinite_closure.md
               - Characters:
                   - Authicer: wiki/sitekick/lore/characters/authicer.md
                   - Dr. Frantic: wiki/sitekick/lore/characters/dr_frantic.md
