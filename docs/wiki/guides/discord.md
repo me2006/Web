@@ -8,6 +8,11 @@ To check someone's verification status, select them on Discord and look for the 
 - [Join our Discord Server](https://discord.sitekickremastered.com/).  You may need to create an account if you do not already have one.
 - Select the **#link** channel.
 - Open Sitekick Remastered, open the top left menu, select **Link Discord**. Click **COPY**.
-- Go back to Discord.  Type /link, and paste your code, and press enter.  Example: ```/link DZOXOV```
+
+![Code](/images/tutorials/Discord/code.png)
+
+- Go back to Discord.  Type /link, and paste your code, and press enter.
+
+![Linking](/images/tutorials/Discord/linking.png)
 
 If you did it correctly, you should be renamed to your in-game name, be added to the <span style="color:#4ae54a">**Verified**</span> role, and gain access to **#game-chat** and **trade** forums.
