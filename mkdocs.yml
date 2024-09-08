@@ -28,7 +28,7 @@ nav:
           - How to Play:
               - Change Password: wiki/guides/change_password.md
               - Customizing Your Sitekick: wiki/guides/customization.md
-              - Delete Account: wiki/guides/delete_account.md
+              - Delete Account: account/delete_account.md
               - Leveling Up: wiki/guides/experience.md
               - Obtaining Chips: wiki/guides/obtaining_chips.md
               - SK-TV: wiki/guides/sk_tv.md
