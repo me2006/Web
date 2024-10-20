@@ -8,7 +8,7 @@ docs_dir: docs
 copyright: Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc. Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions, or any other form of monetization.
 nav:
   - Home: index.md
-  - Download: /wiki/download/
+  - Download: download.md
   - Discord: http://discord.sitekickremastered.com/
   - News: /blog/
   - Wiki:
@@ -71,7 +71,7 @@ nav:
               - YAP! Industries: wiki/sitekick/lore/yap.md
           - Players:
               - Robeyblade: wiki/sitekick/players/Robeyblade.md
-      - Download: wiki/download.md
+      - Download: download.md
       - Metrics: wiki/metrics.md
 
 theme:
@@ -132,7 +132,7 @@ home_description: |
 
 # Custom Homepage Button(s)
 home_button1_name: Play now
-home_button1_url: /wiki/download/
+home_button1_url: download
 home_button1_theme: md-button
 home_button1_icon: 
 home_button1_blurb: |
