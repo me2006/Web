@@ -13,4 +13,5 @@ The following in-game behavior will result in account suspension, XP wipe, chip 
 
 - Offensive Sitekick names or usernames.
 - Leveling alternate accounts past Bronze.
+- Use of chip codes on alternate accounts.
 - Use of third party tools.
