@@ -14,7 +14,7 @@ Sitekick Remastered is available for Android, Windows 10/11, and Xbox. Apple dev
 
 <div class="grid cards" markdown>
 
--   :simple-googleplay:{ .lg .middle } __Google Play (Recommended)__
+-   :fontawesome-brands-google-play:{ .lg .middle } __Google Play (Recommended)__
 
     ---
 
@@ -22,7 +22,7 @@ Sitekick Remastered is available for Android, Windows 10/11, and Xbox. Apple dev
 
     [:octicons-arrow-right-24: Android](https://play.google.com/store/apps/details?id=com.SitekickRemastered.Sitekick){ .md-button .md-button--primary style="background-color: #4caf50; border: 2px solid #4caf50;" }
 
--   :simple-microsoft:{ .lg .middle } __Microsoft Store__
+-   :fontawesome-brands-microsoft:{ .lg .middle } __Microsoft Store__
 
     ---
 
@@ -30,15 +30,7 @@ Sitekick Remastered is available for Android, Windows 10/11, and Xbox. Apple dev
 
     [:octicons-arrow-right-24: Windows](ms-windows-store://pdp/?productid=9P7KL6QQLP4X){ .md-button .md-button--primary style="background-color: #00a4ef; border: 2px solid #00a4ef;" }
 
--   :simple-xbox:{ .lg .middle } __Get it on Xbox (Experimental)__
-
-    ---
-
-    Download an experimental build of Sitekick Remastered and play it on your Xbox.
-
-    [:octicons-arrow-right-24: Xbox](https://www.xbox.com/en-ca/games/store/sitekick-remastered/9p7kl6qqlp4x){ .md-button .md-button--primary style="background-color: #107c10; border: 2px solid #107c10;" }
-
--   :simple-android:{ .lg .middle } __Sideload Android APK__
+-   :fontawesome-brands-android:{ .lg .middle } __Sideload Android APK__
 
     ---
 
