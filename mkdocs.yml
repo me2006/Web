@@ -12,7 +12,7 @@ nav:
   - Discord: http://discord.sitekickremastered.com/
   - News: /blog/
   - Wiki:
-      - Wiki Home: wiki/Sitekick_Wiki.md
+      - Home: wiki/Sitekick_Wiki.md
       - Development:
           - Changelog: wiki/development/changelog.md
           - Exporting Chips: wiki/development/exporting_chips.md
@@ -31,7 +31,7 @@ nav:
               - Delete Account: account/delete_account.md
               - Leveling Up: wiki/guides/experience.md
               - Obtaining Chips: wiki/guides/obtaining_chips.md
-              - SK-TV: wiki/guides/sk_tv.md
+              - SK-TV: wiki/guides/sk-tv.md
               - The Chipendium: wiki/chipendium/chipendium.md
               - Trading: wiki/guides/trading.md
               - What is a Sitekick?: wiki/guides/what_is_a_sitekick.md
@@ -71,6 +71,7 @@ nav:
               - YAP! Industries: wiki/sitekick/lore/yap.md
           - Players:
               - Robeyblade: wiki/sitekick/players/Robeyblade.md
+      - Metrics: wiki/metrics.md
 
 theme:
   icon:

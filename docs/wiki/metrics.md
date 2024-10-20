@@ -1,3 +1,7 @@
+!!! warning
+
+    You may need to refresh this page for metrics to display correctly.
+
 <div class="grid cards" markdown>
 
 -   :fontawesome-solid-user-clock:{ .lg .middle } __Players Online__
