@@ -53,7 +53,8 @@ nav:
                   - 0901-1000: wiki/chipendium/0901-1000.md
               - 1001-2000:
                   - 1001-1100: wiki/chipendium/1001-1100.md
-          - DACE: wiki/sitekick/DACE/dace.md
+          - DACE: wiki/DACE.md
+          - Fusion: wiki/fusion.md
           - Games:
               - Kablooey Flew Throughy: wiki/sitekick/games/kablooey_flew_throughy.md
               - They Came for the Ooze: wiki/sitekick/games/they_came_for_the_ooze.md
