@@ -9,8 +9,8 @@ The chips available for Fusion, and any discovered recipe are found below.
 | 25CentBling | 25CentTooth + 25CentBrow + 25CentLid | Community | 10/19/2024 |
 | DragonWings | BubbleWand + WizLid + WizBeard + Tower | MIchaelJoudan | 10/21/2024 |
 | DragonWings2 | ? + ? + ? + ? | ????? | ????? |
-| DragonWings3 | ? + ? + ? + ? | ????? | ????? |
-| DragonWings4 | ? + ? + ? + ? | ????? | ????? |
+| DragonWings3 | BubbleWand + WizLid + Atomic + Tower | sully | 10/22/2024 |
+| DragonWings4 | BubbleWand + WizLid + Snow + Tower | MIchaelJoudan | 10/22/2024 |
 | ImpWings | Impfork2 + ImpHorns + ImpTail + Tower | jimmynew_ & Khmi | 10/21/2024 |
 
 
