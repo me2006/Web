@@ -33,11 +33,10 @@ Please read below for more information on each role.
     <strong>Responsibilities</strong>
 
     - Completes tasks/issues from [our task board](https://github.com/orgs/SitekickRemastered/projects/1).
-    - General chat/game moderation.
 
     <strong>Notes</strong>
 
-    - All developers are GMs and have access to everything the moderation team does.
+    - Not all developers are GMs. Access is granted as needed.
     - [Our Game repository](https://github.com/SitekickRemastered/Game) is mostly private at the moment. You must apply for this role and use our private repository if you wish to work on the game or server.
     - Our Discord bots are open source. Anyone can contribute code to them.
     - Intermediate programming experience is absolutely required.
