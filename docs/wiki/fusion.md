@@ -12,7 +12,7 @@ The chips available for Fusion, and any discovered recipe are found below.
 | DragonWings3 | BubbleWand + WizLid + Atomic + Tower | Sully | 10/22/2024 |
 | DragonWings4 | BubbleWand + WizLid + Snow + Tower | MIchaelJoudan | 10/22/2024 |
 | ImpWings | Impfork2 + ImpHorns + ImpTail + Tower | jimmynew_ & Khmi | 10/21/2024 |
-| Tower | ? + ? + ? | ?????? | ?????? |
+| Tower | PaperBagLid + VikingArm + RedEyes | bennyboy240 | 11/05/2024 |
 
 
 <style>
