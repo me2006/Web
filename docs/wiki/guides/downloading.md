@@ -1,5 +1,5 @@
 # Downloading Sitekick Remastered
-Sitekick Remastered is available for free on Android, Windows, and Xbox.
+Sitekick Remastered is available for free on Android and Windows.
 
 ## Supported Platforms
 
