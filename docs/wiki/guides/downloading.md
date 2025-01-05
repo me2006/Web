@@ -27,17 +27,8 @@ Sitekick Remastered is available for free on Android, Windows, and Xbox.
     2. Click "Get" and wait for the download to complete.
     3. Click "Play".
 
-??? success "Xbox Store"
-    **Requirements**
-
-    - An Xbox One (Original, Series X/S, or similar)
-    - An [Xbox Account](https://signup.live.com/)
-
-    **Installing Sitekick Remastered**
-
-    1. Go to the Xbox Store, search for Sitekick Remastered.
-    2. Select "Get" and wait for the download to complete.
-    3. Select "Play".
+??? failure "Xbox Store"
+    **Sitekick Remastered is currently unavailable on Xbox.  It will be re-released at a later date.**
 
 ## Unsupported Platforms
 
