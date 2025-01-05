@@ -2,7 +2,7 @@
 While we exist on many social media platforms, they are not regularly monitored.  If you wish to have someone see your message, please contact us through one of the below methods.
 
 ## Message us on Discord
-If you have a general question, you should [join our Discord server](http://discord.sitekickremastered.com/) and ask a question in the **#general**, **#game-chat**, or **sitekick-dev** channel.
+If you have a general question, you should [join our Discord server](http://discord.sitekickremastered.com/) and ask a question in the **#general**, **#game-chat**, or **#sitekick-dev** channels.
 
 If you have a private question (example: an account related question, player report, or security question), please message our modmail bot, Kablooey.
 
