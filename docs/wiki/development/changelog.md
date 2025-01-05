@@ -1,4 +1,34 @@
 # Changelog
+## **BETA 0.7.8**
+#### Fusion - <small>October 19, 2024</small>
+New Features:
+
++ [Chip Fusion](https://github.com/SitekickRemastered/Game/issues/11)
++ [Chip of the Day](https://github.com/SitekickRemastered/Game/issues/25)
++ [In-Game Help Menu](https://github.com/SitekickRemastered/Game/issues/5)
++ [Registration: Privacy Policy & T&C](https://github.com/SitekickRemastered/Game/issues/40)
++ [Delete account](https://github.com/SitekickRemastered/Game/issues/19) + [Discord Verify reminder](https://github.com/SitekickRemastered/Game/issues/1)
+
+Bug Fixes:
+
++ [Spaces are allowed in email registration field](https://github.com/SitekickRemastered/Game/issues/18)
++ [Fix some chip names](https://github.com/SitekickRemastered/Game/issues/26)
++ [Fix allowed email characters](https://github.com/SitekickRemastered/Game/issues/37)
++ [Force single instance](https://github.com/SitekickRemastered/Game/issues/35)
++ [Discord verify code is not unique](https://github.com/SitekickRemastered/Game/issues/29)
++ [Popup on connection failure](https://github.com/SitekickRemastered/Game/issues/48)
+
+Fusion:
+
++ 25CentBling
++ DragonWings
++ DragonWings2
++ DragonWings3
++ DragonWings4
++ ImpWings
++ Tower
+
+
 ## **BETA 0.7.4**
 #### Store Release - <small>September 7, 2023</small>
 Compatibility:
