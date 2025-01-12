@@ -1,0 +1,22 @@
+.featureCard {
+  background:rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  margin: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: calc(3 / 12 * 90%)
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+  background-image: var(--bg-splash);
+  color: #FFF;
+}
+
+.featureImg {
+  height: 150px;
+  width: 150px;
+}

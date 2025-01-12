@@ -1,0 +1,81 @@
+
+@keyframes float {
+  0% {
+    transform:translateY(0)
+  }
+  to {
+    transform:translateY(1rem)
+  }
+}
+
+@keyframes float-inverse {
+  0% {
+    transform:translateY(0)
+  }
+  to {
+    transform:translateY(-1rem)
+  }
+}
+
+.heroBanner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+	gap: 0px 25px;
+	width: 75%;
+  margin:auto;
+  margin-top:20px;
+  margin-bottom: 20px;
+  align-items: center;
+  background-color: var(--ifm-hero-background-color);
+  color: var(--ifm-hero-text-color);
+  border-radius: 25px;
+  padding: 2rem;
+}
+.heroLeft{  grid-area: 1 / 1 / 2 / 3; }
+.heroRight{ grid-area: 1 / 3 / 2 / 4; }
+
+.heroPanelPicture {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  text-align: center;
+}
+
+.heroPanelImage {
+  display: block;
+  width: 100%;
+}
+
+.heroPanelSitekickLeft {
+  animation-name: float;
+  left: -5rem !important;
+  max-width: 15.5rem;
+  top: -2rem !important; 
+  animation-direction: alternate;
+  animation-duration: 1.35s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  position: absolute;
+}
+
+.heroPanelSitekickRight {
+  animation-name: float-inverse;
+  bottom: 1rem;
+  max-width: 14.125rem;
+  right: 2rem !important;  
+  animation-direction: alternate;
+  animation-duration: 1.35s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  position: absolute;
+}
+
+@media screen and (max-width: 996px) {
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
