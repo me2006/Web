@@ -18,11 +18,7 @@
 }
 
 .heroBanner {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
-	gap: 0px 25px;
-	width: 75%;
+	width: 80%;
   margin:auto;
   margin-top:20px;
   margin-bottom: 20px;
@@ -31,9 +27,19 @@
   color: var(--ifm-hero-text-color);
   border-radius: 25px;
   padding: 2rem;
+  word-wrap: normal;
 }
-.heroLeft{  grid-area: 1 / 1 / 2 / 3; }
-.heroRight{ grid-area: 1 / 3 / 2 / 4; }
+
+.lOrder { order: 1; }
+.rOrder { order: 2; }
+
+.hero_title {
+  font-size: 2.25rem;
+}
+
+.hero_subtitle {
+  font-size: 1.25rem;
+}
 
 .heroPanelPicture {
   margin-left: auto;
@@ -44,38 +50,68 @@
 
 .heroPanelImage {
   display: block;
-  width: 100%;
+  width: 90%;
+  margin: auto;
+}
+
+.heroPanelSitekick {
+  animation-direction: alternate;
+  animation-duration: 1.35s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  position: absolute;
+  max-width: 9rem;
 }
 
 .heroPanelSitekickLeft {
   animation-name: float;
-  left: -5rem !important;
-  max-width: 15.5rem;
-  top: -2rem !important; 
-  animation-direction: alternate;
-  animation-duration: 1.35s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  position: absolute;
+  left: 4rem !important;
+  top: -2rem !important;
 }
 
 .heroPanelSitekickRight {
   animation-name: float-inverse;
-  bottom: 1rem;
-  max-width: 14.125rem;
-  right: 2rem !important;  
-  animation-direction: alternate;
-  animation-duration: 1.35s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  position: absolute;
+  bottom: 5rem !important;
+  right: 5rem !important;
+}
+
+@media screen and (min-width: 2000px) {
+  .hero_title {
+    font-size: 5rem;
+  }
+  
+  .hero_subtitle {
+    font-size: 2.75rem;
+  }
 }
 
 @media screen and (max-width: 996px) {
-}
+  .heroBanner {
+    width: 100%;
+    margin:0px 0px;
+    align-items: center;
+    border-radius: 0px;
+    padding: 0rem;
+    padding-bottom: 20px;
+    word-wrap: normal;
+  }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .homeRow {
+    margin: 0;
+  }
+
+  .lOrder { order: 2; }
+  .rOrder { order: 1; }
+
+  .hero_title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-top:20px;
+  }
+  
+  .hero_subtitle {
+    font-size: 1rem;
+    padding:0px 30px;
+  }
+  
 }

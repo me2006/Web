@@ -42,7 +42,7 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({title,  imgUrl, description}: FeatureItem) {
   return (
-    <div className={clsx("col padding-vert--md", styles.featureCard)}>
+    <div className={clsx("col padding-vert--lg", styles.featureCard)}>
       <div className="text--center">
         <img src={useBaseUrl(imgUrl)} className={styles.featureImg} role="img" alt={title} />
       </div>
@@ -57,12 +57,10 @@ function Feature({title,  imgUrl, description}: FeatureItem) {
 export default function Home(): ReactNode {
   return (
     <section className={styles.features}>
-      <div className="container">
-        <div className="row" style={{margin:"auto", width:"90%"}}>
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
+      <div className="row" style={{margin:"auto", width: "80%"}}>
+        {FeatureList.map((props, idx) => (
+          <Feature key={idx} {...props} />
+        ))}
       </div>
     </section>
   );

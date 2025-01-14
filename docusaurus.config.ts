@@ -59,13 +59,12 @@ const config: Config = {
     image: "img/social_card.png",
     navbar: {
       logo: {
-        src: "img/logo.png",
+        src: "img/logo.svg",
         alt: "Sitekick Remastered Logo",
       },
       items: [
         { to: "/download", label: "Download", position: "left" },
-        { to: "discord.sitekickremastered.com", label: "Discord", position: "left"},
-        { to: "/games", label: "Games", position: "left" },
+        { to: "https://discord.sitekickremastered.com", label: "Discord", position: "left"},
         { to: "/fanart", label: "Fan Art", position: "left"},
         { to: "/blog", label: "Blog", position: "left" },
         {
@@ -75,7 +74,23 @@ const config: Config = {
           label: "Wiki",
         },
         { to: "/contact", label: "Contact", position: "left"}
+        /*
+        { to: "/games", label: "Games", position: "left" },
+        { to: "/metrics", label: "Metrics", position: "left"},
+        { to: "/status", label: "Status", position: "left"},
+        */
       ],
+    },
+    footer: {
+      style: "dark",
+      logo: {
+        src: 'img/logo.svg',
+        alt: 'Sitekick Remastered Logo',
+        href: 'https://sitekickremastered.com',
+      },
+      copyright: `Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc.
+                  Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions,
+                  or any other form of monetization.`,
     },
     prism: {
       theme: prismThemes.github,
