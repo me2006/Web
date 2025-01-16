@@ -36,9 +36,9 @@ function HomeHeader() {
         </div>
         <div className={clsx("col col--4", styles.rOrder)}>
           <div className={styles.heroPanelPicture}>
-            <img className={styles.heroPanelImage} src={useBaseUrl("/img/home/blob.svg")}></img>
-            <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickLeft}`} src={useBaseUrl("/img/home/sitekick_2.png")}></img>
-            <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickRight}`} src={useBaseUrl("/img/home/authicerderp.png")}></img>
+            <img className={styles.heroPanelImage} src={useBaseUrl("/img/home/blob.svg")}/>
+            <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickLeft}`} src={useBaseUrl("/img/home/sitekick_2.png")} />
+            <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickRight}`} src={useBaseUrl("/img/home/authicerderp.png")} />
           </div>
         </div>
       </div>

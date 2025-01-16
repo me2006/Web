@@ -19,9 +19,7 @@
 
 .heroBanner {
 	width: 80%;
-  margin:auto;
-  margin-top:20px;
-  margin-bottom: 20px;
+  margin: 20px auto;
   align-items: center;
   background-color: var(--ifm-hero-background-color);
   color: var(--ifm-hero-text-color);
@@ -30,28 +28,34 @@
   word-wrap: normal;
 }
 
-.lOrder { order: 1; }
-.rOrder { order: 2; }
+.lOrder { order: 1;}
+
+.rOrder { 
+  order: 2; 
+  display: flex;
+  justify-content: flex-end;
+}
 
 .hero_title {
-  font-size: 2.25rem;
+  font-size: max(2.25vw, 2.25vh);
 }
 
 .hero_subtitle {
-  font-size: 1.25rem;
+  font-size: max(1.2vw, 2vh);
 }
 
 .heroPanelPicture {
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  width: 100%;
   position: relative;
-  text-align: center;
 }
 
 .heroPanelImage {
-  display: block;
-  width: 90%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin: auto;
+  position: relative;
 }
 
 .heroPanelSitekick {
@@ -60,29 +64,20 @@
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   position: absolute;
-  max-width: 9rem;
+  min-width: 35%;
+  max-width: 35%;
 }
 
 .heroPanelSitekickLeft {
   animation-name: float;
-  left: 4rem !important;
-  top: -2rem !important;
+  top: calc(50% - max(14vw, 14vh)); /* Legitimately don't ask me how this works */
+  left: 10%;
 }
 
 .heroPanelSitekickRight {
   animation-name: float-inverse;
-  bottom: 5rem !important;
-  right: 5rem !important;
-}
-
-@media screen and (min-width: 2000px) {
-  .hero_title {
-    font-size: 5rem;
-  }
-  
-  .hero_subtitle {
-    font-size: 2.75rem;
-  }
+  bottom: calc(50% - max(10vw, 10vh)); /* Like, seriously. No clue. */
+  right: 20%;
 }
 
 @media screen and (max-width: 996px) {
@@ -112,6 +107,37 @@
   .hero_subtitle {
     font-size: 1rem;
     padding:0px 30px;
+  } 
+
+  .heroPanelImage {
+    margin-top: 20px;
   }
+
+  .heroPanelSitekickLeft {
+    top: 0%;
+  }
+
+  .heroPanelSitekickRight {
+    right: 17%;
+    bottom: 10%;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+
+  .heroBanner {
+    margin: 40px auto;
+    border-radius: 50px;
+    padding: 3rem 4rem;
+  }
+}
+
+
+@media screen and (min-width: 4000px) {
   
+  .heroBanner {
+    margin: 50px auto;
+    padding: 4rem 4rem;
+  }
+
 }
