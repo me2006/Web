@@ -15,7 +15,8 @@
   --sitekick-yellow-dark: rgb(230, 184, 0);
   --sitekick-yellow-darker: rgb(217, 173, 0);
   --sitekick-yellow-darkest: rgb(179, 143, 0);
-  --blurple: #5865F2;
+  --blurple: #5865f2;
+  --blurple: #5865f2;
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
@@ -25,6 +26,7 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-button-size-multiplier: 1.1;
   --ifm-navbar-item-padding-horizontal: 1rem;
   --ifm-button-padding-horizontal: 1rem;
 }
@@ -78,6 +80,10 @@
 
 }
 
+*{
+  transition: all 0.3s ease-in-out;
+}
+
 body {
   background-color: #000;
 }
@@ -93,6 +99,8 @@ h6 {
 
 .navbar--fixed-top {
   background: var(--bg-splash);
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 7rem;
 }
 
@@ -122,7 +130,7 @@ h6 {
 }
 
 .navbar__logo {
-  height: 10vw;
+  height: 7vw;
 }
 
 .navbar__item {
@@ -169,21 +177,20 @@ h6 {
     top: 0rem;
   }
 
-  .navbar__items {
-    min-width: calc(100% - 6vw - 30px);
-  }
-
   .navbar__items--right{
     display: none;
   }
 
   .navbar__brand {
-    margin: 0 auto;
+    min-width: calc(100vw - (6vw + 30px));
+    display:flex;
+    justify-content: center;
+    margin-left: -6vw;
     padding: 0;
   }
 
   .navbar__logo {
-    height: 5.5rem;
+    height: 3.5rem;
   }
 }
 
@@ -207,7 +214,7 @@ h6 {
   }
 
   .navbar__logo {
-    height: 12vw;
+    height: 8vw;
   }
 
   .navbar__items--right{
@@ -226,7 +233,7 @@ h6 {
     border-top: 6px solid black;
     border-bottom: 6px solid black;
     font-size: 3rem;
-    line-height: 5rem;
+    line-height: 5.5rem;
   }
 
   .navbar__item {
@@ -235,12 +242,14 @@ h6 {
   }
 
   .navbar__logo {
-    height: 10vw;
+    height: 7vw;
   }
 }
 
 .navbar-sidebar{
   max-width: 320px;
+  max-height: 100vh;
+  overflow-y: hidden;
 }
 
 .navbar-sidebar__brand {
@@ -248,11 +257,12 @@ h6 {
 }
 
 .navbar-sidebar__brand .navbar__brand {
+  min-width: 0;
   margin: 0;
 }
 
 .navbar-sidebar .navbar__logo {
-  height: 7rem;
+  height: 4rem;
   margin-left: 0;
 }
 
@@ -265,7 +275,7 @@ h6 {
   border-bottom-color: #e76900;
   border-left-color: #fcbd0c;
   font-size: calc(1rem * var(--ifm-button-size-multiplier));
-  color: #CC0000;
+  color: #cc0000;
   font-family: "CCSmash";
 }
 
@@ -284,7 +294,8 @@ h6 {
 
 @media screen and (min-width: 2000px) {
   .button, .button.button--red, .button.button--blurple {
-    border-width: 2rem;
+    --ifm-button-size-multiplier: 1.5;
+    border-width: 1.5rem;
   }
 
   .button--lg {
@@ -293,6 +304,10 @@ h6 {
 }
 
 @media screen and (min-width: 4000px) {
+  .button, .button.button--red, .button.button--blurple {
+    --ifm-button-size-multiplier: 2;
+  }
+
   .button--lg {
     --ifm-button-size-multiplier: 3;
   }
@@ -301,7 +316,7 @@ h6 {
 .button.button--red {
   background: linear-gradient(135deg, rgb(255, 102, 102) 25%, rgb(255, 0, 0) 40%);
   border-top-color: #F00;
-  border-right-color: #CA0000;
+  border-right-color: #ca0000;
   border-bottom-color: #900;
   border-left-color: #F00;
   color: #FFF;
@@ -319,7 +334,7 @@ h6 {
 .button.button--blurple {
   background: linear-gradient(135deg, rgb(115, 127, 255) 25%, rgb(88, 101, 242) 40%);
   border-top-color: #5865f2;
-  border-right-color: #2F3FEF;
+  border-right-color: #2F3fef;
   border-bottom-color: #041185;
   border-left-color: #5865f2;
   color: #FFF;
@@ -332,4 +347,45 @@ h6 {
   border-bottom-color: #020841;
   border-left-color: #0c1796;
   color: #808080;
+}
+
+.footer {
+  background: #1d222a;
+  padding: 32px 0;
+}
+
+.footer__container{
+  max-width: 80%;
+  margin: auto;
+}
+
+.social__links {
+  display:flex;
+  justify-content: center;  
+}
+
+.social__links a{
+  color: #FFF;
+  margin: 0px 10px;
+}
+
+.discord__logo:hover{ color: #5865f2; }
+.github__logo:hover { color: #2dba4e; }
+.instagram__logo:hover { color: #ff0069; }
+.twitter__logo:hover {color: #1DA1f2; }
+.youtube__logo:hover { color: #F00; }
+
+.footer__links {
+  font-family: "CCSmash";
+  margin: 0;
+}
+
+.footer__links a:hover {
+  color: var(--ytv-green);
+  text-decoration: none;
+}
+
+.footer__logo {
+  width: 13rem;
+  margin-top: 0;
 }

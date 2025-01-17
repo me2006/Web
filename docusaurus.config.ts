@@ -1,4 +1,3 @@
-import {themes as prismThemes} from "prism-react-renderer";
 import type {Config} from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
@@ -73,7 +72,7 @@ const config: Config = {
           position: "left",
           label: "Wiki",
         },
-        { to: "/contact", label: "Contact", position: "left"}
+        { to: "/contact", label: "Contact Us", position: "left"}
         /*
         { to: "/games", label: "Games", position: "left" },
         { to: "/metrics", label: "Metrics", position: "left"},
@@ -87,14 +86,28 @@ const config: Config = {
         src: 'img/logo.svg',
         alt: 'Sitekick Remastered Logo',
         href: 'https://sitekickremastered.com',
+        className: 'footer__logo',
       },
-      copyright: `Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc.
+      links: [ 
+        { label: 'Home', href: '/' },
+        { label: 'Download', href: '/download' },
+        { label: 'Fan Art', href: '/fanart' },
+        { label: "Blog", href: "/blog" },
+        { label: "Wiki", href: "/wiki" },
+        { label: "Metrics", href: "/metrics"},
+        { label: "Status", href: "/status"},
+
+        { label: "Privacy Policy", href: "/privacy"},
+        { label: "Terms of Service", href: "/tos"},
+        { label: "Cookies Policy", href: "/cookies"},
+        { label: "Rules", href: "/rules"},
+        
+        { label: "Join The Team", href: "/join_the_team"},
+        { label: "Contact Us", href: "/contact"},
+      ],
+      copyright: `Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc. <br/>
                   Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions,
                   or any other form of monetization.`,
-    },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
 };
