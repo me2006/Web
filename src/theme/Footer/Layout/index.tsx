@@ -18,19 +18,19 @@ export default function FooterLayout({
       <div className="footer__container">
         <div className="social__links">
           <a href="https://discord.sitekickremastered.com" className="discord__logo">
-            <FontAwesomeIcon icon={faDiscord} size="2xl"/>
+            <FontAwesomeIcon icon={faDiscord} />
           </a>
           <a href="https://github.com/SitekickRemastered/" className="github__logo">
-            <FontAwesomeIcon icon={faGithub} size="2xl"/>
+            <FontAwesomeIcon icon={faGithub} />
             </a>
           <a href="https://www.instagram.com/sitekickremastered/" className="instagram__logo">
-            <FontAwesomeIcon icon={faInstagram} size="2xl"/>
+            <FontAwesomeIcon icon={faInstagram} />
           </a>
           <a href="https://twitter.com/SitekickGame" className="twitter__logo">
-            <FontAwesomeIcon icon={faXTwitter} size="2xl"/>
+            <FontAwesomeIcon icon={faXTwitter} />
           </a>
           <a href="https://www.youtube.com/channel/UCZQ0gBa3SbxwfQ5zp4029PQ" className="youtube__logo">
-            <FontAwesomeIcon icon={faYoutube} size="2xl"/>
+            <FontAwesomeIcon icon={faYoutube} />
           </a>
         </div>
         <hr />

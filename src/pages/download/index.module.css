@@ -5,22 +5,21 @@
   background-repeat: no-repeat;
   margin-top: -7rem;
   color: var(--ifm-hero-text-color);
-  padding: 4rem 2rem;
   display: flex;
   justify-content: center;
-  min-height: calc(100vh)
+  min-height: 100vh;
 }
 
 .downloadInner {
   width: 80%;
-  margin-top: 7rem;
+  margin-top: 10rem;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
 .downloadLogo {
-  width: 40%;
+  width: 35%;
 }
 
 .slogan {
@@ -36,9 +35,9 @@
   width: 30%;
   text-align: center;
   font-size: 1.1rem;
-  padding: 20px;
+  padding: 2rem;
   border-radius: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 .downloadInfoDiv p {
@@ -47,10 +46,124 @@
 
 .downloadButtonContainer{
   display: flex;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .platformBlock {
   z-index: 10;
-  margin: 0px 10px;
+  margin: 0px 1rem;
+}
+
+@media screen and (max-width: 996px) {
+  .downloadMain {
+    margin-top: 0;
+    min-height: calc(100vh - 5rem);
+  }
+  
+  .downloadInner {
+    width: 85%;
+    margin-top: 0.5rem;
+  }
+  
+  .downloadLogo {
+    width: 100%;
+  }
+  
+  .slogan {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .downloadInfoDiv{
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .alertFont p {
+    margin: 0;
+  }
+
+  .downloadButtonContainer{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .platformBlock {
+    scale: 1;
+  }
+
+}
+
+@media screen and (min-width: 2000px) {
+  .downloadMain {
+    margin-top: -12rem;
+  }
+  
+  .downloadInner {
+    margin-top: 16rem;
+  }
+  
+  .downloadLogo {
+    width: 40%;
+  }
+  
+  .slogan {
+    font-size: 3rem;
+    -webkit-text-stroke-width: 3px;
+  }
+  
+  .downloadInfoDiv{
+    font-size: 1.6rem;
+    margin-bottom: 4rem;
+  }
+
+  .alertFont {
+    font-size: 1.75rem;
+  }
+
+  .downloadButtonContainer{
+    margin-top: 6rem;
+  }
+
+  .platformBlock {
+    scale: 1.75;
+    margin: 0px 6.5rem;
+  }
+}
+
+@media screen and (min-width: 4000px) {
+  .downloadMain {
+    margin-top: -14rem;
+  }
+  
+  .downloadInner {
+    margin-top: 18rem;
+  }
+  
+  .downloadLogo {
+    width: 40%;
+  }
+  
+  .slogan {
+    font-size: 5rem;
+    -webkit-text-stroke-width: 5px;
+  }
+  
+  .downloadInfoDiv{
+    font-size: 2.4rem;
+    margin-bottom: 4rem;
+  }
+
+  .alertFont {
+    font-size: 2.3rem;
+  }
+
+  .platformBlock {
+    scale: 2.5;
+    margin: 0px 12rem;
+  }
 }

@@ -1,12 +1,11 @@
 import type { ReactNode } from 'react';
-import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
-import clsx from 'clsx';
 
 import styles from './index.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWarning } from '@fortawesome/free-solid-svg-icons';
+import clsx from 'clsx';
 
 //#region Header
 function DownloadPage() {
@@ -22,14 +21,14 @@ function DownloadPage() {
           <p>Sitekick Remastered is available for Android and Windows 10/11 devices. <br/>Apple devices are not supported at this time.</p>
         </div>
 
-        <div className="admonition alert alert--danger" style={{width: "auto"}}>
-          <div className="admonitionHeading">
-            <span className="admonitionIcon">
+        <div className={clsx("admonition alert alert--danger", styles.alertDiv)}>
+          <div className={clsx("admonitionHeading", styles.alertFont)}>
+            <span className={clsx("admonitionIcon", styles.alertFont)}>
               <FontAwesomeIcon icon={faWarning} />
               <b> Warning</b>
             </span>
           </div>
-          <div className="admonitionContent">
+          <div className={clsx("admonitionContent", styles.alertFont)}>
             <p>Sitekick Remastered is still in Beta. All chips, xp, and collection lists will be wiped upon the full release.</p>
           </div>
         </div>

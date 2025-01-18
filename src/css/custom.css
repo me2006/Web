@@ -368,7 +368,8 @@ h6 {
 
 .social__links a{
   color: #FFF;
-  margin: 0px 10px;
+  margin: 0px 0.65rem;
+  font-size: 2em;
 }
 
 .discord__logo:hover{ color: #5865f2; }
@@ -390,4 +391,54 @@ h6 {
 .footer__logo {
   width: 13rem;
   margin-top: 0;
+}
+
+@media screen and (max-width: 996px) {
+
+  .footer__copyright{
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+ 
+  .social__links a{
+    margin: 0px 1.5rem;
+    font-size: 3.5em;
+  }
+
+  .footer__links {
+    font-size: 1.5rem;
+  }
+  
+  .footer__logo {
+    width: 20rem;
+    margin-top: 0;
+  }
+
+  .footer__copyright{
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 4000px) {
+ 
+  .social__links a{
+    margin: 0px 2rem;
+    font-size: 5em;
+  }
+
+  .footer__links {
+    font-size: 2.5rem;
+  }
+  
+  .footer__logo {
+    width: 30rem;
+    margin-top: 0;
+  }
+
+  .footer__copyright{
+    font-size: 2.5rem;
+  }
+  
 }
