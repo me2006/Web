@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from "@theme/Heading";
 import clsx from 'clsx';
@@ -38,8 +37,8 @@ function HomeHeader() {
         <div className={clsx("col col--4", styles.rOrder)}>
           <div className={styles.heroPanelPicture}>
             <img className={styles.heroPanelImage} src={useBaseUrl("/img/home/blob.svg")} />
-            <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickLeft}`} src={useBaseUrl("/img/home/sitekick_2.png")} />
-            <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickRight}`} src={useBaseUrl("/img/home/authicerderp.png")} />
+            <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickLeft}`} src={useBaseUrl("/img/home/sitekick.png")} />
+            <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickRight}`} src={useBaseUrl("/img/home/authicer.png")} />
           </div>
         </div>
       </div>
@@ -161,10 +160,9 @@ function MultiDeviceSupport(): ReactNode {
 //#region Main
 
 export default function Home(): ReactNode {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title}`}
+      title={`Home`}
       description="Clickity-click, it's Sitekick!">
       <HomeHeader />
       <main>
