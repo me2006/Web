@@ -6,42 +6,27 @@
 
 /* You can override the default Infima variables here. */
 :root {
+  color-scheme: light dark;
   --bg-splash: url("/static/img/bg_splash.png");
   --ifm-heading-colour: #000;
   --ifm-hero-text-color: #000;
   --ytv-green: rgb(104, 194, 8);
   --ytv-purple: rgb(74, 42, 169);
+  --ifm-blog-a-tag-color: var(--ytv-purple);
   --sitekick-yellow: rgb(255, 204, 0);
   --sitekick-yellow-dark: rgb(230, 184, 0);
   --sitekick-yellow-darker: rgb(217, 173, 0);
   --sitekick-yellow-darkest: rgb(179, 143, 0);
   --blurple: #5865f2;
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-button-size-multiplier: 1.1;
   --ifm-navbar-item-padding-horizontal: 1rem;
   --ifm-button-padding-horizontal: 1rem;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-heading-colour: #FFF;
   --ifm-hero-text-color: #FFF;
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-blog-a-tag-color: var(--ytv-green);
 }
 
 @font-face {
@@ -87,8 +72,16 @@
   transition: all 0.3s ease-in-out;
 }
 
-body {
+body, #__docusaurus {
   background-color: #000;
+}
+
+main {
+  background-color: var(--ifm-hero-background-color) !important;
+}
+
+main a, .breadcrumbs__link, .sidebarItemLink_mo7H:hover, .menu__link--active {
+  color: var(--ifm-blog-a-tag-color) !important;
 }
 
 h1,
@@ -96,10 +89,16 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+summary {
   font-family: "CCSmash";
 }
 
+summary {
+  font-size: 1.2rem;
+}
+
+/*#region Navbar*/
 .navbar--fixed-top {
   background: var(--bg-splash);
   background-size: cover;
@@ -140,7 +139,6 @@ h6 {
   height: 100%;
   font-family: "CCSmash";
   color: #134900;
-  transition: color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 
 .navbar__link:hover {
@@ -184,10 +182,10 @@ h6 {
   }
 
   .navbar__brand {
-    min-width: calc(100vw - (6vw + 30px));
+    min-width: calc(100vw - (12vw + 38px));
     display:flex;
     justify-content: center;
-    margin-left: -6vw;
+    margin-left: 0vw;
     padding: 0;
   }
 
@@ -252,6 +250,7 @@ h6 {
   max-width: 320px;
   max-height: 100vh;
   overflow-y: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
 .navbar-sidebar__brand {
@@ -263,11 +262,28 @@ h6 {
   margin: 0;
 }
 
+.navbar-sidebar__brand .toggle_vylO{
+  width: calc(100% - 10rem);
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-sidebar__brand .clean-btn{
+  width: auto;
+}
+
 .navbar-sidebar .navbar__logo {
   height: 4rem;
   margin-left: 0;
 }
 
+.menu__link{
+  font-family: "CCSmash";
+}
+
+/*#endregion Navbar*/
+
+/*#region Buttons*/
 .button {
   background: linear-gradient(135deg, rgb(253, 215, 109) 25%, rgb(252, 189, 12) 40%);
   border-width: 1rem;
@@ -277,7 +293,7 @@ h6 {
   border-bottom-color: #e76900;
   border-left-color: #fcbd0c;
   font-size: calc(1rem * var(--ifm-button-size-multiplier));
-  color: #cc0000;
+  color: #cc0000 !important;
   font-family: "CCSmash";
 }
 
@@ -321,7 +337,7 @@ h6 {
   border-right-color: #ca0000;
   border-bottom-color: #900;
   border-left-color: #F00;
-  color: #FFF;
+  color: #FFF !important;;
 }
 
 .button.button--red:hover {
@@ -330,7 +346,7 @@ h6 {
   border-right-color: #650000;
   border-bottom-color: #4d0000;
   border-left-color: #800;
-  color: #808080;
+  color: #808080 !important;;
 }
 
 .button.button--blurple {
@@ -339,7 +355,7 @@ h6 {
   border-right-color: #2F3fef;
   border-bottom-color: #041185;
   border-left-color: #5865f2;
-  color: #FFF;
+  color: #FFF !important;;
 }
 
 .button.button--blurple:hover {
@@ -348,9 +364,63 @@ h6 {
   border-right-color: #0a1482;
   border-bottom-color: #020841;
   border-left-color: #0c1796;
-  color: #808080;
+  color: #808080 !important;;
+}
+/*#endregion Buttons*/
+
+/*#region Blog*/
+
+.container{
+  background-color: var(--ifm-hero-background-color);
+  padding: 2rem 2rem;
+  border-radius: 25px;
 }
 
+.sidebar_re4s{
+  border-right: 2px solid var(--ifm-blog-a-tag-color);
+}
+
+.sidebarItemTitle_pO2u {
+  font-family: "CCSmash";
+  text-align: center;
+  color: var(--ifm-blog-a-tag-color) !important;
+}
+
+.title_f1Hy {
+  font-size: 2.5rem !important;
+}
+
+@media screen and (max-width: 996px) {
+
+  .container{
+    background-color: var(--ifm-hero-background-color);
+    padding: 2rem 2rem;
+    border-radius: 0;
+    margin: 0 !important;
+  }
+}
+
+/*#endregion Blog*/
+
+/*#region Wiki*/
+
+.theme-doc-sidebar-container{
+  margin-top: 0rem !important;
+  background: var(--ifm-hero-background-color) !important;
+}
+
+.sidebar_njMd{
+  padding: 0 !important;
+}
+
+.menu_SIkG{
+  padding-top: 3rem !important;
+
+}
+
+/*#endregion Wiki*/
+
+/*#region Footer*/
 .footer {
   background: #1d222a;
   padding: 32px 0;
@@ -440,5 +510,5 @@ h6 {
   .footer__copyright{
     font-size: 2.5rem;
   }
-  
 }
+/*#endregion Footer*/

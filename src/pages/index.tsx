@@ -34,7 +34,7 @@ function HomeHeader() {
             </Link>
           </div>
         </div>
-        <div className={clsx("col col--4", styles.rOrder)}>
+        <div className={clsx("col col--4 row--align-center", styles.rOrder)} style={{display: "flex"}}>
           <div className={styles.heroPanelPicture}>
             <img className={styles.heroPanelImage} src={useBaseUrl("/img/home/blob.svg")} />
             <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickLeft}`} src={useBaseUrl("/img/home/sitekick.png")} />
@@ -129,7 +129,7 @@ function MultiDeviceSupport(): ReactNode {
               <p>Are you a programmer, artist, animator, writer, or website designer? Interested in working on Sitekick Remastered?</p>
               <Link
                 className="button margin--sm"
-                to="/join_the_team">
+                to="/docs/development/join_the_team">
                 Learn more!
               </Link>
             </div>
@@ -165,7 +165,7 @@ export default function Home(): ReactNode {
       title={`Home`}
       description="Clickity-click, it's Sitekick!">
       <HomeHeader />
-      <main>
+      <main className={styles.extraCardMain}>
         <HomeFeatures />
         <MultiDeviceSupport />
       </main>

@@ -1,23 +1,19 @@
-yangshun:
-  name: Yangshun Tay
-  title: Front End Engineer @ Facebook
-  url: https://github.com/yangshun
-  image_url: https://github.com/yangshun.png
-  page: true
-  socials:
-    x: yangshunz
-    github: yangshun
+crow:
+  name: "[GM] Nicholas"
+  title: Administrator / Game Director
+  url: https://github.com/SK-Crow
+  image_url: https://avatars.githubusercontent.com/u/1341176
 
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
-  page:
-    # customize the url of the author page at /blog/authors/<permalink>
-    permalink: '/all-sebastien-lorber-articles'
-  socials:
-    x: sebastienlorber
-    linkedin: sebastienlorber
-    github: slorber
-    newsletter: https://thisweekinreact.com
+mattster:
+  name: "[GM] Mattster"
+  title: Lead Developer
+  image_url: https://avatars.githubusercontent.com/u/1545963
+
+michael:
+  name: "[GM] Michael"
+  title: Developer
+  url: https://github.com/natural-stupidity
+  image_url: https://avatars.githubusercontent.com/u/91761269
+  
+  
+

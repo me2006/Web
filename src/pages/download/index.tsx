@@ -45,7 +45,7 @@ function DownloadPage() {
             </a>
           </div>
           <div className={styles.platformBlock}>
-            <a href="ms-windows-store://pdp/?productid=9P7KL6QQLP4X" rel="noopener" target="__blank">
+            <a href="https://github.com/SitekickRemastered/Game/releases/" rel="noopener" target="__blank">
               <img src={useBaseUrl("/img/download/apk-badge-1.svg")} alt="GitHub APK Download Badge" />
             </a>
           </div>

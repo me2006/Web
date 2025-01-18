@@ -34,13 +34,13 @@ const config: Config = {
           editUrl:  "https://github.com/sitekickremastered/Web/",
         },
         blog: {
-          showReadingTime: true,
+          showReadingTime: false,
           feedOptions: {
             type: ["rss", "atom"],
             xslt: true,
           },
-          // Remove this to get rid of the "Edit this page" button
-          editUrl: "https://github.com/sitekickremastered/Web/",
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
 
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
@@ -56,6 +56,10 @@ const config: Config = {
 
   themeConfig: {
     image: "img/social_card.png",
+    colorMode: {
+      respectPrefersColorScheme: true,
+    },
+
     navbar: {
       logo: {
         src: "img/logo.svg",
@@ -80,6 +84,7 @@ const config: Config = {
         */
       ],
     },
+
     footer: {
       style: "dark",
       logo: {
@@ -97,12 +102,12 @@ const config: Config = {
         { label: "Metrics", href: "/metrics"},
         { label: "Status", href: "/status"},
 
-        { label: "Privacy Policy", href: "/privacy"},
-        { label: "Terms of Service", href: "/tos"},
-        { label: "Cookies Policy", href: "/cookies"},
-        { label: "Rules", href: "/rules"},
+        { label: "Privacy Policy", href: "/legal/privacy"},
+        { label: "Terms of Service", href: "/legal/tos"},
+        { label: "Cookies Policy", href: "/legal/cookies"},
+        { label: "Rules", href: "/docs/rules"},
         
-        { label: "Join The Team", href: "/join_the_team"},
+        { label: "Join The Team", href: "/docs/development/join_the_team"},
         { label: "Contact Us", href: "/contact"},
       ],
       copyright: `Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc. <br/>

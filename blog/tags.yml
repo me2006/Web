@@ -1,19 +1,14 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+updates:
+  label: Updates
+  permalink: /updates
+  description: Game updates
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+news:
+  label: News
+  permalink: /news
+  description: Information about the game or team
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
-
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+game:
+  label: Game
+  permalink: /game
+  description: Information about the game

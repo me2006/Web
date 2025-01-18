@@ -214,6 +214,10 @@ main {
   }
 }
 
+.extraCardMain{
+  background-color: #000 !important;
+}
+
 .extraCardContainer{
   display:flex;
   justify-content: space-between;
