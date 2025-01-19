@@ -4,21 +4,32 @@
   background-size: cover;
   background-repeat: no-repeat;
   margin-top: -7rem;
-  color: var(--ifm-hero-text-color);
+  color: var(--text-colour);
   display: flex;
   justify-content: center;
   min-height: 100vh;
 }
 
-.downloadInner {
+/* 
+  This isn't *truely* centred vertically, but it looks better 
+  since the antenna makes the content look lower than it is 
+*/
+.downloadInner{
+  margin-top: 5rem;
   width: 80%;
-  margin-top: 10rem;
+  display: flex;
+  align-items: center;
+}
+
+.downloadContent {
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
 .downloadLogo {
+  aspect-ratio: 473 / 247;
   width: 35%;
 }
 
@@ -104,7 +115,7 @@
   }
   
   .downloadInner {
-    margin-top: 16rem;
+    margin-top: 10rem;
   }
   
   .downloadLogo {
@@ -140,26 +151,18 @@
     margin-top: -14rem;
   }
   
-  .downloadInner {
-    margin-top: 18rem;
-  }
-  
-  .downloadLogo {
-    width: 40%;
-  }
-  
   .slogan {
     font-size: 5rem;
     -webkit-text-stroke-width: 5px;
   }
   
   .downloadInfoDiv{
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     margin-bottom: 4rem;
   }
 
   .alertFont {
-    font-size: 2.3rem;
+    font-size: 2.6rem;
   }
 
   .platformBlock {

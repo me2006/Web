@@ -11,7 +11,7 @@ const config: Config = {
 
   // Github Deployment and repo name
   organizationName: "SitekickRemastered",
-  projectName: "SitekickWeb",
+  projectName: "Web",
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -39,8 +39,8 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          blogSidebarTitle: 'All posts',
-          blogSidebarCount: 'ALL',
+          blogSidebarTitle: "All posts",
+          blogSidebarCount: "ALL",
 
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
@@ -67,9 +67,13 @@ const config: Config = {
       },
       items: [
         { to: "/download", label: "Download", position: "left" },
-        { to: "https://discord.sitekickremastered.com", label: "Discord", position: "left"},
-        { to: "/fanart", label: "Fan Art", position: "left"},
-        { to: "/blog", label: "Blog", position: "left" },
+        { to: "/blog", label: "News", position: "left" },
+        { type: "dropdown", label: "Community", position: "left", activeBaseRegex: "/fanart",
+          items: [
+            { to: "https://discord.sitekickremastered.com", label: "Discord", },
+            { to: "/fanart", label: "Fan Art", }
+          ],
+        },
         {
           type: "docSidebar",
           sidebarId: "wikiSidebar",
@@ -88,27 +92,56 @@ const config: Config = {
     footer: {
       style: "dark",
       logo: {
-        src: 'img/logo.svg',
-        alt: 'Sitekick Remastered Logo',
-        href: 'https://sitekickremastered.com',
-        className: 'footer__logo',
+        src: "img/logo.svg",
+        alt: "Sitekick Remastered Logo",
+        href: "https://sitekickremastered.com",
+        className: "footer__logo",
       },
       links: [ 
-        { label: 'Home', href: '/' },
-        { label: 'Download', href: '/download' },
-        { label: 'Fan Art', href: '/fanart' },
-        { label: "Blog", href: "/blog" },
-        { label: "Wiki", href: "/wiki" },
-        { label: "Metrics", href: "/metrics"},
-        { label: "Status", href: "/status"},
+        {
+          title: "General",
+          items: [
+            { label: "Fan Art", to: "/fanart" },
+            { label: "Metrics", to: "/metrics" },
+            { label: "Rules", to: "/rules" },
+            { label: "Server Status", to: "https://status.sitekickremastered.com/" }
+          ]
+        },
+        {
+          title: "Development",
+          items: [
+            { label: "News", to: "/blog" },
+            { label: "Changelog", to: "/docs/development/changelog" },
+            { label: "Join The Team", to: "/docs/development/join_the_team" },
+          ]
+        },
+        {
+          title: "Legal",
+          items: [
+            { label: "Privacy Policy", to: "/legal/privacy" },
+            { label: "Terms of Service", to: "/legal/tos" },
+            { label: "Cookies Policy", to: "/legal/cookies" },
+            { label: "Contact Us", to: "/contact" },
+          ]
+        }
 
-        { label: "Privacy Policy", href: "/legal/privacy"},
-        { label: "Terms of Service", href: "/legal/tos"},
-        { label: "Cookies Policy", href: "/legal/cookies"},
-        { label: "Rules", href: "/docs/rules"},
+        /* Single Row Footer
+        { label: "Home", to: "/" },
+        { label: "News", to: "/blog" },
+        { label: "Download", to: "/download" },
+        { label: "Fan Art", to: "/fanart" },
+        { label: "Wiki", to: "/wiki" },
+        { label: "Metrics", to: "/metrics"},
+        { label: "Status", to: "/status"},
+
+        { label: "Privacy Policy", to: "/legal/privacy"},
+        { label: "Terms of Service", to: "/legal/tos"},
+        { label: "Cookies Policy", to: "/legal/cookies"},
+        { label: "Rules", to: "/docs/rules"},
         
-        { label: "Join The Team", href: "/docs/development/join_the_team"},
-        { label: "Contact Us", href: "/contact"},
+        { label: "Join The Team", to: "/docs/development/join_the_team"},
+        { label: "Contact Us", to: "/contact"},
+        */
       ],
       copyright: `Sitekick Remastered is in no way affiliated with YTV Canada, Inc. and/or Corus Entertainment, Inc. <br/>
                   Sitekick Remastered is a completely free game, containing no advertisements, subscriptions, microtransactions,

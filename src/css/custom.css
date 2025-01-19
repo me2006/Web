@@ -6,13 +6,13 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  color-scheme: light dark;
   --bg-splash: url("/static/img/bg_splash.png");
-  --ifm-heading-colour: #000;
-  --ifm-hero-text-color: #000;
+  --text-colour: #000;
   --ytv-green: rgb(104, 194, 8);
   --ytv-purple: rgb(74, 42, 169);
-  --ifm-blog-a-tag-color: var(--ytv-purple);
+  --custom-green: rgb(126, 190, 32);
+  --custom-purple: rgb(126, 32, 190);
+  --a-tag-colour: var(--custom-purple);
   --sitekick-yellow: rgb(255, 204, 0);
   --sitekick-yellow-dark: rgb(230, 184, 0);
   --sitekick-yellow-darker: rgb(217, 173, 0);
@@ -21,12 +21,13 @@
   --ifm-button-size-multiplier: 1.1;
   --ifm-navbar-item-padding-horizontal: 1rem;
   --ifm-button-padding-horizontal: 1rem;
+  --ifm-transition-fast: 3ms;
+  --ifm-transition-slow: 3ms;
 }
 
 [data-theme='dark'] {
-  --ifm-heading-colour: #FFF;
-  --ifm-hero-text-color: #FFF;
-  --ifm-blog-a-tag-color: var(--ytv-green);
+  --text-colour: #FFF;
+  --a-tag-colour: var(--custom-green);
 }
 
 @font-face {
@@ -68,10 +69,6 @@
   99% { color: #000; }
 }
 
-*{
-  transition: all 0.3s ease-in-out;
-}
-
 body, #__docusaurus {
   background-color: #000;
 }
@@ -81,7 +78,7 @@ main {
 }
 
 main a, .breadcrumbs__link, .sidebarItemLink_mo7H:hover, .menu__link--active {
-  color: var(--ifm-blog-a-tag-color) !important;
+  color: var(--a-tag-colour) !important;
 }
 
 h1,
@@ -131,11 +128,17 @@ summary {
   margin-right: 3vw;
 }
 
-.navbar__logo {
-  height: 7vw;
+.navbar__logo{
+  height: 100%;
 }
 
-.navbar__item {
+.navbar__logo img {
+  aspect-ratio: 473 / 247;
+  width: 16rem;
+  height: auto;
+}
+
+.navbar__link {
   height: 100%;
   font-family: "CCSmash";
   color: #134900;
@@ -143,7 +146,9 @@ summary {
 
 .navbar__link:hover {
   color: #000;
-  transition: all 0.15s ease-in-out;
+}
+
+.navbar__item:hover:not(.dropdown--hoverable):not(.navbar__link--active) {
   transform: scale(1.2);
   animation: spark 0.3s infinite, navColourFade 0.15s;
 }
@@ -160,12 +165,23 @@ summary {
       rgba(102, 0, 153, .9) 95%) !important;
 }
 
-.navbar__link--active:hover {
-  color: #000;
-  transform: none;
-  animation: none;
+.dropdown__menu {
+  width: 100%;
+  border: 5px solid var(--a-tag-colour);
 }
 
+.dropdown__link {
+  font-family: "CCSmash";
+  font-size: 1.1rem;
+}
+
+.dropdown__menu > li:not(:last-child){
+  border-bottom: 2px solid var(--a-tag-colour);
+}
+
+.dropdown__link--active {
+  color: var(--a-tag-colour);
+}
 
 @media screen and (max-width: 996px) {
   .navbar--fixed-top {
@@ -183,14 +199,24 @@ summary {
 
   .navbar__brand {
     min-width: calc(100vw - (12vw + 38px));
-    display:flex;
     justify-content: center;
     margin-left: 0vw;
     padding: 0;
   }
 
   .navbar__logo {
-    height: 3.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar__logo img {
+    width: 7rem;
+  }
+}
+
+@media screen and (max-width: 1058px) {
+  .navbar__inner {
+    font-size: 1.1rem;
   }
 }
 
@@ -213,12 +239,16 @@ summary {
     overflow: visible;
   }
 
-  .navbar__logo {
-    height: 8vw;
+  .navbar__logo img {
+    width: 23rem;
   }
 
   .navbar__items--right{
     scale: 2
+  }
+
+  .dropdown__link {
+    font-size: 1.9rem;
   }
 }
 
@@ -241,8 +271,12 @@ summary {
     overflow: visible;
   }
 
-  .navbar__logo {
-    height: 7vw;
+  .navbar__logo img {
+    width: 33rem;
+  }
+
+  .dropdown__link {
+    font-size: 2.64rem;
   }
 }
 
@@ -250,7 +284,6 @@ summary {
   max-width: 320px;
   max-height: 100vh;
   overflow-y: hidden;
-  transition: all 0.3s ease-in-out;
 }
 
 .navbar-sidebar__brand {
@@ -272,8 +305,8 @@ summary {
   width: auto;
 }
 
-.navbar-sidebar .navbar__logo {
-  height: 4rem;
+.navbar-sidebar .navbar__logo{
+  width: 6.5rem;
   margin-left: 0;
 }
 
@@ -317,7 +350,7 @@ summary {
   }
 
   .button--lg {
-    --ifm-button-size-multiplier: 2.25;
+    --ifm-button-size-multiplier: 2.25 !important;
   }
 }
 
@@ -327,7 +360,7 @@ summary {
   }
 
   .button--lg {
-    --ifm-button-size-multiplier: 3;
+    --ifm-button-size-multiplier: 3 !important;
   }
 }
 
@@ -377,13 +410,13 @@ summary {
 }
 
 .sidebar_re4s{
-  border-right: 2px solid var(--ifm-blog-a-tag-color);
+  border-right: 2px solid var(--a-tag-colour);
 }
 
 .sidebarItemTitle_pO2u {
   font-family: "CCSmash";
   text-align: center;
-  color: var(--ifm-blog-a-tag-color) !important;
+  color: var(--a-tag-colour) !important;
 }
 
 .title_f1Hy {
@@ -454,11 +487,17 @@ summary {
 }
 
 .footer__links a:hover {
-  color: var(--ytv-green);
+  color: var(--custom-green);
   text-decoration: none;
 }
 
+.footer__title {
+  font-family: "CCSmash";
+  text-decoration: underline;
+}
+
 .footer__logo {
+  aspect-ratio: 473 / 247;
   width: 13rem;
   margin-top: 0;
 }
@@ -472,6 +511,10 @@ summary {
 
 @media screen and (min-width: 2000px) {
  
+  .footer__title {
+    font-size: 1.5rem;
+  }
+
   .social__links a{
     margin: 0px 1.5rem;
     font-size: 3.5em;
@@ -493,6 +536,10 @@ summary {
 
 @media screen and (min-width: 4000px) {
  
+  .footer__title {
+    font-size: 2.5rem;
+  }
+
   .social__links a{
     margin: 0px 2rem;
     font-size: 5em;
