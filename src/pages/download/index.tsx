@@ -7,20 +7,56 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWarning } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
 
-//#region Header
+type DownloadButton = {
+  alt: string;
+  url: string;
+  imgUrl: string;
+};
+
+const ButtonList: DownloadButton[] = [
+  {
+    alt: "Google Play Download Badge",
+    url: "https://play.google.com/store/apps/details?id=com.SitekickRemastered.Sitekick",
+    imgUrl: "/img/download/google-play-badge.svg",
+  },
+  {
+    alt: "Windows Store Download Badge",
+    url: "ms-windows-store://pdp/?productid=9P7KL6QQLP4X",
+    imgUrl: "/img/download/windows-store-dark.svg",
+  },
+  {
+    alt: "GitHub APK Download Badge",
+    url: "https://github.com/SitekickRemastered/Game/releases/",
+    imgUrl: "/img/download/apk-badge-1.svg",
+  },
+];
+
+function DownloadButton({ alt, url, imgUrl }: DownloadButton) {
+  return (
+    <div className={styles.platformBlock}>
+      <a href={url} rel="noopener" target="__blank">
+        <img src={useBaseUrl(imgUrl)} alt={alt} />
+      </a>
+    </div>
+  );
+}
+
 function DownloadPage() {
   return (
     <main className={styles.downloadMain}>
       <div className={styles.downloadInner}>
         <div className={styles.downloadContent}>
 
+          { /* Logo and slogan */}
           <img className={styles.downloadLogo} src={useBaseUrl("/img/logo-beta.svg")} />
           <h1 className={styles.slogan}>Made by fans, for fans</h1>
 
+          { /* Black box with information */ }
           <div className={styles.downloadInfoDiv}>
             <p>Sitekick Remastered is available for Android and Windows 10/11 devices. <br />Apple devices are not supported at this time.</p>
           </div>
 
+          { /* Beta warning */ }
           <div className={clsx("admonition alert alert--danger", styles.alertDiv)}>
             <div className={clsx("admonitionHeading", styles.alertFont)}>
               <span className={clsx("admonitionIcon", styles.alertFont)}>
@@ -33,22 +69,11 @@ function DownloadPage() {
             </div>
           </div>
 
+          { /* Download buttons */ }
           <div className={styles.downloadButtonContainer}>
-            <div className={styles.platformBlock}>
-              <a href="https://play.google.com/store/apps/details?id=com.SitekickRemastered.Sitekick" rel="noopener" target="__blank">
-                <img src={useBaseUrl("/img/download/google-play-badge.svg")} alt="Google Play Download Badge" />
-              </a>
-            </div>
-            <div className={styles.platformBlock}>
-              <a href="ms-windows-store://pdp/?productid=9P7KL6QQLP4X" rel="noopener" target="__blank">
-                <img src={useBaseUrl("/img/download/windows-store-dark.svg")} alt="Windows Store Download Badge" />
-              </a>
-            </div>
-            <div className={styles.platformBlock}>
-              <a href="https://github.com/SitekickRemastered/Game/releases/" rel="noopener" target="__blank">
-                <img src={useBaseUrl("/img/download/apk-badge-1.svg")} alt="GitHub APK Download Badge" />
-              </a>
-            </div>
+            {ButtonList.map((props, idx) => (
+              <DownloadButton key={idx} {...props} />
+            ))}
           </div>
         </div>
       </div>
@@ -56,18 +81,11 @@ function DownloadPage() {
     </main>
   );
 }
-//#endregion
-
-//#region Main
 
 export default function Download(): ReactNode {
   return (
-    <Layout
-      title={`Download`}
-      description="Clickity-click, it's Sitekick!">
+    <Layout title={`Download`} description="Clickity-click, it's Sitekick!">
       <DownloadPage />
     </Layout>
   );
 }
-
-//#endregion

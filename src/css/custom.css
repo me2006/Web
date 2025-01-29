@@ -7,7 +7,9 @@
 /* You can override the default Infima variables here. */
 :root {
   --bg-splash: url("/static/img/bg_splash.png");
+  --ifm-hero-background-color: #eee;
   --text-colour: #000;
+  --subtle: #767676;
   --ytv-green: rgb(104, 194, 8);
   --ytv-purple: rgb(74, 42, 169);
   --custom-green: rgb(126, 190, 32);
@@ -26,6 +28,7 @@
 }
 
 [data-theme='dark'] {
+  --ifm-hero-background-color: #242526;
   --text-colour: #FFF;
   --a-tag-colour: var(--custom-green);
 }
@@ -69,17 +72,18 @@
   99% { color: #000; }
 }
 
-body, #__docusaurus {
-  background-color: #000;
+#__docusaurus {
+  background-color: var(--ifm-hero-background-color);
 }
 
-main {
-  background-color: var(--ifm-hero-background-color) !important;
+.main-wrapper {
+  flex: 0 !important;
 }
 
 main a, .breadcrumbs__link, .sidebarItemLink_mo7H:hover, .menu__link--active {
   color: var(--a-tag-colour) !important;
 }
+
 
 h1,
 h2,
@@ -93,6 +97,10 @@ summary {
 
 summary {
   font-size: 1.2rem;
+}
+
+.homeBg {
+  background-color: #000 !important;
 }
 
 /*#region Navbar*/
@@ -148,11 +156,6 @@ summary {
   color: #000;
 }
 
-.navbar__item:hover:not(.dropdown--hoverable):not(.navbar__link--active) {
-  transform: scale(1.2);
-  animation: spark 0.3s infinite, navColourFade 0.15s;
-}
-
 .navbar__link--active {
   color: #FFF;
   background: linear-gradient(180deg,
@@ -163,6 +166,11 @@ summary {
       rgba(153, 0, 204, .9) 85%,
       rgba(115, 0, 116, .9) 90%,
       rgba(102, 0, 153, .9) 95%) !important;
+}
+
+.navbar__item:hover:not(.dropdown--hoverable):not(.navbar__link--active) {
+  transform: scale(1.2);
+  animation: spark 0.3s infinite, navColourFade 0.15s;
 }
 
 .dropdown__menu {
@@ -180,6 +188,10 @@ summary {
 }
 
 .dropdown__link--active {
+  color: var(--a-tag-colour);
+}
+
+.dropdown__link--active:hover {
   color: var(--a-tag-colour);
 }
 
@@ -403,19 +415,57 @@ summary {
 
 /*#region Blog*/
 
-.container{
-  background-color: var(--ifm-hero-background-color);
-  padding: 2rem 2rem;
-  border-radius: 25px;
+.hidden {
+  display: none !important;
+}
+
+article.margin-bottom--xl{
+  margin-bottom: 2rem !important;
+  padding-bottom: 3rem !important;
+  border-bottom: 2px solid var(--a-tag-colour);
+}
+
+.blog-wrapper .main-wrapper .container.margin-vert--lg {
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
 }
 
 .sidebar_re4s{
-  border-right: 2px solid var(--a-tag-colour);
+  --ifm-navbar-height: 7.5rem !important;
+}
+
+.container{
+  background-color: var(--ifm-hero-background-color);
+  padding: 0rem 2rem;
 }
 
 .sidebarItemTitle_pO2u {
   font-family: "CCSmash";
-  text-align: center;
+  margin-left: 2px;
+}
+
+.yearGroupHeading_rMGB {
+  color: var(--subtle);
+  border-bottom: .01rem solid var(--a-tag-colour);
+}
+
+.sidebarItemLink_mo7H {
+  /*border-left: 4px solid transparent;*/
+  border-radius: .25rem;
+  padding: 4px 8px;
+  line-height: 18px;
+  display: block;
+}
+
+.sidebarItemLink_mo7H:hover {
+  background: var(--ifm-menu-color-background-active);
+  color: var(--ifm-font-color-base);
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.sidebarItemLinkActive_I1ZP {
+  background: var(--ifm-menu-color-background-active);
   color: var(--a-tag-colour) !important;
 }
 
@@ -423,10 +473,22 @@ summary {
   font-size: 2.5rem !important;
 }
 
+.blog-wrapper .main-wrapper .container.margin-vert--lg .col.text--right a,
+.theme-doc-footer a {
+  border:1px solid var(--ifm-color-emphasis-300);
+  border-radius:var(--ifm-global-radius);
+  color:var(--ifm-color-content-secondary);
+  padding:8px 16px;
+  display:inline-block;
+  text-decoration: none;
+}
+.blog-wrapper .main-wrapper .container.margin-vert--lg .col.text--right a:hover, .theme-doc-footer a:hover {
+  background: var(--ifm-menu-color-background-hover);
+}
+
 @media screen and (max-width: 996px) {
 
   .container{
-    background-color: var(--ifm-hero-background-color);
     padding: 2rem 2rem;
     border-radius: 0;
     margin: 0 !important;
@@ -436,19 +498,16 @@ summary {
 /*#endregion Blog*/
 
 /*#region Wiki*/
-
-.theme-doc-sidebar-container{
-  margin-top: 0rem !important;
-  background: var(--ifm-hero-background-color) !important;
+.docSidebarContainer_YfHR{
+  --ifm-navbar-height: 9.5rem !important;
 }
 
-.sidebar_njMd{
-  padding: 0 !important;
+.sidebarViewport_aRkj {
+  margin-top: 2rem;
 }
 
-.menu_SIkG{
-  padding-top: 3rem !important;
-
+.docMainContainer_TBSr{
+  min-height: 100vh;
 }
 
 /*#endregion Wiki*/
@@ -473,6 +532,7 @@ summary {
   color: #FFF;
   margin: 0px 0.65rem;
   font-size: 2em;
+  transition: color 0.3s ease-in-out;
 }
 
 .discord__logo:hover{ color: #5865f2; }

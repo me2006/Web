@@ -45,7 +45,8 @@ const config: Config = {
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
-          onUntruncatedBlogPosts: "warn",
+           // Use "warn" fr this if you want to be warned about mdx files not have <!-- truncate --> (Which adds "Read More")
+          onUntruncatedBlogPosts: "ignore",
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -103,7 +104,7 @@ const config: Config = {
           items: [
             { label: "Fan Art", to: "/fanart" },
             { label: "Metrics", to: "/metrics" },
-            { label: "Rules", to: "/rules" },
+            { label: "Rules", to: "/docs/rules" },
             { label: "Server Status", to: "https://status.sitekickremastered.com/" }
           ]
         },
@@ -112,7 +113,7 @@ const config: Config = {
           items: [
             { label: "News", to: "/blog" },
             { label: "Changelog", to: "/docs/development/changelog" },
-            { label: "Join The Team", to: "/docs/development/join_the_team" },
+            { label: "Join the Team", to: "/docs/development/join_the_team" },
           ]
         },
         {
@@ -139,7 +140,7 @@ const config: Config = {
         { label: "Cookies Policy", to: "/legal/cookies"},
         { label: "Rules", to: "/docs/rules"},
         
-        { label: "Join The Team", to: "/docs/development/join_the_team"},
+        { label: "Join the Team", to: "/docs/development/join_the_team"},
         { label: "Contact Us", to: "/contact"},
         */
       ],
