@@ -18,7 +18,7 @@ export default function HomeExtra(): ReactNode {
               <img src={useBaseUrl("/img/home/kablooey_repair.png")} style={{ borderRadius: "50%" }} />
             </div>
             <div className="col col--7">
-              <p>Are you a programmer, artist, animator, writer, or website designer? Interested in working on Sitekick Remastered?</p>
+              <p>Are you a programmer, artist, animator, writer, or web designer looking to contribute?</p>
               <Link
                 className="button margin--sm"
                 to="/docs/development/join_the_team">
@@ -33,9 +33,8 @@ export default function HomeExtra(): ReactNode {
           <h1 >Multi-Device Support</h1>
           <div className={clsx("row", styles.extraCardContent)}>
             <div className={clsx("col", styles.lOrder)}>
-              <p>
-                Sitekick Remastered is available on Google Play and the Microsoft Store. MacOS/Linux users are able to play through an Android Emulator. <b>iOS support is not planned at this time.</b>
-              </p>
+              <p>Sitekick Remastered is available on Google Play and the Microsoft Store. MacOS and Linux users can play using an Android emulator.</p>
+			  <p><b>iOS support is not planned at this time.</b></p>
             </div>
             <div className={clsx("col", styles.rOrder)}>
               <img src={useBaseUrl("/img/home/devices.png")} />

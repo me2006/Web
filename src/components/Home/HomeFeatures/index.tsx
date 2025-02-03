@@ -16,7 +16,7 @@ const FeatureList: FeatureItem[] = [
     imgUrl: "/img/home/chips.gif",
     description: (
       <>
-        Nearly every chip is being restored for use in Sitekick Remastered. We’ll continue to create and add new chips with every update.
+        Nearly every chip is being restored for use in Sitekick Remastered, with new chips being created and added in every update.
       </>
     ),
   },
@@ -25,16 +25,16 @@ const FeatureList: FeatureItem[] = [
     imgUrl: "/img/home/unity.png",
     description: (
       <>
-        Flash Player is a thing of the past. Sitekick Remastered is made in Unity. This offers faster load times, improved security, and broader platform support.
+		Sitekick Remastered is built with Unity, providing improved performance, enhanced security, and compatibility across multiple platforms.
       </>
     ),
   },
   {
-    title: "Powered by Fans",
+    title: "Produced by Fans",
     imgUrl: "/img/home/heart.png",
     description: (
       <>
-        Sitekick Remastered is paid for, developed by, and maintained by the players of the original game.
+        Sitekick Remastered is funded, developed, and maintained by players of the original game.
       </>
     ),
   },
