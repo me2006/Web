@@ -25,7 +25,7 @@ const FeatureList: FeatureItem[] = [
     imgUrl: "/img/home/unity.png",
     description: (
       <>
-		Sitekick Remastered is built with Unity, providing improved performance, enhanced security, and compatibility across multiple platforms.
+		Sitekick Remastered is built with Unity, providing improved performance, security, and compatibility across multiple platforms.
       </>
     ),
   },

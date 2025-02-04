@@ -14,7 +14,31 @@
   --ytv-purple: rgb(74, 42, 169);
   --custom-green: rgb(126, 190, 32);
   --custom-purple: rgb(126, 32, 190);
+  --other-purple: rgb(153, 0, 204);
   --a-tag-colour: var(--custom-purple);
+
+  --ytv-container-orange: rgb(255, 153, 0);
+  --ytv-container-orange-highlight: rgb(255, 204, 51);
+  --ytv-container-orange-shadow: rgb(108, 40, 0);
+
+  --ytv-container-purple: rgb(153, 0, 204);
+  --ytv-container-purple-highlight: rgb(204, 153, 255);
+  --ytv-container-purple-shadow: rgb(102, 0, 153);
+
+  --ytv-container-green: rgb(44, 172, 0);
+  --ytv-container-green-highlight: rgb(162, 215, 16);
+  --ytv-container-green-shadow: rgb(31, 120, 0);
+
+  --ytv-container-inner-green: rgb(162, 215, 16);
+  --ytv-container-inner-green-shadow: rgb(113, 150, 11);
+  --ytv-container-inner-yellow: rgb(255, 204, 51);
+  --ytv-container-inner-yellow-shadow: rgb(178, 142, 36);
+  --ytv-container-inner-purple: rgb(204, 153, 255);
+  --ytv-container-inner-purple-shadow: rgb(142, 107, 178);
+
+  --ytv-grid: url(/static/img/grid.png), linear-gradient(#9ad40e, #31ae00);
+  --ytv-container-text-colour: #000;
+
   --sitekick-yellow: rgb(255, 204, 0);
   --sitekick-yellow-dark: rgb(230, 184, 0);
   --sitekick-yellow-darker: rgb(217, 173, 0);
@@ -31,6 +55,10 @@
   --ifm-hero-background-color: #242526;
   --text-colour: #FFF;
   --a-tag-colour: var(--custom-green);
+  --ytv-grid: #242526;
+  --ytv-container-inner-green: #242526;
+  --ytv-container-inner-purple: #242526;
+  --ytv-container-text-colour: #FFF;
 }
 
 @font-face {
@@ -74,6 +102,8 @@
 
 #__docusaurus {
   background-color: var(--ifm-hero-background-color);
+  color: var(--text-colour);
+  word-wrap: normal;
 }
 
 .main-wrapper {
@@ -101,6 +131,67 @@ summary {
 
 .homeBg {
   background-color: #000 !important;
+}
+
+.ytvContainer {
+  border-radius: 25px;
+  padding: 2rem 1rem 1.5rem 1rem;
+  color: var(--ytv-container-text-colour);
+}
+
+.ytvContainerInner {
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat, no-repeat;
+  background-size: auto, cover;
+  border: 0.25rem solid black;
+  border-radius: 25px;
+  padding: 1.5rem;
+  box-shadow: 0px 1rem 0.4rem inset rgb(0, 0, 0, 0.3);
+}
+
+.ytvContainer.orange {
+  box-shadow:
+    0rem 0rem 0rem 0.25rem inset #000,
+    0rem -0.65rem 0.4rem inset var(--ytv-container-orange-shadow),
+    0rem 1rem 0.4rem inset var(--ytv-container-orange-highlight),
+    0rem 0.4rem 0rem 50rem inset var(--ytv-container-orange)
+}
+
+.ytvContainerInner.orange {
+  /*background-color: var(--ifm-hero-background-color);*/
+  /*background-color: var(--ytv-container-inner-green);*/
+  /*box-shadow: 0px 15px 5px inset var(--ytv-container-inner-green-shadow);*/
+  background: var(--ytv-grid);
+
+}
+
+.ytvContainer.purple {
+  box-shadow:
+    0rem 0rem 0rem 0.25rem inset #000,
+    0rem -0.65rem 0.4rem inset var(--ytv-container-purple-shadow),
+    0rem 1rem 0.4rem inset var(--ytv-container-purple-highlight),
+    0rem 0.4rem 0rem 50rem inset var(--ytv-container-purple);
+}
+
+.ytvContainerInner.purple {
+  /*background-color: var(--ifm-hero-background-color);*/
+  /*box-shadow: 0px 15px 5px inset var(--ytv-container-inner-purple-shadow);*/
+  background-color: var(--ytv-container-inner-purple);
+}
+
+.ytvContainer.green {
+  box-shadow:
+    0rem 0rem 0rem 0.25rem inset #000,
+    0rem -0.65rem 0.4rem inset var(--ytv-container-green-shadow),
+    0rem 1rem 0.4rem inset var(--ytv-container-green-highlight),
+    0rem 0.4rem 0rem 50rem inset var(--ytv-container-green);
+}
+
+.ytvContainerInner.green {
+  /*background-color: var(--ifm-hero-background-color);*/
+  /*box-shadow: 0px 15px 5px inset var(--ytv-container-inner-green-shadow);*/
+  background-color: var(--ytv-container-inner-green);
 }
 
 /*#region Navbar*/
@@ -196,6 +287,19 @@ summary {
 }
 
 @media screen and (max-width: 996px) {
+  .homeBg .ytvContainer.orange {
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  .homeBg .ytvContainerInner.orange {
+    border: none;
+    border-radius: 0px;
+    padding: 1rem;
+    box-shadow: none;
+  }
+
   .navbar--fixed-top {
     height: 5rem;
   }
@@ -233,6 +337,19 @@ summary {
 }
 
 @media screen and (min-width: 2000px) {
+  
+  .ytvContainer {
+    border-radius: 50px !important;
+    padding: 2.5rem 1.75rem 2.25rem 1.75rem !important;
+  }
+  
+  .ytvContainerInner {
+    border: 0.4rem solid black;
+    border-radius: 50px;
+    box-shadow: 0px 1.3rem 0.5rem inset rgb(0, 0, 0, 0.3);
+    padding: 2rem 2rem;
+  }
+
   .navbar--fixed-top {
     height: 12rem;
   }
@@ -265,6 +382,15 @@ summary {
 }
 
 @media screen and (min-width: 4000px) {
+  .ytvContainer {
+    padding: 3rem 2rem 2.5rem 2rem !important;
+  }
+  
+  .ytvContainerInner {
+    border: 0.5rem solid black;
+    padding: 3rem 3rem;
+  }
+  
   .navbar--fixed-top {
     height: 14rem;
   }
@@ -340,6 +466,7 @@ summary {
   font-size: calc(1rem * var(--ifm-button-size-multiplier));
   color: #cc0000 !important;
   font-family: "CCSmash";
+  outline: 4px solid black;
 }
 
 .button:hover {
@@ -351,6 +478,10 @@ summary {
   color: #8f0000;
 }
 
+.button:focus{
+  outline: 4px solid black !important;
+}
+
 .button--lg {
   --ifm-button-size-multiplier: 1.25;
 }
@@ -358,21 +489,33 @@ summary {
 @media screen and (min-width: 2000px) {
   .button, .button.button--red, .button.button--blurple {
     --ifm-button-size-multiplier: 1.5;
+    --ifm-button-border-radius: calc(0.8rem * 1.1);
     border-width: 1.5rem;
+    outline: 6px solid black;
   }
 
   .button--lg {
-    --ifm-button-size-multiplier: 2.25 !important;
+    --ifm-button-size-multiplier: 2 !important;
+  }
+
+  .button:focus{
+    outline: 6px solid black !important;
   }
 }
 
 @media screen and (min-width: 4000px) {
   .button, .button.button--red, .button.button--blurple {
     --ifm-button-size-multiplier: 2;
+    --ifm-button-border-radius: calc(1rem * 1.1);
+    outline: 8px solid black;
   }
 
   .button--lg {
     --ifm-button-size-multiplier: 3 !important;
+  }
+  
+  .button:focus{
+    outline: 8px solid black !important;
   }
 }
 
@@ -508,6 +651,25 @@ article.margin-bottom--xl{
 
 .docMainContainer_TBSr{
   min-height: 100vh;
+}
+
+.docMainContainer_TBSr > .container {
+  min-width: 80% !important;
+}
+
+.grid {
+  grid-gap: .4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,16rem),1fr));
+  margin: 1em 0;
+}
+
+.card {
+  border: .05rem solid #999;
+  border-radius: .5rem;
+  display: block;
+  margin: 0;
+  padding: .8rem;
 }
 
 /*#endregion Wiki*/

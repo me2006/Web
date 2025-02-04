@@ -105,7 +105,7 @@ const config: Config = {
             { label: "Fan Art", to: "/fanart" },
             { label: "Metrics", to: "/metrics" },
             { label: "Rules", to: "/docs/rules" },
-            { label: "Server Status", to: "https://status.sitekickremastered.com/" }
+            { label: "Server Status", to: "/status" }
           ]
         },
         {

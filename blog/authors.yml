@@ -4,6 +4,11 @@ skrTeam:
   url: "https://github.com/sitekickremastered"
   image_url: https://avatars.githubusercontent.com/u/150977749
 
+frantic:
+  name: "Dr. Frantic"
+  title: "YAP! Industries Inventor"
+  image_url: "/img/frantic_pfp.png"
+
 crow:
   name: "[GM] Nicholas"
   title: Administrator / Game Director

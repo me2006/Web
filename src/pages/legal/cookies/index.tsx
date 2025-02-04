@@ -58,42 +58,42 @@ export default function Cookies(): ReactNode {
           <li>
             <span>
               <a href="https://support.google.com/chrome/answer/95647#zippy=%2Callow-or-block-cookies" rel="noopener noreferrer" target="_blank">
-                <span data-custom-class="link">Chrome</span>
+                <span>Chrome</span>
               </a>
             </span>
           </li>
           <li>
             <span>
               <a href="https://support.microsoft.com/en-us/windows/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d" rel="noopener noreferrer" target="_blank">
-                <span data-custom-class="link">Internet Explorer</span>
+                <span>Internet Explorer</span>
               </a>
             </span>
           </li>
           <li>
             <span>
               <a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop?redirectslug=enable-and-disable-cookies-website-preferences&amp;redirectlocale=en-US" rel="noopener noreferrer" target="_blank">
-                <span data-custom-class="link">Firefox</span>
+                <span>Firefox</span>
               </a>
             </span>
           </li>
           <li>
             <span>
               <a href="https://support.apple.com/en-ie/guide/safari/sfri11471/mac" rel="noopener noreferrer" target="_blank">
-                <span data-custom-class="link">Safari</span>
+                <span>Safari</span>
               </a>
             </span>
           </li>
           <li>
             <span>
               <a href="https://support.microsoft.com/en-us/windows/microsoft-edge-browsing-data-and-privacy-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd" rel="noopener noreferrer" target="_blank">
-                <span data-custom-class="link">Edge</span>
+                <span>Edge</span>
               </a>
             </span>
           </li>
           <li>
             <span>
               <a href="https://help.opera.com/en/latest/web-preferences/" rel="noopener noreferrer" target="_blank">
-                <span data-custom-class="link">Opera</span>
+                <span>Opera</span>
               </a>
             </span>
           </li>
@@ -103,22 +103,22 @@ export default function Cookies(): ReactNode {
           <li>
             <span>
               <a href="http://www.aboutads.info/choices/" rel="noopener noreferrer" target="_blank">
-                <span data-custom-class="link">Digital Advertising Alliance</span>
+                <span>Digital Advertising Alliance</span>
               </a>
             </span>
           </li>
           <li>
             <span>
               <a href="https://youradchoices.ca/" rel="noopener noreferrer" target="_blank">
-                <span data-custom-class="link">Digital Advertising Alliance of Canada</span>
+                <span>Digital Advertising Alliance of Canada</span>
               </a>
             </span>
           </li>
           <li>
             <span>
               <a href="http://www.youronlinechoices.com/" rel="noopener noreferrer" target="_blank">
-                <span data-custom-class="body_text">
-                  <span data-custom-class="link">European Interactive Digital Advertising Alliance</span>
+                <span>
+                  <span>European Interactive Digital Advertising Alliance</span>
                 </span>
               </a>
             </span>
