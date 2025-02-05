@@ -110,7 +110,7 @@
   flex: 0 !important;
 }
 
-main a, .breadcrumbs__link, .sidebarItemLink_mo7H:hover, .menu__link--active {
+p a, main a, .breadcrumbs__link, .sidebarItemLink_mo7H:hover, .menu__link--active {
   color: var(--a-tag-colour) !important;
 }
 
