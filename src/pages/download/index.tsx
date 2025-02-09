@@ -48,7 +48,7 @@ function DownloadPage() {
         <div className={styles.downloadContent}>
 
           { /* Logo and slogan */}
-          <img className={styles.downloadLogo} src={useBaseUrl("/img/logo-beta.svg")} />
+          <img className={styles.downloadLogo} src={useBaseUrl("/img/logo-beta.svg")} alt="Sitekick Remastered Beta Logo"/>
           <h1 className={styles.slogan}>Made by fans, for fans</h1>
 
           { /* Black box with information */ }

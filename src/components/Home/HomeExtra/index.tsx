@@ -16,7 +16,7 @@ export default function HomeExtra(): ReactNode {
             <h1>Join the Team!</h1>
             <div className={clsx("row", styles.extraCardContent)}>
               <div className="col col--5">
-                <img src={useBaseUrl("/img/home/propaganda.png")} />
+                <img src={useBaseUrl("/img/home/propaganda.png")} alt="Sitekick 'I Want You' poster with Carlos" />
               </div>
               <div className="col col--7">
                 <p>Are you a programmer, artist, animator, writer, or web designer looking to contribute?</p>
@@ -40,7 +40,7 @@ export default function HomeExtra(): ReactNode {
                 <p><b>iOS support is not planned at this time.</b></p>
               </div>
               <div className={clsx("col", styles.rOrder)}>
-                <img src={useBaseUrl("/img/home/devices.png")} />
+                <img src={useBaseUrl("/img/home/devices.png")} alt="Picture of devices sitekick is available on (Mobile, Desktop, Smart Fridge, etc.)" />
               </div>
             </div>
           </div>

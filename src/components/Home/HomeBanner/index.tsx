@@ -34,9 +34,9 @@ export default function HomeBanner() {
             </div>
             <div className={clsx("col col--4 row--align-center", styles.rOrder)} style={{ display: "flex" }}>
               <div className={styles.heroPanelPicture}>
-                <img className={styles.heroPanelImage} src={useBaseUrl("/img/home/blob4.svg")} />
-                <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickLeft}`} src={useBaseUrl("/img/home/sitekick.png")} />
-                <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickRight}`} src={useBaseUrl("/img/home/authicer.png")} />
+                <img className={styles.heroPanelImage} src={useBaseUrl("/img/home/blob4.svg")} alt="Background blob for sitekicks" />
+                <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickLeft}`} src={useBaseUrl("/img/home/sitekick.png")} alt="A standard, yellow sitekick" />
+                <img className={`${styles.heroPanelSitekick} ${styles.heroPanelSitekickRight}`} src={useBaseUrl("/img/home/authicer.png")} alt="Our purple mod sitekick, authicer" />
               </div>
             </div>
           </div>

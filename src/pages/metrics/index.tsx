@@ -28,7 +28,7 @@ export default function Status() {
         <h1 className={styles.title}>Metrics</h1>
         {isLoading ?
         <>
-          <img src="/img/loading.png" style={{maxHeight: "55vh"}}/>
+          <img src="/img/loading.png" style={{maxHeight: "55vh"}} alt="Loading image for metrics"/>
         </>
         :
         (Object.keys(data).length) ?
@@ -82,7 +82,7 @@ export default function Status() {
           :
           <>
             <p>Failed to get metrics from the server. Please check <a href="/status">sitekickremastered.com/status</a> to see our server status</p>
-            <img src="/img/error.jpg" style={{maxHeight: "55vh"}}/>
+            <img src="/img/error.jpg" style={{maxHeight: "55vh"}} alt="Badly drawn Dr. Frantic and Sitekick with error text"/>
           </>
         }
       </div>

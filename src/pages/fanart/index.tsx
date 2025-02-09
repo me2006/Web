@@ -93,8 +93,8 @@ function GalleryItem({ urls, alt, title, isLink, socialLinks }: GalleryItem) {
       <div className={styles.galleryItemInner}>
         {urls.length > 1 ?
           <div className={styles.hoverImg}>
-              <img className={styles.img1} src={useBaseUrl(urls[0])} />
-            <img className={styles.img2} src={useBaseUrl(urls[1])} /> 
+            <img className={styles.img1} src={useBaseUrl(urls[0])} alt={alt}/>
+            <img className={styles.img2} src={useBaseUrl(urls[1])} alt={alt}/>
           </div>
           : isLink ?
               <iframe width="100%" height="350px" src={urls[0]} title="YouTube video player" allowFullScreen></iframe>
