@@ -82,7 +82,7 @@ export default function Status() {
           :
           <>
             <p>Failed to get metrics from the server. Please check <a href="/status">sitekickremastered.com/status</a> to see our server status</p>
-            <img src="/img/404.jpg" style={{maxHeight: "55vh"}}/>
+            <img src="/img/error.jpg" style={{maxHeight: "55vh"}}/>
           </>
         }
       </div>

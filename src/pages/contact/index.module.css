@@ -1,25 +1,25 @@
-main{
+.contactContainer{
   width: 100%;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-h1 {
+.contactContainer h1 {
   font-size: 2.5rem;
 }
 
-p {
+.contactContainer p {
   font-size: 1.25rem;
 }
 
-main div {
+.contactContainer div {
   padding: 1.5rem 0;
   display: flex;
   justify-content: center;
 }
 
-main div div {
+.contactContainer div div {
   width: 50%;
   text-align: center;
   align-items: center;
