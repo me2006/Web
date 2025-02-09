@@ -10,8 +10,6 @@ type InfoBoxItem = {
 };
 
 function InfoBoxDataGroup({categoryTitle, categoryChildren}){
-  console.log(categoryTitle + " - " + categoryChildren + " - " + typeof categoryChildren)
-  console.log(categoryChildren )
   return (
     <>
       <div className={styles.separator} />
@@ -73,8 +71,9 @@ function InfoboxDataRow({title, data}) {
 export default function InfoBox({title, imgUrl, imgAlt, caption, categories }: InfoBoxItem) {
   return (
     <div className="ytvContainer orange">
-      <div className={styles.titleHeadingContainer}>
-        <h2 className={styles.titleHeading}>{title}</h2>
+      <div className={styles.bubbleContainer}>
+        <h2 className={styles.bubbleHeading}>{title}</h2>
+        <div className={styles.bubblePadding} />
       </div>
       <div className={clsx(styles.infobox, "ytvContainerInner green")}>
         <div> 

@@ -81,8 +81,8 @@ const config: Config = {
           position: "left",
           label: "Wiki",
         },
-        { to: "/contact", label: "Contact Us", position: "left"}
         /*
+        { to: "/contact", label: "Contact Us", position: "left"}
         { to: "/games", label: "Games", position: "left" },
         { to: "/metrics", label: "Metrics", position: "left"},
         { to: "/status", label: "Status", position: "left"},

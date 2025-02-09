@@ -131,6 +131,7 @@ summary {
 
 .homeBg {
   background-color: #000 !important;
+  margin: 0;
 }
 
 .ytvContainer {
@@ -160,9 +161,9 @@ summary {
 
 .ytvContainerInner.orange {
   /*background-color: var(--ifm-hero-background-color);*/
-  /*background-color: var(--ytv-container-inner-green);*/
+  background-color: var(--ytv-container-inner-green);
   /*box-shadow: 0px 15px 5px inset var(--ytv-container-inner-green-shadow);*/
-  background: var(--ytv-grid);
+  /*background: var(--ytv-grid);*/
 
 }
 
@@ -425,7 +426,10 @@ summary {
 }
 
 .navbar-sidebar__brand {
+  display: flex;
+  justify-content: space-between;
   height: 5rem;
+  padding-right: 1.5rem
 }
 
 .navbar-sidebar__brand .navbar__brand {
@@ -434,13 +438,12 @@ summary {
 }
 
 .navbar-sidebar__brand .toggle_vylO{
-  width: calc(100% - 10rem);
   display: flex;
   justify-content: center;
 }
 
-.navbar-sidebar__brand .clean-btn{
-  width: auto;
+.navbar-sidebar__brand .navbar-sidebar__close {
+  margin: 0;
 }
 
 .navbar-sidebar .navbar__logo{

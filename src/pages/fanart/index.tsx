@@ -44,6 +44,14 @@ const ArtList: GalleryItem[] = [
     }
   },
   {
+    urls: ["/img/fan_art/redpen14/redpen14.png"],
+    alt: `"Sitekick pumpkin" by redpen14`,
+    title: `"Sitekick pumpkin" by redpen14`,
+    hoverEffect: false,
+    isLink: false,
+    socialLinks: {}
+  },
+  {
     urls: ["https://www.youtube.com/embed/7oe_WZpAVP0?si=aZ9MW7RaVx4bskC-"],
     alt: `"Sitekick Remastered Tribute?! (December 2023)" by [GM] me2006`,
     title: `"Sitekick Remastered Tribute?! (December 2023)" by [GM] me2006`,
@@ -76,8 +84,8 @@ function GalleryItem({ urls, alt, title, hoverEffect, isLink, socialLinks }: Gal
         <p className={styles.galleryTitle}>{title}</p>
         <div className={styles.socialLinks}>
         {
-          Object.keys(socialLinks).map((key) => (
-            <a href={key}>{socialLinks[key]}</a>
+          Object.keys(socialLinks).map((key, idx) => (
+            <a key={socialLinks[key]+idx} href={key}> {socialLinks[key]}</a>
           ))
         }
         </div>

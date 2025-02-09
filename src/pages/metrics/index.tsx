@@ -6,15 +6,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightDots, faCalendarCheck, faUser, faUserClock, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Status() {
+  const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState({});
   const getData = () => {
     fetch("https://game.sitekickremastered.com/metrics/generic?q=online_players,daily_online_players,daily_registrations,total_players,total_chips")
       .then((res) => { return res.json(); })
-      .then((data) => { setData(data); })
-      .catch((err) => { console.log(err); setData({}); });
+      .then((data) => { setData(data); setLoading(false); })
+      .catch((err) => { console.log(err); setData({}); setLoading(false); });
   }
 
   useEffect(() => {
+    setData({start: "0"});
     getData();
     const interval = setInterval(() => getData(), 30 * 1000);
     return () => clearInterval(interval);
@@ -24,9 +26,13 @@ export default function Status() {
     <Layout title={`Metrics`} description="Clickity-click, it's Sitekick!">
       <div className={styles.metricsContainer}>
         <h1 className={styles.title}>Metrics</h1>
-        {(Object.keys(data).length) ?
+        {isLoading ?
+        <>
+          <img src="/img/loading.png" style={{maxHeight: "55vh"}}/>
+        </>
+        :
+        (Object.keys(data).length) ?
           <>
-
             <p>This page is updated every 30 seconds!</p>
             <div className="row">
               <div className={clsx("col", styles.metricsCard)}>

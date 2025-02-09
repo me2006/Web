@@ -14,10 +14,10 @@
  margin-bottom: 6px;
 }
 
-.titleHeadingContainer{
+.bubbleContainer{
   transform: perspective(10px) rotateX(1deg);
   height: 20px;
-  margin-top: -65px;
+  margin-top: -81px;
   margin-left: -11px;
   border-top: 4px solid #000;
   border-left: 4px solid #000;
@@ -27,11 +27,11 @@
   padding: 1.5rem 1rem;
   position:absolute;
   box-shadow:
-    0rem 0.5rem 0.4rem inset var(--ytv-container-orange-highlight),
+    0rem 0.4rem 0.4rem 0.2rem inset var(--ytv-container-orange-highlight),
     0rem 0.4rem 0rem 50rem inset var(--ytv-container-orange)
 }
 
-.titleHeading{
+.bubbleHeading{
   display:inline-block;
   background: #000;
   padding:8px 20px;
@@ -39,7 +39,22 @@
   color: #FFF;
   margin:0;
   position:relative;
-  top: -16px;
+  top: -10px;
+  z-index: 2;
+}
+
+.bubblePadding {
+  position: relative;
+  width: 100%;
+  padding: 12px 104px;
+  margin-right: -100px;
+  border-left: 4px solid #000;
+  background: var(--ytv-container-orange);
+  background-clip: padding-box;
+  top: -23px;
+  left: -18px;
+  z-index: 1;
+  transform: perspective(10px) rotateX(179deg);  
 }
 
 /* Defines header container */
