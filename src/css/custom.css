@@ -367,7 +367,7 @@ summary {
     top: 7rem;
     border-top: 6px solid black;
     border-bottom: 6px solid black;
-    font-size: 2.25rem;
+    font-size: 2rem;
     line-height: 4.5rem;
   }
 
@@ -381,7 +381,7 @@ summary {
   }
 
   .navbar__items--right{
-    scale: 2
+    scale: 1.5;
   }
 
   .dropdown__link {
@@ -698,15 +698,118 @@ article.margin-bottom--xl{
   }
 }
 
+@media screen and (min-width: 2000px) {
+  .container {
+    max-width: 80%;
+  }
+  
+  .sidebarItemTitle_pO2u, .yearGroupHeading_rMGB{
+    --ifm-h3-font-size: 2rem;
+  }
+
+  .sidebarItemLink_mo7H{
+    font-size: 1.5rem;
+    padding: 16px 8px;
+  }
+
+  article.margin-bottom--xl{
+    margin-bottom: 3rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  article .title_f1Hy{
+    font-size: 4rem !important;
+  }
+
+  article, article div {
+    font-size: 1.5rem !important;
+  }
+
+  .authorDetails_lV9A {
+    justify-content: center !important;
+  }
+
+  .avatar__name {
+    vertical-align: middle !important;
+    line-height: 100% !important;
+  }
+
+  .avatar__photo {
+    --ifm-avatar-photo-size: 5rem !important;
+  }
+
+  .authorName_yefp{
+    font-size: 1.75rem !important;
+    margin-bottom:1rem;
+  }
+
+  .authorTitle_nd0D{
+    font-size: 1.5rem !important;
+    line-height: 1.5rem !important;
+    overflow: visible !important;
+  }
+
+  .tagRegular_sFm0 {
+    padding: 0.5rem 1rem 0.6rem !important;
+  }
+
+  .tag_zVej {
+    border: 3px solid var(--docusaurus-tag-list-border) !important;
+  }
+}
+
+
+@media screen and (min-width: 4000px) {
+  .blog-wrapper .main-wrapper .container.margin-vert--lg{
+    margin-top: 5rem !important;
+    margin-bottom: 5rem !important;
+  }
+  .sidebarItemTitle_pO2u, .yearGroupHeading_rMGB{
+    --ifm-h3-font-size: 3rem;
+  }
+
+  .sidebarItemLink_mo7H{
+    font-size: 2.5rem;
+    padding: 32px 8px;
+  }
+
+  article.margin-bottom--xl{
+    margin-bottom: 4rem !important;
+    padding-bottom: 5rem !important;
+  }
+
+  article .title_f1Hy{
+    font-size: 6rem !important;
+  }
+
+  article, article div {
+    font-size: 3rem !important;
+  }
+
+  .avatar__photo {
+    --ifm-avatar-photo-size: 8rem !important;
+  }
+
+  .authorName_yefp{
+    font-size: 3rem !important;
+    margin-bottom:2rem;
+  }
+
+  .authorTitle_nd0D{
+    font-size: 2.25rem !important;
+    line-height: 2.25rem !important;
+  }
+}
+
 /*#endregion Blog*/
 
 /*#region Wiki*/
-.docSidebarContainer_YfHR{
-  --ifm-navbar-height: 9.5rem !important;
-}
-
 .sidebarViewport_aRkj {
   margin-top: 2rem;
+}
+
+.docSidebarContainer_YfHR{
+  --ifm-navbar-height: 9.5rem !important;
 }
 
 .docMainContainer_TBSr{
@@ -734,26 +837,113 @@ article.margin-bottom--xl{
 
 
 @media screen and (min-width: 2000px) {
+  .sidebarViewport_aRkj {
+    margin-top: 4rem;
+  }
+
+  .docSidebarContainer_YfHR {
+    --ifm-navbar-height: 16rem !important;
+    --doc-sidebar-width: 400px !important;
+    font-size: 1.5rem;
+  }
+
+  .menu__link {
+    line-height: 1.75;
+  }
+
+  .menu__caret::before, .menu__link--sublist-caret::after {
+    background: var(--ifm-menu-link-sublist-icon) 50% / 3rem 3rem;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+
   .breadcrumbsContainer_Z_bl{
     --ifm-breadcrumb-size-multiplier: 1.5 !important;
+    padding: 1.5rem 0;
   }
 
   .breadcrumbHomeIcon_YNFT{
     scale: 2;
     vertical-align: middle !important;
   }
-}
 
+  .docItemContainer_Djhp article h1 {
+    font-size: 4rem !important;
+  }
+
+  .docItemContainer_Djhp article h2 {
+    font-size: 2.5rem !important;
+  }
+
+  .docItemContainer_Djhp article p {
+    font-size: 1.75rem !important;
+  }
+
+  .pagination-nav__link div{
+    font-size: 1.5rem !important;
+  }
+
+  .table-of-contents {
+    font-size: 1.5rem;
+    padding-top: 1.5rem;
+  }
+}
 
 @media screen and (min-width: 4000px) {
 
+  .sidebarViewport_aRkj {
+    margin-top: 5rem;
+  }
+
+  .docSidebarContainer_YfHR {
+    --ifm-navbar-height: 19rem !important;
+    --doc-sidebar-width: 600px !important;
+    font-size: 2.5rem;
+  }
+
+  .menu__link {
+    line-height: 2.5;
+  }
+
+  .menu__caret::before, .menu__link--sublist-caret::after {
+    background: var(--ifm-menu-link-sublist-icon) 50% / 5rem 5rem;
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  .breadcrumbsContainer_Z_bl{
+    --ifm-breadcrumb-size-multiplier: 2.5 !important;
+    padding: 3rem 0;
+  }
+
+  .breadcrumbHomeIcon_YNFT{
+    scale: 3;
+    vertical-align: middle !important;
+  }
+
+  .docItemContainer_Djhp article h1 {
+    font-size: 6rem !important;
+  }
+
+  .docItemContainer_Djhp article h2 {
+    font-size: 4rem !important;
+  }
+
+  .docItemContainer_Djhp article p {
+    font-size: 3rem !important;
+  }
+
+  .pagination-nav__link div{
+    font-size: 3rem !important;
+  }
+
+  .table-of-contents {
+    font-size: 3rem;
+    padding-top: 3rem;
+  }
 }
 
 /*#endregion Wiki*/
-
-/*#region Wiki and Blog shared assets*/
-
-/*#endregion Wiki and Blog shared assets*/
 
 /*#region Footer*/
 .footer {
