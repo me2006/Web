@@ -875,6 +875,7 @@ article.margin-bottom--xl{
   border-radius: 50px !important;
   color: #FFF !important;
 }
+
 @media screen and (max-width: 996px) {
   .errorBg{
     padding: 4rem 1rem;

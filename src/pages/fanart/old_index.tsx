@@ -2,6 +2,7 @@ import { type ReactNode } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import styles from './index.module.css';
+import Carousel from '../../components/Carousel';
 import { faBluesky, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -9,6 +10,7 @@ type GalleryItem = {
   urls: string[];
   alt: string;
   title: string;
+  hoverEffect: boolean;
   isLink: boolean;
   socialLinks: object;
 };
@@ -18,44 +20,23 @@ const ArtList: GalleryItem[] = [
     urls: ["/img/fan_art/bkells/bkells.png"],
     alt: `"Dr. Frantic pumpkin" created by bkells`,
     title: `"Dr. Frantic pumpkin" created by bkells`,
+    hoverEffect: false,
     isLink: false,
     socialLinks: {}
   },
   {
-    urls: ["/img/fan_art/cyby/cyby1.png"],
-    alt: `"3D Sitekick" created by cyby`,
+    urls: ["/img/fan_art/cyby/cyby1.png", "/img/fan_art/cyby/cyby2.png", "/img/fan_art/cyby/cyby3.png"],
+    alt: `"3D Sitekick "created by cyby`,
     title: `"3D Sitekick" created by cyby`,
+    hoverEffect: false,
     isLink: false,
     socialLinks: {}
   },
   {
-    urls: ["/img/fan_art/cyby/cyby2.png",],
-    alt: `"3D Sitekick insides" created by cyby`,
-    title: `"3D Sitekick insides" created by cyby`,
-    isLink: false,
-    socialLinks: {}
-  },
-  {
-    urls: ["/img/fan_art/cyby/cyby3.png"],
-    alt: `"3D Printed Sitekick" created by cyby`,
-    title: `"3D Printed Sitekick" created by cyby`,
-    isLink: false,
-    socialLinks: {}
-  },
-  {
-    urls: ["/img/fan_art/puppy/puppy1.png"],
-    alt: `"Puppy's Sitekick" by puppy`,
-    title: `"Puppy's Sitekick" by puppy`,
-    isLink: false,
-    socialLinks: {
-      "https://www.instagram.com/idogmini/": <FontAwesomeIcon icon={faInstagram}/>,
-      "https://bsky.app/profile/idogmini.bsky.social": <FontAwesomeIcon icon={faBluesky}/>
-    }
-  },
-  {
-    urls: ["/img/fan_art/puppy/puppy2.png"],
-    alt: `"Surprised Pikachu Sitekick" by puppy`,
-    title: `"Surprised Pikachu Sitekick" by puppy`,
+    urls: ["/img/fan_art/puppy/puppy1.png", "/img/fan_art/puppy/puppy2.png"],
+    alt: `"Sitekick drawing" by puppy`,
+    title: `"Sitekick drawings" by puppy`,
+    hoverEffect: false,
     isLink: false,
     socialLinks: {
       "https://www.instagram.com/idogmini/": <FontAwesomeIcon icon={faInstagram}/>,
@@ -74,6 +55,7 @@ const ArtList: GalleryItem[] = [
     urls: ["https://www.youtube.com/embed/uSs4KQWMwIk?si=iOqPPBkDlQ1Ceclt"],
     alt: `"Uncovering YTV's Lost and Forgotten Game" by Tora https://www.youtube.com/watch?v=uSs4KQWMwIk`,
     title: `"Uncovering YTV's Lost and Forgotten Game" by Tora`,
+    hoverEffect: false,
     isLink: true,
     socialLinks: {}
   },
@@ -81,25 +63,31 @@ const ArtList: GalleryItem[] = [
     urls: ["https://www.youtube.com/embed/7oe_WZpAVP0?si=aZ9MW7RaVx4bskC-"],
     alt: `"Sitekick Remastered Tribute?! (December 2023)" by [GM] me2006`,
     title: `"Sitekick Remastered Tribute?! (December 2023)" by [GM] me2006`,
+    hoverEffect: false,
     isLink: true,
     socialLinks: {}
   }
 ];
 
-function GalleryItem({ urls, alt, title, isLink, socialLinks }: GalleryItem) {
+function GalleryItem({ urls, alt, title, hoverEffect, isLink, socialLinks }: GalleryItem) {
   return (
 
     <div className={styles.galleryItem}>
       <div className={styles.galleryItemInner}>
-        {urls.length > 1 ?
-          <div className={styles.hoverImg}>
-              <img className={styles.img1} src={useBaseUrl(urls[0])} />
-            <img className={styles.img2} src={useBaseUrl(urls[1])} /> 
+        {!hoverEffect && urls.length > 1 ?
+          <div>
+            <Carousel autoPlay={false} pictures={urls} />
           </div>
-          : isLink ?
-              <iframe width="100%" height="350px" src={urls[0]} title="YouTube video player" allowFullScreen></iframe>
           :
-          <img src={useBaseUrl(urls[0])} alt={alt} />
+          hoverEffect ?
+            <div className={styles.hoverImg}>
+              <img className={styles.img1} src={useBaseUrl(urls[0])} />
+              <img className={styles.img2} src={useBaseUrl(urls[1])} />
+            </div>
+            : isLink ?
+              <iframe width="100%" height="350px" src={urls[0]} title="YouTube video player" allowFullScreen></iframe>
+              :
+              <img src={useBaseUrl(urls[0])} alt={alt} />
         }
         <p className={styles.galleryTitle}>{title}</p>
         <div className={styles.socialLinks}>
@@ -131,8 +119,8 @@ export default function FanArt(): ReactNode {
           </div>
           <div className={styles.pageInfoOuter}>
             <p className={styles.pageInfoInner}>
-              We've been seeing some really cool bits of fan art appear in our&nbsp; 
-              <a href="discord.sitekickremastered.com">Discord Server</a> over the years. 
+              We've been seeing some really cool bits of fan art appear in our&nbsp;
+              <a href="discord.sitekickremastered.com">Discord Server</a> over the years.
               Like YTV before us, we've decided to showcase these posts here!</p>
           </div>
 
@@ -145,7 +133,7 @@ export default function FanArt(): ReactNode {
           </div>
           <div className={styles.pageInfoOuter}>
             <p className={styles.pageInfoInner}>
-              If you want to post your own art, send it to general in our discord server or <a href="/contact">contact us</a> and we'll make sure to include it here!
+              If you want to post your own art, send it to ⁠general and we'll make sure to include it here!
             </p>
           </div>
         </div>
