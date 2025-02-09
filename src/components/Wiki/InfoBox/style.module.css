@@ -1,20 +1,20 @@
 /* Infobox */
 
 .infobox {
- margin: auto;
- color: var(--text-colour);
- /*border: 2px solid rgba(255, 255, 255, 0.1);*/
- border: 4px solid #000;
- border-radius: 8px;
- padding: 6px;
+  margin: auto;
+  color: var(--text-colour);
+  /*border: 2px solid rgba(255, 255, 255, 0.1);*/
+  border: 4px solid #000;
+  border-radius: 8px;
+  padding: 6px;
 }
 
 /* Margin between blocks */
-.infobox > *:not(:last-child) {
- margin-bottom: 6px;
+.infobox>*:not(:last-child) {
+  margin-bottom: 6px;
 }
 
-.bubbleContainer{
+.bubbleContainer {
   transform: perspective(10px) rotateX(1deg);
   height: 20px;
   margin-top: -81px;
@@ -25,20 +25,20 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 1.5rem 1rem;
-  position:absolute;
+  position: absolute;
   box-shadow:
     0rem 0.4rem 0.4rem 0.2rem inset var(--ytv-container-orange-highlight),
     0rem 0.4rem 0rem 50rem inset var(--ytv-container-orange)
 }
 
-.bubbleHeading{
-  display:inline-block;
+.bubbleHeading {
+  display: inline-block;
   background: #000;
-  padding:8px 20px;
-  border-radius:8px;
+  padding: 8px 20px;
+  border-radius: 8px;
   color: #FFF;
-  margin:0;
-  position:relative;
+  margin: 0;
+  position: relative;
   top: -10px;
   z-index: 2;
 }
@@ -54,42 +54,32 @@
   top: -23px;
   left: -18px;
   z-index: 1;
-  transform: perspective(10px) rotateX(179deg);  
+  transform: perspective(10px) rotateX(179deg);
 }
 
 /* Defines header container */
 .infobox .heading {
- border-radius: 4px;
- background-color: rgba(0, 0, 0, 0.4);
- color: #FFF;
- display: flex;
- align-items: center;
- justify-content: center;
- padding: 12px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
 }
 
-/* Infobox main header */
-.infobox .heading h2 {
- margin: 0;
- line-height: 1;
- font-size: 20px;
-}
-
-/* Infobox block header */
 .infobox .heading h3 {
- margin: 0;
- line-height: 1;
- font-size: 14px;
+  margin-bottom: 0;
 }
 
 .infoboxImg {
- display: block;
- width: auto;
- max-height:295px !important;
- margin: auto;
+  display: block;
+  width: auto;
+  max-height: 295px !important;
+  margin: auto;
 }
 
-.infoboxImgCaption{
+.infoboxImgCaption {
   margin: 0;
   text-align: center;
   font-size: 14px;
@@ -98,54 +88,137 @@
 
 /* Row inside a block*/
 .infoboxDataRow {
- font-size: 12px;
- display: flex;
+  font-size: 12px;
+  display: flex;
 }
 
 /* Block heading margin */
 .infoboxGroup .heading {
- margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 /* Defines data display */
 .infoboxDataRow .dataHeading,
 .infoboxDataRow .dataContent {
- display: inline-block;
- margin: 2px;
- vertical-align: top;
+  display: inline-block;
+  margin: 2px;
+  vertical-align: top;
 }
 
 .infoboxDataRow .dataHeading {
- width: 72px;
- font-weight: 500;
+  width: 72px;
+  font-weight: 500;
 }
 
 .infoboxDataRow .dataContent {
- list-style-type: none !important;
- padding-left: 10px;
+  list-style-type: none !important;
+  padding-left: 10px;
 }
 
 .infoboxDataRow .dataContent * {
- white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 
 /* Removing bullets that obsidian renders from code blocks */
 .infobox .infoboxDataRow .list-bullet::before,
 .infobox .infoboxDataRow .list-bullet,
 .infobox .infoboxDataRow .list-bullet::after {
- all: unset !important;
- display: none !important;
+  all: unset !important;
+  display: none !important;
 }
 
 /* Removing padding of first column of multi-column markdown */
 .mcm-column-div:is(:first-child) {
- padding-inline-start: 0px;
+  padding-inline-start: 0px;
 }
 
 .separator {
   width: calc(100% + 12px);
   margin-left: -6px;
   height: 10px;
-  background: linear-gradient(0deg, rgba(216,81,1,1) 0%, rgba(216,81,1,1) 30%, rgba(255,153,0,1) 30%, rgba(255,153,0,1) 78%, rgba(255,204,51,1) 78%, rgba(255,204,51,1) 100%); 
+  background: linear-gradient(0deg, rgba(216, 81, 1, 1) 0%, rgba(216, 81, 1, 1) 30%, rgba(255, 153, 0, 1) 30%, rgba(255, 153, 0, 1) 78%, rgba(255, 204, 51, 1) 78%, rgba(255, 204, 51, 1) 100%);
   box-shadow: 0px 4px 0px #000, 0px -4px 0px #000;
+}
+
+@media screen and (max-width: 996px) {
+  .infobox .heading h3 {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+
+  .bubbleContainer {
+    margin-top: -88px !important;
+    margin-left: -22px !important;
+  }
+
+  .bubbleHeading {
+    padding: 8px 30px !important;
+    font-size: 2rem;
+  }
+
+  .bubblePadding {
+    padding: 15px 135px !important;
+    margin-right: -100px;
+    top: -32px !important;
+    left: -16px !important;
+  }
+
+  .infoboxImg {
+    margin: 1rem auto;
+  }
+
+  .infoboxImgCaption {
+    font-size: 24px !important;
+  }
+
+  .infoboxDataRow .dataHeading {
+    width: 100px;
+    font-size: 1.25rem !important;
+  }
+
+  .infoboxDataRow .dataContent {
+    font-size: 1.25rem !important;
+  }
+}
+
+
+@media screen and (min-width: 4000px) {
+  .bubbleContainer {
+    height: 70px !important;
+    margin-top: -115px !important;
+    margin-left: -18px !important;
+  }
+
+  .bubbleHeading {
+    padding: 8px 30px !important;
+    font-size: 3rem;
+    top: -15px !important;
+  }
+
+  .bubblePadding {
+    padding: 16px 180px !important;
+    margin-right: -100px;
+    top: -40px !important;
+    left: -14px !important;
+  }
+
+  .infoboxImg {
+    margin: 1rem auto;
+  }
+
+  .infoboxImgCaption {
+    font-size: 32px !important;
+  }
+
+  .infoboxDataRow .dataHeading {
+    width: 125px;
+    font-size: 1.5rem !important;
+  }
+
+  .infoboxDataRow .dataContent {
+    font-size: 1.5rem !important;
+  }
 }

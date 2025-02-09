@@ -70,7 +70,7 @@ function InfoboxDataRow({title, data}) {
  */
 export default function InfoBox({title, imgUrl, imgAlt, caption, categories }: InfoBoxItem) {
   return (
-    <div className="ytvContainer orange">
+    <div className="ytvContainer orange infobox">
       <div className={styles.bubbleContainer}>
         <h2 className={styles.bubbleHeading}>{title}</h2>
         <div className={styles.bubblePadding} />
