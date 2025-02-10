@@ -17,9 +17,9 @@ This website is made using [Docusaurus 3.7](https://docusaurus.io/)
     - The site should run locally on http://localhost:3000/
 
 ## Note for Wiki Editors
-If you're editing the wiki, the only folder you need is `/docs`
+If you're editing the wiki, the only folder you need is `/docs/`
 
-Each folder within `/docs` will generate a category for the wiki, and inside you should have a `_category_.json` file. `_category_.json` only needs the following:
+Each folder within `/docs/` will generate a category for the wiki, and inside you should have a `_category_.json` file. `_category_.json` only needs the following:
 ```json
 {
   "label": "Chipendium", // The text that will appear on the sidebar of the wiki
