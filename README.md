@@ -2,7 +2,7 @@
 
 Welcome to the repository for [Sitekick Remastered](https://sitekickremastered.com/)'s website! 
 
-This website is made using [Docusaurus 3.7](https://docusaurus.io/)
+This website is made using [Docusaurus 3.7](https://docusaurus.io/).
 
 ## Software Needed
 1. Git
@@ -17,7 +17,7 @@ This website is made using [Docusaurus 3.7](https://docusaurus.io/)
     - The site should run locally on http://localhost:3000/
 
 ## Note for Wiki Editors
-If you're editing the wiki, the only folder you need is `/docs/`
+If you're editing the wiki, the only folder you need is `/docs/`.
 
 Each folder within `/docs/` will generate a category for the wiki, and inside you should have a `_category_.json` file. `_category_.json` only needs the following:
 ```json
@@ -29,6 +29,6 @@ Each folder within `/docs/` will generate a category for the wiki, and inside yo
 
 From there, you can create pages through an `.mdx` file.
 
-`.mdx` is essentially markdown with a few more added features; specifically the ability to write JSX within the markdown files and render React components. You don't need JSX to create pages, but if you choose to create some components, please put them into `/src/components/Wiki/` 
+`.mdx` is essentially markdown with a few more added features; specifically the ability to write JSX within the markdown files and render React components. You don't need JSX to create pages, but if you choose to create some components, please put them into `/src/components/Wiki/`.
 
-You can read more about `.mdx` files on the [Docusaurus docs](https://docusaurus.io/docs/markdown-features/react)
+You can read more about `.mdx` files on the [Docusaurus docs](https://docusaurus.io/docs/markdown-features/react).
