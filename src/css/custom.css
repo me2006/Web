@@ -870,6 +870,7 @@ article.margin-bottom--xl {
   display: block;
   margin: 0;
   padding: .8rem;
+  text-align: center;
 }
 
 .wiki-parent {
@@ -927,17 +928,17 @@ article.margin-bottom--xl {
   }
 
   .breadcrumbsContainer_Z_bl {
-    --ifm-breadcrumb-size-multiplier: 1.5 !important;
-    padding: 1.5rem 0;
+    --ifm-breadcrumb-size-multiplier: 1.25 !important;
+    padding: 1.25rem 0;
   }
 
   .breadcrumbHomeIcon_YNFT {
-    scale: 2;
+    scale: 1.5;
     vertical-align: middle !important;
   }
 
   .docItemContainer_Djhp article h1:not(.infobox h1) {
-    font-size: 4rem !important;
+    font-size: 3.5rem !important;
   }
 
   .docItemContainer_Djhp article h2:not(.infobox h2) {
@@ -945,7 +946,7 @@ article.margin-bottom--xl {
   }
 
   .docItemContainer_Djhp article p:not(.infobox p) {
-    font-size: 1.75rem !important;
+    font-size: 1.5rem !important;
   }
 
   .pagination-nav__link div {
@@ -953,9 +954,15 @@ article.margin-bottom--xl {
   }
 
   .table-of-contents {
-    font-size: 1.5rem;
-    padding-top: 1.5rem;
+    font-size: 1rem;
+    padding-top: 1.25rem;
   }
+
+  .grid {
+    grid-gap: .6rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  }
+  
 }
 
 @media screen and (min-width: 4000px) {
@@ -982,17 +989,17 @@ article.margin-bottom--xl {
   }
 
   .breadcrumbsContainer_Z_bl {
-    --ifm-breadcrumb-size-multiplier: 2.5 !important;
-    padding: 3rem 0;
+    --ifm-breadcrumb-size-multiplier: 2 !important;
+    padding: 1rem 0 2.5rem;
   }
 
   .breadcrumbHomeIcon_YNFT {
-    scale: 3;
+    scale: 2;
     vertical-align: middle !important;
   }
 
   .docItemContainer_Djhp article h1:not(.infobox h1) {
-    font-size: 6rem !important;
+    font-size: 5.5rem !important;
   }
 
   .docItemContainer_Djhp article h2:not(.infobox h2) {
@@ -1000,16 +1007,21 @@ article.margin-bottom--xl {
   }
 
   .docItemContainer_Djhp article p:not(.infobox p) {
-    font-size: 3rem !important;
+    font-size: 2.5rem !important;
   }
 
   .pagination-nav__link div {
-    font-size: 3rem !important;
+    font-size: 2.5rem !important;
   }
 
   .table-of-contents {
-    font-size: 3rem;
-    padding-top: 3rem;
+    font-size: 1.75rem;
+    padding-top: 1rem;
+  }
+
+  .grid {
+    grid-gap: .8rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 32rem), 1fr));
   }
 }
 

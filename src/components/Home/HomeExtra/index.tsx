@@ -21,7 +21,7 @@ export default function HomeExtra(): ReactNode {
               <div className="col col--7">
                 <p>Are you a programmer, artist, animator, writer, or web designer looking to contribute?</p>
                 <Link
-                  className="button button-lg margin--sm"
+                  className="button margin--sm"
                   to="/docs/development/join_the_team">
                   Learn more!
                 </Link>
