@@ -32,6 +32,10 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Remove this to get rid of the "Edit this page" button
           editUrl:  "https://github.com/sitekickremastered/Web/",
+          admonitions: {
+            keywords: ['discord','frantic'],
+            extendDefaults: true,
+          },
         },
         blog: {
           showReadingTime: false,
