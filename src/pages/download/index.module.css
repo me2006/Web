@@ -34,8 +34,8 @@
 
 .slogan {
   color: #FFF;
-  font-size: 2.25rem;
-  -webkit-text-stroke-width: 2px;
+  font-size: 3rem;
+  -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: black;
 }
 
@@ -79,11 +79,6 @@
     width: 100%;
   }
   
-  .slogan {
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-  }
-  
   .downloadInfoDiv{
     width: 100%;
     text-align: center;
@@ -121,11 +116,6 @@
     width: 40%;
   }
   
-  .slogan {
-    font-size: 3rem;
-    -webkit-text-stroke-width: 3px;
-  }
-  
   .downloadInfoDiv{
     font-size: 1.6rem;
     margin-bottom: 4rem;
@@ -148,11 +138,6 @@
 @media screen and (min-width: 4000px) {
   .downloadMain {
     margin-top: -14rem;
-  }
-  
-  .slogan {
-    font-size: 5rem;
-    -webkit-text-stroke-width: 5px;
   }
   
   .downloadInfoDiv{
