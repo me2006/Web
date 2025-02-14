@@ -9,38 +9,44 @@ type InfoBoxItem = {
   categories: object;
 };
 
-function InfoBoxDataGroup({categoryTitle, categoryChildren}){
+function InfoBoxDataGroup({ categoryTitle, categoryChildren, prevChild }) {
+  console.log(typeof categoryChildren)
+  console.log(typeof prevChild)
   return (
     <>
-      <div className={styles.separator} />
+      { prevChild && !(categoryChildren instanceof Object) && !(prevChild instanceof Object) ?
+        <></>
+        :
+        <div className={styles.separator} />
+      }
       {
-      !(categoryChildren instanceof Object )?
-      <div className={styles.infoboxData}>
-        <InfoboxDataRow title={categoryTitle} data={[categoryChildren]}/>
-      </div>
-      :
-      <div className={styles.infoboxGroup}>
-        <div className={styles.heading}>
-          <h3>{categoryTitle}</h3>
-        </div>
-        <div className={styles.infoboxData}>
-          {Object.keys(categoryChildren).map((key, idx) => (
-            <InfoboxDataRow key={key+idx} title={key} data={[categoryChildren[key]]}/>
-          ))}
-        </div>
-      </div>
+        !(categoryChildren instanceof Object) ?
+          <div className={styles.infoboxData}>
+            <InfoboxDataRow title={categoryTitle} data={[categoryChildren]} />
+          </div>
+          :
+          <div className={styles.infoboxGroup}>
+            <div className={styles.heading}>
+              <h3>{categoryTitle}</h3>
+            </div>
+            <div className={styles.infoboxData}>
+              {Object.keys(categoryChildren).map((key, idx) => (
+                <InfoboxDataRow key={key + idx} title={key} data={[categoryChildren[key]]} />
+              ))}
+            </div>
+          </div>
       }
     </>
   )
 }
 
-function InfoboxDataRow({title, data}) {
+function InfoboxDataRow({ title, data }) {
   return (
     <div className={styles.infoboxDataRow}>
       <p className={styles.dataHeading}>{title}</p>
       <ul className={styles.dataContent}>
         {data.map((item, idx) => (
-          <li key={item+idx}>{item}</li>
+          <li key={item + idx}>{item}</li>
         ))}
       </ul>
     </div>
@@ -68,23 +74,30 @@ function InfoboxDataRow({title, data}) {
       }
     />
  */
-export default function InfoBox({title, imgUrl, imgAlt, caption, categories }: InfoBoxItem) {
+export default function InfoBox({ title, imgUrl, imgAlt, caption, categories }: InfoBoxItem) {
+  const keys = Object.keys(categories);
   return (
-    <div className="ytvContainer orange infobox">
-      <div className={styles.bubbleContainer}>
-        <h2 className={styles.bubbleHeading}>{title}</h2>
-        <div className={styles.bubblePadding} />
-      </div>
-      <div className={clsx(styles.infobox, "ytvContainerInner green")}>
-        <div> 
-          <img src={imgUrl} className={styles.infoboxImg} alt={imgAlt}/>
-          <p className={styles.infoboxImgCaption}>{caption}</p> 
+    <div style={{width: "100%"}}>
+      <div className="ytvContainer orange infobox">
+        <div className={styles.bubbleContainer}>
+          <h2 className={styles.bubbleHeading}>{title}</h2>
         </div>
-        {
-          Object.keys(categories).map((key, idx) => (
-            <InfoBoxDataGroup key={key+idx} categoryTitle={key} categoryChildren={categories[key]} />
-          ))
-        }
+        <div className={clsx(styles.infobox, "ytvContainerInner green")}>
+          <div>
+            <img src={imgUrl} className={styles.infoboxImg} alt={imgAlt} />
+            <p className={styles.infoboxImgCaption}>{caption}</p>
+          </div>
+          {
+            keys.map((key, idx) => (
+              <InfoBoxDataGroup 
+                key={key + idx} 
+                categoryTitle={key} 
+                categoryChildren={categories[key]} 
+                prevChild={categories[keys[idx - 1]]} 
+              />
+            ))
+          }
+        </div>
       </div>
     </div>
   );

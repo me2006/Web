@@ -882,11 +882,13 @@ article.margin-bottom--xl {
   display: flex;
   flex-direction: column;
   order: 1;
+  max-width: calc(7 / 12 * 100%) !important;
 }
 
 .wiki-infobox-col {
   display: flex;
   order: 2;
+  max-width: calc(5 / 12 * 100%) !important;
 }
 
 @media screen and (max-width: 996px) {
@@ -896,11 +898,13 @@ article.margin-bottom--xl {
 
   .wiki-content-col {
     order: 2;
+    max-width: 100% !important;
   }
 
   .wiki-infobox-col {
     order: 1;
     padding: 2rem 0;
+    max-width: 100% !important;
   }
 }
 
@@ -1007,11 +1011,15 @@ article.margin-bottom--xl {
   }
 
   .docItemContainer_Djhp article p:not(.infobox p) {
-    font-size: 2.5rem !important;
+    font-size: 2.25rem !important;
+  }
+
+  .docItemContainer_Djhp article li:not(.infobox li) {
+    font-size: 2.25rem !important;
   }
 
   .pagination-nav__link div {
-    font-size: 2.5rem !important;
+    font-size: 2.25rem !important;
   }
 
   .table-of-contents {
@@ -1023,6 +1031,17 @@ article.margin-bottom--xl {
     grid-gap: .8rem;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 32rem), 1fr));
   }
+
+  .wiki-content-col {
+    max-width: calc(7 / 12 * 100%) !important;
+  }
+  
+  .wiki-infobox-col {
+    display: flex;
+    order: 2;
+    max-width: calc(5 / 12 * 100%) !important;
+  }
+  
 }
 
 /*#endregion Wiki*/
