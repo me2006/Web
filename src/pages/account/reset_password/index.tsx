@@ -131,7 +131,7 @@ export default function ResetPassword(): ReactNode {
           submitted && status ?
           <>
             <h1>Password reset successful!</h1>
-            <p>Your password reset was successful! Please log into the game with your new password</p>
+            <p>Your password reset was successful! Please log into the game with your new password.</p>
           </>
           :
           <>
