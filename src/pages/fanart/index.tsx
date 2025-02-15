@@ -66,7 +66,6 @@ const ArtList: GalleryItem[] = [
     urls: ["/img/fan_art/redpen14/redpen14.png"],
     alt: `"Sitekick pumpkin" by redpen14`,
     title: `"Sitekick pumpkin" by redpen14`,
-    hoverEffect: false,
     isLink: false,
     socialLinks: {}
   },
