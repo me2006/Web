@@ -120,7 +120,7 @@
   }
 }
 
-@media only screen and (min-width: 498px) and (max-width: 995px){
+@media only screen and (min-width: 498px) and (max-width: 996px){
   .masonry {
       -moz-column-count: 2;
       -webkit-column-count: 2;
@@ -128,7 +128,7 @@
   }
 }
 
-@media only screen and (min-width: 996px) and (max-width: 1440px){
+@media only screen and (min-width: 997px) and (max-width: 1440px){
   .masonry {
       -moz-column-count: 3;
       -webkit-column-count: 3;

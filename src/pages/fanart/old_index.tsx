@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import styles from './index.module.css';
-import Carousel from '../../components/Carousel';
+// import Carousel from '../../components/Carousel';
 import { faBluesky, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -76,7 +76,7 @@ function GalleryItem({ urls, alt, title, hoverEffect, isLink, socialLinks }: Gal
       <div className={styles.galleryItemInner}>
         {!hoverEffect && urls.length > 1 ?
           <div>
-            <Carousel autoPlay={false} pictures={urls} />
+            {/*<Carousel autoPlay={false} pictures={urls} />*/}
           </div>
           :
           hoverEffect ?
