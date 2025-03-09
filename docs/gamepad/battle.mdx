@@ -1,0 +1,39 @@
+# Battle
+
+<div class="text--center"> 
+  <img src="/img/wiki/gamepad/battle/battle_logo.png"/> 
+  *SK Battle's logo*
+</div>
+## Summary
+The Sitekick Battle is a live, turn-based robot combat game where players compete using Sitekick Chips. Each Chip serves as a game piece, adding complexity to design but expanding gameplay variety with over 1500 options.
+
+<div class="text--center"> 
+  <img src="/img/wiki/gamepad/battle/battle.png"/> 
+  *The only known image of the fabled SK Battle mode*
+</div>
+
+:::frantic
+While still a low priority, implementing SK Battle is a long term goal for the Sitekick Remastered project.  [Join the Team](/docs/development/join_the_team) if you're interested in helping.
+:::
+
+## Game Mechanics
+- **Rounds:** Matches consist of up to five rounds. Each round, players select a Chip, then watch an animated outcome. 
+- **Status Bars:** Players manage three key stats:
+  - **Energy**: Represents health points. Starts full at the beginning of each match.
+  - **Moxie**: Represents style points. Starts empty and fills throughout the match.
+  - **Power Points**: Determines how many Chips a player can use. Players start with a full meter, and gaining Battle Levels increases their maximum Power Points.
+
+## Winning Conditions
+- **Energy KO:** Completely drain the opponent’s Energy bar within five rounds.
+- **Moxie KO:** Completely fill your Moxie bar within five rounds.
+- **Match Win:** If no KO occurs, the player with the highest combined Energy and Moxie score wins.
+- **Default Win:** A disconnected opponent results in an automatic win.
+
+## Gameplay Features
+- **Upper Hand:** Determines which player's animation appears first, giving a strategic advantage. The player who accepts a Battle challenge starts with the Upper Hand by default, but certain Chips can change this.
+- **Dead Chips:** Once a Chip is used, it becomes "dead" and cannot be played again in the same match unless revived by special effects.
+
+## Progression System
+- **Battle Experience (BXP):** Earned after each match, regardless of the outcome. BXP determines Battle Levels.
+- **Battle Level:** Higher Battle Levels allow for more Power Points in a match. The maximum Battle Level is **50**.
+- **Battle Rank:** Based on the **ELO chess system**, Battle Rank is an invisible score that determines leaderboard placement. Winning against stronger opponents boosts this score significantly.
