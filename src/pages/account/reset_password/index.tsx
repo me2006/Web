@@ -1,6 +1,7 @@
 import { type ReactNode, useState } from 'react';
 import Layout from '@theme/Layout';
 import styles from './index.module.css';
+import NotFound from '@theme/NotFound';
 
 interface SignUpFormState {
   new_password: string;
@@ -16,6 +17,7 @@ export default function ResetPassword(): ReactNode {
 
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState(false);
+  var token = new URLSearchParams(window.location.search).get("token");
 
   function updateRequirement(id, condition, isEmpty) {
     var element = document.getElementById(id);
@@ -66,7 +68,6 @@ export default function ResetPassword(): ReactNode {
 
   const handleSubmit = () => {
     setSubmitted(true);
-    var token = new URLSearchParams(window.location.search).get("token");
     var postBody = "password=" + encodeURIComponent(passData["new_password"]) + "&vpassword=" + encodeURIComponent(passData["confirm_password"]) + "&token=" + encodeURIComponent(token);
 
     fetch("https://game.sitekickremastered.com/reset_password", {
@@ -92,7 +93,10 @@ export default function ResetPassword(): ReactNode {
   return (
     <Layout title={`Reset Password`} description="Clickity-click, it's Sitekick!">
       <main className={styles.resetPasswordContainer}>
-        {!submitted ?
+        {!token ?
+          <NotFound />
+        :
+        !submitted ?
           <>
             <h1>Reset Password</h1>
             <p>Your new password must meet the following requirements:</p>
