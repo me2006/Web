@@ -49,7 +49,7 @@ const config: Config = {
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
-           // Use "warn" fr this if you want to be warned about mdx files not have <!-- truncate --> (Which adds "Read More")
+           // Use "warn" for this if you want to be warned about mdx files not have <!-- truncate --> (Which adds "Read More")
           onUntruncatedBlogPosts: "ignore",
         },
         theme: {
