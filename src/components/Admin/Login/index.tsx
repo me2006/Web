@@ -4,7 +4,7 @@ import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./index.module.css";
 
-export default function Login() {
+export default function Login({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,16 +14,24 @@ export default function Login() {
       password: password
     };
 
-    fetch("https://game.sitekickremastered.com/mod_panel_login", {
+    //security.fileuri.strict_origin_policy
+    fetch("http://localhost:8080/mod_panel_login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Access-Control-Allow-Headers": "Content-Type"
       },
-      body: JSON.stringify(data)
+      
+      body: "json=" + encodeURIComponent(JSON.stringify(data))
     }).then(response => {
-        console.info(response);
-        if (!response.ok) throw new Error("");
-        localStorage.setItem("user", JSON.stringify(response));  
+        if (!response.ok) {
+          alert("Incorrect username / password");
+          throw new Error("Incorrect username / password");
+        }
+        return response.json()
+    }).then(data => {
+      console.info(data);
+      setUser(data);
     }).catch(error => {
         console.error("Error:", error);
     });
@@ -45,7 +53,7 @@ export default function Login() {
             <input className={styles.passInput} onChange={(e) => setPassword(e.target.value)} name="password" id="password" type="password" placeholder="Password" required />
           </div>
           <div className={styles.btnDiv}>
-            <button className="button" onClick={handleLogin}>Login</button>
+            <button type="button" className="button" onClick={handleLogin}>Login</button>
           </div>
       </form>
     </div>
