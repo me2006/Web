@@ -560,6 +560,11 @@ summary {
   outline: 4px solid black !important;
 }
 
+.button--sm {
+  --ifm-button-size-multiplier: 0.75;
+  border-width: 0.5rem !important;
+}
+
 .button--lg {
   --ifm-button-size-multiplier: 1.25;
 }
@@ -573,6 +578,10 @@ summary {
     --ifm-button-border-radius: calc(0.8rem * 1.1);
     border-width: 1.5rem;
     outline: 6px solid black;
+  }
+
+  .button--sm {
+    --ifm-button-size-multiplier: 1 !important;
   }
 
   .button--lg {
