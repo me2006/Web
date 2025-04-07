@@ -1,41 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "@site/src/pages/admin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./index.module.css";
 
-export default function Login({ setUser }) {
+export default function Login() {
+  const { login } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleLogin = () => {
-    const data = {
-      email: email,
-      password: password
-    };
-
-    //security.fileuri.strict_origin_policy
-    fetch("http://localhost:8080/mod_panel_login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
-      
-      body: "json=" + encodeURIComponent(JSON.stringify(data))
-    }).then(response => {
-        if (!response.ok) {
-          alert("Incorrect username / password");
-          throw new Error("Incorrect username / password");
-        }
-        return response.json()
-    }).then(data => {
-      console.info(data);
-      setUser(data);
-    }).catch(error => {
-        console.error("Error:", error);
-    });
-  }
 
   return (
     <div className={styles.loginContainer}>
@@ -53,7 +26,7 @@ export default function Login({ setUser }) {
             <input className={styles.passInput} onChange={(e) => setPassword(e.target.value)} name="password" id="password" type="password" placeholder="Password" required />
           </div>
           <div className={styles.btnDiv}>
-            <button type="button" className="button" onClick={handleLogin}>Login</button>
+            <button type="button" className="button" onClick={() => login(email, password)}>Login</button>
           </div>
       </form>
     </div>

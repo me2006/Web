@@ -16,7 +16,8 @@ export default function HomeExtra(): ReactNode {
             <h1>Join the Team!</h1>
             <div className={clsx("row", styles.extraCardContent)}>
               <div className="col col--5">
-                <img src={useBaseUrl("/img/home/propaganda.png")} alt="Sitekick 'I Want You' poster with Carlos" />
+                {/*<img src={useBaseUrl("/img/home/propaganda.png")} alt="Sitekick 'I Want You' poster with Carlos" />*/}
+                <img src={useBaseUrl("/img/fan_art/steph/steph1.png")} alt="Dr. Frantic repairing Kablooey by ItsStephJM" style={{borderRadius: "50%" }}/>
               </div>
               <div className="col col--7">
                 <p>Are you a programmer, artist, animator, writer, or web designer looking to contribute?</p>
