@@ -2,8 +2,24 @@ import { type ReactNode } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import styles from './index.module.css';
-import { faBluesky, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { library, dom, IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faBluesky, faInstagram, faTumblr, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const faLinkTree = {
+  prefix: "fa",
+  iconName: "LinkTree",
+  icon: [
+    122,
+    152,
+    [],
+    "e001",
+    "M71.78,0H50.22v37.12L25.2,11.13L10.78,25.98L36.89,51.6H0v20.79h37.08l-26.3,26.17l14.43,14.66L61,76.65l35.98,36.56l14.24-14.66l-26.3-26.17H122V51.6H85.11l26.12-25.61L96.98,11.13l-25.2,25.98V0z M50.22,102.45V152h21.55v-49.55H50.22z"
+  ]
+};
+
+library.add(faLinkTree as IconDefinition);
+dom.watch();
 
 type GalleryItem = {
   urls: string[];
@@ -68,6 +84,17 @@ const ArtList: GalleryItem[] = [
     title: `"Sitekick pumpkin" by redpen14`,
     isLink: false,
     socialLinks: {}
+  },
+  {
+    urls: ["/img/fan_art/steph/steph1.png", "/img/fan_art/steph/steph2.png"],
+    alt: `"Kablooey repair" by ItsStephJM`,
+    title: `"Dr Frantic repairing Kablooey" by ItsStephJM`,
+    isLink: false,
+    socialLinks: {
+      "https://linktr.ee/itsstephjm": <FontAwesomeIcon icon={faLinkTree as IconDefinition}/>,
+      "https://stephjmart.tumblr.com/": <FontAwesomeIcon icon={faTumblr} />,
+      "https://www.youtube.com/@ItsStephJM": <FontAwesomeIcon icon={faYoutube} />
+    }
   },
   {
     urls: ["https://www.youtube.com/embed/uSs4KQWMwIk?si=iOqPPBkDlQ1Ceclt"],
