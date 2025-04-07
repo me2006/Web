@@ -86,8 +86,8 @@ const ArtList: GalleryItem[] = [
     socialLinks: {}
   },
   {
-    urls: ["/img/fan_art/steph/steph1.png", "/img/fan_art/steph/steph2.png"],
-    alt: `"Kablooey repair" by ItsStephJM`,
+    urls: ["/img/fan_art/steph/steph3d.png", "/img/fan_art/steph/steph2.png"],
+    alt: `"Fixing Kablooey" by ItsStephJM`,
     title: `"Dr Frantic repairing Kablooey" by ItsStephJM`,
     isLink: false,
     socialLinks: {
