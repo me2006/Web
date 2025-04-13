@@ -5,8 +5,6 @@ import GameManagement from './GameManagement';
 import ActivityLog from './ActivityLog';
 import ReportLog from './ReportLog';
 import Console from './Console';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 
 import styles from "./index.module.css";
 
@@ -42,42 +40,39 @@ export default function Panel(): ReactNode {
 
   return (
     <div style={{ width: "90%",}}>
-      <div className={styles.logoutContainer}>
-        <button className="button button--red button--sm margin--sm" onClick={() => { logout() }}>
-          Logout <FontAwesomeIcon icon={faSignOut} />
-        </button>
-      </div>
       <div className={styles.panelContainer} style={{marginBottom: "1rem"}}>
         <h1>Sitekick Remastered Mod Panel</h1>
-        <h3 style={{margin: 0}}>Welcome {currUser.username}!</h3>
+        <h3 style={{margin: 0}}>Welcome <span style={{textTransform: "capitalize"}}>{currUser.type}</span> {currUser.username}!</h3>
       </div>
       <div className={styles.panelContainer}>
-        <div className={styles.tabContainer}>
-          <button id="umButton" className={styles.tabLinks} onClick={(e) => openTab(e, 'UserManagement')}>User Management</button>
-          <button className={styles.tabLinks} onClick={(e) => openTab(e, 'GameManagement')}>Game Management</button>
-          <button className={styles.tabLinks} onClick={(e) => openTab(e, 'ActivityLog')}>Activity Log</button>
-          <button className={styles.tabLinks} onClick={(e) => openTab(e, 'ReportLog')}>Report Log</button>
-          <button className={styles.tabLinks} onClick={(e) => openTab(e, 'Console')}>Console</button>
-        </div>
+        <div className={styles.panelContent}>
+          <div className={styles.tabContainer}>
+            <button id="umButton" className={styles.tabLinks} onClick={(e) => openTab(e, 'UserManagement')}>User Management</button>
+            <button className={styles.tabLinks} onClick={(e) => openTab(e, 'GameManagement')}>Game Management</button>
+            <button className={styles.tabLinks} onClick={(e) => openTab(e, 'ActivityLog')}>Activity Log</button>
+            <button className={styles.tabLinks} onClick={(e) => openTab(e, 'ReportLog')}>Report Log</button>
+            <button className={styles.tabLinks} onClick={(e) => openTab(e, 'Console')}>Console</button>
+          </div>
 
-        <div id="UserManagement" className={styles.tabContent}>
-          <UserManagement user={currUser} />
-        </div>
+          <div id="UserManagement" className={styles.tabContent}>
+            <UserManagement user={currUser} />
+          </div>
 
-        <div id="GameManagement" className={styles.tabContent}>
-          <GameManagement user={currUser} />
-        </div>
+          <div id="GameManagement" className={styles.tabContent}>
+            <GameManagement user={currUser} />
+          </div>
 
-        <div id="ActivityLog" className={styles.tabContent}>
-          <ActivityLog user={currUser}/>
-        </div>
+          <div id="ActivityLog" className={styles.tabContent}>
+            <ActivityLog user={currUser}/>
+          </div>
 
-        <div id="ReportLog" className={styles.tabContent}>
-          <ReportLog user={currUser}/>
-        </div>
+          <div id="ReportLog" className={styles.tabContent}>
+            <ReportLog user={currUser}/>
+          </div>
 
-        <div id="Console" className={styles.tabContent}>
-          <Console user={currUser}/>
+          <div id="Console" className={styles.tabContent}>
+            <Console user={currUser}/>
+          </div>
         </div>
       </div>
     </div>

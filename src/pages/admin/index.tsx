@@ -1,8 +1,10 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useEffect } from 'react';
 import Login from '@site/src/components/Admin/Login';
 import Panel from '@site/src/components/Admin/Panel';
 
 import styles from "./index.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 
 export const UserContext = createContext(null);
 
@@ -23,7 +25,7 @@ export default function Admin() {
         "Access-Control-Allow-Headers": "Content-Type"
       },
 
-      body: "json=" + encodeURIComponent(JSON.stringify(data))
+      body: encodeURIComponent(JSON.stringify(data))
     }).then(res => {
       if (!res.ok) {
         alert("Incorrect username / password");
@@ -49,8 +51,24 @@ export default function Admin() {
     return (userStr) ? JSON.parse(userStr) : null;
   }
 
+  useEffect(() => {
+    let ignore = false;
+    const cUser = getCurrentUser();
+    setLoggedIn(cUser && cUser != null && Object.keys(cUser).length != 0 && cUser.token);
+    return () => { ignore = true; }
+  },[]);
+
   return (
     <main className={styles.mainContainer}>
+      { loggedIn ? 
+      <div className={styles.logoutContainer}>
+        <button className="button button--red button--sm margin--sm" onClick={() => { logout() }}>
+          Logout <FontAwesomeIcon icon={faSignOut} />
+        </button>
+      </div>
+      :
+      <></>
+      }
       <UserContext.Provider value={{ login: login, logout: logout, getCurrentUser: getCurrentUser }}>
         { !loggedIn ? <Login /> : <Panel /> }
       </UserContext.Provider>
