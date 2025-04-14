@@ -18,7 +18,7 @@ export default function Contact(): ReactNode {
           <div>
             <h1>Message us on Discord</h1>
             <p>If you have a general question, you should join our <a className={styles.kablooeyA} href="http://discord.sitekickremastered.com/">Discord server</a> and ask a question in the <b>#general</b>, <b>#game-chat</b>, or <b>#sitekick-dev</b> channels.</p>
-            <p>If you have a private question (ex. Account related questions, player reports, or security questions), please message our Modmail bot, Kablooey</p>
+            <p>If you have a private question (ex. Account related questions, player reports, or security questions), please message our Modmail bot, Kablooey:</p>
             <div>
               <a className="button" href="https://discordapp.com/channels/@me/653394550580183050">Message Kablooey!</a>
             </div>
