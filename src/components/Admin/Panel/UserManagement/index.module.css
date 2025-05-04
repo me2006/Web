@@ -10,7 +10,7 @@
   position: relative;
   display: flex;
   align-items: stretch;
-  width: 50%;
+  width: 30%;
   padding-bottom:1rem;
 }
 
@@ -65,22 +65,82 @@
   color: #FFF;
 }
 
-.getListTableContainer {
+.emptyListText {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.altTableContainer, .badgeTableContainer, .banTableContainer {
+  max-width: 80%;
+  width: 80%;
+}
+
+.accordionInput {
+  display: none;
+}
+
+.accordionLabel {
+  display: block;    
+  position: relative;
+  font-family: "CCSmash";
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  background: var(--ytv-purple);
+  color: #FFF;
+  transition: ease .5s;
+}
+
+.accordionLabel:hover {
+  background: var(--ytv-green);
+  color: #000;
+}
+
+.accordionLabel:after {
+  content: '+';
+  font-family: "Roboto";
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  top: -5px;
+}
+
+.accordionInput:checked + .accordionLabel:after {
+  content: '-';
+  right: 16px;
+  top: -6px;
+}
+
+.accordionContent {
+  background: unset;
+  padding: 10px 25px;
+  border: 1px solid #CCC;
+}
+
+.accordionInput + .accordionLabel + .accordionContent {
+  display: none;
+}
+
+.accordionInput:checked + .accordionLabel + .accordionContent {
+  display: block;
+}
+
+.playerListTableContainer {
   width: 90%;
 }
 
-.getListTable {
+.playerListTable {
   width: 100%;
   display: inline-table;
   table-layout: fixed;
 }
 
-.getListTable > tbody > tr > td:last-child {
+.playerListTable > tbody > tr > td:last-child {
   display: flex;
   justify-content: space-evenly;
 }
 
-.getListTable button {
+.playerListTable button {
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -112,4 +172,43 @@
 
 .viewDetailsBtn:hover, .editNamesBtn:hover {
   filter: brightness(60%);
+}
+
+.playerDetailsContainer {
+  width: 30rem;
+  margin: 10px 0;
+  padding: 10px;
+  background: #02131A;
+  border: 1px solid rgba(255,255,255,0.15);
+  font-size: 0.9em;
+}
+
+.playerDetailsImg {
+  float: left;
+  position: relative;
+  width: 75px;
+  height: 75px;
+  margin: 5px 10px 5px 0;
+  padding: 1px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  clear: both;
+}
+
+.playerDetailsName {
+  margin: 1px 0 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  word-break: break-word;
+  font-size: 1.5em;
+  line-height: 1.8em;
+}
+
+.playerDetailsInfoBlock {
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.playerDetailsValue {
+  float: right;
+  color: #6e7879;
 }
