@@ -14,7 +14,7 @@
   padding-bottom:1rem;
 }
 
-.searchInput {
+.searchInput, .infoInput {
   position: relative;
   flex: 1 1 auto;
   width: 1%;
@@ -29,6 +29,14 @@
   border: 2px solid var(--ytv-purple);
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
+}
+
+.infoInput {
+  border-radius: 0.5rem;
+}
+
+.infoLabel {
+  display: block;
 }
 
 .searchDropdown {
@@ -140,9 +148,9 @@
   justify-content: space-evenly;
 }
 
-.playerListTable button {
+.playerListTable button, .changePlayerInfoBtn {
   display: inline-block;
-  font-weight: 400;
+  font-weight: bold;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -164,13 +172,18 @@
   border-color: #007BFF;
 }
 
-.editNamesBtn {
+.editInfoBtn, .changePlayerInfoBtn {
   color: #212529;
   background-color: #E0A800;
   border-color: #D39E00;
 }
 
-.viewDetailsBtn:hover, .editNamesBtn:hover {
+.changePlayerInfoBtn {
+  display: flex;
+  margin: auto;
+}
+
+.viewDetailsBtn:hover, .editInfoBtn:hover, .changePlayerInfoBtn:hover {
   filter: brightness(60%);
 }
 
@@ -210,5 +223,56 @@
 
 .playerDetailsValue {
   float: right;
-  color: #6e7879;
+  color: #6E7879;
+}
+
+.actionsModal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modalContainer {
+  position: relative;
+  width: 50%;
+  top: 45%;
+  transform: translateY(-45%);
+  background-color: #242526;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #CCC;
+}
+
+.modalHeader {
+  padding: 0.75rem 1rem;
+  background-color: #242526;
+  color: #000;
+}
+
+.modalTitle {
+  margin: 0;
+}
+
+.closeModal {
+  color: #000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  margin-top: -0.5rem;
+}
+
+.closeModal:hover, .closeModal:focus {
+  color: var(--ytv-purple);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modalBody {
+  padding: 1.5rem;
 }

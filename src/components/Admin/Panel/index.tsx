@@ -4,13 +4,12 @@ import UserManagement from './UserManagement';
 import GameManagement from './GameManagement';
 import ActivityLog from './ActivityLog';
 import ReportLog from './ReportLog';
-import Console from './Console';
 
 import styles from "./index.module.css";
 
 export default function Panel(): ReactNode {
 
-  const { getCurrentUser, logout } = useContext(UserContext);
+  const { getCurrentUser } = useContext(UserContext);
 
   function openTab(e, tabName) {
     var i, tabContent, tabLinks;
@@ -51,16 +50,19 @@ export default function Panel(): ReactNode {
             <button className={styles.tabLinks} onClick={(e) => openTab(e, 'GameManagement')}>Game Management</button>
             <button className={styles.tabLinks} onClick={(e) => openTab(e, 'ActivityLog')}>Activity Log</button>
             <button className={styles.tabLinks} onClick={(e) => openTab(e, 'ReportLog')}>Report Log</button>
-            <button className={styles.tabLinks} onClick={(e) => openTab(e, 'Console')}>Console</button>
           </div>
 
           <div id="UserManagement" className={styles.tabContent}>
             <UserManagement user={currUser} />
           </div>
 
+          { currUser.type == "admin" ?
           <div id="GameManagement" className={styles.tabContent}>
             <GameManagement user={currUser} />
           </div>
+          :
+          <></>
+          }
 
           <div id="ActivityLog" className={styles.tabContent}>
             <ActivityLog user={currUser}/>
@@ -68,10 +70,6 @@ export default function Panel(): ReactNode {
 
           <div id="ReportLog" className={styles.tabContent}>
             <ReportLog user={currUser}/>
-          </div>
-
-          <div id="Console" className={styles.tabContent}>
-            <Console user={currUser}/>
           </div>
         </div>
       </div>

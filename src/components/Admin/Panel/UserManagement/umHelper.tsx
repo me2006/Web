@@ -2,11 +2,6 @@
 import styles from "./index.module.css";
 let user;
 
-
-const openModal = (noe) => {
-
-}
-
 function createAccountTable(data, divId) {
   if (!data) return;
   const isAdmin = user.type == "admin";
@@ -51,7 +46,7 @@ function createAccountTable(data, divId) {
               ${isAltTable ? `<th>${o.isMain ? "Main" : "Alt"}</th>` : ""}
           <td>
             <button type="button" id="viewDetailsBtn" name="${noe}" class="${styles.viewDetailsBtn}">👀 View Details</button>
-            <button type="button" id="editNamesBtn" name="${noe}" class="${styles.editNamesBtn}">🖋️ Edit Names</button>
+            <button type="button" id="editInfoBtn" name="${noe}" class="${styles.editInfoBtn}">🖋️ Edit Info</button>
           </td>
         </tr>
       `
@@ -76,7 +71,7 @@ function createAccountTable(data, divId) {
       if (!isButton) return;
 
       if (target.id == "viewDetailsBtn") searchPlayer(e);
-      if (target.id == "editNamesBtn") openModal(e);
+      if (target.id == "editInfoBtn") openModal(e, "editInfo", "Edit Info");
     })
   }
 }
@@ -232,7 +227,7 @@ function viewDetails(data, fromTable) {
   }
 }
 
-const postRequest = (noe, getList) => {
+const getPlayerRequest = (noe, getList) => {
   const data = {
     author: user.username,
     token: user.token,
@@ -283,7 +278,7 @@ const searchPlayer = (e) => {
   const noe = (e.target) ? e.target.name : e;
   const ft = (e.target) ? true : false;
 
-  postRequest(noe, false).then(data => {
+  getPlayerRequest(noe, false).then(data => {
     if (!data) return;
     viewDetails(data.player, ft);
     createAccountTable(data.player.associatedAccounts, "altAccountsTable");
@@ -292,6 +287,93 @@ const searchPlayer = (e) => {
     document.getElementById("playerListTable").style.display = "none";
   });
 }
+
+const openModal = async (e, action, title) => {
+
+  let html = ``;
+  const noe = (e.target) ? e.target.name : e;
+  let playerData;
+  let accountId = -1;
+  await getPlayerRequest(noe, false).then((data) => {
+    if (!data) {
+      html += `Error: There was an error getting this player's information.<br/>Please try again later or contact the server admin.`
+    }
+    else {
+      playerData = data.player;
+      accountId = playerData.accountId;
+      html += `
+        <p style="text-align: center">Modify the input boxes below and click save to change the user's information.</p>
+        ${
+          user.type == "admin" ?
+          `<label for="changeEmail" class=${styles.infoLabel}>Email:</label>
+          <input class=${styles.infoInput} name="changeEmail" id="changeEmail" type="email" value="${playerData.email}" />
+          <br/>
+          ` : ""
+        }
+        <label for="username" class=${styles.infoLabel}>Username:</label>
+        <input class=${styles.infoInput} name="username" id="username" type="text" value="${playerData.username}" />
+        <br/>
+        <label for="sitekickName" class=${styles.infoLabel}>Sitekick Name:</label>
+        <input class=${styles.infoInput} name="sitekickName" id="sitekickName" type="text" value="${playerData.sitekickName}" />
+        <br/>
+      `;
+    }
+  });
+
+  let modal = document.getElementById("actionsModal");
+  let mHeader = document.getElementById("modalHeader");
+  let mTitle = document.getElementById("modalTitle");
+  let mContent = document.getElementById("modalContent");
+  let changePlayerInfoBtn = document.getElementById("changePlayerInfoBtn");
+  let span = document.getElementById("closeModal");
+  mHeader.style.backgroundColor = (action == "editInfo") ? "#E0A800" : "#242526"
+  mContent.innerHTML = html;
+  mTitle.innerText = title;
+  changePlayerInfoBtn.onclick  = function(event) {
+    const newEmail = (document.getElementById("changeEmail") as HTMLInputElement).value;
+    const newUsername = (document.getElementById("username") as HTMLInputElement).value;
+    const newSitekickName = (document.getElementById("sitekickName") as HTMLInputElement).value;
+
+    const data = {
+      author: user.username,
+      token: user.token,
+      account_id: accountId,
+      values_to_change: `${newEmail != playerData.email}, ${newUsername != playerData.username}, ${newSitekickName != playerData.sitekickName}`,
+      new_email: newEmail,
+      new_username: newUsername,
+      new_sitekick_name: newSitekickName
+    };
+
+    return fetch("http://localhost:8080/" + user.type + "/change_player_info", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Access-Control-Allow-Headers": "Content-Type"
+      },
+      body: encodeURIComponent(JSON.stringify(data))
+    }).then(res => {
+      if (!res.ok) {
+        throw new Error("Failed to change player information.");
+      }      
+      return res.json();
+    }).catch(error => {
+      alert("Failed to change player information.")
+    });
+  }
+
+  // Handle X button click
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // Close the modal if the user clicks anywhere outside
+  window.onclick = function(event) {
+    if (event.target == modal)
+      modal.style.display = "none";
+  }
+  modal.style.display = "block";
+}
+
 
 export const searchBtn = (u) => {
   user = u;
@@ -304,7 +386,7 @@ export const searchBtn = (u) => {
   if (searchType !== "list")
     searchPlayer(noe);
   else
-    postRequest(noe, searchType == "list").then(data => { listData(data); })
+    getPlayerRequest(noe, searchType == "list").then(data => { listData(data); })
 
   btn.innerHTML = "Search";
   btn.removeAttribute("disabled");

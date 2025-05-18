@@ -26,6 +26,19 @@ export default function UserManagement({ user }): ReactNode {
       <div id="altAccountsTable" className={styles.altTableContainer}></div>
       <div id="badgeTable" className={styles.badgeTableContainer}></div>
       <div id="banTable" className={styles.banTableContainer}></div>
+
+      <div id="actionsModal" className={styles.actionsModal}>
+        <div className={styles.modalContainer}>
+          <div id="modalHeader" className={styles.modalHeader}>
+            <span id="closeModal" className={styles.closeModal}>&times;</span>
+            <h2 id="modalTitle" className={styles.modalTitle}></h2>
+          </div>
+          <div id="modalBody" className={styles.modalBody}>
+            <div id="modalContent" className={styles.modalContent}></div>
+            <button type="button" className={styles.changePlayerInfoBtn} id="changePlayerInfoBtn">Change player info</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
