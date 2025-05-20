@@ -1,5 +1,5 @@
 import { useContext, useEffect, type ReactNode } from 'react';
-import { UserContext } from "@site/src/pages/admin";
+import { GmContext } from "@site/src/pages/admin";
 import UserManagement from './UserManagement';
 import GameManagement from './GameManagement';
 import ActivityLog from './ActivityLog';
@@ -9,7 +9,7 @@ import styles from "./index.module.css";
 
 export default function Panel(): ReactNode {
 
-  const { getCurrentUser } = useContext(UserContext);
+  const { getGmInfo } = useContext(GmContext);
 
   function openTab(e, tabName) {
     var i, tabContent, tabLinks;
@@ -35,13 +35,13 @@ export default function Panel(): ReactNode {
     return () => { ignore = true; }
   },[]);
 
-  const currUser = getCurrentUser();
+  const gmInfo = getGmInfo();
 
   return (
     <div style={{ width: "90%",}}>
       <div className={styles.panelContainer} style={{marginBottom: "1rem"}}>
         <h1>Sitekick Remastered Mod Panel</h1>
-        <h3 style={{margin: 0}}>Welcome <span style={{textTransform: "capitalize"}}>{currUser.type}</span> {currUser.username}!</h3>
+        <h3 style={{margin: 0}}>Welcome <span style={{textTransform: "capitalize"}}>{gmInfo.type}</span> {gmInfo.username}!</h3>
       </div>
       <div className={styles.panelContainer}>
         <div className={styles.panelContent}>
@@ -53,23 +53,23 @@ export default function Panel(): ReactNode {
           </div>
 
           <div id="UserManagement" className={styles.tabContent}>
-            <UserManagement user={currUser} />
+            <UserManagement gmInfo={gmInfo} />
           </div>
 
-          { currUser.type == "admin" ?
+          { gmInfo.type == "admin" ?
           <div id="GameManagement" className={styles.tabContent}>
-            <GameManagement user={currUser} />
+            <GameManagement gmInfo={gmInfo} />
           </div>
           :
           <></>
           }
 
           <div id="ActivityLog" className={styles.tabContent}>
-            <ActivityLog user={currUser}/>
+            <ActivityLog gmInfo={gmInfo}/>
           </div>
 
           <div id="ReportLog" className={styles.tabContent}>
-            <ReportLog user={currUser}/>
+            <ReportLog gmInfo={gmInfo}/>
           </div>
         </div>
       </div>

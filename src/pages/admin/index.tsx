@@ -6,7 +6,7 @@ import styles from "./index.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 
-export const UserContext = createContext(null);
+export const GmContext = createContext(null);
 
 export default function Admin() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -34,7 +34,7 @@ export default function Admin() {
       return res.json()
     }).then(resData => {
       // console.info(resData);
-      localStorage.setItem("userInfo", JSON.stringify(resData));
+      localStorage.setItem("gmInfo", JSON.stringify(resData));
       setLoggedIn(true);
     }).catch(error => {
       console.error("Error:", error);
@@ -42,18 +42,18 @@ export default function Admin() {
   }
 
   function logout() {
-    localStorage.removeItem("userInfo");
+    localStorage.removeItem("gmInfo");
     setLoggedIn(false);
   }
 
-  function getCurrentUser() {
-    const userStr = localStorage.getItem("userInfo");
+  function getGmInfo() {
+    const userStr = localStorage.getItem("gmInfo");
     return (userStr) ? JSON.parse(userStr) : null;
   }
 
   useEffect(() => {
     let ignore = false;
-    const cUser = getCurrentUser();
+    const cUser = getGmInfo();
     setLoggedIn(cUser && cUser != null && Object.keys(cUser).length != 0 && cUser.token);
     return () => { ignore = true; }
   },[]);
@@ -69,9 +69,9 @@ export default function Admin() {
       :
       <></>
       }
-      <UserContext.Provider value={{ login: login, logout: logout, getCurrentUser: getCurrentUser }}>
+      <GmContext.Provider value={{ login: login, getGmInfo: getGmInfo }}>
         { !loggedIn ? <Login /> : <Panel /> }
-      </UserContext.Provider>
+      </GmContext.Provider>
     </main>
   );
 }

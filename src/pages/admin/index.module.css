@@ -4,9 +4,14 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  background: var(--bg-splash);
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* 
+    background: var(--bg-splash);
+    background-size: cover;
+    background-repeat: no-repeat;
+  */
+  background: #600084;
+  /*background: linear-gradient(0deg, #A42EE5 0%, #600084 100%);*/
+  
 }
 
 .logoutContainer {

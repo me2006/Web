@@ -133,22 +133,22 @@
   display: block;
 }
 
-.playerListTableContainer {
+.listTableContainer {
   width: 90%;
 }
 
-.playerListTable {
+.listTable {
   width: 100%;
   display: inline-table;
   table-layout: fixed;
 }
 
-.playerListTable > tbody > tr > td:last-child {
+.listTable > tbody > tr > td:last-child {
   display: flex;
   justify-content: space-evenly;
 }
 
-.playerListTable button, .changePlayerInfoBtn {
+.listTable button, .changePlayerInfoBtn {
   display: inline-block;
   font-weight: bold;
   text-align: center;
@@ -275,4 +275,30 @@
 
 .modalBody {
   padding: 1.5rem;
+}
+
+.actionsContainer {
+  display:flex;
+  flex-direction: column;
+  min-height: calc(70vh);
+  margin-left: 1rem;
+  /*min-height: calc(100vh - 11vh);*/
+}
+
+.actionsCard {
+  text-align: center;
+  border-radius: 25px;
+  border: 2px solid var(--text-colour);
+  padding: 1rem;
+  margin: 0rem 1rem;
+  margin-bottom: 1rem;
+  min-width: 25%;
+}
+
+
+.actionsCard hr {
+  background-color: var(--ifm-hr-background-color);
+  border: 0;
+  height: var(--ifm-hr-height);
+  margin: 1rem 0rem 0.5rem 0rem;
 }

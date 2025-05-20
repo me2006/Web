@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import { UserContext } from "@site/src/pages/admin";
+import { GmContext } from "@site/src/pages/admin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./index.module.css";
 
 export default function Login() {
-  const { login } = useContext(UserContext);
+  const { login } = useContext(GmContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
