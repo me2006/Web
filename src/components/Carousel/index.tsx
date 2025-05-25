@@ -65,7 +65,7 @@ const Carousel: FC<CarouselProps> = ({
     /**
      * @description - creates a setTimeout of the specific `timeout` props
      */
-    let timer: ReturnType<typeof setTimeout> = setTimeout(goForward, timeout);
+    const timer: ReturnType<typeof setTimeout> = setTimeout(goForward, timeout);
     !autoPlay && clearTimeout(timer);
 
     /**

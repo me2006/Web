@@ -1,4 +1,4 @@
-import type {Config} from "@docusaurus/types";
+import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -38,7 +38,7 @@ const config: Config = {
           // Remove this to get rid of the "Edit this page" button
           editUrl:  "https://github.com/sitekickremastered/Web/",
           admonitions: {
-            keywords: ['discord','frantic'],
+            keywords: ["discord","frantic"],
             extendDefaults: true,
           },
         },
@@ -54,7 +54,7 @@ const config: Config = {
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
-           // Use "warn" for this if you want to be warned about mdx files not have <!-- truncate --> (Which adds "Read More")
+          // Use "warn" for this if you want to be warned about mdx files not have <!-- truncate --> (Which adds "Read More")
           onUntruncatedBlogPosts: "ignore",
         },
         theme: {
@@ -107,7 +107,7 @@ const config: Config = {
         href: "https://sitekickremastered.com",
         className: "footer__logo",
       },
-      links: [ 
+      links: [
         {
           title: "General",
           items: [
@@ -148,7 +148,7 @@ const config: Config = {
         { label: "Terms of Service", to: "/legal/tos"},
         { label: "Cookies Policy", to: "/legal/cookies"},
         { label: "Rules", to: "/docs/rules"},
-        
+
         { label: "Join the Team", to: "/docs/development/join_the_team"},
         { label: "Contact Us", to: "/contact"},
         */

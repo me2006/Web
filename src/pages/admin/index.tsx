@@ -1,10 +1,10 @@
-import { useState, createContext, useEffect } from 'react';
-import Login from '@site/src/components/Admin/Login';
-import Panel from '@site/src/components/Admin/Panel';
+import { useState, createContext, useEffect } from "react";
+import Login from "@site/src/components/Admin/Login";
+import Panel from "@site/src/components/Admin/Panel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./index.module.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 
 export const GmContext = createContext(null);
 
@@ -31,7 +31,7 @@ export default function Admin() {
         alert("Incorrect username / password");
         throw new Error("Incorrect username / password");
       }
-      return res.json()
+      return res.json();
     }).then(resData => {
       // console.info(resData);
       localStorage.setItem("gmInfo", JSON.stringify(resData));
@@ -52,22 +52,23 @@ export default function Admin() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     let ignore = false;
     const cUser = getGmInfo();
     setLoggedIn(cUser && cUser != null && Object.keys(cUser).length != 0 && cUser.token);
-    return () => { ignore = true; }
+    return () => { ignore = true; };
   },[]);
 
   return (
     <main className={styles.mainContainer}>
-      { loggedIn ? 
-      <div className={styles.logoutContainer}>
-        <button className="button button--red button--sm margin--sm" onClick={() => { logout() }}>
-          Logout <FontAwesomeIcon icon={faSignOut} />
-        </button>
-      </div>
-      :
-      <></>
+      { loggedIn ?
+        <div className={styles.logoutContainer}>
+          <button className="button button--red button--sm margin--sm" onClick={() => { logout(); }}>
+            Logout <FontAwesomeIcon icon={faSignOut} />
+          </button>
+        </div>
+        :
+        <></>
       }
       <GmContext.Provider value={{ login: login, getGmInfo: getGmInfo }}>
         { !loggedIn ? <Login /> : <Panel /> }

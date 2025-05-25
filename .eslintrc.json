@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@docusaurus/recommended"
+  ],
+  "ignorePatterns": ["node_modules/", "build/", "package.json"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "indent": [ "error", 2 ],
+    "quotes": [2, "double"],
+    "semi": [2, "always"],
+    "no-console": 1,
+    "no-trailing-spaces": "error",
+    "object-curly-spacing": [2, "always"]
+  }
+}

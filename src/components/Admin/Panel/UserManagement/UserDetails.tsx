@@ -1,13 +1,14 @@
 import { useContext, useEffect, type ReactNode } from "react";
+import Heading from "@theme/Heading";
 import AltTable from "./AltTable";
 import BadgeTable from "./BadgeTable";
 import BanTable from "./BanTable";
 import { UmContext } from ".";
-
-import styles from "./index.module.css";
 import { faGavel, faLock, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
+
+import styles from "./index.module.css";
 
 export default function UserDetails( { playerDetails, fromTable, openListView }): ReactNode {
 
@@ -49,72 +50,71 @@ export default function UserDetails( { playerDetails, fromTable, openListView })
   }, [playerDetails]);
 
   return (
-    !playerDetails || playerDetails.length == 0 ? 
-    <h3 className={styles.emptyListText}>No players were found with the Email / Username: "${searchTerm}"</h3>
-    :
-    <>
-      { fromTable ? 
-        <button style={{display: "flex", margin: "auto", marginBottom: "1rem"}} onClick={() => openListView()}>Back to List</button> :
-        <></>
-      }
-      <div style={{display: "flex", justifyContent: "space-between", width: "80%"}}>
-        <div>
-          <h2 className="text--center">Player Info</h2>
-          <div id="playerDetailsContainer" className={styles.playerDetailsContainer}>
-            <div className={styles.playerDetailsImg} style={{ backgroundColor: playerDetails.sitekickColour || "#FFCC00"}} />
-            <h2 className={styles.playerDetailsName}>{playerDetails.username}</h2>
+    !playerDetails || playerDetails.length == 0 ?
+      <Heading as="h3" className={styles.emptyListText}>No players were found with the Email / Username: "${searchTerm}"</Heading>
+      :
+      <>
+        { fromTable ?
+          <button style={{ display: "flex", margin: "auto", marginBottom: "1rem" }} onClick={() => openListView()}>Back to List</button> :
+          <></>
+        }
+        <div style={{ display: "flex", justifyContent: "space-between", width: "80%" }}>
+          <div>
+            <Heading as="h2" className="text--center">Player Info</Heading>
+            <div id="playerDetailsContainer" className={styles.playerDetailsContainer}>
+              <div className={styles.playerDetailsImg} style={{ backgroundColor: playerDetails.sitekickColour || "#FFCC00" }} />
+              <Heading as="h2" className={styles.playerDetailsName}>{playerDetails.username}</Heading>
+            </div>
           </div>
-        </div>
-        <div>
-          <div id="actionCards">
-            <h2 className="text--center" style={{ marginLeft: "1rem" }}>Actions</h2>
-            <div className={styles.actionsContainer}>
-              <div className="row">
-                <div className={clsx("col", styles.actionsCard)}>
-                  <h3>{isAdmin ? "Ban / Suspend" : "Suspend" } User</h3>
-                  <FontAwesomeIcon icon={faGavel} size="4x" />
-                  <hr/>
-                  <button className="button button--red button--sm margin--sm">{isAdmin ? "Ban / Suspend" : "Suspend" } User</button>
+          <div>
+            <div id="actionCards">
+              <Heading as="h2" className="text--center" style={{ marginLeft: "1rem" }}>Actions</Heading>
+              <div className={styles.actionsContainer}>
+                <div className="row">
+                  <div className={clsx("col", styles.actionsCard)}>
+                    <Heading as="h3">{isAdmin ? "Ban / Suspend" : "Suspend" } User</Heading>
+                    <FontAwesomeIcon icon={faGavel} size="4x" />
+                    <hr/>
+                    <button className="button button--red button--sm margin--sm">{isAdmin ? "Ban / Suspend" : "Suspend" } User</button>
+                  </div>
+                  <div className={clsx("col", styles.actionsCard)}>
+                    <Heading as="h3">Edit Info</Heading>
+                    <FontAwesomeIcon icon={faPenToSquare} size="4x" />
+                    <hr/>
+                    <button className="button button--red button--sm margin--sm">Edit Info</button>
+                  </div>
+                  {
+                    isAdmin ?
+                      <>
+                        <div className={clsx("col", styles.actionsCard)}>
+                          <Heading as="h3">Reset Password</Heading>
+                          <FontAwesomeIcon icon={faLock} size="4x" />
+                          <hr/>
+                          <button className="button button--red button--sm margin--sm">Reset Password</button>
+                        </div>
+                        <div className={clsx("col", styles.actionsCard)}>
+                          <Heading as="h3">Delete Account</Heading>
+                          <FontAwesomeIcon icon={faTrash} size="4x" />
+                          <hr/>
+                          <button className="button button--red button--sm margin--sm">Delete Account</button>
+                        </div>
+                        <div className={clsx("col", styles.actionsCard)}>
+                          <Heading as="h3">Badge Management</Heading>
+                          <FontAwesomeIcon icon={faGavel} size="4x" />
+                          <hr/>
+                          <button className="button button--red button--sm margin--sm">Badge Management</button>
+                        </div>
+                      </> : <></>
+                  }
                 </div>
-                <div className={clsx("col", styles.actionsCard)}>
-                  <h3>Edit Info</h3>
-                  <FontAwesomeIcon icon={faPenToSquare} size="4x" />
-                  <hr/>
-                  <button className="button button--red button--sm margin--sm">Edit Info</button>
-                </div>
-                {
-                  isAdmin ?
-                  <>
-                    <div className={clsx("col", styles.actionsCard)}>
-                      <h3>Reset Password</h3>
-                      <FontAwesomeIcon icon={faLock} size="4x" />
-                      <hr/>
-                      <button className="button button--red button--sm margin--sm">Reset Password</button>
-                    </div>
-                    <div className={clsx("col", styles.actionsCard)}>
-                      <h3>Delete Account</h3>
-                      <FontAwesomeIcon icon={faTrash} size="4x" />
-                      <hr/>
-                      <button className="button button--red button--sm margin--sm">Delete Account</button>
-                    </div>
-                    <div className={clsx("col", styles.actionsCard)}>
-                      <h3>Badge Management</h3>
-                      <FontAwesomeIcon icon={faGavel} size="4x" />
-                      <hr/>
-                      <button className="button button--red button--sm margin--sm">Badge Management</button>
-                    </div>
-                  </> : <></>
-                }
-                
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <AltTable altList={playerDetails.associatedAccounts} />
-      <BadgeTable badgeData={playerDetails.badgeList}/>
-      <BanTable banData ={playerDetails.banList} />
-    </>
+        <AltTable altList={playerDetails.associatedAccounts} />
+        <BadgeTable badgeData={playerDetails.badgeList}/>
+        <BanTable banData ={playerDetails.banList} />
+      </>
   );
 }
 

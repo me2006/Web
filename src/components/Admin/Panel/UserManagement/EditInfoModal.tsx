@@ -1,4 +1,5 @@
 import { useState, useEffect, type ReactNode } from "react";
+import Heading from "@theme/Heading";
 
 import styles from "./index.module.css";
 
@@ -17,7 +18,7 @@ export default function EditInfoModal( { gmInfo, modalElement, username, getPlay
 
     const fetchData = async () => await getPlayerRequest(username, false);
     fetchData().then((data) => {
-      if (!data) 
+      if (!data)
         setDE(true);
       else {
         setPD(data.player);
@@ -51,46 +52,46 @@ export default function EditInfoModal( { gmInfo, modalElement, username, getPlay
     }).then(res => {
       if (!res.ok) {
         throw new Error("Failed to change player information.");
-      }      
+      }
       return res.json();
-    }).catch(error => {
-      alert("Failed to change player information.")
+    }).catch(() => {
+      alert("Failed to change player information.");
     });
   }
 
   return (
     <div className={styles.modalContainer}>
-      <div id="modalHeader" className={styles.modalHeader} style={{backgroundColor: "#E0A800"}}>
+      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#E0A800" }}>
         <span id="closeModal" className={styles.closeModal} onClick={() => modalElement.style.display = "none"}>&times;</span>
-        <h2 id="modalTitle" className={styles.modalTitle}>Edit User Info</h2>
+        <Heading as="h2" id="modalTitle" className={styles.modalTitle}>Edit User Info</Heading>
       </div>
       <div id="modalBody" className={styles.modalBody}>
         <div id="modalContent" className={styles.modalContent}>
           {
-            dataError ? 
-            <p>
-              Error: There was an error getting this player's information.<br/>
-              Please try again later or contact the server admin.
-            </p> :
-            <>
-              <p style={{textAlign: "center"}}>Modify the input boxes below and click save to change the user's information.</p>
-              {
-                gmInfo.type == "admin" ?
-                <>
-                  <label htmlFor="changeEmail" className={styles.infoLabel}>Email:</label>
-                  <input className={styles.infoInput} name="changeEmail" id="changeEmail" type="email" defaultValue={playerData.email} />
-                  <br/>
-                </>
-                : <></>
-              }
-              <label htmlFor="changeUsername" className={styles.infoLabel}>Username:</label>
-              <input className={styles.infoInput} name="changeUsername" id="changeUsername" type="text" defaultValue={playerData.username} />
-              <br/>
-              <label htmlFor="changeSitekickName" className={styles.infoLabel}>Sitekick Name:</label>
-              <input className={styles.infoInput} name="changeSitekickName" id="changeSitekickName" type="text" defaultValue={playerData.sitekickName} />
-              <br/>
-              <button type="button" className={styles.changePlayerInfoBtn} onClick={() => changeInfo()}>Change player info</button>
-            </>
+            dataError ?
+              <p>
+                Error: There was an error getting this player's information.<br/>
+                Please try again later or contact the server admin.
+              </p> :
+              <>
+                <p style={{ textAlign: "center" }}>Modify the input boxes below and click save to change the user's information.</p>
+                {
+                  gmInfo.type == "admin" ?
+                    <>
+                      <label htmlFor="changeEmail" className={styles.infoLabel}>Email:</label>
+                      <input className={styles.infoInput} name="changeEmail" id="changeEmail" type="email" defaultValue={playerData.email} />
+                      <br />
+                    </>
+                    : <></>
+                }
+                <label htmlFor="changeUsername" className={styles.infoLabel}>Username:</label>
+                <input className={styles.infoInput} name="changeUsername" id="changeUsername" type="text" defaultValue={playerData.username} />
+                <br/>
+                <label htmlFor="changeSitekickName" className={styles.infoLabel}>Sitekick Name:</label>
+                <input className={styles.infoInput} name="changeSitekickName" id="changeSitekickName" type="text" defaultValue={playerData.sitekickName} />
+                <br/>
+                <button type="button" className={styles.changePlayerInfoBtn} onClick={() => changeInfo()}>Change player info</button>
+              </>
           }
         </div>
       </div>

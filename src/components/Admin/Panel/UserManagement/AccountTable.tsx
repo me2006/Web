@@ -1,4 +1,5 @@
 import { useContext, useEffect, type ReactNode } from "react";
+import Heading from "@theme/Heading";
 import { UmContext } from ".";
 
 import styles from "./index.module.css";
@@ -11,7 +12,7 @@ export default function AccountTable({ playerList }): ReactNode {
     if (!playerList || playerList.length == 0)
       return;
 
-    let tbody = document.getElementById("plTableBody") as HTMLTableElement;
+    const tbody = document.getElementById("plTableBody") as HTMLTableElement;
     playerList.forEach((o) => {
       const rowData = isAdmin ?
         [o.accountId, o.email, o.username, o.sitekickName] :
@@ -29,7 +30,7 @@ export default function AccountTable({ playerList }): ReactNode {
 
   return (
     !playerList || playerList.length == 0 ?
-      <h3 className={styles.emptyListText}>No players were found with the Email / Username: "${searchTerm}"</h3>
+      <Heading as='h3' className={styles.emptyListText}>No players were found with the Email / Username: "${searchTerm}"</Heading>
       :
       <table id="playerListTable" className={styles.listTable}>
         <thead>

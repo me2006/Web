@@ -4,7 +4,7 @@ import {
   ImageThumbnailProps,
   IndicatorProps,
   SelectedImageProps,
-} from "./types"
+} from "./types";
 
 /**
  * @description - creates a container that holds the forwards and back buttons
@@ -110,11 +110,11 @@ export const StyledImageThumbnail = styled.img<ImageThumbnailProps>`
   margin-right: 10px;
   padding: 0;
   outline: ${(props: ImageThumbnailProps) =>
-      props.selected && props.thumbnailOutlineThickness}px
+    props.selected && props.thumbnailOutlineThickness}px
     ${(props: ImageThumbnailProps) =>
-      props.selected && " " + props.thumbnailOutlineStyle + " "}
+    props.selected && " " + props.thumbnailOutlineStyle + " "}
     ${(props: ImageThumbnailProps) =>
-      props.selected && props.thumbnailOutlineColor};
+    props.selected && props.thumbnailOutlineColor};
   outline-offset: ${(props) =>
     props.selected && props.thumbnailOutlineOffset}px;
   object-fit: cover;

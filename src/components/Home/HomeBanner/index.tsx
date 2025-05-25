@@ -1,4 +1,5 @@
 import Link from "@docusaurus/Link";
+import Heading from "@theme/Heading";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import clsx from "clsx";
 import styles from "./style.module.css";
@@ -10,7 +11,7 @@ export default function HomeBanner() {
         <div className="ytvContainerInner orange">
           <div className={clsx("row", styles.homeRow)}>
             <div className={clsx("col col--8", styles.lOrder)}>
-              <h1 className={styles.hero_title}>What's Sitekick Remastered?</h1>
+              <Heading as="h1" className={styles.hero_title}>What's Sitekick Remastered?</Heading>
               <p className={styles.hero_subtitle}>
                 Sitekick, an online game originally developed for YTV.com in 2003, was discontinued in 2015 due to legacy code limitations. Sitekick Remastered aims to preserve the original game's assets and history while delivering an enhanced, modernized version.
                 <br /><br />
@@ -19,15 +20,11 @@ export default function HomeBanner() {
                 Sitekick Remastered is an independent project and is not affiliated with YTV Canada Inc. or Corus Entertainment Inc.
               </p>
               <div className="row" style={{ justifyContent: "center" }}>
-                <Link
-                  className="button button--lg margin--sm"
-                  to="/download">
+                <Link to="/download" className="button button--lg margin--sm">
                   Play now! 🕹️
                 </Link>
                 <div className={styles.spacer} />
-                <Link
-                  className="button button--lg button--blurple margin--sm"
-                  to="https://discord.com/sitekickremastered">
+                <Link to="https://discord.com/sitekickremastered" className="button button--lg button--blurple margin--sm">
                   Join Discord
                 </Link>
               </div>

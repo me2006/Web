@@ -1,12 +1,12 @@
-import React, { type ReactNode } from 'react';
-import clsx from 'clsx';
-import Translate from '@docusaurus/Translate';
-import type { Props } from '@theme/NotFound/Content';
-import Heading from '@theme/Heading';
+import React, { type ReactNode } from "react";
+import clsx from "clsx";
+import Translate from "@docusaurus/Translate";
+import type { Props } from "@theme/NotFound/Content";
+import Heading from "@theme/Heading";
 
 export default function NotFoundContent({ className }: Props): ReactNode {
   return (
-    <main className={clsx('margin-vert--xl padding-vert--lg')} style={{ display: 'flex', justifyContent: 'center'}} >
+    <main className={clsx("margin-vert--xl padding-vert--lg")} style={{ display: "flex", justifyContent: "center" }} >
       <div className={className}>
         <Heading as="h1" className="hero__title">
           <Translate
@@ -19,7 +19,7 @@ export default function NotFoundContent({ className }: Props): ReactNode {
           <Translate
             id="theme.NotFound.p1"
             description="The first paragraph of the 404 page">
-            We searched from here to dimension 34, but we couldn't find what you were looking for.
+            We searched from here to dimension 34, but we couldn"t find what you were looking for.
           </Translate>
         </p>
         <p>

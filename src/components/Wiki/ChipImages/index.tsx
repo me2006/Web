@@ -6,11 +6,9 @@ export type ChipAttrs = {
 
 /**
  * Shows a chip icon image from its ID (as a string because of leading 0s)
- * 
- * Note: Styling is option
- * 
+ *
  * Syntax:
- * 
+ *
  *  <ChipTableCell id={""} styles={} />
  */
 export function ChipIcon({ id, styles }: ChipAttrs) {
@@ -21,11 +19,9 @@ export function ChipIcon({ id, styles }: ChipAttrs) {
 
 /**
  * Shows a chip effect image from its ID (as a string because of leading 0s)
- * 
- * Note: Styling is option
- * 
+ *
  * Syntax:
- * 
+ *
  *  <ChipTableCell id={""} styles={} />
  */
 export function ChipEffect({ id, styles }: ChipAttrs) {

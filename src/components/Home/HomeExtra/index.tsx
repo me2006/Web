@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Heading from "@theme/Heading";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import clsx from "clsx";
@@ -13,11 +14,11 @@ export default function HomeExtra(): ReactNode {
         {/* Join the Team card */}
         <div className={clsx("col ytvContainer purple", styles.extraCard)}>
           <div className="ytvContainerInner purple">
-            <h1>Join the Team!</h1>
+            <Heading as="h1">Join the Team!</Heading>
             <div className={clsx("row", styles.extraCardContent)}>
               <div className="col col--5">
                 {/*<img src={useBaseUrl("/img/home/propaganda.png")} alt="Sitekick 'I Want You' poster with Carlos" />*/}
-                <img src={useBaseUrl("/img/home/kablooey_repair.png")} alt="Dr. Frantic repairing Kablooey by ItsStephJM" style={{borderRadius: "50%" }}/>
+                <img src={useBaseUrl("/img/home/kablooey_repair.png")} alt="Dr. Frantic repairing Kablooey by ItsStephJM" style={{ borderRadius: "50%" }}/>
               </div>
               <div className="col col--7">
                 <p>Are you a programmer, artist, animator, writer, or web designer looking to contribute?</p>
@@ -34,7 +35,7 @@ export default function HomeExtra(): ReactNode {
         {/* Multi-Device Support card */}
         <div className={clsx("col ytvContainer green", styles.extraCard)}>
           <div className="ytvContainerInner green">
-            <h1 >Multi-Device Support</h1>
+            <Heading as="h1" >Multi-Device Support</Heading>
             <div className={clsx("row", styles.extraCardContent)}>
               <div className={clsx("col", styles.lOrder)}>
                 <p>Sitekick Remastered is available on Google Play and the Microsoft Store. MacOS and Linux users can play using an Android emulator.</p>

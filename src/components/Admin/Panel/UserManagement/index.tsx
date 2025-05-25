@@ -1,5 +1,5 @@
 import { useState, createContext, type ReactNode } from "react";
-
+import Heading from "@theme/Heading";
 import AccountTable from "./AccountTable";
 import EditInfoModal from "./EditInfoModal";
 import UserDetails from "./UserDetails";
@@ -22,10 +22,10 @@ export default function UserManagement({ gmInfo }): ReactNode {
       token: gmInfo.token,
       username: noe
     };
-  
+
     let requestLink = `${gmInfo.type}_get_player`;
     if (getList) requestLink += "_list";
-  
+
     return fetch("http://localhost:8080/" + requestLink, {
       method: "POST",
       headers: {
@@ -41,24 +41,24 @@ export default function UserManagement({ gmInfo }): ReactNode {
     }).catch(error => {
       console.error(error);
     });
-  }
+  };
 
   const searchBtn = () => {
-    let noe = (document.getElementById("email") as HTMLInputElement).value;
+    const noe = (document.getElementById("email") as HTMLInputElement).value;
     setST(noe);
-    let searchType = (document.getElementById("searchType") as HTMLInputElement).value;
+    const searchType = (document.getElementById("searchType") as HTMLInputElement).value;
     const btn = document.getElementById("searchBtn");
     btn.innerText = "Loading...";
     btn.setAttribute("disabled", "true");
-  
+
     if (searchType !== "list")
       viewDetails(noe, false);
     else
-      getPlayerRequest(noe, searchType == "list").then(data => { listData(data); })
-  
+      getPlayerRequest(noe, searchType == "list").then(data => { listData(data); });
+
     btn.innerHTML = "Search";
     btn.removeAttribute("disabled");
-  }
+  };
 
   const listData = (data) => {
     if (!data) return;
@@ -68,7 +68,7 @@ export default function UserManagement({ gmInfo }): ReactNode {
       setPL(data.players);
       setCV("list");
     }
-  }
+  };
 
   const viewDetails = (noe, fromTable) => {
     setFT(fromTable);
@@ -78,7 +78,7 @@ export default function UserManagement({ gmInfo }): ReactNode {
       setPD(data.player);
       setCV("details");
     });
-  }
+  };
 
   function addActionButtons(row, o) {
     const buttonCol = document.createElement("td");
@@ -94,27 +94,27 @@ export default function UserManagement({ gmInfo }): ReactNode {
     row.append(buttonCol);
   }
 
-  let modal = document.getElementById("actionsModal");
+  const modal = document.getElementById("actionsModal");
 
   const openModal = (modalUser) => {
     setMU(modalUser);
     modal.style.display = "block";
-  }
+  };
 
   // Close the modal if the user clicks anywhere outside
   window.onclick = function(event) {
     if (event.target == modal)
       modal.style.display = "none";
-  }
+  };
 
   return (
     <div className={styles.searchContainer}>
-      <h3 style={{padding: 0, margin: 0}}>User search:</h3>
-      <p style={{textAlign: "center"}}>
+      <Heading as="h3" style={{ padding: 0, margin: 0 }}>User search:</Heading>
+      <p style={{ textAlign: "center" }}>
         List mode will print a list of users with names that contain the search query<br/>
         Single mode will find a user with the exact email or username specified
       </p>
-      
+
       <div className={styles.inputGroup}>
         <input className={styles.searchInput} name="email" id="email" type="email" placeholder="Username or Email" />
         <select className={styles.searchDropdown} name="searchType" id="searchType" defaultValue="list">
@@ -123,13 +123,12 @@ export default function UserManagement({ gmInfo }): ReactNode {
         </select>
         <button type="button" id="searchBtn" className={styles.searchBtn} onClick={() => searchBtn()}>Search</button>
       </div>
-      <UmContext.Provider value={{ 
-        isAdmin: gmInfo.type == "admin", 
+      <UmContext.Provider value={{
+        isAdmin: gmInfo.type == "admin",
         searchTerm: searchTerm,
         addActionButtons: addActionButtons,
       }}>
         { currView == "list" ?
-          
           <AccountTable playerList={playerList}/> :
           <></>
         }

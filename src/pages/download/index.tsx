@@ -1,11 +1,13 @@
-import type { ReactNode } from 'react';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import Layout from '@theme/Layout';
+import type { ReactNode } from "react";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Layout from "@theme/Layout";
+import Heading from "@theme/Heading";
+import Link from "@docusaurus/Link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
+import clsx from "clsx";
 
-import styles from './index.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWarning } from '@fortawesome/free-solid-svg-icons';
-import clsx from 'clsx';
+import styles from "./index.module.css";
 
 type DownloadButton = {
   alt: string;
@@ -34,9 +36,9 @@ const ButtonList: DownloadButton[] = [
 function DownloadButton({ alt, url, imgUrl }: DownloadButton) {
   return (
     <div className={styles.platformBlock}>
-      <a href={url} rel="noopener" target="__blank">
+      <Link to={url} rel="noopener" target="__blank">
         <img src={useBaseUrl(imgUrl)} alt={alt} />
-      </a>
+      </Link>
     </div>
   );
 }
@@ -49,7 +51,7 @@ function DownloadPage() {
 
           { /* Logo and slogan */}
           <img className={styles.downloadLogo} src={useBaseUrl("/img/logo-beta.svg")} alt="Sitekick Remastered Beta Logo"/>
-          <h1 className={styles.slogan}>Made by fans, for fans</h1>
+          <Heading as="h1" className={styles.slogan}>Made by fans, for fans</Heading>
 
           { /* Black box with information */ }
           <div className={styles.downloadInfoDiv}>
@@ -84,7 +86,7 @@ function DownloadPage() {
 
 export default function Download(): ReactNode {
   return (
-    <Layout title={`Download`} description="Clickity-click, it's Sitekick!">
+    <Layout title={"Download"} description="Clickity-click, it's Sitekick!">
       <DownloadPage />
     </Layout>
   );
