@@ -26,6 +26,9 @@ const config: Config = {
 
   // For Docusaurus faster https://github.com/facebook/docusaurus/issues/10556
   future: {
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true, // required
+    },
     experimental_faster: true,
   },
 
