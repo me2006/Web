@@ -1,52 +1,68 @@
-import { useContext, useEffect, type ReactNode } from "react";
+import { useContext, useEffect, useState, type ReactNode } from "react";
 import Heading from "@theme/Heading";
 import AltTable from "./AltTable";
 import BadgeTable from "./BadgeTable";
 import BanTable from "./BanTable";
 import { UmContext } from ".";
-import { faGavel, faLock, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faSquareCheck, faGavel, faLock, faPenToSquare, faShield, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import clsx from "clsx";
 
 import styles from "./index.module.css";
 
-export default function UserDetails( { playerDetails, fromTable, openListView }): ReactNode {
+export default function UserDetails( { fromTable, openListView }): ReactNode {
 
-  const { isAdmin, searchTerm } = useContext(UmContext);
-  const adminOnly = ["Email", "Account Type", "Number of Alts"];
+  const { isAdmin, gmInfo, searchTerm, ModalTypes, playerDetails, setPD, openModal } = useContext(UmContext);
+  const [isBanned, setIsBanned] = useState(false);
+  const [banType, setBanType] = useState(0);
 
-  useEffect(() => {
-    if (!playerDetails)
+  function unbanUser() {
+
+    if (!confirm(`Are you sure you want to unban ${playerDetails.username}? This action cannot be undone.`))
       return;
 
-    const container = document.getElementById("playerDetailsContainer");
-
-    const tableColumns = {
-      "Account ID": playerDetails.accountId,
-      "Email": playerDetails.email,
-      "Username": playerDetails.username,
-      "Sitekick Name": playerDetails.sitekickName,
-      "Total XP": playerDetails.xp,
-      "Verified Status": playerDetails.verified ? "Verified" : "Not Verified",
-      "Banned Status": playerDetails.banStatus,
-      "Account Type": playerDetails.isMain ? "Main" : "Alt",
-      "Number of Alts": playerDetails.numAlts,
-      "Date Created": playerDetails.dateCreated,
-      "Last Interaction": playerDetails.lastInteraction
+    const data = {
+      author: gmInfo.username,
+      token: gmInfo.token,
+      email: isAdmin ? playerDetails.email : "",
+      username: playerDetails.username
     };
 
-    Object.keys(tableColumns).forEach((key) => {
-
-      if (!isAdmin && adminOnly.includes(key)) return;
-      const block = document.createElement("div");
-      block.classList.add(styles.playerDetailsInfoBlock);
-      const span = document.createElement("span");
-      span.classList.add(styles.playerDetailsValue);
-      span.append(tableColumns[key]);
-      block.append(key, span);
-      block.append(span);
-      container.append(block);
+    const linkEnd = (isAdmin) ? "/unban_player" : "/unsuspend_player";
+    return fetch("http://localhost:8080/" + gmInfo.type + linkEnd, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Access-Control-Allow-Headers": "Content-Type"
+      },
+      body: encodeURIComponent(JSON.stringify(data))
+    }).then(res => {
+      if (!res.ok) {
+        throw new Error("Failed to unban player.");
+      }
+      alert(playerDetails.username + " was successfully unbanned.");
+      setPD({ ...playerDetails, banStatus: "Not banned" });
+    }).catch(() => {
+      alert("Failed to unban player.");
     });
+  }
+
+
+  function ActionButton({ colour, modalType, icon, name }) {
+    return (
+      <div className={`row ${styles.actionsCard}`}>
+        <button className={`button--flat ${colour}`} onClick={() => {
+          if (!modalType) unbanUser();
+          else openModal(playerDetails.username, modalType);
+        }}>
+          <FontAwesomeIcon icon={icon} className={ styles.buttonIcon } /> {name}
+        </button>
+      </div>
+    );
+  }
+
+  useEffect(() => {
+    setIsBanned(playerDetails.banStatus != "Not banned");
+    setBanType(playerDetails.banStatus == "Perma banned" ? 2 : playerDetails.banStatus == "Suspended" ? 1 : 0);
   }, [playerDetails]);
 
   return (
@@ -60,51 +76,45 @@ export default function UserDetails( { playerDetails, fromTable, openListView })
         }
         <div className="d-flex w-50">
           <div>
-            <Heading as="h2" className="text--center">Player Info</Heading>
             <div id="playerDetailsContainer" className={styles.playerDetailsContainer}>
               <div className={styles.playerDetailsImg} style={{ backgroundColor: playerDetails.sitekickColour || "#FFCC00" }} />
               <Heading as="h2" className={styles.playerDetailsName}>{playerDetails.username}</Heading>
+              <div id="infoContainer">
+                <div className={styles.playerDetailsInfoBlock}>Account ID<span>{playerDetails.accountId}</span></div>
+                {isAdmin ? <div className={styles.playerDetailsInfoBlock}>Email<span>{playerDetails.email}</span></div> : <></> }
+                <div className={styles.playerDetailsInfoBlock}>Username<span>{playerDetails.username}</span></div>
+                <div className={styles.playerDetailsInfoBlock}>Sitekick Name<span>{playerDetails.sitekickName}</span></div>
+                <div className={styles.playerDetailsInfoBlock}>Total XP<span>{playerDetails.xp}</span></div>
+                <div className={styles.playerDetailsInfoBlock}>Verified Status<span>{playerDetails.verified ? "Verified" : "Not Verified"}</span></div>
+                <div className={styles.playerDetailsInfoBlock}>Banned Status<span>{playerDetails.banStatus}</span></div>
+                {isAdmin ? <div className={styles.playerDetailsInfoBlock}>Account Type<span>{playerDetails.isMain ? "Main" : "Alt"}</span></div> : <></> }
+                {isAdmin ? <div className={styles.playerDetailsInfoBlock}>Number of Alts<span>{playerDetails.numAlts}</span></div> : <></> }
+                <div className={styles.playerDetailsInfoBlock}>Date Created<span>{playerDetails.dateCreated}</span></div>
+                <div className={styles.playerDetailsInfoBlock}>Last Interaction<span>{playerDetails.lastInteraction}</span></div>
+              </div>
             </div>
           </div>
           <div className="mx-1" />
           <div>
             <div id="actionCards">
-              <Heading as="h2" className="text--center" style={{ marginLeft: "1rem" }}>Actions</Heading>
-              <div className={styles.actionsContainer}>
-                <div className="row">
-                  <div className={clsx("col", styles.actionsCard)}>
-                    <Heading as="h3">{isAdmin ? "Ban / Suspend" : "Suspend" } User</Heading>
-                    <FontAwesomeIcon icon={faGavel} size="4x" />
-                    <hr/>
-                    <button className="button button--red button--sm margin--sm">{isAdmin ? "Ban / Suspend" : "Suspend" } User</button>
-                  </div>
-                  <div className={clsx("col", styles.actionsCard)}>
-                    <Heading as="h3">Edit Info</Heading>
-                    <FontAwesomeIcon icon={faPenToSquare} size="4x" />
-                    <hr/>
-                    <button className="button button--red button--sm margin--sm">Edit Info</button>
-                  </div>
+              <div className="row">
+                <div className="col">
+                  <ActionButton colour="" modalType={ModalTypes.EditInfo} icon={faPenToSquare} name="Edit Info" />
+                  { !isBanned || (isBanned && ((!isAdmin && banType != 2) || isAdmin)) ?
+                    <ActionButton
+                      colour={isBanned ? "green" : "red"}
+                      modalType={isBanned ? "" : ModalTypes.BanUser}
+                      icon={isBanned ? faSquareCheck : faGavel}
+                      name={isBanned ? (isAdmin ? "Unban / Unsuspend" : "Unsuspend") : (isAdmin ? "Ban / Suspend" : "Suspend") + " User"}/>
+                    :
+                    <></>
+                  }
                   {
                     isAdmin ?
                       <>
-                        <div className={clsx("col", styles.actionsCard)}>
-                          <Heading as="h3">Reset Password</Heading>
-                          <FontAwesomeIcon icon={faLock} size="4x" />
-                          <hr/>
-                          <button className="button button--red button--sm margin--sm">Reset Password</button>
-                        </div>
-                        <div className={clsx("col", styles.actionsCard)}>
-                          <Heading as="h3">Delete Account</Heading>
-                          <FontAwesomeIcon icon={faTrash} size="4x" />
-                          <hr/>
-                          <button className="button button--red button--sm margin--sm">Delete Account</button>
-                        </div>
-                        <div className={clsx("col", styles.actionsCard)}>
-                          <Heading as="h3">Badge Management</Heading>
-                          <FontAwesomeIcon icon={faGavel} size="4x" />
-                          <hr/>
-                          <button className="button button--red button--sm margin--sm">Badge Management</button>
-                        </div>
+                        <ActionButton colour="blue" modalType={ModalTypes.ResetPass} icon={faLock} name="Reset Password" />
+                        <ActionButton colour="purple" modalType={ModalTypes.BadgeMgmt} icon={faShield} name="Badge Management" />
+                        <ActionButton colour="red" modalType={ModalTypes.DeleteAcc} icon={faTrash} name="Delete Account" />
                       </> : <></>
                   }
                 </div>
@@ -112,8 +122,8 @@ export default function UserDetails( { playerDetails, fromTable, openListView })
             </div>
           </div>
         </div>
-        <AltTable altList={playerDetails.associatedAccounts} />
-        <BadgeTable badgeData={playerDetails.badgeList}/>
+        {isAdmin ? <AltTable altList={playerDetails.associatedAccounts} /> : <></> }
+        {isAdmin ? <BadgeTable badgeData={playerDetails.badgeList}/> : <></> }
         <BanTable banData ={playerDetails.banList} />
       </>
   );

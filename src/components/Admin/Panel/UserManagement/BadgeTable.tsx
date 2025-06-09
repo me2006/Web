@@ -16,6 +16,7 @@ export default function BadgeTable( { badgeData }): ReactNode {
       for (const colData of rowData) {
         const td = document.createElement("td");
         td.textContent = colData;
+        td.style.overflowX = "auto";
         row.appendChild(td);
       }
       tbody.appendChild(row);

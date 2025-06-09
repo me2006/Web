@@ -1,4 +1,5 @@
 import { useState, createContext, useEffect } from "react";
+import Heading from "@theme/Heading";
 import Login from "@site/src/components/Admin/Login";
 import Panel from "@site/src/components/Admin/Panel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +11,7 @@ export const GmContext = createContext(null);
 
 export default function Admin() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [gm, setGM] = useState(Object);
 
   function login(email: string, password: string) {
     const data = {
@@ -52,18 +54,18 @@ export default function Admin() {
   }
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    let ignore = false;
     const cUser = getGmInfo();
+    setGM(cUser);
     setLoggedIn(cUser && cUser != null && Object.keys(cUser).length != 0 && cUser.token);
-    return () => { ignore = true; };
   },[]);
 
   return (
     <main className={styles.mainContainer}>
       { loggedIn ?
-        <div className={styles.logoutContainer}>
-          <button className="button button--red button--sm margin--sm" onClick={() => { logout(); }}>
+        <div className={styles.panelNavbar}>
+          <Heading as="h2">Sitekick Remastered Mod Panel</Heading>
+          <Heading as="h3">Welcome <span>{gm.type}</span> {gm.username}!</Heading>
+          <button className="button red sm margin--sm" onClick={() => { logout(); }}>
             Logout <FontAwesomeIcon icon={faSignOut} />
           </button>
         </div>

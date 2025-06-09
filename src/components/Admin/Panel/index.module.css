@@ -11,10 +11,6 @@
   box-shadow: 0 0 40px rgba(8,7,16,0.6);
   color: #FFF;
   margin-bottom:4rem;
-}
-
-.panelContainer:last-child {
-  min-height: 80%;
   flex-direction: unset;
   justify-content: unset;
   align-items: unset;

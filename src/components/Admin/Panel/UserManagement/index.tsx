@@ -2,21 +2,35 @@ import { useState, createContext, type ReactNode } from "react";
 import Heading from "@theme/Heading";
 import AccountTable from "./AccountTable";
 import EditInfoModal from "./EditInfoModal";
+import BanUserModal from "./Modals/BanUserModal";
+import DeleteAccountModal from "./Modals/DeleteAccountModal";
+import EditInfoModal from "./Modals/EditInfoModal";
+import ResetPassModal from "./Modals/ResetPassModal";
 import UserDetails from "./UserDetails";
 
 import styles from "./index.module.css";
 
 export const UmContext = createContext(null);
 
+enum ModalTypes {
+  None,
+  EditInfo,
+  BanUser,
+  ResetPass,
+  BadgeMgmt,
+  DeleteAcc
+}
+
 export default function UserManagement({ gmInfo }): ReactNode {
   const [searchTerm, setST] = useState("");
   const [modalUser, setMU] = useState("");
   const [fromTable, setFT] = useState(false);
   const [currView, setCV] = useState("search");
+  const [currModal, setCM] = useState(ModalTypes.None);
   const [playerList, setPL] = useState();
   const [playerDetails, setPD] = useState();
 
-  const getPlayerRequest = (noe, getList) => {
+  function getPlayerRequest(noe, getList) {
     const data = {
       author: gmInfo.username,
       token: gmInfo.token,
@@ -41,9 +55,9 @@ export default function UserManagement({ gmInfo }): ReactNode {
     }).catch(error => {
       console.error(error);
     });
-  };
+  }
 
-  const searchBtn = () => {
+  function searchBtn() {
     const noe = (document.getElementById("email") as HTMLInputElement).value;
     setST(noe);
     const searchType = (document.getElementById("searchType") as HTMLInputElement).value;
@@ -54,13 +68,13 @@ export default function UserManagement({ gmInfo }): ReactNode {
     if (searchType !== "list")
       viewDetails(noe, false);
     else
-      getPlayerRequest(noe, searchType == "list").then(data => { listData(data); });
+      getPlayerRequest(noe, searchType == "list").then(data =>listData(data));
 
     btn.innerHTML = "Search";
     btn.removeAttribute("disabled");
-  };
+  }
 
-  const listData = (data) => {
+  function listData(data) {
     if (!data) return;
     if (Object.keys(data.players).length == 1)
       viewDetails(gmInfo.type == "admin" ? data.players[0].email : data.players[0].username, false);
@@ -68,9 +82,9 @@ export default function UserManagement({ gmInfo }): ReactNode {
       setPL(data.players);
       setCV("list");
     }
-  };
+  }
 
-  const viewDetails = (noe, fromTable) => {
+  function viewDetails(noe, fromTable) {
     setFT(fromTable);
 
     getPlayerRequest(noe, false).then(data => {
@@ -78,7 +92,7 @@ export default function UserManagement({ gmInfo }): ReactNode {
       setPD(data.player);
       setCV("details");
     });
-  };
+  }
 
   function addActionButtons(row, o) {
     const buttonCol = document.createElement("td");
@@ -89,22 +103,27 @@ export default function UserManagement({ gmInfo }): ReactNode {
     const editInfoBtn = document.createElement("button");
     editInfoBtn.textContent = "🖋️ Edit Info";
     editInfoBtn.classList.add(styles.editInfoBtn);
-    editInfoBtn.onclick = () => openModal(o.username);
+    editInfoBtn.onclick = () => openModal(o.username, ModalTypes.EditInfo);
     buttonCol.append(viewDetailsBtn, editInfoBtn);
     row.append(buttonCol);
   }
 
-  const modal = document.getElementById("actionsModal");
+  const modalElem = document.getElementById("actionsModal");
 
-  const openModal = (modalUser) => {
+  function openModal(modalUser, currModal) {
     setMU(modalUser);
-    modal.style.display = "block";
-  };
+    setCM(currModal);
+    modalElem.style.display = "block";
+  }
+
+  function closeModal() {
+    modalElem.style.display = "none";
+  }
 
   // Close the modal if the user clicks anywhere outside
   window.onclick = function(event) {
-    if (event.target == modal)
-      modal.style.display = "none";
+    if (event.target == modalElem)
+      modalElem.style.display = "none";
   };
 
   return (
@@ -125,20 +144,32 @@ export default function UserManagement({ gmInfo }): ReactNode {
       </div>
       <hr className="w-90" />
       <UmContext.Provider value={{
+        gmInfo,
         isAdmin: gmInfo.type == "admin",
-        searchTerm: searchTerm,
-        addActionButtons: addActionButtons,
+        searchTerm,
+        ModalTypes,
+        playerDetails,
+        resetView: () => setCV("search"),
+        setPD,
+        openModal,
+        closeModal,
+        addActionButtons,
+        getPlayerRequest,
+
       }}>
         { currView == "list" ?
           <AccountTable playerList={playerList}/> :
           <></>
         }
         { currView == "details" ?
-          <UserDetails playerDetails={playerDetails} fromTable={fromTable} openListView={() => setCV("list")}/> :
+          <UserDetails fromTable={fromTable} openListView={() => setCV("list")}/> :
           <></>
         }
         <div id="actionsModal" className={styles.actionsModal}>
-          <EditInfoModal gmInfo={gmInfo} modalElement={modal} username={modalUser} getPlayerRequest={getPlayerRequest}/>
+          { currModal == ModalTypes.EditInfo ? <EditInfoModal username={modalUser} /> : <></> }
+          { currModal == ModalTypes.BanUser ? <BanUserModal /> : <></> }
+          { currModal == ModalTypes.ResetPass ? <ResetPassModal /> : <></> }
+          { currModal == ModalTypes.DeleteAcc ? <DeleteAccountModal /> : <></> }
         </div>
       </UmContext.Provider>
     </div>

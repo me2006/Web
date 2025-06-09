@@ -44,7 +44,10 @@ export default function Panel(): ReactNode {
         <div className={styles.panelContent}>
           <div className={styles.tabContainer}>
             <button id="umButton" className={styles.tabLinks} onClick={(e) => openTab(e, "UserManagement")}>User Management</button>
-            <button className={styles.tabLinks} onClick={(e) => openTab(e, "GameManagement")}>Game Management</button>
+            { gmInfo.type == "admin" ?
+              <button className={styles.tabLinks} onClick={(e) => openTab(e, "GameManagement")}>Game Management</button> :
+              <></>
+            }
             <button className={styles.tabLinks} onClick={(e) => openTab(e, "ActivityLog")}>Activity Log</button>
             <button className={styles.tabLinks} onClick={(e) => openTab(e, "ReportLog")}>Report Log</button>
           </div>

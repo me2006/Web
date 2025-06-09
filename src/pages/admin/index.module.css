@@ -14,11 +14,29 @@
   
 }
 
-.logoutContainer {
+.panelNavbar {
   position: sticky;
+  top: 0;
   display: flex;
-  justify-content: flex-end;
+  background: #242526;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  top: 5px;
-  float: right;
+  padding-left: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #CCC;
+  z-index: 999;
+}
+
+.panelNavbar h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.panelNavbar h3 {
+  position: absolute;
+  left: calc((100vw / 2) - 125px);
+}
+
+.panelNavbar h3 span {
+  text-transform: capitalize;
 }

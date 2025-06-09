@@ -7,7 +7,6 @@
 }
 
 .inputGroup {
-  position: relative;
   display: flex;
   align-items: stretch;
   width: 30%;
@@ -15,7 +14,6 @@
 }
 
 .searchInput, .infoInput {
-  position: relative;
   flex: 1 1 auto;
   width: 1%;
   margin-bottom: 0;
@@ -31,8 +29,13 @@
   border-bottom-left-radius: 0.5rem;
 }
 
+
 .infoInput {
   border-radius: 0.5rem;
+}
+
+.infoInput.sm {
+  width: 25%;
 }
 
 .infoLabel {
@@ -75,12 +78,14 @@
 
 .emptyListText {
   padding-top: 1rem;
+  margin-bottom: 0;
   text-align: center;
 }
 
 .altTableContainer, .badgeTableContainer, .banTableContainer {
   max-width: 80%;
   width: 80%;
+  margin-top: 1rem;
 }
 
 .accordionInput {
@@ -133,22 +138,18 @@
   display: block;
 }
 
-.listTableContainer {
-  width: 90%;
-}
-
 .listTable {
   width: 100%;
   display: inline-table;
   table-layout: fixed;
 }
 
-.listTable > tbody > tr > td:last-child {
+.playerListTable >tbody > tr > td:last-child {
   display: flex;
   justify-content: space-evenly;
 }
 
-.listTable button, .changePlayerInfoBtn {
+.playerListTable button, .changePlayerInfoBtn, .banUserBtn, .changePassBtn {
   display: inline-block;
   font-weight: bold;
   text-align: center;
@@ -166,39 +167,44 @@
   cursor: pointer;
 }
 
-.viewDetailsBtn {
+.viewDetailsBtn, .changePassBtn {
   color: #FFF;
-  background-color: #007BFF;
-  border-color: #007BFF;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .editInfoBtn, .changePlayerInfoBtn {
   color: #212529;
-  background-color: #E0A800;
-  border-color: #D39E00;
+  background-color: #e0a800;
+  border-color: #d39e00;
 }
 
-.changePlayerInfoBtn {
+.banUserBtn {
+  color: #FFF;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.changePlayerInfoBtn, .banUserBtn, .changePassBtn {
   display: flex;
   margin: auto;
 }
 
-.viewDetailsBtn:hover, .editInfoBtn:hover, .changePlayerInfoBtn:hover {
+.viewDetailsBtn:hover, .editInfoBtn:hover, .changePlayerInfoBtn:hover, .banUserBtn:hover {
   filter: brightness(60%);
 }
 
 .playerDetailsContainer {
   width: 30rem;
-  margin: 10px 0;
+  margin: 3px 0 0.5rem 0;
   padding: 10px;
-  background: #02131A;
+  background: #000;
   border: 1px solid rgba(255,255,255,0.15);
   font-size: 0.9em;
 }
 
 .playerDetailsImg {
   float: left;
-  position: relative;
   width: 75px;
   height: 75px;
   margin: 5px 10px 5px 0;
@@ -221,7 +227,7 @@
   border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
-.playerDetailsValue {
+.playerDetailsInfoBlock span {
   float: right;
   color: #6E7879;
 }
@@ -277,28 +283,18 @@
   padding: 1.5rem;
 }
 
-.actionsContainer {
-  display:flex;
-  flex-direction: column;
-  min-height: calc(70vh);
-  margin-left: 1rem;
-  /*min-height: calc(100vh - 11vh);*/
-}
-
 .actionsCard {
   text-align: center;
-  border-radius: 25px;
-  border: 2px solid var(--text-colour);
-  padding: 1rem;
-  margin: 0rem 1rem;
-  margin-bottom: 1rem;
-  min-width: 25%;
+  padding: 0.5rem;
 }
 
+.buttonIcon {
+  margin-right: 3px;
+}
 
-.actionsCard hr {
-  background-color: var(--ifm-hr-background-color);
-  border: 0;
-  height: var(--ifm-hr-height);
-  margin: 1rem 0rem 0.5rem 0rem;
+.textareaReason {
+  width: 100%;
+  height: 5rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
 }

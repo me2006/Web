@@ -26,7 +26,7 @@ export default function Login() {
           <input className={styles.passInput} onChange={(e) => setPassword(e.target.value)} name="password" id="password" type="password" placeholder="Password" required />
         </div>
         <div className={styles.btnDiv}>
-          <button type="button" className="button" onClick={() => login(email, password)}>Login</button>
+          <button type="button" className="button--flat" onClick={() => login(email, password)}>Login</button>
         </div>
       </form>
     </div>

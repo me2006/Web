@@ -1,15 +1,13 @@
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect, useContext, type ReactNode } from "react";
 import Heading from "@theme/Heading";
+import { UmContext } from "..";
 
-import styles from "./index.module.css";
+import styles from "../index.module.css";
 
-export default function EditInfoModal( { gmInfo, modalElement, username, getPlayerRequest }): ReactNode {
+export default function EditInfoModal( { username }): ReactNode {
+  const { gmInfo, closeModal, playerDetails, setPD, getPlayerRequest } = useContext(UmContext);
+
   const [dataError, setDE] = useState(false);
-  const [playerData, setPD] = useState({
-    email: "",
-    username: "",
-    sitekickName: "",
-  });
   const [accountId, setAI] = useState(-1);
 
   useEffect(() => {
@@ -36,7 +34,7 @@ export default function EditInfoModal( { gmInfo, modalElement, username, getPlay
       author: gmInfo.username,
       token: gmInfo.token,
       account_id: accountId,
-      values_to_change: `${newEmail != playerData.email}, ${newUsername != playerData.username}, ${newSitekickName != playerData.sitekickName}`,
+      values_to_change: `${newEmail != playerDetails.email}, ${newUsername != playerDetails.username}, ${newSitekickName != playerDetails.sitekickName}`,
       new_email: newEmail,
       new_username: newUsername,
       new_sitekick_name: newSitekickName
@@ -61,9 +59,9 @@ export default function EditInfoModal( { gmInfo, modalElement, username, getPlay
 
   return (
     <div className={styles.modalContainer}>
-      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#E0A800" }}>
-        <span id="closeModal" className={styles.closeModal} onClick={() => modalElement.style.display = "none"}>&times;</span>
-        <Heading as="h2" id="modalTitle" className={styles.modalTitle}>Edit User Info</Heading>
+      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#e0a800" }}>
+        <span id="closeModal" className={styles.closeModal} onClick={() => closeModal()}>&times;</span>
+        <Heading as="h2" className={styles.modalTitle}>Edit User Info</Heading>
       </div>
       <div id="modalBody" className={styles.modalBody}>
         <div id="modalContent" className={styles.modalContent}>
@@ -74,21 +72,21 @@ export default function EditInfoModal( { gmInfo, modalElement, username, getPlay
                 Please try again later or contact the server admin.
               </p> :
               <>
-                <p style={{ textAlign: "center" }}>Modify the input boxes below and click save to change the user's information.</p>
+                <p className="text-center">Modify the input boxes below and click save to change the user's information.</p>
                 {
                   gmInfo.type == "admin" ?
                     <>
                       <label htmlFor="changeEmail" className={styles.infoLabel}>Email:</label>
-                      <input className={styles.infoInput} name="changeEmail" id="changeEmail" type="email" defaultValue={playerData.email} />
+                      <input className={styles.infoInput} name="changeEmail" id="changeEmail" type="email" defaultValue={playerDetails.email} />
                       <br />
                     </>
                     : <></>
                 }
                 <label htmlFor="changeUsername" className={styles.infoLabel}>Username:</label>
-                <input className={styles.infoInput} name="changeUsername" id="changeUsername" type="text" defaultValue={playerData.username} />
+                <input className={styles.infoInput} name="changeUsername" id="changeUsername" type="text" defaultValue={playerDetails.username} />
                 <br/>
                 <label htmlFor="changeSitekickName" className={styles.infoLabel}>Sitekick Name:</label>
-                <input className={styles.infoInput} name="changeSitekickName" id="changeSitekickName" type="text" defaultValue={playerData.sitekickName} />
+                <input className={styles.infoInput} name="changeSitekickName" id="changeSitekickName" type="text" defaultValue={playerDetails.sitekickName} />
                 <br/>
                 <button type="button" className={styles.changePlayerInfoBtn} onClick={() => changeInfo()}>Change player info</button>
               </>
