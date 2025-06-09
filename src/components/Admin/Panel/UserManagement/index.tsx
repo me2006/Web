@@ -109,8 +109,8 @@ export default function UserManagement({ gmInfo }): ReactNode {
 
   return (
     <div className={styles.searchContainer}>
-      <Heading as="h3" style={{ padding: 0, margin: 0 }}>User search:</Heading>
-      <p style={{ textAlign: "center" }}>
+      <Heading as="h3" className="p-0 m-0">User search:</Heading>
+      <p className="text-center">
         List mode will print a list of users with names that contain the search query<br/>
         Single mode will find a user with the exact email or username specified
       </p>
@@ -123,6 +123,7 @@ export default function UserManagement({ gmInfo }): ReactNode {
         </select>
         <button type="button" id="searchBtn" className={styles.searchBtn} onClick={() => searchBtn()}>Search</button>
       </div>
+      <hr className="w-90" />
       <UmContext.Provider value={{
         isAdmin: gmInfo.type == "admin",
         searchTerm: searchTerm,

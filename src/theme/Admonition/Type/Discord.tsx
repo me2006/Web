@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 import Translate from "@docusaurus/Translate";
 import type { Props } from "@theme/Admonition/Type/Tip";
 import AdmonitionLayout from "@theme/Admonition/Layout";
@@ -24,7 +23,7 @@ export default function AdmonitionTypeDiscord(props: Props): JSX.Element {
     <AdmonitionLayout
       {...defaultProps}
       {...props}
-      className={clsx(infimaClassName, props.className)}>
+      className={`${infimaClassName} ${props.className}`}>
       {props.children}
     </AdmonitionLayout>
   );

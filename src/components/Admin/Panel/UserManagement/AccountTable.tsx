@@ -32,7 +32,7 @@ export default function AccountTable({ playerList }): ReactNode {
     !playerList || playerList.length == 0 ?
       <Heading as='h3' className={styles.emptyListText}>No players were found with the Email / Username: "${searchTerm}"</Heading>
       :
-      <table id="playerListTable" className={styles.listTable}>
+      <table id="playerListTable" className={`${styles.listTable} ${styles.playerListTable}`}>
         <thead>
           <tr>
             <th>Account ID</th>

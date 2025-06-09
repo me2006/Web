@@ -1,5 +1,4 @@
 import React, { type ReactNode } from "react";
-import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import isInternalUrl from "@docusaurus/isInternalUrl";
@@ -13,7 +12,7 @@ export default function FooterLinkItem({ item }: Props): ReactNode {
 
   return (
     <Link
-      className={clsx("footer__link-item", className)}
+      className={`footer__link-item ${className}`}
       {...(href ?
         { href: prependBaseUrlToHref ? normalizedHref : href, } :
         { to: toUrl, })}

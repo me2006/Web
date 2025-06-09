@@ -1,5 +1,4 @@
 import React, { type ReactNode } from "react";
-import clsx from "clsx";
 import LinkItem from "@theme/Footer/LinkItem";
 import type { Props } from "@theme/Footer/Links/Simple";
 
@@ -10,7 +9,7 @@ function Separator() {
 function SimpleLinkItem({ item }: {item: Props["links"][number]}) {
   return item.html ? (
     <span
-      className={clsx("footer__link-item", item.className)}
+      className={`footer__link-item ${item.className}`}
       // Developer provided the HTML, so assume it"s safe.
       dangerouslySetInnerHTML={{ __html: item.html }}
     />

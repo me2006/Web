@@ -34,7 +34,7 @@ export default function BanTable( { banData }): ReactNode {
             <thead>
               <tr>
                 <th>Expiration</th>
-                <th>Reason</th>
+                <th className="w-50">Reason</th>
                 <th>Ban Author</th>
                 <th>Date Created</th>
               </tr>

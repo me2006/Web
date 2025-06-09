@@ -35,7 +35,7 @@ export default function BadgeTable( { badgeData }): ReactNode {
               <tr>
                 <th>Badge ID</th>
                 <th>Badge Name</th>
-                <th>Metadata</th>
+                <th className="w-40">Metadata</th>
                 <th>Badge Level</th>
                 <th>Date Earned</th>
               </tr>

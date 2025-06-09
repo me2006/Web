@@ -13,9 +13,7 @@ export default function FooterLayout({
 }: Props): ReactNode {
   return (
     <footer
-      className={clsx("footer", {
-        "footer--dark": style === "dark",
-      })}>
+      className={clsx("footer", { "footer--dark": style === "dark" })}>
       <div className="footer__container">
         <div className="social__links">
           <Link to="https://discord.sitekickremastered.com" className="discord__logo">

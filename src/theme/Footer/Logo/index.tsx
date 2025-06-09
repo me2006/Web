@@ -1,5 +1,4 @@
 import React, { type ReactNode } from "react";
-import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import ThemedImage from "@theme/ThemedImage";
@@ -15,7 +14,7 @@ function LogoImage({ logo }: Props) {
   };
   return (
     <ThemedImage
-      className={clsx("footer__logo", logo.className)}
+      className={`footer__logo ${logo.className}`}
       alt={logo.alt}
       sources={sources}
       width={logo.width}

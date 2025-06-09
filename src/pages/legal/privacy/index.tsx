@@ -6,7 +6,7 @@ import Link from "@docusaurus/Link";
 export default function Cookies(): ReactNode {
   return (
     <Layout title={"Privacy Policy"} description="Clickity-click, it's Sitekick!">
-      <main style={{ width: "80%", margin: "3rem auto" }}>
+      <main className="w-80 m-3a">
         <Heading as="h1">Privacy Policy</Heading>
 
         <br />

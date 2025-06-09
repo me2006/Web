@@ -1,5 +1,4 @@
 import { useContext, useEffect, type ReactNode } from "react";
-import Heading from "@theme/Heading";
 import { GmContext } from "@site/src/pages/admin";
 import UserManagement from "./UserManagement";
 import GameManagement from "./GameManagement";
@@ -40,11 +39,7 @@ export default function Panel(): ReactNode {
   const gmInfo = getGmInfo();
 
   return (
-    <div style={{ width: "90%" }}>
-      <div className={styles.panelContainer} style={{ marginBottom: "1rem" }}>
-        <Heading as="h1">Sitekick Remastered Mod Panel</Heading>
-        <Heading as="h3" style={{ margin: 0 }}>Welcome <span style={{ textTransform: "capitalize" }}>{gmInfo.type}</span> {gmInfo.username}!</Heading>
-      </div>
+    <div className="w-90">
       <div className={styles.panelContainer}>
         <div className={styles.panelContent}>
           <div className={styles.tabContainer}>

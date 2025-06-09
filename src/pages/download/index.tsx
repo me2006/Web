@@ -5,7 +5,6 @@ import Heading from "@theme/Heading";
 import Link from "@docusaurus/Link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
-import clsx from "clsx";
 
 import styles from "./index.module.css";
 
@@ -59,14 +58,14 @@ function DownloadPage() {
           </div>
 
           { /* Beta warning */ }
-          <div className={clsx("admonition alert alert--danger", styles.alertDiv)}>
-            <div className={clsx("admonitionHeading", styles.alertFont)}>
-              <span className={clsx("admonitionIcon", styles.alertFont)}>
+          <div className={`admonition alert alert--danger ${styles.alertDiv}`}>
+            <div className={`admonitionHeading ${styles.alertFont}`}>
+              <span className={`admonitionIcon ${styles.alertFont}`}>
                 <FontAwesomeIcon icon={faWarning} />
                 <b> Warning</b>
               </span>
             </div>
-            <div className={clsx("admonitionContent", styles.alertFont)}>
+            <div className={`admonitionContent ${styles.alertFont}`}>
               <p>Sitekick Remastered is still in Beta. All chips, xp, and collection lists will be wiped upon the full release.</p>
             </div>
           </div>

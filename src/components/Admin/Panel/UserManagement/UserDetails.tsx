@@ -55,10 +55,10 @@ export default function UserDetails( { playerDetails, fromTable, openListView })
       :
       <>
         { fromTable ?
-          <button style={{ display: "flex", margin: "auto", marginBottom: "1rem" }} onClick={() => openListView()}>Back to List</button> :
+          <button className="d-flex m-auto mb-1" onClick={() => openListView()}>Back to List</button> :
           <></>
         }
-        <div style={{ display: "flex", justifyContent: "space-between", width: "80%" }}>
+        <div className="d-flex w-50">
           <div>
             <Heading as="h2" className="text--center">Player Info</Heading>
             <div id="playerDetailsContainer" className={styles.playerDetailsContainer}>
@@ -66,6 +66,7 @@ export default function UserDetails( { playerDetails, fromTable, openListView })
               <Heading as="h2" className={styles.playerDetailsName}>{playerDetails.username}</Heading>
             </div>
           </div>
+          <div className="mx-1" />
           <div>
             <div id="actionCards">
               <Heading as="h2" className="text--center" style={{ marginLeft: "1rem" }}>Actions</Heading>

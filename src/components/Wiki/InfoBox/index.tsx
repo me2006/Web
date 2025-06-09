@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./style.module.css";
 
@@ -76,12 +75,12 @@ function InfoboxDataRow({ title, data }) {
 export default function InfoBox({ title, imgUrl, imgAlt, caption, categories }: InfoBoxItem) {
   const keys = Object.keys(categories);
   return (
-    <div style={{ width: "100%" }}>
-      <div className="ytvContainer orange infobox">
+    <div className="w-100">
+      <div className="ytvContainer orange">
         <div className={styles.bubbleContainer}>
           <Heading as="h2" className={styles.bubbleHeading}>{title}</Heading>
         </div>
-        <div className={clsx(styles.infobox, "ytvContainerInner green")}>
+        <div className={`ytvContainerInner green ${styles.infobox}`}>
           <div>
             <img src={imgUrl} className={styles.infoboxImg} alt={imgAlt} />
             <p className={styles.infoboxImgCaption}>{caption}</p>

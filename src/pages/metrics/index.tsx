@@ -3,7 +3,6 @@ import Layout from "@theme/Layout";
 import Heading from "@theme/Heading";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightDots, faCalendarCheck, faHandsHoldingCircle, faPercent, faStar, faUser, faUserClock, faUserPlus, faUsersLine, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
@@ -103,7 +102,7 @@ const ChipMetricsList: ChipMetricsItem[] = [
 
 function MetricsCard(props) {
   return (
-    <div className={clsx("col", styles.metricsCard)}>
+    <div className={`col ${styles.metricsCard}`}>
       <Heading as="h2">{ props.title }</Heading>
       <FontAwesomeIcon icon={props.icon} size="6x" />
       <hr />
@@ -120,7 +119,7 @@ function MetricsCardChip(props) {
   const chipIcon = `/img/wiki/chipendium/icons/chip_${props.data[props.keyStr]}_icon.png`;
   const iconAlt = `Chip #${props.data[props.keyStr]} icon`;
   return (
-    <div className={clsx("col", styles.metricsCard)}>
+    <div className={`col ${styles.metricsCard}`}>
       <Heading as="h2">{ props.title }</Heading>
       {
         (props.data[props.keyStr]) ?
@@ -163,9 +162,7 @@ export default function Status() {
       <div className={styles.metricsContainer}>
         <Heading as="h1" className={styles.title}>Metrics</Heading>
         {isLoading ?
-          <>
-            <img src="/img/loading.png" style={{ maxHeight: "55vh" }} alt="Loading image for metrics" />
-          </>
+          <img src="/img/loading.png" alt="Loading image for metrics" />
           :
           (Object.keys(data).length) ?
             <>
@@ -184,7 +181,7 @@ export default function Status() {
             :
             <>
               <p>Failed to get metrics from the server. Please check <Link to="/status">sitekickremastered.com/status</Link> to see our server status</p>
-              <img src="/img/error.jpg" style={{ maxHeight: "55vh" }} alt="Badly drawn Dr. Frantic and Sitekick with error text" />
+              <img src="/img/error.jpg" alt="Badly drawn Dr. Frantic and Sitekick with error text" />
             </>
         }
       </div>

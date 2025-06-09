@@ -1,5 +1,4 @@
 import React, { type ReactNode } from "react";
-import clsx from "clsx";
 import LinkItem from "@theme/Footer/LinkItem";
 import type { Props } from "@theme/Footer/Links/MultiColumn";
 
@@ -9,7 +8,7 @@ type ColumnItemType = ColumnType["items"][number];
 function ColumnLinkItem({ item }: {item: ColumnItemType}) {
   return item.html ? (
     <li
-      className={clsx("footer__item", item.className)}
+      className={`footer__item ${item.className}`}
       // Developer provided the HTML, so assume it"s safe.
       dangerouslySetInnerHTML={{ __html: item.html }}
     />
@@ -22,7 +21,7 @@ function ColumnLinkItem({ item }: {item: ColumnItemType}) {
 
 function Column({ column }: {column: ColumnType}) {
   return (
-    <div className={clsx("col footer__col", column.className)}>
+    <div className={`col footer__col ${column.className}`}>
       <div className="footer__title">{column.title}</div>
       <ul className="footer__items clean-list">
         {column.items.map((item, i) => (
