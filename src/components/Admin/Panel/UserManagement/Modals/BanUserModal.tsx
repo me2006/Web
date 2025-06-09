@@ -29,6 +29,15 @@ export default function BanUserModal(): ReactNode {
     const isBanned = isAdmin ? (document.getElementById("permaBanBox") as HTMLInputElement).checked : false;
     const reason = (document.getElementById("reason") as HTMLInputElement).value;
 
+    if (!expiration && !isBanned) {
+      alert("Must have a valid expiration date (unless player is permanently banned)!");
+      return;
+    }
+    if (reason === null || reason.match(/^ *$/) !== null) {
+      alert("Reason must not be empty!");
+      return;
+    }
+
     const data = {
       author: gmInfo.username,
       token: gmInfo.token,
