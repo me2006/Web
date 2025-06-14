@@ -50,34 +50,32 @@ export default function DeleteAccountModal(): ReactNode {
 
   return (
     <div className={styles.modalContainer}>
-      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#cc0000" }}>
-        <span id="closeModal" className={styles.closeModal} onClick={() => closeModal()}>&times;</span>
+      <div id="modalHeader" className={`${styles.modalHeader} ${styles.light}`} style={{ backgroundColor: "#1a1a1a" }}>
+        <span id="closeModal" className={`${styles.closeModal} ${styles.light}`} onClick={() => closeModal()}>&times;</span>
         <Heading as="h2" className={styles.modalTitle}>Delete Account</Heading>
       </div>
       <div id="modalBody" className={styles.modalBody}>
-        <div id="modalContent" className={styles.modalContent}>
-          {
-            dataError ?
-              <p>
-                Error: There was an error getting this player's information.<br/>
-                Please try again later or contact the server admin.
-              </p> :
-              <>
-                <p className="text-center mb-0"><b>Warning:</b> The button that appears after clicking the checkbox below will delete {playerDetails.username}'s account.</p>
-                <p className="text-center mb-0"><b>This action cannot be undone.</b></p>
-                <p className="text-center mb-0">Are you sure you want to delete this account?</p>
-                <br/>
-                <input type="checkbox" id="deleteAccBox" name="deleteAccBox" />
-                <label htmlFor="deleteAccBox"> Yes, I want to delete {playerDetails.username}'s account</label>
-                <br/>
-                {
-                  confirmed ?
-                    <button type="button" className={styles.banUserBtn} onClick={ () => deleteAccount()}>Delete Account</button> :
-                    <></>
-                }
-              </>
-          }
-        </div>
+        {
+          dataError ?
+            <p>
+              Error: There was an error getting this player's information.<br/>
+              Please try again later or contact the server admin.
+            </p> :
+            <>
+              <p className="text-center mb-0"><b>Warning:</b> The button that appears after clicking the checkbox below will delete {playerDetails.username}'s account.</p>
+              <p className="text-center mb-0"><b>This action cannot be undone.</b></p>
+              <p className="text-center mb-0">Are you sure you want to delete this account?</p>
+              <br/>
+              <input type="checkbox" id="deleteAccBox" name="deleteAccBox" />
+              <label htmlFor="deleteAccBox"> Yes, I want to delete {playerDetails.username}'s account</label>
+              <br/>
+              {
+                confirmed ?
+                  <button type="button" className={styles.banUserBtn} onClick={ () => deleteAccount()}>Delete Account</button> :
+                  <></>
+              }
+            </>
+        }
       </div>
     </div>
   );

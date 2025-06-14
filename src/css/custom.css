@@ -769,7 +769,6 @@ button.lg, button--flat.lg {
     inset -4px -4px 4px #133800;
 }
 
-
 .button--flat.purple {
   background: #9933cc;
   /*color: #cc99ff;*/
@@ -784,6 +783,66 @@ button.lg, button--flat.lg {
   box-shadow:
     inset 4px 4px 4px #5e37f9,
     inset -4px -4px 4px #1f0037;
+}
+
+.button--flat.orange {
+  background: #ff4500;
+  color: #000;
+  box-shadow:
+    inset 4px 4px 4px #ff9031,
+    inset -4px -4px 4px #dc1c01;
+}
+.button--flat.orange:hover {
+  background: #8e2100;
+  color: #f84b17;
+  box-shadow:
+    inset 4px 4px 4px #f84b17,
+    inset -4px -4px 4px #441000;
+}
+
+.button--flat.pink {
+  background: #ff2994;
+  color: #000;
+  box-shadow:
+    inset 4px 4px 4px #ff8383,
+    inset -4px -4px 4px #f20069;
+}
+.button--flat.pink:hover {
+  background: #8e0061;
+  color: #ed15a9;
+  box-shadow:
+    inset 4px 4px 4px #ed15a9,
+    inset -4px -4px 4px #380026;
+}
+
+.button--flat.black {
+  background: #1a1a1a;
+  color: #eee;
+  box-shadow:
+    inset 4px 4px 4px #242424,
+    inset -4px -4px 4px #0f0f0f;
+}
+.button--flat.black:hover {
+  background: #141414;
+  color: #555;
+  box-shadow:
+    inset 4px 4px 4px #1d1d1d,
+    inset -4px -4px 4px #0c0c0c;
+}
+
+.button--flat.white {
+  background: #d5d5d5;
+  color: #000;
+  box-shadow:
+    inset 4px 4px 4px #e7e7e7,
+    inset -4px -4px 4px #c4c4c4;
+}
+.button--flat.white:hover {
+  background: #b0b0b0;
+  color: #bebebe;
+  box-shadow:
+    inset 4px 4px 4px #bebebe,
+    inset -4px -4px 4px #a1a1a1;
 }
 
 @media screen and (min-width: 2000px) {

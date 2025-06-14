@@ -1,10 +1,7 @@
 import { useContext, useEffect, useState, type ReactNode } from "react";
 import Heading from "@theme/Heading";
-import AltTable from "./AltTable";
-import BadgeTable from "./BadgeTable";
-import BanTable from "./BanTable";
 import { UmContext } from ".";
-import { faSquareCheck, faGavel, faLock, faPenToSquare, faShield, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faSquareCheck, faGavel, faLock, faPenToSquare, faShield, faTrash, faClone, faBook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./index.module.css";
@@ -74,7 +71,7 @@ export default function UserDetails( { fromTable, openListView }): ReactNode {
           <button className="d-flex m-auto mb-1" onClick={() => openListView()}>Back to List</button> :
           <></>
         }
-        <div className="d-flex w-50">
+        <div className="d-flex">
           <div>
             <div id="playerDetailsContainer" className={styles.playerDetailsContainer}>
               <div className={styles.playerDetailsImg} style={{ backgroundColor: playerDetails.sitekickColour || "#FFCC00" }} />
@@ -109,12 +106,14 @@ export default function UserDetails( { fromTable, openListView }): ReactNode {
                     :
                     <></>
                   }
+                  <ActionButton colour="orange" modalType={ModalTypes.BanHistory} icon={faBook} name="Ban History" />
                   {
                     isAdmin ?
                       <>
+                        <ActionButton colour="pink" modalType={ModalTypes.AltAccounts} icon={faClone} name="Alternate Accounts" />
                         <ActionButton colour="blue" modalType={ModalTypes.ResetPass} icon={faLock} name="Reset Password" />
                         <ActionButton colour="purple" modalType={ModalTypes.BadgeMgmt} icon={faShield} name="Badge Management" />
-                        <ActionButton colour="red" modalType={ModalTypes.DeleteAcc} icon={faTrash} name="Delete Account" />
+                        <ActionButton colour="black" modalType={ModalTypes.DeleteAcc} icon={faTrash} name="Delete Account" />
                       </> : <></>
                   }
                 </div>
@@ -122,9 +121,6 @@ export default function UserDetails( { fromTable, openListView }): ReactNode {
             </div>
           </div>
         </div>
-        {isAdmin ? <AltTable altList={playerDetails.associatedAccounts} /> : <></> }
-        {isAdmin ? <BadgeTable badgeData={playerDetails.badgeList}/> : <></> }
-        <BanTable banData ={playerDetails.banList} />
       </>
   );
 }

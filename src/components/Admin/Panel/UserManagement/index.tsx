@@ -1,7 +1,7 @@
-import { useState, createContext, type ReactNode } from "react";
+import { useContext, useEffect, useState, createContext, type ReactNode } from "react";
+
 import Heading from "@theme/Heading";
-import AccountTable from "./AccountTable";
-import EditInfoModal from "./EditInfoModal";
+import BadgeMgmtModal from "./Modals/BadgeMgmtModal";
 import BanUserModal from "./Modals/BanUserModal";
 import DeleteAccountModal from "./Modals/DeleteAccountModal";
 import EditInfoModal from "./Modals/EditInfoModal";
@@ -9,6 +9,8 @@ import ResetPassModal from "./Modals/ResetPassModal";
 import UserDetails from "./UserDetails";
 
 import styles from "./index.module.css";
+import BanHistoryModal from "./Modals/BanHistoryModal";
+import AltAccountsModal from "./Modals/AltAccountsModal";
 
 export const UmContext = createContext(null);
 
@@ -16,6 +18,8 @@ enum ModalTypes {
   None,
   EditInfo,
   BanUser,
+  BanHistory,
+  AltAccounts,
   ResetPass,
   BadgeMgmt,
   DeleteAcc
@@ -126,6 +130,11 @@ export default function UserManagement({ gmInfo }): ReactNode {
       modalElem.style.display = "none";
   };
 
+  document.onkeyup = function(event) {
+    if (event.key === "Escape" || event.key === "Esc")
+      modalElem.style.display = "none";
+  };
+
   return (
     <div className={styles.searchContainer}>
       <Heading as="h3" className="p-0 m-0">User search:</Heading>
@@ -168,10 +177,57 @@ export default function UserManagement({ gmInfo }): ReactNode {
         <div id="actionsModal" className={styles.actionsModal}>
           { currModal == ModalTypes.EditInfo ? <EditInfoModal username={modalUser} /> : <></> }
           { currModal == ModalTypes.BanUser ? <BanUserModal /> : <></> }
+          { currModal == ModalTypes.BanHistory ? <BanHistoryModal /> : <></> }
+          { currModal == ModalTypes.AltAccounts ? <AltAccountsModal /> : <></> }
           { currModal == ModalTypes.ResetPass ? <ResetPassModal /> : <></> }
+          { currModal == ModalTypes.BadgeMgmt ? <BadgeMgmtModal /> : <></> }
           { currModal == ModalTypes.DeleteAcc ? <DeleteAccountModal /> : <></> }
         </div>
       </UmContext.Provider>
     </div>
+  );
+}
+
+
+function AccountTable({ playerList }): ReactNode {
+  const { isAdmin, searchTerm, addActionButtons } = useContext(UmContext);
+
+
+  useEffect(() => {
+    if (!playerList || playerList.length == 0)
+      return;
+
+    const tbody = document.getElementById("plTableBody") as HTMLTableElement;
+    playerList.forEach((o) => {
+      const rowData = isAdmin ?
+        [o.accountId, o.email, o.username, o.sitekickName] :
+        [o.accountId, o.username, o.sitekickName];
+      const row = document.createElement("tr");
+      for (const colData of rowData) {
+        const td = document.createElement("td");
+        td.textContent = colData;
+        row.appendChild(td);
+      }
+      addActionButtons(row, o);
+      tbody.appendChild(row);
+    });
+  }, [playerList]);
+
+  return (
+    !playerList || playerList.length == 0 ?
+      <Heading as='h3' className={styles.emptyListText}>No players were found with the Email / Username: "${searchTerm}"</Heading>
+      :
+      <table id="playerListTable" className={`${styles.listTable} ${styles.playerListTable}`}>
+        <thead>
+          <tr>
+            <th>Account ID</th>
+            {isAdmin ? <th>Email</th> : <></>}
+            <th>Username</th>
+            <th>Sitekick Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="plTableBody"></tbody>
+      </table>
   );
 }

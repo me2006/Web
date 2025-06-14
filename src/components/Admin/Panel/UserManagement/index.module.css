@@ -77,65 +77,7 @@
 }
 
 .emptyListText {
-  padding-top: 1rem;
-  margin-bottom: 0;
   text-align: center;
-}
-
-.altTableContainer, .badgeTableContainer, .banTableContainer {
-  max-width: 80%;
-  width: 80%;
-  margin-top: 1rem;
-}
-
-.accordionInput {
-  display: none;
-}
-
-.accordionLabel {
-  display: block;    
-  position: relative;
-  font-family: "CCSmash";
-  padding: 0.5rem 1.5rem;
-  cursor: pointer;
-  background: var(--ytv-purple);
-  color: #FFF;
-  transition: ease .5s;
-}
-
-.accordionLabel:hover {
-  background: var(--ytv-green);
-  color: #000;
-}
-
-.accordionLabel:after {
-  content: '+';
-  font-family: "Roboto";
-  font-size: 30px;
-  font-weight: bold;
-  position: absolute;
-  right: 10px;
-  top: -5px;
-}
-
-.accordionInput:checked + .accordionLabel:after {
-  content: '-';
-  right: 16px;
-  top: -6px;
-}
-
-.accordionContent {
-  background: unset;
-  padding: 10px 25px;
-  border: 1px solid #CCC;
-}
-
-.accordionInput + .accordionLabel + .accordionContent {
-  display: none;
-}
-
-.accordionInput:checked + .accordionLabel + .accordionContent {
-  display: block;
 }
 
 .listTable {
@@ -244,6 +186,7 @@
 }
 
 .modalContainer {
+  max-height: 80vh;
   position: relative;
   width: 50%;
   top: 45%;
@@ -260,6 +203,10 @@
   color: #000;
 }
 
+.modalHeader.light {
+  color: #FFF;
+}
+
 .modalTitle {
   margin: 0;
 }
@@ -273,6 +220,10 @@
   margin-top: -0.5rem;
 }
 
+.closeModal.light {
+  color: #FFF;
+}
+
 .closeModal:hover, .closeModal:focus {
   color: var(--ytv-purple);
   text-decoration: none;
@@ -280,7 +231,9 @@
 }
 
 .modalBody {
+  max-height: calc(80vh - 3.375rem);
   padding: 1.5rem;
+  overflow-y: auto;
 }
 
 .actionsCard {

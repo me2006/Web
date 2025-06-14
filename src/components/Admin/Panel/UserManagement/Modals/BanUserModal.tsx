@@ -76,35 +76,33 @@ export default function BanUserModal(): ReactNode {
         <Heading as="h2" className={styles.modalTitle}>{ isAdmin ? "Ban / Suspend User" : "Suspend User" }</Heading>
       </div>
       <div id="modalBody" className={styles.modalBody}>
-        <div id="modalContent" className={styles.modalContent}>
-          {
-            dataError ?
-              <p>
-                Error: There was an error getting this player's information.<br/>
-                Please try again later or contact the server admin.
-              </p> :
-              <>
-                <p className="text-center mb-0">Enter the information below.</p>
-                <div>
-                  <label htmlFor="expiration" className={styles.infoLabel}>Expiration:</label>
-                  <input className={`${styles.infoInput} ${styles.sm}`} name="expiration" id="expiration" type="date" />
-                  { isAdmin ?
-                    <>
-                      <br/>
-                      <input type="checkbox" id="permaBanBox" name="permaBanBox" />
-                      <label htmlFor="permaBanBox"> Permanently Ban</label>
-                    </> :
-                    <></>
-                  }
-                </div>
-                <br/>
-                <label htmlFor="reason" className={styles.infoLabel}>Reason (max 512 characters):</label>
-                <textarea className={styles.textareaReason} name= "reason" id="reason" maxLength={512} />
-                <br/>
-                <button type="button" className={styles.banUserBtn} onClick={ () => banUser()}>{isAdmin ? "Ban / Suspend User" : "Suspend User" }</button>
-              </>
-          }
-        </div>
+        {
+          dataError ?
+            <p>
+              Error: There was an error getting this player's information.<br/>
+              Please try again later or contact the server admin.
+            </p> :
+            <>
+              <p className="text-center mb-0">Enter the information below.</p>
+              <div>
+                <label htmlFor="expiration" className={styles.infoLabel}>Expiration:</label>
+                <input className={`${styles.infoInput} ${styles.sm}`} name="expiration" id="expiration" type="date" />
+                { isAdmin ?
+                  <>
+                    <br/>
+                    <input type="checkbox" id="permaBanBox" name="permaBanBox" />
+                    <label htmlFor="permaBanBox"> Permanently Ban</label>
+                  </> :
+                  <></>
+                }
+              </div>
+              <br/>
+              <label htmlFor="reason" className={styles.infoLabel}>Reason (max 512 characters):</label>
+              <textarea className={styles.textareaReason} name= "reason" id="reason" maxLength={512} />
+              <br/>
+              <button type="button" className={styles.banUserBtn} onClick={ () => banUser()}>{isAdmin ? "Ban / Suspend User" : "Suspend User" }</button>
+            </>
+        }
       </div>
     </div>
   );

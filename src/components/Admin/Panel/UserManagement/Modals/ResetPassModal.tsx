@@ -54,29 +54,27 @@ export default function ResetPassModal(): ReactNode {
         <Heading as="h2" className={styles.modalTitle}>Reset Password</Heading>
       </div>
       <div id="modalBody" className={styles.modalBody}>
-        <div id="modalContent" className={styles.modalContent}>
-          {
-            dataError ?
-              <p>
-                Error: There was an error getting this player's information.<br/>
-                Please try again later or contact the server admin.
-              </p> :
-              <>
-                <p className="text-center mb-0"><b>Warning:</b> The button that appears after clicking the checkbox below will reset {playerDetails.username}'s password.</p>
-                <p className="text-center mb-0"><b>This action cannot be undone.</b></p>
-                <p className="text-center mb-0">Are you sure you want to reset the password?</p>
-                <br/>
-                <input type="checkbox" id="resetPassBox" name="resetPassBox" />
-                <label htmlFor="resetPassBox"> Yes, I want to reset {playerDetails.username}'s password</label>
-                <br/>
-                {
-                  confirmed ?
-                    <button type="button" className={styles.changePassBtn} onClick={ () => resetPassword()}>Reset Password</button> :
-                    <></>
-                }
-              </>
-          }
-        </div>
+        {
+          dataError ?
+            <p>
+              Error: There was an error getting this player's information.<br/>
+              Please try again later or contact the server admin.
+            </p> :
+            <>
+              <p className="text-center mb-0"><b>Warning:</b> The button that appears after clicking the checkbox below will reset {playerDetails.username}'s password.</p>
+              <p className="text-center mb-0"><b>This action cannot be undone.</b></p>
+              <p className="text-center mb-0">Are you sure you want to reset the password?</p>
+              <br/>
+              <input type="checkbox" id="resetPassBox" name="resetPassBox" />
+              <label htmlFor="resetPassBox"> Yes, I want to reset {playerDetails.username}'s password</label>
+              <br/>
+              {
+                confirmed ?
+                  <button type="button" className={styles.changePassBtn} onClick={ () => resetPassword()}>Reset Password</button> :
+                  <></>
+              }
+            </>
+        }
       </div>
     </div>
   );

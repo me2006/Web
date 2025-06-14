@@ -64,34 +64,32 @@ export default function EditInfoModal( { username }): ReactNode {
         <Heading as="h2" className={styles.modalTitle}>Edit User Info</Heading>
       </div>
       <div id="modalBody" className={styles.modalBody}>
-        <div id="modalContent" className={styles.modalContent}>
-          {
-            dataError ?
-              <p>
-                Error: There was an error getting this player's information.<br/>
-                Please try again later or contact the server admin.
-              </p> :
-              <>
-                <p className="text-center">Modify the input boxes below and click save to change the user's information.</p>
-                {
-                  gmInfo.type == "admin" ?
-                    <>
-                      <label htmlFor="changeEmail" className={styles.infoLabel}>Email:</label>
-                      <input className={styles.infoInput} name="changeEmail" id="changeEmail" type="email" defaultValue={playerDetails.email} />
-                      <br />
-                    </>
-                    : <></>
-                }
-                <label htmlFor="changeUsername" className={styles.infoLabel}>Username:</label>
-                <input className={styles.infoInput} name="changeUsername" id="changeUsername" type="text" defaultValue={playerDetails.username} />
-                <br/>
-                <label htmlFor="changeSitekickName" className={styles.infoLabel}>Sitekick Name:</label>
-                <input className={styles.infoInput} name="changeSitekickName" id="changeSitekickName" type="text" defaultValue={playerDetails.sitekickName} />
-                <br/>
-                <button type="button" className={styles.changePlayerInfoBtn} onClick={() => changeInfo()}>Change player info</button>
-              </>
-          }
-        </div>
+        {
+          dataError ?
+            <p>
+              Error: There was an error getting this player's information.<br/>
+              Please try again later or contact the server admin.
+            </p> :
+            <>
+              <p className="text-center">Modify the input boxes below and click save to change the user's information.</p>
+              {
+                gmInfo.type == "admin" ?
+                  <>
+                    <label htmlFor="changeEmail" className={styles.infoLabel}>Email:</label>
+                    <input className={styles.infoInput} name="changeEmail" id="changeEmail" type="email" defaultValue={playerDetails.email} />
+                    <br />
+                  </>
+                  : <></>
+              }
+              <label htmlFor="changeUsername" className={styles.infoLabel}>Username:</label>
+              <input className={styles.infoInput} name="changeUsername" id="changeUsername" type="text" defaultValue={playerDetails.username} />
+              <br/>
+              <label htmlFor="changeSitekickName" className={styles.infoLabel}>Sitekick Name:</label>
+              <input className={styles.infoInput} name="changeSitekickName" id="changeSitekickName" type="text" defaultValue={playerDetails.sitekickName} />
+              <br/>
+              <button type="button" className={styles.changePlayerInfoBtn} onClick={() => changeInfo()}>Change player info</button>
+            </>
+        }
       </div>
     </div>
   );
