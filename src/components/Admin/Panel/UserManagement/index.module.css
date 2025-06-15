@@ -86,6 +86,10 @@
   table-layout: fixed;
 }
 
+.playerListTable {
+  width: 90%;
+}
+
 .playerListTable >tbody > tr > td:last-child {
   display: flex;
   justify-content: space-evenly;

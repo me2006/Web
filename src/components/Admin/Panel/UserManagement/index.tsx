@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState, createContext, type ReactNode } from "react";
 
 import Heading from "@theme/Heading";
-import BadgeMgmtModal from "./Modals/BadgeMgmtModal";
+// import BadgeMgmtModal from "./Modals/BadgeMgmtModal";
 import BanUserModal from "./Modals/BanUserModal";
+import BanHistoryModal from "./Modals/BanHistoryModal";
+import AltAccountsModal from "./Modals/AltAccountsModal";
 import DeleteAccountModal from "./Modals/DeleteAccountModal";
 import EditInfoModal from "./Modals/EditInfoModal";
 import ResetPassModal from "./Modals/ResetPassModal";
@@ -180,7 +182,7 @@ export default function UserManagement({ gmInfo }): ReactNode {
           { currModal == ModalTypes.BanHistory ? <BanHistoryModal /> : <></> }
           { currModal == ModalTypes.AltAccounts ? <AltAccountsModal /> : <></> }
           { currModal == ModalTypes.ResetPass ? <ResetPassModal /> : <></> }
-          { currModal == ModalTypes.BadgeMgmt ? <BadgeMgmtModal /> : <></> }
+          {/*{ currModal == ModalTypes.BadgeMgmt ? <BadgeMgmtModal /> : <></> }*/}
           { currModal == ModalTypes.DeleteAcc ? <DeleteAccountModal /> : <></> }
         </div>
       </UmContext.Provider>

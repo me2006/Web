@@ -720,6 +720,10 @@ button.lg, button--flat.lg {
     inset 4px 4px 4px #fe9c0f,
     inset -4px -4px 4px #b01c00;
 }
+.button--flat:disabled {
+  cursor: default;
+  pointer-events: none;
+}
 
 .button--flat.red {
   background: #c00;

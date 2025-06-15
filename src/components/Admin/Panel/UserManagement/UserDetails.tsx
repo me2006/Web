@@ -11,6 +11,8 @@ export default function UserDetails( { fromTable, openListView }): ReactNode {
   const { isAdmin, gmInfo, searchTerm, ModalTypes, playerDetails, setPD, openModal } = useContext(UmContext);
   const [isBanned, setIsBanned] = useState(false);
   const [banType, setBanType] = useState(0);
+  const [hasHistory, setHistory] = useState(playerDetails.banList.length > 0);
+  const [hasAlts, setHasAlts] = useState(playerDetails.associatedAccounts.length > 0);
 
   function unbanUser() {
 
@@ -44,10 +46,10 @@ export default function UserDetails( { fromTable, openListView }): ReactNode {
   }
 
 
-  function ActionButton({ colour, modalType, icon, name }) {
+  function ActionButton({ colour, modalType, icon, name, isDisabled = false }) {
     return (
       <div className={`row ${styles.actionsCard}`}>
-        <button className={`button--flat ${colour}`} onClick={() => {
+        <button disabled={isDisabled} className={`button--flat ${colour}`} onClick={() => {
           if (!modalType) unbanUser();
           else openModal(playerDetails.username, modalType);
         }}>
@@ -60,6 +62,8 @@ export default function UserDetails( { fromTable, openListView }): ReactNode {
   useEffect(() => {
     setIsBanned(playerDetails.banStatus != "Not banned");
     setBanType(playerDetails.banStatus == "Perma banned" ? 2 : playerDetails.banStatus == "Suspended" ? 1 : 0);
+    setHistory(playerDetails.banList.length > 0);
+    setHasAlts(playerDetails.associatedAccounts.length > 0);
   }, [playerDetails]);
 
   return (
@@ -106,13 +110,13 @@ export default function UserDetails( { fromTable, openListView }): ReactNode {
                     :
                     <></>
                   }
-                  <ActionButton colour="orange" modalType={ModalTypes.BanHistory} icon={faBook} name="Ban History" />
+                  <ActionButton colour={hasHistory ? "orange" : "white"} modalType={ModalTypes.BanHistory} icon={faBook} name={hasHistory ? "Ban History" : "User has no ban history"} isDisabled={!hasHistory} />
                   {
                     isAdmin ?
                       <>
-                        <ActionButton colour="pink" modalType={ModalTypes.AltAccounts} icon={faClone} name="Alternate Accounts" />
+                        <ActionButton colour={hasAlts ? "pink" : "white"} modalType={ModalTypes.AltAccounts} icon={faClone} name={hasAlts ? "Alternate Accounts" : "User has no alt accounts"} isDisabled={!hasAlts} />
                         <ActionButton colour="blue" modalType={ModalTypes.ResetPass} icon={faLock} name="Reset Password" />
-                        <ActionButton colour="purple" modalType={ModalTypes.BadgeMgmt} icon={faShield} name="Badge Management" />
+                        {/*<ActionButton colour="purple" modalType={ModalTypes.BadgeMgmt} icon={faShield} name="Badge Management" />*/}
                         <ActionButton colour="black" modalType={ModalTypes.DeleteAcc} icon={faTrash} name="Delete Account" />
                       </> : <></>
                   }
