@@ -1,10 +1,12 @@
 import { useState, useEffect, useContext, type ReactNode } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { UmContext } from "..";
 
 import styles from "../index.module.css";
 
 export default function BanUserModal(): ReactNode {
+  const { siteConfig: { customFields } } = useDocusaurusContext();
   const { gmInfo, isAdmin, playerDetails, setPD, closeModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
 
@@ -49,13 +51,13 @@ export default function BanUserModal(): ReactNode {
       created_by: gmInfo.username
     };
 
-    const linkEnd = (isAdmin) ? "/ban_player" : "/suspend_player";
-    return fetch("http://localhost:8080/" + gmInfo.type + linkEnd, {
+    return fetch(`${customFields.BASE_URL}${customFields.BAN}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Access-Control-Allow-Headers": "Content-Type"
       },
+      credentials: "include",
       body: encodeURIComponent(JSON.stringify(data))
     }).then(res => {
       if (!res.ok) {

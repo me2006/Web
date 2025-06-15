@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState, type ReactNode } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { UmContext } from ".";
-import { faSquareCheck, faGavel, faLock, faPenToSquare, faShield, faTrash, faClone, faBook } from "@fortawesome/free-solid-svg-icons";
+import { faSquareCheck, faGavel, faLock, faPenToSquare, /*faShield,*/ faTrash, faClone, faBook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./index.module.css";
 
 export default function UserDetails( { fromTable, openListView }): ReactNode {
-
+  const { siteConfig: { customFields } } = useDocusaurusContext();
   const { isAdmin, gmInfo, searchTerm, ModalTypes, playerDetails, setPD, openModal } = useContext(UmContext);
   const [isBanned, setIsBanned] = useState(false);
   const [banType, setBanType] = useState(0);
@@ -26,13 +27,13 @@ export default function UserDetails( { fromTable, openListView }): ReactNode {
       username: playerDetails.username
     };
 
-    const linkEnd = (isAdmin) ? "/unban_player" : "/unsuspend_player";
-    return fetch("http://localhost:8080/" + gmInfo.type + linkEnd, {
+    return fetch(`${customFields.BASE_URL}${customFields.UNBAN}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Access-Control-Allow-Headers": "Content-Type"
       },
+      credentials: "include",
       body: encodeURIComponent(JSON.stringify(data))
     }).then(res => {
       if (!res.ok) {

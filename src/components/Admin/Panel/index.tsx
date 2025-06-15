@@ -3,7 +3,8 @@ import { GmContext } from "@site/src/pages/admin";
 import UserManagement from "./UserManagement";
 import GameManagement from "./GameManagement";
 import ActivityLog from "./ActivityLog";
-import ReportLog from "./ReportLog";
+// import ReportLog from "./ReportLog";
+import Console from "./Console";
 
 import styles from "./index.module.css";
 
@@ -44,19 +45,20 @@ export default function Panel(): ReactNode {
         <div className={styles.panelContent}>
           <div className={styles.tabContainer}>
             <button id="umButton" className={styles.tabLinks} onClick={(e) => openTab(e, "UserManagement")}>User Management</button>
-            { gmInfo.type == "admin" ?
+            { gmInfo.type == 0 ?
               <button className={styles.tabLinks} onClick={(e) => openTab(e, "GameManagement")}>Game Management</button> :
               <></>
             }
             <button className={styles.tabLinks} onClick={(e) => openTab(e, "ActivityLog")}>Activity Log</button>
-            <button className={styles.tabLinks} onClick={(e) => openTab(e, "ReportLog")}>Report Log</button>
+            {/*<button className={styles.tabLinks} onClick={(e) => openTab(e, "ReportLog")}>Report Log</button>*/}
+            <button className={styles.tabLinks} onClick={(e) => openTab(e, "Console")}>Report Log</button>
           </div>
 
           <div id="UserManagement" className={styles.tabContent}>
             <UserManagement gmInfo={gmInfo} />
           </div>
 
-          { gmInfo.type == "admin" ?
+          { gmInfo.type == 0 ?
             <div id="GameManagement" className={styles.tabContent}>
               <GameManagement gmInfo={gmInfo} />
             </div>
@@ -68,8 +70,14 @@ export default function Panel(): ReactNode {
             <ActivityLog gmInfo={gmInfo}/>
           </div>
 
+          {/*
           <div id="ReportLog" className={styles.tabContent}>
             <ReportLog gmInfo={gmInfo}/>
+          </div>
+          */}
+
+          <div id="Console" className={styles.tabContent}>
+            <Console gmInfo={gmInfo}/>
           </div>
         </div>
       </div>

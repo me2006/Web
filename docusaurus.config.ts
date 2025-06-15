@@ -1,5 +1,6 @@
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import "dotenv/config";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -8,6 +9,18 @@ const config: Config = {
   favicon: "img/favicon.ico",
   url: "https://sitekickremastered.com/",
   baseUrl: "/",
+  customFields: {
+    BASE_URL: process.env.BASE_URL,
+    METRICS: process.env.METRICS,
+    LOGIN: process.env.LOGIN,
+    GET_ONE: process.env.GET_ONE,
+    GET_LIST: process.env.GET_LIST,
+    CHANGE_INFO: process.env.CHANGE_INFO,
+    PASS_RESET: process.env.PASS_RESET,
+    BAN: process.env.BAN,
+    UNBAN: process.env.UNBAN,
+    DELETE: process.env.DELETE,
+  },
 
   // Github Deployment and repo name
   organizationName: "SitekickRemastered",

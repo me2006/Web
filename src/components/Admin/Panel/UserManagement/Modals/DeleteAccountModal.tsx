@@ -1,10 +1,12 @@
 import { useState, useEffect, useContext, type ReactNode } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { UmContext } from "..";
 
 import styles from "../index.module.css";
 
 export default function DeleteAccountModal(): ReactNode {
+  const { siteConfig: { customFields } } = useDocusaurusContext();
   const { gmInfo, playerDetails, resetView, closeModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
@@ -29,12 +31,13 @@ export default function DeleteAccountModal(): ReactNode {
       account_id: playerDetails.accountId
     };
 
-    return fetch("http://localhost:8080/" + gmInfo.type + "/delete_account", {
+    return fetch(`${customFields.BASE_URL}${customFields.DELETE}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Access-Control-Allow-Headers": "Content-Type"
       },
+      credentials: "include",
       body: encodeURIComponent(JSON.stringify(data))
     }).then(res => {
       if (!res.ok) {

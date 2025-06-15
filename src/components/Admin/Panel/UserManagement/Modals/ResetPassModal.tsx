@@ -1,10 +1,12 @@
 import { useState, useEffect, useContext, type ReactNode } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { UmContext } from "..";
 
 import styles from "../index.module.css";
 
 export default function ResetPassModal(): ReactNode {
+  const { siteConfig: { customFields } } = useDocusaurusContext();
   const { gmInfo, playerDetails, closeModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
@@ -29,12 +31,13 @@ export default function ResetPassModal(): ReactNode {
       username: playerDetails.email || playerDetails.username
     };
 
-    return fetch("http://localhost:8080/" + gmInfo.type + "/create_password_reset", {
+    return fetch(`${customFields.BASE_URL}${customFields.PASS_RESET}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Access-Control-Allow-Headers": "Content-Type"
       },
+      credentials: "include",
       body: encodeURIComponent(JSON.stringify(data))
     }).then(res => {
       if (!res.ok) {

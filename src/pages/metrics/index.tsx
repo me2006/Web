@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Heading from "@theme/Heading";
 import Link from "@docusaurus/Link";
@@ -137,10 +138,11 @@ function MetricsCardChip(props) {
 }
 
 export default function Status() {
+  const { siteConfig: { customFields } } = useDocusaurusContext();
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState({});
 
-  const url = "http://localhost:8080/metrics/generic";
+  const url = `${customFields.BASE_URL}${customFields.METRICS}`;
   const token = "online_players,total_players,daily_registrations,daily_online_players,total_chips,released_chips,most_common,most_common,rarest_legendary";
 
   const getData = () => {

@@ -1,12 +1,13 @@
 import { useState, useEffect, useContext, type ReactNode } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { UmContext } from "..";
 
 import styles from "../index.module.css";
 
 export default function EditInfoModal( { username }): ReactNode {
-  const { gmInfo, closeModal, playerDetails, setPD, getPlayerRequest } = useContext(UmContext);
-
+  const { siteConfig: { customFields } } = useDocusaurusContext();
+  const { gmInfo, isAdmin, closeModal, playerDetails, setPD, getPlayerRequest } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
   const [accountId, setAI] = useState(-1);
 
@@ -40,12 +41,13 @@ export default function EditInfoModal( { username }): ReactNode {
       new_sitekick_name: newSitekickName
     };
 
-    return fetch("http://localhost:8080/" + gmInfo.type + "/change_player_info", {
+    return fetch(`${customFields.BASE_URL}${customFields.CHANGE_INFO}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Access-Control-Allow-Headers": "Content-Type"
       },
+      credentials: "include",
       body: encodeURIComponent(JSON.stringify(data))
     }).then(res => {
       if (!res.ok) {
@@ -73,7 +75,7 @@ export default function EditInfoModal( { username }): ReactNode {
             <>
               <p className="text-center">Modify the input boxes below and click save to change the user's information.</p>
               {
-                gmInfo.type == "admin" ?
+                isAdmin ?
                   <>
                     <label htmlFor="changeEmail" className={styles.infoLabel}>Email:</label>
                     <input className={styles.infoInput} name="changeEmail" id="changeEmail" type="email" defaultValue={playerDetails.email} />

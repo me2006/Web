@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, createContext, type ReactNode } from "react";
-
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 // import BadgeMgmtModal from "./Modals/BadgeMgmtModal";
 import BanUserModal from "./Modals/BanUserModal";
@@ -11,8 +11,6 @@ import ResetPassModal from "./Modals/ResetPassModal";
 import UserDetails from "./UserDetails";
 
 import styles from "./index.module.css";
-import BanHistoryModal from "./Modals/BanHistoryModal";
-import AltAccountsModal from "./Modals/AltAccountsModal";
 
 export const UmContext = createContext(null);
 
@@ -28,6 +26,7 @@ enum ModalTypes {
 }
 
 export default function UserManagement({ gmInfo }): ReactNode {
+  const { siteConfig: { customFields } } = useDocusaurusContext();
   const [searchTerm, setST] = useState("");
   const [modalUser, setMU] = useState("");
   const [fromTable, setFT] = useState(false);
@@ -43,15 +42,15 @@ export default function UserManagement({ gmInfo }): ReactNode {
       username: noe
     };
 
-    let requestLink = `${gmInfo.type}_get_player`;
-    if (getList) requestLink += "_list";
+    const requestLink = (getList) ? customFields.GET_LIST: customFields.GET_ONE;
 
-    return fetch("http://localhost:8080/" + requestLink, {
+    return fetch(`${customFields.BASE_URL}${requestLink}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Access-Control-Allow-Headers": "Content-Type"
       },
+      credentials: "include",
       body: encodeURIComponent(JSON.stringify(data))
     }).then(res => {
       if (!res.ok) {
@@ -83,7 +82,7 @@ export default function UserManagement({ gmInfo }): ReactNode {
   function listData(data) {
     if (!data) return;
     if (Object.keys(data.players).length == 1)
-      viewDetails(gmInfo.type == "admin" ? data.players[0].email : data.players[0].username, false);
+      viewDetails(gmInfo.type == 0 ? data.players[0].email : data.players[0].username, false);
     else {
       setPL(data.players);
       setCV("list");
@@ -156,7 +155,7 @@ export default function UserManagement({ gmInfo }): ReactNode {
       <hr className="w-90" />
       <UmContext.Provider value={{
         gmInfo,
-        isAdmin: gmInfo.type == "admin",
+        isAdmin: gmInfo.type == 0,
         searchTerm,
         ModalTypes,
         playerDetails,

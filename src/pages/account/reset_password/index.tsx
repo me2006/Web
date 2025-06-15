@@ -78,6 +78,7 @@ export default function ResetPassword(): ReactNode {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
+      credentials: "include",
       body: postBody
     })
       .then(response => {
