@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import Heading from "@theme/Heading";
 import styles from "./style.module.css";
 
 type InfoBoxItem = {
@@ -10,8 +10,6 @@ type InfoBoxItem = {
 };
 
 function InfoBoxDataGroup({ categoryTitle, categoryChildren, prevChild }) {
-  console.log(typeof categoryChildren)
-  console.log(typeof prevChild)
   return (
     <>
       { prevChild && !(categoryChildren instanceof Object) && !(prevChild instanceof Object) ?
@@ -27,7 +25,7 @@ function InfoBoxDataGroup({ categoryTitle, categoryChildren, prevChild }) {
           :
           <div className={styles.infoboxGroup}>
             <div className={styles.heading}>
-              <h3>{categoryTitle}</h3>
+              <Heading as="h3">{categoryTitle}</Heading>
             </div>
             <div className={styles.infoboxData}>
               {Object.keys(categoryChildren).map((key, idx) => (
@@ -37,7 +35,7 @@ function InfoBoxDataGroup({ categoryTitle, categoryChildren, prevChild }) {
           </div>
       }
     </>
-  )
+  );
 }
 
 function InfoboxDataRow({ title, data }) {
@@ -50,20 +48,20 @@ function InfoboxDataRow({ title, data }) {
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 /**
  * Creates a wikipedia style info box
- * 
+ *
  * Note: For categories with no title / header, use a string:
  * <categoryTitle>: <string>
  * Otherwise, use an object
  * <categoryTitle>: { <key1> : <value1>, <key2> : <value2> ...}
- * 
+ *
  * Syntax:
- * 
- *  <InfoBox 
+ *
+ *  <InfoBox
       title={""}
       imgUrl={""}
       imgAlt={""}
@@ -77,23 +75,23 @@ function InfoboxDataRow({ title, data }) {
 export default function InfoBox({ title, imgUrl, imgAlt, caption, categories }: InfoBoxItem) {
   const keys = Object.keys(categories);
   return (
-    <div style={{width: "100%"}}>
-      <div className="ytvContainer orange infobox">
+    <div className="w-100">
+      <div className="ytvContainer orange">
         <div className={styles.bubbleContainer}>
-          <h2 className={styles.bubbleHeading}>{title}</h2>
+          <Heading as="h2" className={styles.bubbleHeading}>{title}</Heading>
         </div>
-        <div className={clsx(styles.infobox, "ytvContainerInner green")}>
+        <div className={`ytvContainerInner green ${styles.infobox}`}>
           <div>
             <img src={imgUrl} className={styles.infoboxImg} alt={imgAlt} />
             <p className={styles.infoboxImgCaption}>{caption}</p>
           </div>
           {
             keys.map((key, idx) => (
-              <InfoBoxDataGroup 
-                key={key + idx} 
-                categoryTitle={key} 
-                categoryChildren={categories[key]} 
-                prevChild={categories[keys[idx - 1]]} 
+              <InfoBoxDataGroup
+                key={key + idx}
+                categoryTitle={key}
+                categoryChildren={categories[key]}
+                prevChild={categories[keys[idx - 1]]}
               />
             ))
           }

@@ -1,11 +1,12 @@
-import type { ReactNode } from 'react';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import Layout from '@theme/Layout';
+import type { ReactNode } from "react";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Layout from "@theme/Layout";
+import Heading from "@theme/Heading";
+import Link from "@docusaurus/Link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
 
-import styles from './index.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWarning } from '@fortawesome/free-solid-svg-icons';
-import clsx from 'clsx';
+import styles from "./index.module.css";
 
 type DownloadButton = {
   alt: string;
@@ -34,9 +35,9 @@ const ButtonList: DownloadButton[] = [
 function DownloadButton({ alt, url, imgUrl }: DownloadButton) {
   return (
     <div className={styles.platformBlock}>
-      <a href={url} rel="noopener" target="__blank">
+      <Link to={url} rel="noopener" target="__blank">
         <img src={useBaseUrl(imgUrl)} alt={alt} />
-      </a>
+      </Link>
     </div>
   );
 }
@@ -49,7 +50,7 @@ function DownloadPage() {
 
           { /* Logo and slogan */}
           <img className={styles.downloadLogo} src={useBaseUrl("/img/logo-beta.svg")} alt="Sitekick Remastered Beta Logo"/>
-          <h1 className={styles.slogan}>Made by fans, for fans</h1>
+          <Heading as="h1" className={styles.slogan}>Made by fans, for fans</Heading>
 
           { /* Black box with information */ }
           <div className={styles.downloadInfoDiv}>
@@ -57,14 +58,14 @@ function DownloadPage() {
           </div>
 
           { /* Beta warning */ }
-          <div className={clsx("admonition alert alert--danger", styles.alertDiv)}>
-            <div className={clsx("admonitionHeading", styles.alertFont)}>
-              <span className={clsx("admonitionIcon", styles.alertFont)}>
+          <div className={`admonition alert alert--danger ${styles.alertDiv}`}>
+            <div className={`admonitionHeading ${styles.alertFont}`}>
+              <span className={`admonitionIcon ${styles.alertFont}`}>
                 <FontAwesomeIcon icon={faWarning} />
                 <b> Warning</b>
               </span>
             </div>
-            <div className={clsx("admonitionContent", styles.alertFont)}>
+            <div className={`admonitionContent ${styles.alertFont}`}>
               <p>Sitekick Remastered is still in Beta. All chips, xp, and collection lists will be wiped upon the full release.</p>
             </div>
           </div>
@@ -84,7 +85,7 @@ function DownloadPage() {
 
 export default function Download(): ReactNode {
   return (
-    <Layout title={`Download`} description="Clickity-click, it's Sitekick!">
+    <Layout title={"Download"} description="Clickity-click, it's Sitekick!">
       <DownloadPage />
     </Layout>
   );

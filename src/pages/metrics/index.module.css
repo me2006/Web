@@ -9,6 +9,10 @@
   /*min-height: calc(100vh - 11vh);*/
 }
 
+.metricsContainer img {
+  max-height: 55vh;
+}
+
 .title {
   font-size: 4rem;
 }
@@ -20,4 +24,3 @@
   padding: 2rem;
   margin: 1rem;
 }
-

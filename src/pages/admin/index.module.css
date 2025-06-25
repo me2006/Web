@@ -1,14 +1,42 @@
 .mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   min-height: 100vh;
-  background: var(--bg-splash);
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* 
+    background: var(--bg-splash);
+    background-size: cover;
+    background-repeat: no-repeat;
+  */
+  background: #600084;
+  /*background: linear-gradient(0deg, #A42EE5 0%, #600084 100%);*/
+  
 }
 
-.logoutContainer {
+.panelNavbar {
   position: sticky;
+  top: 0;
+  display: flex;
+  background: #242526;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  top: 10px;
-  right: 10px;
+  padding-left: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #CCC;
+  z-index: 999;
+}
+
+.panelNavbar h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.panelNavbar h3 {
+  position: absolute;
+  left: calc((100vw / 2) - 125px);
+}
+
+.panelNavbar h3 span {
+  text-transform: capitalize;
 }

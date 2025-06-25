@@ -1,10 +1,13 @@
+import { useState, useEffect } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import { useState, useEffect, ReactNode } from 'react';
-import styles from './index.module.css';
-import clsx from "clsx";
+import Heading from "@theme/Heading";
+import Link from "@docusaurus/Link";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightDots, faCalendarCheck, faHandsHoldingCircle, faPercent, faStar, faUser, faUserClock, faUserPlus, faUsersLine, IconDefinition } from "@fortawesome/free-solid-svg-icons";
-import useBaseUrl from "@docusaurus/useBaseUrl";
+
+import styles from "./index.module.css";
 
 type MetricsItem = {
   title: string;
@@ -96,12 +99,12 @@ const ChipMetricsList: ChipMetricsItem[] = [
     emptyText: "There are currently no legendaries in the game.",
     text: " is the least owned legendary chip!"
   },
-]
+];
 
 function MetricsCard(props) {
   return (
-    <div className={clsx("col", styles.metricsCard)}>
-      <h2>{ props.title }</h2>
+    <div className={`col ${styles.metricsCard}`}>
+      <Heading as="h2">{ props.title }</Heading>
       <FontAwesomeIcon icon={props.icon} size="6x" />
       <hr />
       {
@@ -117,12 +120,12 @@ function MetricsCardChip(props) {
   const chipIcon = `/img/wiki/chipendium/icons/chip_${props.data[props.keyStr]}_icon.png`;
   const iconAlt = `Chip #${props.data[props.keyStr]} icon`;
   return (
-    <div className={clsx("col", styles.metricsCard)}>
-      <h2>{ props.title }</h2>
+    <div className={`col ${styles.metricsCard}`}>
+      <Heading as="h2">{ props.title }</Heading>
       {
         (props.data[props.keyStr]) ?
-        <img src={useBaseUrl(chipIcon)} role="img" alt={iconAlt} /> :
-        <FontAwesomeIcon icon={props.nullIcon} size="6x" />
+          <img src={useBaseUrl(chipIcon)} role="img" alt={iconAlt} /> :
+          <FontAwesomeIcon icon={props.nullIcon} size="6x" />
       }
       <hr />
       {
@@ -135,24 +138,19 @@ function MetricsCardChip(props) {
 }
 
 export default function Status() {
+  const { siteConfig: { customFields } } = useDocusaurusContext();
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState({});
 
-  const url = "http://localhost:8080/metrics/generic";
-  const token = "online_players,total_players,daily_registrations,daily_online_players,total_chips,released_chips,most_common,most_common,rarest_legendary"
-  /*
-  const tokenArr = [];
-  for(var i of MetricsList){ tokenArr.push(i.keyStr); }
-  for(var j of ChipMetricsList) { tokenArr.push(j.keyStr); }
-  const token = tokenArr.toString();
-  */
+  const url = `${customFields.BASE_URL}${customFields.METRICS}`;
+  const token = "online_players,total_players,daily_registrations,daily_online_players,total_chips,released_chips,most_common,most_common,rarest_legendary";
 
   const getData = () => {
     fetch(`${url}?q=${token}`)
       .then((res) => { return res.json(); })
       .then((data) => { setData(data); setLoading(false); })
-      .catch((err) => { console.log(err); setData({}); setLoading(false); });
-  }
+      .catch(() => { setData({}); setLoading(false); });
+  };
 
   useEffect(() => {
     setData({ start: "0" });
@@ -162,13 +160,11 @@ export default function Status() {
   }, []);
 
   return (
-    <Layout title={`Metrics`} description="Clickity-click, it's Sitekick!">
+    <Layout title={"Metrics"} description="Clickity-click, it's Sitekick!">
       <div className={styles.metricsContainer}>
-        <h1 className={styles.title}>Metrics</h1>
+        <Heading as="h1" className={styles.title}>Metrics</Heading>
         {isLoading ?
-          <>
-            <img src="/img/loading.png" style={{ maxHeight: "55vh" }} alt="Loading image for metrics" />
-          </>
+          <img src="/img/loading.png" alt="Loading image for metrics" />
           :
           (Object.keys(data).length) ?
             <>
@@ -186,8 +182,8 @@ export default function Status() {
             </>
             :
             <>
-              <p>Failed to get metrics from the server. Please check <a href="/status">sitekickremastered.com/status</a> to see our server status</p>
-              <img src="/img/error.jpg" style={{ maxHeight: "55vh" }} alt="Badly drawn Dr. Frantic and Sitekick with error text" />
+              <p>Failed to get metrics from the server. Please check <Link to="/status">sitekickremastered.com/status</Link> to see our server status</p>
+              <img src="/img/error.jpg" alt="Badly drawn Dr. Frantic and Sitekick with error text" />
             </>
         }
       </div>

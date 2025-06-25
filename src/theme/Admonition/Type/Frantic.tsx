@@ -1,15 +1,12 @@
-import React from 'react';
-import clsx from 'clsx';
-import Translate from '@docusaurus/Translate';
-import type {Props} from '@theme/Admonition/Type/Tip';
-import AdmonitionLayout from '@theme/Admonition/Layout';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import React from "react";
+import Translate from "@docusaurus/Translate";
+import type { Props } from "@theme/Admonition/Type/Tip";
+import AdmonitionLayout from "@theme/Admonition/Layout";
 
-const infimaClassName = 'alert alert--frantic';
+const infimaClassName = "alert alert--frantic";
 
 const defaultProps = {
-  icon: <img src="/img/admonitions/frantic_fact.png" alt="Frantic Icon" style={{width: '40px'}} />,
+  icon: <img src="/img/admonitions/frantic_fact.png" alt="Frantic Icon" style={{ width: "40px" }} />,
   title: (
     <Translate
       id="theme.admonition.frantic"
@@ -24,7 +21,7 @@ export default function AdmonitionTypeFrantic(props: Props): JSX.Element {
     <AdmonitionLayout
       {...defaultProps}
       {...props}
-      className={clsx(infimaClassName, props.className)}>
+      className={`${infimaClassName}, ${props.className}`}>
       {props.children}
     </AdmonitionLayout>
   );

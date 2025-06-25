@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Heading from "@theme/Heading";
-import clsx from "clsx";
 import styles from "./style.module.css";
 
 type FeatureItem = {
@@ -42,7 +41,7 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({ title, imgUrl, description }: FeatureItem) {
   return (
-    <div className={clsx("col padding-vert--lg", styles.featureCard)}>
+    <div className={`col padding-vert--lg ${styles.featureCard}`}>
       <div className="text--center">
         <img src={useBaseUrl(imgUrl)} className={styles.featureImg} role="img" alt={title} />
       </div>
@@ -57,7 +56,7 @@ function Feature({ title, imgUrl, description }: FeatureItem) {
 export default function HomeFeatures(): ReactNode {
   return (
     <section className={styles.features}>
-      <div className="row" style={{ margin: "auto", width: "80%" }}>
+      <div className="row m-auto w-80">
         {FeatureList.map((props, idx) => (
           <Feature key={idx} {...props} />
         ))}

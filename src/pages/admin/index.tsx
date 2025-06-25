@@ -1,15 +1,19 @@
-import { useState, createContext, useEffect } from 'react';
-import Login from '@site/src/components/Admin/Login';
-import Panel from '@site/src/components/Admin/Panel';
+import { useState, createContext, useEffect } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Heading from "@theme/Heading";
+import Login from "@site/src/components/Admin/Login";
+import Panel from "@site/src/components/Admin/Panel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./index.module.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 
-export const UserContext = createContext(null);
+export const GmContext = createContext(null);
 
 export default function Admin() {
+  const { siteConfig: { customFields } } = useDocusaurusContext();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [gm, setGM] = useState(Object);
 
   function login(email: string, password: string) {
     const data = {
@@ -18,60 +22,82 @@ export default function Admin() {
     };
 
     //security.fileuri.strict_origin_policy
-    fetch("http://localhost:8080/mod_panel_login", {
+    fetch(`${customFields.BASE_URL}${customFields.LOGIN}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Access-Control-Allow-Headers": "Content-Type"
       },
-
+      credentials: "include",
       body: encodeURIComponent(JSON.stringify(data))
     }).then(res => {
-      if (!res.ok) {
-        alert("Incorrect username / password");
-        throw new Error("Incorrect username / password");
+      if (res.ok) {
+        return res.json();
       }
-      return res.json()
+      return Promise.reject("Incorrect username / password");
     }).then(resData => {
       // console.info(resData);
-      localStorage.setItem("userInfo", JSON.stringify(resData));
+      const d = new Date();
+      d.setTime(d.getTime() + 3600 * 1000);
+      document.cookie = "gmInfo=" + JSON.stringify(resData.gm) + ";path=/admin;expires=" + d.toUTCString();
+      setGM(resData.gm);
       setLoggedIn(true);
     }).catch(error => {
-      console.error("Error:", error);
+      alert(error);
     });
   }
 
   function logout() {
-    localStorage.removeItem("userInfo");
+    if (getCookie("gmInfo"))
+      document.cookie = "gmInfo=;path=/admin;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+    if (getCookie("Session-Id"))
+      document.cookie = "Session-Id=;path=/admin;expires=Thu, 01 Jan 1970 00:00:01 GMT";
     setLoggedIn(false);
   }
 
-  function getCurrentUser() {
-    const userStr = localStorage.getItem("userInfo");
-    return (userStr) ? JSON.parse(userStr) : null;
+  function getGmInfo() {
+    const gmInfo = getCookie("gmInfo");
+    return (gmInfo) ? JSON.parse(gmInfo) : null;
+  }
+
+  function getCookie(cName) {
+    const name = cName + "=";
+    const ca = document.cookie.split(";");
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
   }
 
   useEffect(() => {
-    let ignore = false;
-    const cUser = getCurrentUser();
-    setLoggedIn(cUser && cUser != null && Object.keys(cUser).length != 0 && cUser.token);
-    return () => { ignore = true; }
+    const cUser = getGmInfo();
+    const session = getCookie("Session-Id");
+    setGM(cUser);
+    setLoggedIn(cUser && cUser != null && Object.keys(cUser).length != 0 && session != "");
   },[]);
 
   return (
     <main className={styles.mainContainer}>
-      { loggedIn ? 
-      <div className={styles.logoutContainer}>
-        <button className="button button--red button--sm margin--sm" onClick={() => { logout() }}>
-          Logout <FontAwesomeIcon icon={faSignOut} />
-        </button>
-      </div>
-      :
-      <></>
+      { loggedIn && gm ?
+        <div className={styles.panelNavbar}>
+          <Heading as="h2">Sitekick Remastered Mod Panel</Heading>
+          <Heading as="h3">Welcome <span>{gm.type == 0 ? "Admin" : "Moderator"}</span> {gm.username}!</Heading>
+          <button className="button red sm margin--sm" onClick={() => { logout(); }}>
+            Logout <FontAwesomeIcon icon={faSignOut} />
+          </button>
+        </div>
+        :
+        <></>
       }
-      <UserContext.Provider value={{ login: login, logout: logout, getCurrentUser: getCurrentUser }}>
+      <GmContext.Provider value={{ login: login, getGmInfo: getGmInfo }}>
         { !loggedIn ? <Login /> : <Panel /> }
-      </UserContext.Provider>
+      </GmContext.Provider>
     </main>
   );
 }

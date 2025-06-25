@@ -1,131 +1,234 @@
-import { useState, type ReactNode } from 'react';
+import { useContext, useEffect, useState, createContext, type ReactNode } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Heading from "@theme/Heading";
+// import BadgeMgmtModal from "./Modals/BadgeMgmtModal";
+import BanUserModal from "./Modals/BanUserModal";
+import BanHistoryModal from "./Modals/BanHistoryModal";
+import AltAccountsModal from "./Modals/AltAccountsModal";
+import DeleteAccountModal from "./Modals/DeleteAccountModal";
+import EditInfoModal from "./Modals/EditInfoModal";
+import ResetPassModal from "./Modals/ResetPassModal";
+import UserDetails from "./UserDetails";
 
 import styles from "./index.module.css";
 
-export default function UserManagement({ user }): ReactNode {
-  const [noe, setNoe] = useState(""); // Name or Email
-  const [searchType, setST] = useState("list"); // Dropdown selection
-  const [isViewDetails, setVD] = useState(false); // Determines if the view details screen is shown
-  const [isFromTable, setFT] = useState(false); // Determines if the back button is shown on view details.
+export const UmContext = createContext(null);
 
+enum ModalTypes {
+  None,
+  EditInfo,
+  BanUser,
+  BanHistory,
+  AltAccounts,
+  ResetPass,
+  BadgeMgmt,
+  DeleteAcc
+}
 
-  const viewDetails = (noe) => {
-    setVD(true);
-    setFT(true);
-    setNoe(noe)
-  }
+export default function UserManagement({ gmInfo }): ReactNode {
+  const { siteConfig: { customFields } } = useDocusaurusContext();
+  const [searchTerm, setST] = useState("");
+  const [modalUser, setMU] = useState("");
+  const [fromTable, setFT] = useState(false);
+  const [currView, setCV] = useState("search");
+  const [currModal, setCM] = useState(ModalTypes.None);
+  const [playerList, setPL] = useState();
+  const [playerDetails, setPD] = useState();
 
-  const openModal = (noe) => {
-
-  }
-
-
-  function createTable(isAdmin, data) {
-
-    let table = `
-  <table class="${styles.getListTable}">
-    <thead>
-      <tr>
-        <th>Account ID</th>
-        ${isAdmin ? "<th>Email</th>" : ""}
-        <th>Username</th>
-        <th>Sitekick Name</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-  `;
-
-    data.forEach((o) => {
-      table += `
-      <tr>
-        <td>${o.accountId}</td>
-        ${isAdmin ? `<td>${o.email}</td>` : ""}
-        <td>${o.username}</td>
-        <td>${o.sitekickName}</td>
-        <td>
-          <button type="button" class="${styles.viewDetailsBtn}" onClick={${viewDetails(isAdmin ? o.email : o.username)}}>👀 View Details</button>
-          <button type="button" class="${styles.editNamesBtn}" onClick={${openModal(isAdmin ? o.email : o.username)}}>✏️ Edit Names</button>
-        </td>
-      </tr>
-    `
-    });
-    table += `
-    </tbody>
-  </table>
-  `;
-
-    document.getElementById("getListTableContainer").innerHTML = table;
-  }
-
-  const search = () => {
+  function getPlayerRequest(noe, getList) {
     const data = {
-      author: user.username,
-      token: user.token,
+      author: gmInfo.username,
+      token: gmInfo.token,
       username: noe
     };
 
-    const btn = document.getElementById("searchBtn");
-    btn.innerText = "Loading...";
-    btn.setAttribute('disabled', "true");
+    const requestLink = (getList) ? customFields.GET_LIST: customFields.GET_ONE;
 
-    let requestLink = `${user.type}_get_player`;
-    if (searchType === "list" && !isViewDetails)
-      requestLink += "_list";
-
-    fetch("http://localhost:8080/" + requestLink, {
+    return fetch(`${customFields.BASE_URL}${requestLink}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Access-Control-Allow-Headers": "Content-Type"
       },
+      credentials: "include",
       body: encodeURIComponent(JSON.stringify(data))
     }).then(res => {
       if (!res.ok) {
-        throw new Error("Failed to get player");
+        throw new Error("Failed to get player(s)");
       }
-      return res.json()
-    }).then(resData => {
-      console.info(resData);
-      if (Object.keys(resData.players).length == 1) {
-        setVD(true);
-        setNoe(resData.players[0].email);
-        search();
-      }
-      else {
-        createTable(user.type == "admin", resData.players);
-      }
+      return res.json();
     }).catch(error => {
-      console.error("Error:", error);
+      console.error(error);
     });
-    btn.innerHTML = "Search";
-    btn.setAttribute('disabled', "false");
   }
+
+  function searchBtn() {
+    const noe = (document.getElementById("email") as HTMLInputElement).value;
+    setST(noe);
+    const searchType = (document.getElementById("searchType") as HTMLInputElement).value;
+    const btn = document.getElementById("searchBtn");
+    btn.innerText = "Loading...";
+    btn.setAttribute("disabled", "true");
+
+    if (searchType !== "list")
+      viewDetails(noe, false);
+    else
+      getPlayerRequest(noe, searchType == "list").then(data =>listData(data));
+
+    btn.innerHTML = "Search";
+    btn.removeAttribute("disabled");
+  }
+
+  function listData(data) {
+    if (!data) return;
+    if (Object.keys(data.players).length == 1)
+      viewDetails(gmInfo.type == 0 ? data.players[0].email : data.players[0].username, false);
+    else {
+      setPL(data.players);
+      setCV("list");
+    }
+  }
+
+  function viewDetails(noe, fromTable) {
+    setFT(fromTable);
+
+    getPlayerRequest(noe, false).then(data => {
+      if (!data) return;
+      setPD(data.player);
+      setCV("details");
+    });
+  }
+
+  function addActionButtons(row, o) {
+    const buttonCol = document.createElement("td");
+    const viewDetailsBtn = document.createElement("button");
+    viewDetailsBtn.textContent = "👀 View Details";
+    viewDetailsBtn.classList.add(styles.viewDetailsBtn);
+    viewDetailsBtn.onclick = () => viewDetails(o.username, true);
+    const editInfoBtn = document.createElement("button");
+    editInfoBtn.textContent = "🖋️ Edit Info";
+    editInfoBtn.classList.add(styles.editInfoBtn);
+    editInfoBtn.onclick = () => openModal(o.username, ModalTypes.EditInfo);
+    buttonCol.append(viewDetailsBtn, editInfoBtn);
+    row.append(buttonCol);
+  }
+
+  const modalElem = document.getElementById("actionsModal");
+
+  function openModal(modalUser, currModal) {
+    setMU(modalUser);
+    setCM(currModal);
+    modalElem.style.display = "block";
+  }
+
+  function closeModal() {
+    modalElem.style.display = "none";
+  }
+
+  // Close the modal if the user clicks anywhere outside
+  window.onclick = function(event) {
+    if (event.target == modalElem)
+      modalElem.style.display = "none";
+  };
+
+  document.onkeyup = function(event) {
+    if (event.key === "Escape" || event.key === "Esc")
+      modalElem.style.display = "none";
+  };
 
   return (
     <div className={styles.searchContainer}>
-      <h3 style={{padding: 0, margin: 0}}>User search:</h3>
-      <p style={{textAlign: "center"}}>
+      <Heading as="h3" className="p-0 m-0">User search:</Heading>
+      <p className="text-center">
         List mode will print a list of users with names that contain the search query<br/>
         Single mode will find a user with the exact email or username specified
       </p>
-      
+
       <div className={styles.inputGroup}>
-        <input className={styles.searchInput} onChange={(e) => setNoe(e.target.value)} name="email" id="email" type="email" placeholder="Username or Email" />
-        <select className={styles.searchDropdown} onChange={(e) => setST(e.target.value)} name="searchType" id="searchType" defaultValue="list">
+        <input className={styles.searchInput} name="email" id="email" type="email" placeholder="Username or Email" />
+        <select className={styles.searchDropdown} name="searchType" id="searchType" defaultValue="list">
           <option value="list">List</option>
           <option value="single">Single</option>
         </select>
-        <button type="button" id="searchBtn" className={styles.searchBtn} onClick={() => search()}>Search</button>
+        <button type="button" id="searchBtn" className={styles.searchBtn} onClick={() => searchBtn()}>Search</button>
       </div>
-      <div id="getListTableContainer" className={styles.getListTableContainer}>
-      </div>
-      <div id="viewDetails">
-        <div id="associatedAccountsTable">
+      <hr className="w-90" />
+      <UmContext.Provider value={{
+        gmInfo,
+        isAdmin: gmInfo.type == 0,
+        searchTerm,
+        ModalTypes,
+        playerDetails,
+        resetView: () => setCV("search"),
+        setPD,
+        openModal,
+        closeModal,
+        addActionButtons,
+        getPlayerRequest,
 
+      }}>
+        { currView == "list" ?
+          <AccountTable playerList={playerList}/> :
+          <></>
+        }
+        { currView == "details" ?
+          <UserDetails fromTable={fromTable} openListView={() => setCV("list")}/> :
+          <></>
+        }
+        <div id="actionsModal" className={styles.actionsModal}>
+          { currModal == ModalTypes.EditInfo ? <EditInfoModal username={modalUser} /> : <></> }
+          { currModal == ModalTypes.BanUser ? <BanUserModal /> : <></> }
+          { currModal == ModalTypes.BanHistory ? <BanHistoryModal /> : <></> }
+          { currModal == ModalTypes.AltAccounts ? <AltAccountsModal /> : <></> }
+          { currModal == ModalTypes.ResetPass ? <ResetPassModal /> : <></> }
+          {/*{ currModal == ModalTypes.BadgeMgmt ? <BadgeMgmtModal /> : <></> }*/}
+          { currModal == ModalTypes.DeleteAcc ? <DeleteAccountModal /> : <></> }
         </div>
-      </div>
+      </UmContext.Provider>
     </div>
   );
 }
 
+
+function AccountTable({ playerList }): ReactNode {
+  const { isAdmin, searchTerm, addActionButtons } = useContext(UmContext);
+
+
+  useEffect(() => {
+    if (!playerList || playerList.length == 0)
+      return;
+
+    const tbody = document.getElementById("plTableBody") as HTMLTableElement;
+    playerList.forEach((o) => {
+      const rowData = isAdmin ?
+        [o.accountId, o.email, o.username, o.sitekickName] :
+        [o.accountId, o.username, o.sitekickName];
+      const row = document.createElement("tr");
+      for (const colData of rowData) {
+        const td = document.createElement("td");
+        td.textContent = colData;
+        row.appendChild(td);
+      }
+      addActionButtons(row, o);
+      tbody.appendChild(row);
+    });
+  }, [playerList]);
+
+  return (
+    !playerList || playerList.length == 0 ?
+      <Heading as='h3' className={styles.emptyListText}>No players were found with the Email / Username: "${searchTerm}"</Heading>
+      :
+      <table id="playerListTable" className={`${styles.listTable} ${styles.playerListTable}`}>
+        <thead>
+          <tr>
+            <th>Account ID</th>
+            {isAdmin ? <th>Email</th> : <></>}
+            <th>Username</th>
+            <th>Sitekick Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="plTableBody"></tbody>
+      </table>
+  );
+}
