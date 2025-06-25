@@ -25,7 +25,7 @@ export default function FooterLayout({
           <Link to="https://www.instagram.com/sitekickremastered/" className="instagram__logo">
             <FontAwesomeIcon icon={faInstagram} />
           </Link>
-          <Link to="https://twitter.com/SitekickGame" className="twitter__logo">
+          <Link to="https://x.com/SitekickGame" className="x__logo">
             <FontAwesomeIcon icon={faXTwitter} />
           </Link>
           <Link to="https://www.youtube.com/channel/UCZQ0gBa3SbxwfQ5zp4029PQ" className="youtube__logo">
