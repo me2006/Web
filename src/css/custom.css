@@ -1434,24 +1434,8 @@ article.margin-bottom--xl {
   color: white !important;
 }
 
-.alert--discord .admonitionHeading_Gvgb {
-  font-weight: bold;
-}
-
-.alert--discord .admonitionIcon_Rf37 svg {
-  fill: white !important;
-}
-
 .alert--frantic {
   border-left: 5px solid #cc66ff !important;
   background-color: #640097 !important;
   color: white !important;
-}
-
-.alert--frantic .admonitionHeading_Gvgb {
-  font-weight: bold;
-}
-
-.alert--frantic .admonitionIcon_Rf37 svg {
-  fill: white !important;
 }
