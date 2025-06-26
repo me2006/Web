@@ -21,8 +21,10 @@ jobs:
         with:
           node-version: 18
           cache: npm
-      - run: npm ci
-      - run: npm run build
+      - name: Install dependencies
+        run: npm ci
+      - name: Build website
+        run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build
@@ -30,6 +32,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
