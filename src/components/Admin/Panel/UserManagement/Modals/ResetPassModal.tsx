@@ -31,7 +31,7 @@ export default function ResetPassModal(): ReactNode {
       username: playerDetails.email || playerDetails.username
     };
 
-    return fetch(`${customFields.BASE_URL}${customFields.PASS_RESET}`, {
+    return fetch(`${customFields.BASE_URL}${customFields.CREATE_PASS_RESET}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",

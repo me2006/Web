@@ -71,7 +71,7 @@ export default function Cookies(): ReactNode {
 
         <br />
         <Heading as="h2" id="infoCollect">1. What Information Do We Collect?</Heading>
-        <Heading as="h4">Personal information you disclose to us</Heading>
+        <Heading as="h4" id="personalInfo">Personal information you disclose to us</Heading>
         <p><i><b>In Short:</b> We collect personal information that you provide to us.</i></p>
         <p>We collect personal information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us.</p>
         <Heading as="h4">Personal Information Provided By You</Heading>

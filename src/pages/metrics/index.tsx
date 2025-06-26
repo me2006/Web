@@ -104,14 +104,16 @@ const ChipMetricsList: ChipMetricsItem[] = [
 function MetricsCard(props) {
   return (
     <div className={`col ${styles.metricsCard}`}>
-      <Heading as="h2">{ props.title }</Heading>
+      <Heading as="h2" className="mb-1">{ props.title }</Heading>
       <FontAwesomeIcon icon={props.icon} size="6x" />
       <hr />
-      {
-        props.data[props.keyStr] == 0 ?
-          <p>{ props.emptyText }</p> :
-          <p>{ props.text1 }{props.data[props.keyStr]}{ props.text2 }</p>
-      }
+      <p className="mb-0">
+        {
+          props.data[props.keyStr] == 0 ?
+            props.emptyText :
+            props.text1 + props.data[props.keyStr] + props.text2
+        }
+      </p>
     </div>
   );
 }
@@ -121,18 +123,20 @@ function MetricsCardChip(props) {
   const iconAlt = `Chip #${props.data[props.keyStr]} icon`;
   return (
     <div className={`col ${styles.metricsCard}`}>
-      <Heading as="h2">{ props.title }</Heading>
+      <Heading as="h2" className="mb-1">{ props.title }</Heading>
       {
         (props.data[props.keyStr]) ?
           <img src={useBaseUrl(chipIcon)} role="img" alt={iconAlt} /> :
           <FontAwesomeIcon icon={props.nullIcon} size="6x" />
       }
       <hr />
-      {
-        props.data[props.keyStr] == 0 ?
-          <p>{ props.emptyText }</p> :
-          <p>Chip #{props.data[props.keyStr]}{ props.text }</p>
-      }
+      <p className="mb-0">
+        {
+          props.data[props.keyStr] == 0 ?
+            props.emptyText :
+            "Chip #" + props.data[props.keyStr] + props.text
+        }
+      </p>
     </div>
   );
 }
@@ -169,12 +173,12 @@ export default function Status() {
           (Object.keys(data).length) ?
             <>
               <p>This page is updated every 30 seconds!</p>
-              <div className="row">
+              <div className="row justify-content-center">
                 {MetricsList.map((props, idx) => (
                   <MetricsCard key={idx} data={data} {...props} />
                 ))}
               </div>
-              <div className="row">
+              <div className="row justify-content-center">
                 {ChipMetricsList.map((props, idx) => (
                   <MetricsCardChip key={idx} data={data} {...props} />
                 ))}

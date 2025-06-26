@@ -1,12 +1,13 @@
 import { useState, createContext, useEffect } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
-import Login from "@site/src/components/Admin/Login";
 import Panel from "@site/src/components/Admin/Panel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { faSignOut, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 
 import styles from "./index.module.css";
+import NotFound from "@theme/NotFound";
 
 export const GmContext = createContext(null);
 
@@ -14,6 +15,10 @@ export default function Admin() {
   const { siteConfig: { customFields } } = useDocusaurusContext();
   const [loggedIn, setLoggedIn] = useState(false);
   const [gm, setGM] = useState(Object);
+
+  // Login States
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function login(email: string, password: string) {
     const data = {
@@ -53,6 +58,7 @@ export default function Admin() {
     if (getCookie("Session-Id"))
       document.cookie = "Session-Id=;path=/admin;expires=Thu, 01 Jan 1970 00:00:01 GMT";
     setLoggedIn(false);
+    setGM(null);
   }
 
   function getGmInfo() {
@@ -83,21 +89,47 @@ export default function Admin() {
   },[]);
 
   return (
-    <main className={styles.mainContainer}>
-      { loggedIn && gm ?
-        <div className={styles.panelNavbar}>
-          <Heading as="h2">Sitekick Remastered Mod Panel</Heading>
-          <Heading as="h3">Welcome <span>{gm.type == 0 ? "Admin" : "Moderator"}</span> {gm.username}!</Heading>
-          <button className="button red sm margin--sm" onClick={() => { logout(); }}>
-            Logout <FontAwesomeIcon icon={faSignOut} />
-          </button>
-        </div>
-        :
-        <></>
-      }
-      <GmContext.Provider value={{ login: login, getGmInfo: getGmInfo }}>
-        { !loggedIn ? <Login /> : <Panel /> }
-      </GmContext.Provider>
-    </main>
+    <BrowserOnly fallback={<NotFound></NotFound>}>
+      {() => {
+        return(
+          <main className={styles.mainContainer}>
+            { !loggedIn && !gm ?
+              /* Login Page */
+              <div className={styles.loginContainer}>
+                <img src="img/deadkick.png" alt="deadkick" />
+                <form className={styles.loginForm}>
+                  <label htmlFor="email">Email</label>
+                  <div className={styles.inputContainer}>
+                    <FontAwesomeIcon icon={faUser} className={styles.inputIcon} />
+                    <input className={styles.emailInput} onChange={(e) => setEmail(e.target.value)} name="email" id="email" type="email" placeholder="Email" required />
+                  </div>
+
+                  <label htmlFor="password">Password</label>
+                  <div className={styles.inputContainer}>
+                    <FontAwesomeIcon icon={faLock} className={styles.inputIcon} />
+                    <input className={styles.passInput} onChange={(e) => setPassword(e.target.value)} name="password" id="password" type="password" placeholder="Password" required />
+                  </div>
+                  <div className={styles.btnDiv}>
+                    <button type="button" className="button--flat" onClick={() => login(email, password)}>Login</button>
+                  </div>
+                </form>
+              </div>
+              :
+              /* Panel Page */
+              <>
+                <div className={styles.panelNavbar}>
+                  <Heading as="h2">Sitekick Remastered Mod Panel</Heading>
+                  <Heading as="h3">Welcome <span>{gm.type == 0 ? "Admin" : "Moderator"}</span> {gm.username}!</Heading>
+                  <button className="button red sm margin--sm" onClick={() => { logout(); }}>
+                    Logout <FontAwesomeIcon icon={faSignOut} />
+                  </button>
+                </div>
+                <Panel gmInfo={gm}/>
+              </>
+            }
+          </main>
+        );
+      }}
+    </BrowserOnly>
   );
 }

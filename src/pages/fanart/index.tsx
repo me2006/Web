@@ -144,7 +144,7 @@ export default function FanArt(): ReactNode {
           <div className={styles.pageInfoOuter}>
             <p className={styles.pageInfoInner}>
               We have seen some amazing fan art in our&nbsp;
-              <Link to="discord.sitekickremastered.com">Discord Server</Link> over the years.
+              <Link to="https://discord.sitekickremastered.com">Discord Server</Link> over the years.
               Like YTV before us, we decided to showcase these posts here!</p>
           </div>
 

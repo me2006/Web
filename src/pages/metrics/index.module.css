@@ -23,4 +23,6 @@
   border: 2px solid var(--text-colour);
   padding: 2rem;
   margin: 1rem;
+  min-width: 400px;
+  max-width: 400px;
 }
