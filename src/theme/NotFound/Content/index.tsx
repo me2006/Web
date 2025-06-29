@@ -5,7 +5,7 @@ import Heading from "@theme/Heading";
 
 export default function NotFoundContent({ className }: Props): ReactNode {
   return (
-    <main className="margin-vert--xl padding-vert--lg d-flex justify-content-center" >
+    <main>
       <div className={className}>
         <Heading as="h1" className="hero__title">
           <Translate

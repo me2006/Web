@@ -3,6 +3,15 @@
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
+  min-height: calc(100vh - 25vh);
+  display: flex;
+  justify-content: center;
+}
+
+.errorBg main {
+  margin: 7rem 0;
+  display: flex;
+  justify-content:center;
 }
 
 .errorContent {
@@ -14,7 +23,11 @@
 
 @media screen and (max-width: 996px) {
   .errorBg {
-    padding: 4rem 1rem;
-    background-size: cover !important;
+    padding: 0
   }
+
+.errorBg main {
+  margin: 0;
+  padding: 2rem;
+}
 }

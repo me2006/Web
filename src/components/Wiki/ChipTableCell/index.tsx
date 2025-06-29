@@ -7,9 +7,9 @@ import { ChipAttrs, ChipIcon } from "@site/src/components/Wiki/ChipImages";
  */
 export default function ChipTableCell({ id, name }: ChipAttrs) {
   return (
-    <div className="d-flex align-items-center">
-      <ChipIcon id={id} styles={{ paddingRight: "10px" }} />
-      {id} - {name}
+    <div>
+      <ChipIcon id={id} />
+      <p className="m-0">{id} - {name}</p>
     </div>
   );
 }

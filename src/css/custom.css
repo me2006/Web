@@ -401,6 +401,11 @@ summary {
   color: var(--a-tag-colour);
 }
 
+.navbar-sidebar__back {
+  top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
 @media screen and (max-width: 996px) {
   .homeBg .ytvContainer.orange {
     border-radius: 0;
@@ -576,17 +581,23 @@ summary {
 }
 
 .navbar-sidebar__item {
-  padding: 0.5rem 0;
-}
-
-.navbar-sidebar .menu__link {
-  color: var(--game-text-colour);
+  width: 100%;
+  padding: 0;
 }
 
 .navbar-sidebar .menu__list-item {
   min-width: 100%;
-  padding: 0.5rem 0rem;
+  min-height: 3rem;
   margin-top: 0 !important;
+}
+
+.navbar-siderbar .menu__link--sublist {
+  padding-top: 0.7rem;
+}
+
+.navbar-sidebar .menu__link {
+  color: var(--game-text-colour);
+  min-height: 3rem;
 }
 
 .navbar-sidebar .menu__list-item:nth-child(odd):not(.menu__list-item ul li) {
@@ -597,9 +608,11 @@ summary {
   background-color: var(--game-light-green) !important;
 }
 
+/* Dropdown child elements */
 .navbar-sidebar .menu__list-item ul {
   min-width: 100%;
   padding-right: var(--ifm-menu-link-padding-horizontal) !important;
+  margin-top: 0
 }
 
 .navbar-sidebar .menu__list-item ul li {
@@ -607,9 +620,11 @@ summary {
   border-top: 2px solid rgba(0, 0, 0, 0.4);
 }
 
+/* 
 .navbar-sidebar .menu__list-item ul li:last-child {
   border-bottom: 2px solid rgba(0, 0, 0, 0.4);
 }
+*/
 
 .navbar-sidebar .menu__link--active {
   background-color: rgba(0, 0, 0, 0) !important;
@@ -1088,6 +1103,10 @@ article.margin-bottom--xl {
 /*#region Wiki*/
 .sidebarViewport_aRkj {
   margin-top: 2rem;
+}
+
+.menu_SIkG {
+  padding: 0.5rem !important;
 }
 
 .docSidebarContainer_YfHR {

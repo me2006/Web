@@ -3,7 +3,6 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
 import Heading from "@theme/Heading";
 import Link from "@docusaurus/Link";
-import { library, dom, IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -48,8 +47,8 @@ const ArtList: GalleryItem[] = [
   },
   {
     urls: ["/img/fan_art/puppy/puppy1.png"],
-    alt: "\"Puppy\"s Sitekick\" by puppy",
-    title: "\"Puppy\"s Sitekick\" by puppy",
+    alt: "\"Puppy's Sitekick\" by puppy",
+    title: "\"Puppy's Sitekick\" by puppy",
     isLink: false,
     socialLinks: {
       "https://www.instagram.com/idogmini/": <FontAwesomeIcon icon={faInstagram}/>,
@@ -135,7 +134,8 @@ export default function FanArt(): ReactNode {
   return (
     <Layout title={"Fan art"} description="Clickity-click, it's Sitekick!">
       <main style={{
-        background: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${bgLoc}) repeat`,
+        background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${bgLoc}) repeat`,
+        backgroundSize: "contain"
       }}>
         <div className={styles.fanArtContainer}>
           <div className={styles.pageTitleOuter}>
