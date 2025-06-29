@@ -23,12 +23,12 @@ const ButtonList: DownloadButton[] = [
   {
     alt: "Windows Store Download Badge",
     url: "ms-windows-store://pdp/?productid=9P7KL6QQLP4X",
-    imgUrl: "/img/download/windows-store-dark.svg",
+    imgUrl: "/img/download/microsoft-badge.svg",
   },
   {
     alt: "GitHub APK Download Badge",
     url: "https://github.com/SitekickRemastered/Game/releases/",
-    imgUrl: "/img/download/apk-badge-1.svg",
+    imgUrl: "/img/download/github-badge.svg",
   },
 ];
 
