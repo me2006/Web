@@ -9,6 +9,7 @@
   --bg-splash: url("/static/img/bg_splash.png");
   --ifm-hero-background-color: #eee;
   --text-colour: #000;
+  --rev-text-colour: #FFF;
   --subtle: #767676;
   --ytv-green: rgb(104, 194, 8);
   --ytv-purple: rgb(74, 42, 169);
@@ -58,6 +59,7 @@
 [data-theme='dark'] {
   --ifm-hero-background-color: #242526;
   --text-colour: #FFF;
+  --rev-text-colour: #000;
   --a-tag-colour: var(--custom-green);
   --ytv-grid: #242526;
   --ytv-container-inner-green: #242526;
@@ -1128,6 +1130,14 @@ article.margin-bottom--xl {
   margin: 1em 0;
 }
 
+/* Join the team grid */
+.jttGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
 .card {
   border: .05rem solid #999;
   border-radius: .5rem;
@@ -1135,6 +1145,34 @@ article.margin-bottom--xl {
   margin: 0;
   padding: .8rem;
   text-align: center;
+}
+
+/* Join the team cards */
+.jttCard1, .jttCard2 {
+  border: .05rem solid #999;
+  border-radius: .5rem;
+  display: block;
+  margin: 0;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: var(--text-colour) !important;
+  text-decoration: none !important;
+  transition: 0.3s;
+  align-content: center;
+}
+
+.jttCard1 p, .jttCard2 p {
+  margin: 0
+}
+
+.jttCard1:hover, .jttCard2:hover {
+  background-color: var(--a-tag-colour);
+  color: var(--rev-text-colour) !important
+}
+
+
+.jttCard2 {
+  grid-row-start: 2;
 }
 
 .wiki-parent {
