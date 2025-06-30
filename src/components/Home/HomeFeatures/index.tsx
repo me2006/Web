@@ -41,11 +41,9 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({ title, imgUrl, description }: FeatureItem) {
   return (
-    <div className={`col padding-vert--lg ${styles.featureCard}`}>
-      <div className="text--center">
-        <img src={useBaseUrl(imgUrl)} className={styles.featureImg} role="img" alt={title} />
-      </div>
-      <div className="text--center padding-horiz--md">
+    <div className={`col padding-vert--lg text--center ${styles.featureCard}`}>
+      <img src={useBaseUrl(imgUrl)} className={styles.featureImg} role="img" alt={title} />
+      <div className="padding-horiz--md">
         <Heading as="h1">{title}</Heading>
         <p>{description}</p>
       </div>

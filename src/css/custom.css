@@ -102,25 +102,11 @@
 }
 
 @keyframes navColourFade {
-  0% {
-    color: #144f00;
-  }
-
-  67% {
-    color: #FFF;
-  }
-
-  78% {
-    color: #ccff99;
-  }
-
-  89% {
-    color: #339900;
-  }
-
-  99% {
-    color: #000;
-  }
+  0% { color: #144f00; }
+  67% { color: #FFF; }
+  78% { color: #ccff99; }
+  89% { color: #339900; }
+  99% { color: #000; }
 }
 
 #__docusaurus {
