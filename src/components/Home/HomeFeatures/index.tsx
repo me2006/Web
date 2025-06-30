@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
     imgUrl: "/img/home/chips.gif",
     description: (
       <>
-        Nearly every chip is being restored for use in Sitekick Remastered, with new chips being created and added in every update.
+        1000 original chips are being restored in Sitekick Remastered, with brand new chips being created regularly.
       </>
     ),
   },
