@@ -54,6 +54,7 @@
   --ifm-button-padding-horizontal: 1rem;
   --ifm-transition-fast: 3ms;
   --ifm-transition-slow: 3ms;
+  --ifm-navbar-sidebar-width: 320px;
 }
 
 [data-theme='dark'] {
@@ -528,7 +529,6 @@ summary {
 
 .navbar-sidebar {
   background-color: var(--ytv-container-inner-green);
-  max-width: 320px;
   max-height: 100vh;
   overflow-y: hidden;
 }
