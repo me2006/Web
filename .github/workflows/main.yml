@@ -23,6 +23,13 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Clean npm cache
+        run: npm cache clean --force
+      - name: Clean build output and temp files
+        run: |
+          echo "Cleaning previous build and cache folders..."
+          rm -rf build .docusaurus node_modules/.cache
+          du -sh . || true
       - name: Build website
         run: npm run build
       - uses: actions/upload-pages-artifact@v3
