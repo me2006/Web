@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState, type ReactNode } from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { UmContext } from ".";
 import { faSquareCheck, faGavel, faLock, faPenToSquare, /*faShield,*/ faTrash, faClone, faBook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { postRequest } from "@site/src/utils/helpers";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import styles from "./index.module.css";
 
-export default function UserDetails( { fromTable, openListView }): ReactNode {
+export default function UserDetails( { fromTable, searchTerm, ModalTypes, openModal, openListView }): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
-  const { isAdmin, gmInfo, searchTerm, ModalTypes, playerDetails, setPD, openModal } = useContext(UmContext);
+  const { isAdmin, gmInfo, playerDetails, setPD } = useContext(UmContext);
   const [isBanned, setIsBanned] = useState(false);
   const [banType, setBanType] = useState(0);
   const [hasHistory, setHistory] = useState(playerDetails.banList.length > 0);
@@ -21,28 +22,12 @@ export default function UserDetails( { fromTable, openListView }): ReactNode {
       return;
 
     const data = {
-      author: gmInfo.username,
-      token: gmInfo.token,
       email: isAdmin ? playerDetails.email : "",
       username: playerDetails.username
     };
-
-    return fetch(`${customFields.BASE_URL}${customFields.UNBAN}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
-      credentials: "include",
-      body: encodeURIComponent(JSON.stringify(data))
-    }).then(res => {
-      if (!res.ok) {
-        throw new Error("Failed to unban player.");
-      }
+    return postRequest(gmInfo, customFields, data, customFields.UNBAN, "Failed to unban player.").then(() => {
       alert(playerDetails.username + " was successfully unbanned.");
       setPD({ ...playerDetails, banStatus: "Not banned" });
-    }).catch(() => {
-      alert("Failed to unban player.");
     });
   }
 

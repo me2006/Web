@@ -16,12 +16,12 @@ export default function AltAccountsModal(): ReactNode {
   }, [playerDetails]);
 
   return (
-    <div className={styles.modalContainer}>
-      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#ff4500" }}>
-        <span id="closeModal" className={styles.closeModal} onClick={() => closeModal()}>&times;</span>
-        <Heading as="h2" className={styles.modalTitle}>Ban History</Heading>
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#ff4500" }}>
+        <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">Ban History</Heading>
       </div>
-      <div id="modalBody" className={styles.modalBody}>
+      <div id="modalBody" className="modalBody">
         {
           dataError ?
             <p>
@@ -62,7 +62,7 @@ function BanTable( { banData }): ReactNode {
     !banData || banData.length == 0 ?
       <Heading as="h3" className={styles.emptyListText}>This account has not been banned</Heading>
       :
-      <div className={`${styles.modalTableContainer} mt-1`}>
+      <div className="mt-1">
         <table id="banTable" className={styles.listTable}>
           <thead>
             <tr>

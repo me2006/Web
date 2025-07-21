@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState, createContext, type ReactNode } from "react";
+import { useContext, useEffect, useState, createContext, type ReactNode, useRef } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { createTableButton, postRequest } from "@site/src/utils/helpers";
 import Heading from "@theme/Heading";
 // import BadgeMgmtModal from "./Modals/BadgeMgmtModal";
 import BanUserModal from "./Modals/BanUserModal";
@@ -36,30 +37,9 @@ export default function UserManagement({ gmInfo }): ReactNode {
   const [playerDetails, setPD] = useState();
 
   function getPlayerRequest(noe, getList) {
-    const data = {
-      author: gmInfo.username,
-      token: gmInfo.token,
-      username: noe
-    };
-
+    const data = { username: noe };
     const requestLink = (getList) ? customFields.GET_LIST: customFields.GET_ONE;
-
-    return fetch(`${customFields.BASE_URL}${requestLink}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
-      credentials: "include",
-      body: encodeURIComponent(JSON.stringify(data))
-    }).then(res => {
-      if (!res.ok) {
-        throw new Error("Failed to get player(s)");
-      }
-      return res.json();
-    }).catch(error => {
-      console.error(error);
-    });
+    return postRequest(gmInfo, customFields, data, requestLink, "Failed to get player(s)");
   }
 
   function searchBtn() {
@@ -101,40 +81,41 @@ export default function UserManagement({ gmInfo }): ReactNode {
 
   function addActionButtons(row, o) {
     const buttonCol = document.createElement("td");
-    const viewDetailsBtn = document.createElement("button");
-    viewDetailsBtn.textContent = "👀 View Details";
-    viewDetailsBtn.classList.add(styles.viewDetailsBtn);
-    viewDetailsBtn.onclick = () => viewDetails(o.username, true);
-    const editInfoBtn = document.createElement("button");
-    editInfoBtn.textContent = "🖋️ Edit Info";
-    editInfoBtn.classList.add(styles.editInfoBtn);
-    editInfoBtn.onclick = () => openModal(o.username, ModalTypes.EditInfo);
-    buttonCol.append(viewDetailsBtn, editInfoBtn);
+    createTableButton(buttonCol, "👀 View Details", "button--bootstrap", () => viewDetails(o.username, true));
+    createTableButton(buttonCol, "🖋️ Edit Info", "button--bootstrap yellow", () => openModal(o.username, ModalTypes.EditInfo));
     row.append(buttonCol);
   }
 
-  const modalElem = document.getElementById("actionsModal");
+  const modalElem = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalElem.current && !modalElem.current.contains(event.target as Node)) {
+        closeModal();
+      }
+    };
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" || event.key === "Esc")
+        closeModal();
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keypress", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keypress", handleEscape);
+    };
+  }, []);
 
   function openModal(modalUser, currModal) {
     setMU(modalUser);
     setCM(currModal);
-    modalElem.style.display = "block";
+    modalElem.current.style.display = "block";
   }
 
   function closeModal() {
-    modalElem.style.display = "none";
+    modalElem.current.style.display = "none";
   }
-
-  // Close the modal if the user clicks anywhere outside
-  window.onclick = function(event) {
-    if (event.target == modalElem)
-      modalElem.style.display = "none";
-  };
-
-  document.onkeyup = function(event) {
-    if (event.key === "Escape" || event.key === "Esc")
-      modalElem.style.display = "none";
-  };
 
   return (
     <div className={styles.searchContainer}>
@@ -144,8 +125,8 @@ export default function UserManagement({ gmInfo }): ReactNode {
         Single mode will find a user with the exact email or username specified
       </p>
 
-      <div className={styles.inputGroup}>
-        <input className={styles.searchInput} name="email" id="email" type="email" placeholder="Username or Email" />
+      <div className="inputGroup w-30 pb-1">
+        <input className="input--bootstrap" name="email" id="email" type="email" placeholder="Username or Email" />
         <select className={styles.searchDropdown} name="searchType" id="searchType" defaultValue="list">
           <option value="list">List</option>
           <option value="single">Single</option>
@@ -156,33 +137,26 @@ export default function UserManagement({ gmInfo }): ReactNode {
       <UmContext.Provider value={{
         gmInfo,
         isAdmin: gmInfo.type == 0,
-        searchTerm,
-        ModalTypes,
         playerDetails,
-        resetView: () => setCV("search"),
         setPD,
-        openModal,
-        closeModal,
-        addActionButtons,
-        getPlayerRequest,
-
+        closeModal
       }}>
         { currView == "list" ?
           <AccountTable playerList={playerList}/> :
           <></>
         }
         { currView == "details" ?
-          <UserDetails fromTable={fromTable} openListView={() => setCV("list")}/> :
+          <UserDetails fromTable={fromTable} searchTerm={searchTerm} ModalTypes={ModalTypes} openModal={openModal} openListView={() => setCV("list")}/> :
           <></>
         }
-        <div id="actionsModal" className={styles.actionsModal}>
-          { currModal == ModalTypes.EditInfo ? <EditInfoModal username={modalUser} /> : <></> }
+        <div ref={modalElem} className="modalOverlay">
+          { currModal == ModalTypes.EditInfo ? <EditInfoModal getPlayerRequest={getPlayerRequest} username={modalUser} /> : <></> }
           { currModal == ModalTypes.BanUser ? <BanUserModal /> : <></> }
           { currModal == ModalTypes.BanHistory ? <BanHistoryModal /> : <></> }
-          { currModal == ModalTypes.AltAccounts ? <AltAccountsModal /> : <></> }
+          { currModal == ModalTypes.AltAccounts ? <AltAccountsModal addActionButtons={addActionButtons} /> : <></> }
           { currModal == ModalTypes.ResetPass ? <ResetPassModal /> : <></> }
           {/*{ currModal == ModalTypes.BadgeMgmt ? <BadgeMgmtModal /> : <></> }*/}
-          { currModal == ModalTypes.DeleteAcc ? <DeleteAccountModal /> : <></> }
+          { currModal == ModalTypes.DeleteAcc ? <DeleteAccountModal resetView={() => setCV("search")} /> : <></> }
         </div>
       </UmContext.Provider>
     </div>

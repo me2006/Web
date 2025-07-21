@@ -1,0 +1,100 @@
+.msdContainer {
+  position: relative;
+}
+
+.msdHeader {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #EEE;
+}
+
+.msdArrow {
+  height: 18px;
+  color: grey;
+}
+
+.msdOptions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #EEE;
+  border: 1px solid #CCC;
+  color: #000;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 999;
+  padding: 5px 0;
+}
+
+.msdOption {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-bottom: 1px solid #CCC;
+  cursor: pointer;
+}
+
+.msdOption:first-child {
+  border-top: 1px solid #CCC;
+}
+
+.msdOption:last-child {
+  border-bottom: none;
+}
+
+.msdOption:hover {
+  cursor: pointer;
+  background-color: #AAA;
+}
+
+.msdOption.selected {
+  background-color: #AAA;
+}
+
+.msdOptionLabel {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.msdSearch {
+  padding: 10px;
+}
+
+.msdSearchInput {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.msdSelectAll {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.msdSelectAllLabel {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.msdPlaceholder {
+  color: grey;
+}
+
+.msdSelected {
+  color: black;
+  white-space: nowrap;
+  overflow: scroll;
+}
+
+.msdCheckbox {
+  width: 18px;
+  height: 18px;
+}

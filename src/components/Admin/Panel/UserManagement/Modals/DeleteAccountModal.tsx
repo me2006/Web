@@ -1,13 +1,12 @@
 import { useState, useEffect, useContext, type ReactNode } from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { UmContext } from "..";
+import { postRequest } from "@site/src/utils/helpers";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
-import styles from "../index.module.css";
-
-export default function DeleteAccountModal(): ReactNode {
+export default function DeleteAccountModal({ resetView }): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
-  const { gmInfo, playerDetails, resetView, closeModal } = useContext(UmContext);
+  const { gmInfo, playerDetails, closeModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
 
@@ -26,38 +25,23 @@ export default function DeleteAccountModal(): ReactNode {
 
   function deleteAccount() {
     const data = {
-      author: gmInfo.username,
-      token: gmInfo.token,
       account_id: playerDetails.accountId
     };
 
-    return fetch(`${customFields.BASE_URL}${customFields.DELETE}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
-      credentials: "include",
-      body: encodeURIComponent(JSON.stringify(data))
-    }).then(res => {
-      if (!res.ok) {
-        throw new Error("Failed to delete player's account.");
-      }
+    return postRequest(gmInfo, customFields, data, customFields.DELETE, "Failed to delete player's account.").then(() => {
       alert(`${playerDetails.username}'s account was deleted successfully`);
       closeModal();
       resetView();
-    }).catch(() => {
-      alert(`Failed to delete ${playerDetails.username}'s account.`);
     });
   }
 
   return (
-    <div className={styles.modalContainer}>
-      <div id="modalHeader" className={`${styles.modalHeader} ${styles.light}`} style={{ backgroundColor: "#1a1a1a" }}>
-        <span id="closeModal" className={`${styles.closeModal} ${styles.light}`} onClick={() => closeModal()}>&times;</span>
-        <Heading as="h2" className={styles.modalTitle}>Delete Account</Heading>
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader light" style={{ backgroundColor: "#1a1a1a" }}>
+        <span id="closeModal" className="closeModal light" onClick={() => closeModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">Delete Account</Heading>
       </div>
-      <div id="modalBody" className={styles.modalBody}>
+      <div id="modalBody" className="modalBody">
         {
           dataError ?
             <p>
@@ -74,7 +58,7 @@ export default function DeleteAccountModal(): ReactNode {
               <br/>
               {
                 confirmed ?
-                  <button type="button" className={styles.banUserBtn} onClick={ () => deleteAccount()}>Delete Account</button> :
+                  <button type="button" className="d-flex m-auto button--bootstrap red" onClick={ () => deleteAccount()}>Delete Account</button> :
                   <></>
               }
             </>

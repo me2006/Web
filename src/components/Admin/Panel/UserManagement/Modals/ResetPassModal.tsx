@@ -2,8 +2,7 @@ import { useState, useEffect, useContext, type ReactNode } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { UmContext } from "..";
-
-import styles from "../index.module.css";
+import { postRequest } from "@site/src/utils/helpers";
 
 export default function ResetPassModal(): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
@@ -26,37 +25,22 @@ export default function ResetPassModal(): ReactNode {
 
   function resetPassword() {
     const data = {
-      author: gmInfo.username,
-      token: gmInfo.token,
       username: playerDetails.email || playerDetails.username
     };
 
-    return fetch(`${customFields.BASE_URL}${customFields.CREATE_PASS_RESET}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
-      credentials: "include",
-      body: encodeURIComponent(JSON.stringify(data))
-    }).then(res => {
-      if (!res.ok) {
-        throw new Error("Failed to reset player's password.");
-      }
+    return postRequest(gmInfo, customFields, data, customFields.CREATE_PASS_RESET, `Failed to reset ${playerDetails.username}'s password.`).then(() => {
       alert(`${playerDetails.username}'s password was reset successfully.`);
       closeModal();
-    }).catch(() => {
-      alert(`Failed to reset ${playerDetails.username}'s password.`);
     });
   }
 
   return (
-    <div className={styles.modalContainer}>
-      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#3399ff" }}>
-        <span id="closeModal" className={styles.closeModal} onClick={() => closeModal()}>&times;</span>
-        <Heading as="h2" className={styles.modalTitle}>Reset Password</Heading>
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#3399ff" }}>
+        <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">Reset Password</Heading>
       </div>
-      <div id="modalBody" className={styles.modalBody}>
+      <div id="modalBody" className="modalBody">
         {
           dataError ?
             <p>
@@ -73,7 +57,7 @@ export default function ResetPassModal(): ReactNode {
               <br/>
               {
                 confirmed ?
-                  <button type="button" className={styles.changePassBtn} onClick={ () => resetPassword()}>Reset Password</button> :
+                  <button type="button" className="d-flex m-auto button--bootstrap" onClick={ () => resetPassword()}>Reset Password</button> :
                   <></>
               }
             </>

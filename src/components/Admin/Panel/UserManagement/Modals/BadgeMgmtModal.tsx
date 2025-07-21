@@ -16,12 +16,12 @@ export default function BadgeMgmtModal(): ReactNode {
   }, [playerDetails]);
 
   return (
-    <div className={styles.modalContainer}>
-      <div id="modalHeader" className={`${styles.modalHeader} ${styles.light}`} style={{ backgroundColor: "#9933cc" }}>
-        <span id="closeModal" className={`${styles.closeModal} ${styles.light}`} onClick={() => closeModal()}>&times;</span>
-        <Heading as="h2" className={styles.modalTitle}>Badge Management</Heading>
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader light" style={{ backgroundColor: "#9933cc" }}>
+        <span id="closeModal" className="closeModal light" onClick={() => closeModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">Badge Management</Heading>
       </div>
-      <div id="modalBody" className={styles.modalBody}>
+      <div id="modalBody" className="modalBody">
         {
           dataError ?
             <p>
@@ -38,7 +38,7 @@ export default function BadgeMgmtModal(): ReactNode {
   );
 }
 
-function BadgeTable( { badgeData }): ReactNode {
+function BadgeTable({ badgeData }): ReactNode {
 
   useEffect(() => {
     if (!badgeData || badgeData.length == 0)
@@ -62,7 +62,7 @@ function BadgeTable( { badgeData }): ReactNode {
     !badgeData || badgeData.length == 0 ?
       <Heading as="h3" className={styles.emptyListText}>This account has no badges</Heading>
       :
-      <div className={`${styles.modalTableContainer} mt-1`}>
+      <div className="mt-1">
         <table id="badgeTable" className={styles.listTable}>
           <thead>
             <tr>

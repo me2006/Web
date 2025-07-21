@@ -1,15 +1,13 @@
-import { useState, createContext, useEffect } from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useState, useEffect } from "react";
 import Heading from "@theme/Heading";
 import Panel from "@site/src/components/Admin/Panel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOut, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { postRequest } from "@site/src/utils/helpers";
 
 import styles from "./index.module.css";
-import NotFound from "@theme/NotFound";
-
-export const GmContext = createContext(null);
 
 export default function Admin() {
   const { siteConfig: { customFields } } = useDocusaurusContext();
@@ -27,28 +25,12 @@ export default function Admin() {
     };
 
     //security.fileuri.strict_origin_policy
-    fetch(`${customFields.BASE_URL}${customFields.LOGIN}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
-      credentials: "include",
-      body: encodeURIComponent(JSON.stringify(data))
-    }).then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject("Incorrect username / password");
-    }).then(resData => {
-      // console.info(resData);
+    postRequest("", customFields, data, customFields.LOGIN, "Incorrect username / password").then((resData) => {
       const d = new Date();
       d.setTime(d.getTime() + 3600 * 1000);
       document.cookie = "gmInfo=" + JSON.stringify(resData.gm) + ";path=/admin;expires=" + d.toUTCString();
       setGM(resData.gm);
       setLoggedIn(true);
-    }).catch(error => {
-      alert(error);
     });
   }
 
@@ -89,7 +71,7 @@ export default function Admin() {
   },[]);
 
   return (
-    <BrowserOnly fallback={<NotFound></NotFound>}>
+    <BrowserOnly>
       {() => {
         return(
           <main className={styles.mainContainer}>

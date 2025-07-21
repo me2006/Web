@@ -13,8 +13,8 @@
   This isn't *truely* centred vertically, but it looks better 
   since the antenna makes the content look lower than it is 
 */
-.downloadInner{
-  margin-top: 5rem;
+.downloadInner {
+  margin-top: 7rem;
   width: 80%;
   display: flex;
   align-items: center;

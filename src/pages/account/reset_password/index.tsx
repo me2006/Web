@@ -100,7 +100,6 @@ function ResetPasswordForm({ token, passData, setPassData, setSubmitted, setStat
     setSubmitted(true);
     const postBody = "password=" + encodeURIComponent(passData["new_password"]) + "&vpassword=" + encodeURIComponent(passData["confirm_password"]) + "&token=" + encodeURIComponent(token);
 
-
     fetch(`${customFields.BASE_URL}${customFields.RESET_PASS}`, {
       method: "POST",
       headers: {
@@ -108,16 +107,14 @@ function ResetPasswordForm({ token, passData, setPassData, setSubmitted, setStat
       },
       credentials: "include",
       body: postBody
-    })
-      .then(response => {
-        setStatus(response.ok);
-        if (!response.ok)
-          throw new Error("Failed to reset password: " + response.statusText);
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        setStatus(false);
-      });
+    }).then(response => {
+      setStatus(response.ok);
+      if (!response.ok)
+        throw new Error("Failed to reset password: " + response.statusText);
+    }).catch(error => {
+      console.error("Error:", error);
+      setStatus(false);
+    });
   };
 
   return (

@@ -4,7 +4,7 @@ import { UmContext } from "..";
 
 import styles from "../index.module.css";
 
-export default function AltAccountsModal(): ReactNode {
+export default function AltAccountsModal({ addActionButtons }): ReactNode {
   const { playerDetails, closeModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
 
@@ -16,12 +16,12 @@ export default function AltAccountsModal(): ReactNode {
   }, [playerDetails]);
 
   return (
-    <div className={styles.modalContainer}>
-      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#ff2994" }}>
-        <span id="closeModal" className={styles.closeModal} onClick={() => closeModal()}>&times;</span>
-        <Heading as="h2" className={styles.modalTitle}>Alt Accounts</Heading>
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#ff2994" }}>
+        <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">Alt Accounts</Heading>
       </div>
-      <div id="modalBody" className={styles.modalBody}>
+      <div id="modalBody" className="modalBody">
         {
           dataError ?
             <p>
@@ -30,7 +30,7 @@ export default function AltAccountsModal(): ReactNode {
             </p> :
             <>
               <p className="text-center mb-0"></p>
-              <AltTable altList={playerDetails.associatedAccounts}/>
+              <AltTable altList={playerDetails.associatedAccounts} addActionButtons={addActionButtons}/>
             </>
         }
       </div>
@@ -38,9 +38,9 @@ export default function AltAccountsModal(): ReactNode {
   );
 }
 
-function AltTable( { altList }): ReactNode {
+function AltTable( { altList, addActionButtons }): ReactNode {
 
-  const { isAdmin, addActionButtons } = useContext(UmContext);
+  const { isAdmin } = useContext(UmContext);
 
   useEffect(() => {
     if (!altList || altList.length == 0)
@@ -67,7 +67,7 @@ function AltTable( { altList }): ReactNode {
     !altList || altList.length == 0 ?
       <Heading as="h3" className={styles.emptyListText}>No alts were found for this account</Heading>
       :
-      <div className={`${styles.modalTableContainer} mt-1`}>
+      <div className="mt-1">
         <table id="altAccountsTable" className={styles.listTable}>
           <thead>
             <tr>

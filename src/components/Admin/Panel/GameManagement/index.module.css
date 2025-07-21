@@ -1,0 +1,43 @@
+.actionCardContainer {
+  width: 80%;
+  margin: 2rem auto;
+  display: table;
+  border-spacing: 1rem 0;
+}
+
+.actionCard {
+  display: table-cell;
+  text-align: center;
+  border-radius: 25px;
+  border: 2px solid var(--text-colour);
+  padding: 2rem;
+  min-width: 400px;
+  max-width: 400px;
+  width: 400px;
+  transition: 0.3s ease-in-out;
+}
+
+.actionCard:hover{
+  cursor: pointer;
+}
+
+.actionCard:first-child:hover {
+  background-color: #A00;
+}
+
+.actionCard:nth-child(2):hover {
+  background-color: blue;
+}
+.actionCard:last-child:hover {
+  background-color: green;
+}
+
+.gameManagementTable {
+  display: inline-table;
+  width: 90%;
+}
+
+.gameManagementTable > tbody > tr > td:last-child {
+  display: flex;
+  justify-content: space-evenly;
+}

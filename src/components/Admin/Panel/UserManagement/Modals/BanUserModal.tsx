@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext, type ReactNode } from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { UmContext } from "..";
+import { postRequest } from "@site/src/utils/helpers";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import styles from "../index.module.css";
 
@@ -41,8 +42,6 @@ export default function BanUserModal(): ReactNode {
     }
 
     const data = {
-      author: gmInfo.username,
-      token: gmInfo.token,
       email: isAdmin ? playerDetails.email : "",
       username: playerDetails.username,
       expiration: isBanned ? Date.now() : expiration,
@@ -51,33 +50,20 @@ export default function BanUserModal(): ReactNode {
       created_by: gmInfo.username
     };
 
-    return fetch(`${customFields.BASE_URL}${customFields.BAN}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
-      credentials: "include",
-      body: encodeURIComponent(JSON.stringify(data))
-    }).then(res => {
-      if (!res.ok) {
-        throw new Error("Failed to ban player.");
-      }
+    return postRequest(gmInfo, customFields, data, customFields.BAN, "Failed to ban player.").then(() => {
       alert(`Player ${playerDetails.username} was succesfully banned`);
       setPD({ ...playerDetails, banStatus: isBanned ? "Perma banned" : "Suspended" });
       closeModal();
-    }).catch(() => {
-      alert("Failed to ban player.");
     });
   }
 
   return (
-    <div className={styles.modalContainer}>
-      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#cc0000" }}>
-        <span id="closeModal" className={styles.closeModal} onClick={() => closeModal()}>&times;</span>
-        <Heading as="h2" className={styles.modalTitle}>{ isAdmin ? "Ban / Suspend User" : "Suspend User" }</Heading>
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#cc0000" }}>
+        <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">{ isAdmin ? "Ban / Suspend User" : "Suspend User" }</Heading>
       </div>
-      <div id="modalBody" className={styles.modalBody}>
+      <div id="modalBody" className="modalBody">
         {
           dataError ?
             <p>
@@ -87,8 +73,8 @@ export default function BanUserModal(): ReactNode {
             <>
               <p className="text-center mb-0">Enter the information below.</p>
               <div>
-                <label htmlFor="expiration" className={styles.infoLabel}>Expiration:</label>
-                <input className={`${styles.infoInput} ${styles.sm}`} name="expiration" id="expiration" type="date" />
+                <label htmlFor="expiration" className="input--label">Expiration:</label>
+                <input className="input--bootstrap sm" name="expiration" id="expiration" type="date" />
                 { isAdmin ?
                   <>
                     <br/>
@@ -99,10 +85,10 @@ export default function BanUserModal(): ReactNode {
                 }
               </div>
               <br/>
-              <label htmlFor="reason" className={styles.infoLabel}>Reason (max 512 characters):</label>
+              <label htmlFor="reason" className="input--label">Reason (max 512 characters):</label>
               <textarea className={styles.textareaReason} name= "reason" id="reason" maxLength={512} />
               <br/>
-              <button type="button" className={styles.banUserBtn} onClick={ () => banUser()}>{isAdmin ? "Ban / Suspend User" : "Suspend User" }</button>
+              <button type="button" className="d-flex m-auto button--bootstrap red" onClick={ () => banUser()}>{isAdmin ? "Ban / Suspend User" : "Suspend User" }</button>
             </>
         }
       </div>
