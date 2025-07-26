@@ -40,7 +40,7 @@ export default function Cookies(): ReactNode {
         <p>We process your information to provide, improve, and administer our Services, including the Forum, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so. Learn more about <Link to="#infoUse">how we process your information</Link>.</p>
 
         <Heading as="h4">In what situations and with which parties do we share personal information?</Heading>
-        <p>We may share information in specific situations and with specific third parties. Your Forum posts may be publicly visible and retained even after account deletion. Learn more about <Link to="#whoShare">when and with whom we share your personal information</Link>.</p>
+        <p>We may share information in specific situations and with specific third parties. Your Forum posts may be publicly visible and retained even after account deletion. Private messages in the Forum may be accessed by administrators if reported by one of the parties involved for moderation or investigation purposes. Learn more about <Link to="#whoShare">when and with whom we share your personal information</Link>.</p>
 
         <Heading as="h4">How do we keep your information safe?</Heading>
         <p>We have organizational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Learn more about <Link to="#infoSafe">how we keep your information safe</Link>.</p>
@@ -74,7 +74,7 @@ export default function Cookies(): ReactNode {
         <Heading as="h2" id="infoCollect">1. What Information Do We Collect?</Heading>
         <Heading as="h4" id="personalInfo">Personal information you disclose to us</Heading>
         <p><i><b>In Short:</b> We collect personal information that you provide to us.</i></p>
-        <p>We collect personal information that you voluntarily provide to us when you register on the Services, including the Forum, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services (such as posting on the Forum), or otherwise when you contact us.</p>
+        <p>We collect personal information that you voluntarily provide to us when you register on the Services, including the Forum, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services (such as posting on the Forum or sending private messages), or otherwise when you contact us.</p>
         <Heading as="h4">Personal Information Provided By You</Heading>
         <p>The personal information that we collect depends on the context of your interactions with us and the Services, including the Forum, the choices you make, and the products and features you use. The personal information we collect may include the following:</p>
         <ul>
@@ -83,6 +83,7 @@ export default function Cookies(): ReactNode {
           <li>usernames</li>
           <li>passwords</li>
           <li>Forum posts (which may include personal information if you choose to include it)</li>
+          <li>Private messages (which may be accessed by administrators if reported by one of the parties involved for moderation or investigation purposes)</li>
         </ul>
         <Heading as="h4">Sensitive Information</Heading>
         <p>We do not process sensitive information.</p>
@@ -113,7 +114,7 @@ export default function Cookies(): ReactNode {
           <li><b>To deliver and facilitate delivery of services to the user.</b> We may process your information to provide you with the requested service, including participation in the Forum.</li>
           <li><b>To respond to user inquiries/offer support to users.</b> We may process your information to respond to your inquiries and solve any potential issues you might have with the requested service, including Forum-related support.</li>
           <li><b>To send administrative information to you.</b> We may process your information to send you details about our products and services, changes to our terms and policies, and other similar information, including Forum updates.</li>
-          <li><b>To enable user-to-user communications.</b> We may process your information if you choose to use any of our offerings that allow for communication with another user, such as posting or replying on the Forum.</li>
+          <li><b>To enable user-to-user communications.</b> We may process your information if you choose to use any of our offerings that allow for communication with another user, such as posting or replying on the Forum or sending private messages. Administrators may access private messages in the Forum if reported by one of the parties involved for moderation or investigation purposes, such as to address potential violations of our terms or policies.</li>
         </ul>
 
         <br />
@@ -143,6 +144,7 @@ export default function Cookies(): ReactNode {
         <ul>
           <li><b>Business Transfers.</b> We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</li>
           <li><b>Other Users.</b> When you share personal information (such as in Forum posts) or otherwise interact with public areas of the Services, such as the Forum, such personal information may be viewed by all users and may be publicly made available outside the Services in perpetuity. Forum posts will remain accessible even after you delete your account, as outlined in the <Link to="#request">How Can You Review, Update, or Delete the Data We Collect From You?</Link> section. Similarly, other users will be able to view descriptions of your activity, communicate with you within our Services, and view your profile.</li>
+          <li><b>Administrators for Moderation.</b> Private messages in the Forum may be accessed by administrators if reported by one of the parties involved for moderation or investigation purposes, such as to address potential violations of our terms or policies.</li>
         </ul>
 
         <br />
