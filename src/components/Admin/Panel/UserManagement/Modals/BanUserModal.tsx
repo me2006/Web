@@ -50,9 +50,11 @@ export default function BanUserModal(): ReactNode {
       created_by: gmInfo.username
     };
 
-    return postRequest(gmInfo, customFields, data, customFields.BAN, "Failed to ban player.").then(() => {
-      alert(`Player ${playerDetails.username} was succesfully banned`);
-      setPD({ ...playerDetails, banStatus: isBanned ? "Perma banned" : "Suspended" });
+    return postRequest(gmInfo, customFields, data, customFields.BAN, "Failed to ban player.").then((res) => {
+      if (res) {
+        alert(`Player ${playerDetails.username} was succesfully banned`);
+        setPD({ ...playerDetails, banStatus: isBanned ? "Perma banned" : "Suspended" });
+      }
       closeModal();
     });
   }

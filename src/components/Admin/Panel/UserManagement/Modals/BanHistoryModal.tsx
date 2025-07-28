@@ -3,6 +3,7 @@ import Heading from "@theme/Heading";
 import { UmContext } from "..";
 
 import styles from "../index.module.css";
+import { createTable } from "@site/src/utils/helpers";
 
 export default function AltAccountsModal(): ReactNode {
   const { playerDetails, closeModal } = useContext(UmContext);
@@ -40,22 +41,17 @@ export default function AltAccountsModal(): ReactNode {
 }
 
 function BanTable( { banData }): ReactNode {
+  const tableId = "banTable";
 
   useEffect(() => {
     if (!banData || banData.length == 0)
       return;
 
-    const tbody = document.getElementById("banTableBody") as HTMLTableElement;
-    banData.forEach((o) => {
-      const rowData = [o.expiration, o.reason, o.createdBy, o.dateCreated];
-      const row = document.createElement("tr");
-      for (const colData of rowData) {
-        const td = document.createElement("td");
-        td.textContent = colData;
-        row.appendChild(td);
-      }
-      tbody.appendChild(row);
-    });
+    const headers = ["Expiration", "Reason", "Ban Author", "Date Created"];
+    const headerStyles = ["", "w-50", "", ""];
+    const expKeys =  ["expiration", "reason", "createdBy", "dateCreated"];
+
+    createTable(tableId, headers, expKeys, banData, undefined, headerStyles);
   }, [banData]);
 
   return (
@@ -63,17 +59,7 @@ function BanTable( { banData }): ReactNode {
       <Heading as="h3" className={styles.emptyListText}>This account has not been banned</Heading>
       :
       <div className="mt-1">
-        <table id="banTable" className={styles.listTable}>
-          <thead>
-            <tr>
-              <th>Expiration</th>
-              <th className="w-50">Reason</th>
-              <th>Ban Author</th>
-              <th>Date Created</th>
-            </tr>
-          </thead>
-          <tbody id="banTableBody"></tbody>
-        </table>
+        <table id="banTable" className={styles.listTable} />
       </div>
   );
 }

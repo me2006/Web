@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext, type ReactNode } from "react";
-import Heading from "@theme/Heading";
 import { UmContext } from "..";
+import Heading from "@theme/Heading";
+import { createTable, TableButton } from "@site/src/utils/helpers";
 
 import styles from "../index.module.css";
 
-export default function AltAccountsModal({ addActionButtons }): ReactNode {
+export default function AltAccountsModal(): ReactNode {
   const { playerDetails, closeModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
 
@@ -30,7 +31,7 @@ export default function AltAccountsModal({ addActionButtons }): ReactNode {
             </p> :
             <>
               <p className="text-center mb-0"></p>
-              <AltTable altList={playerDetails.associatedAccounts} addActionButtons={addActionButtons}/>
+              <AltTable altList={playerDetails.associatedAccounts}/>
             </>
         }
       </div>
@@ -38,29 +39,26 @@ export default function AltAccountsModal({ addActionButtons }): ReactNode {
   );
 }
 
-function AltTable( { altList, addActionButtons }): ReactNode {
-
-  const { isAdmin } = useContext(UmContext);
+function AltTable( { altList }): ReactNode {
+  const { isAdmin, ModalTypes, viewDetails, openModal } = useContext(UmContext);
+  const tableId = "altAccountsTable";
 
   useEffect(() => {
     if (!altList || altList.length == 0)
       return;
 
-    const tbody = document.getElementById("aaTableBody") as HTMLTableElement;
-    altList.forEach((o) => {
-      const isMainText = o.isMain ? "Main" : "Alt";
-      const rowData = isAdmin ?
-        [o.accountId, o.email, o.username, o.sitekickName, isMainText] :
-        [o.accountId, o.username, o.sitekickName, isMainText];
-      const row = document.createElement("tr");
-      for (const colData of rowData) {
-        const td = document.createElement("td");
-        td.textContent = colData;
-        row.appendChild(td);
-      }
-      addActionButtons(row, o);
-      tbody.appendChild(row);
-    });
+    const headers = ["Account ID", "Email", "Username", "Sitekick Name", "Account Type", "Actions"];
+    const expKeys = ["accountId", "email", "username", "sitekickName", "isMainText"];
+    if (!isAdmin) {
+      headers.splice(1, 1);
+      expKeys.splice(1, 1);
+    }
+    const buttons : TableButton[] = [
+      { text: "👀 View Details", style: "button--bootstrap", onClick: viewDetails, objKeys: ["username"], extraArgs: [true] },
+      { text: "🖋️ Edit Info", style: "button--bootstrap yellow", onClick: openModal, objKeys: ["id"], extraArgs: [ModalTypes.EditInfo] }
+    ];
+
+    createTable(tableId, headers, expKeys, altList, buttons);
   }, [altList]);
 
   return (
@@ -68,20 +66,7 @@ function AltTable( { altList, addActionButtons }): ReactNode {
       <Heading as="h3" className={styles.emptyListText}>No alts were found for this account</Heading>
       :
       <div className="mt-1">
-        <table id="altAccountsTable" className={styles.listTable}>
-          <thead>
-            <tr>
-              <th>Account ID</th>
-              {isAdmin ? <th>Email</th> : <></>}
-              <th>Username</th>
-              <th>Sitekick Name</th>
-              <th>Account Type</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="aaTableBody"></tbody>
-        </table>
+        <table id="altAccountsTable" className={styles.listTable} />
       </div>
   );
 }
-

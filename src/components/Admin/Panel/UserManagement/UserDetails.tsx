@@ -8,9 +8,9 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import styles from "./index.module.css";
 
-export default function UserDetails( { fromTable, searchTerm, ModalTypes, openModal, openListView }): ReactNode {
+export default function UserDetails( { fromTable, searchTerm, openListView }): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
-  const { isAdmin, gmInfo, playerDetails, setPD } = useContext(UmContext);
+  const { isAdmin, gmInfo, playerDetails, setPD, ModalTypes, openModal } = useContext(UmContext);
   const [isBanned, setIsBanned] = useState(false);
   const [banType, setBanType] = useState(0);
   const [hasHistory, setHistory] = useState(playerDetails.banList.length > 0);
@@ -25,7 +25,9 @@ export default function UserDetails( { fromTable, searchTerm, ModalTypes, openMo
       email: isAdmin ? playerDetails.email : "",
       username: playerDetails.username
     };
-    return postRequest(gmInfo, customFields, data, customFields.UNBAN, "Failed to unban player.").then(() => {
+    return postRequest(gmInfo, customFields, data, customFields.UNBAN, "Failed to unban player.").then((res) => {
+      if (!res)
+        return;
       alert(playerDetails.username + " was successfully unbanned.");
       setPD({ ...playerDetails, banStatus: "Not banned" });
     });

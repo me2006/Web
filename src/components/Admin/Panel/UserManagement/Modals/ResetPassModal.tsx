@@ -28,8 +28,9 @@ export default function ResetPassModal(): ReactNode {
       username: playerDetails.email || playerDetails.username
     };
 
-    return postRequest(gmInfo, customFields, data, customFields.CREATE_PASS_RESET, `Failed to reset ${playerDetails.username}'s password.`).then(() => {
-      alert(`${playerDetails.username}'s password was reset successfully.`);
+    return postRequest(gmInfo, customFields, data, customFields.CREATE_PASS_RESET, `Failed to reset ${playerDetails.username}'s password.`).then((res) => {
+      if (res)
+        alert(`${playerDetails.username}'s password was reset successfully.`);
       closeModal();
     });
   }

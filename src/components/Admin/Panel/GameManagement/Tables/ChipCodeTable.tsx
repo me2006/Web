@@ -8,19 +8,22 @@ import styles from "../index.module.css";
 export default function ChipCodeTable({ gmInfo, customFields, chipList }): ReactNode {
   const [data, setData] = useState(["code"]); // Set temp code in array so it can render
   const [codeData, setCD] = useState({});
+  const tableId = "chipCodeTable";
 
   function fetchChipCodes() {
-    postRequest(gmInfo, customFields, "", customFields.GET_CODES, "chip codes").then(res => {
-      setData(res.chipCodes);
-      if (!res.chipCodes || res.chipCodes.length == 0)
+    postRequest(gmInfo, customFields, "", customFields.GET_CODES, "Failed to get data for chip codes").then(res => {
+      if (!res || !res.chipCodes || res.chipCodes.length == 0)
         return;
 
+      setData(res.chipCodes);
+
       const tableHeaders = ["ID", "Code", "Chip(s)", "Player Limit", "Global Limit", "Cooldown", "Start Date", "End Date", "Actions"];
+      const expectedKeys = ["id", "code", "chips", "playerLimit", "globalLimit", "cooldown", "startDate", "endDate"];
       const buttons : TableButton[] = [
         { text: "🖋️ Edit", style: "button--bootstrap yellow", onClick: editChipCode },
-        { text: "🗑️ Delete", style: "button--bootstrap red", onClick: deleteChipCode, objKey: "id" }
+        { text: "🗑️ Delete", style: "button--bootstrap red", onClick: deleteChipCode, objKeys: ["id"] }
       ];
-      createTable("chipCodeTable", tableHeaders, res.chipCodes, buttons);
+      createTable(tableId, tableHeaders, expectedKeys, res.chipCodes, buttons, undefined, chipList);
     });
   }
 
@@ -37,8 +40,9 @@ export default function ChipCodeTable({ gmInfo, customFields, chipList }): React
     const data = {
       chip_code_id: chipCodeId
     };
-    return postRequest(gmInfo, customFields, data, customFields.DEL_CODE, "Failed to delete chip code.").then(() => {
-      alert("Chip code #" + chipCodeId + " was successfully deleted.");
+    return postRequest(gmInfo, customFields, data, customFields.DEL_CODE, "Failed to delete chip code.").then((res) => {
+      if (res)
+        alert("Chip code #" + chipCodeId + " was successfully deleted.");
     });
   }
 
@@ -64,7 +68,7 @@ export default function ChipCodeTable({ gmInfo, customFields, chipList }): React
       <>
         <button className="d-flex m-1a button--flat red" onClick={() => openModal()}>Add Chip Code</button>
         <div className="d-flex align-items-center flex-col">
-          <table id="chipCodeTable" className={styles.gameManagementTable} />
+          <table id={tableId} className={styles.gameManagementTable} />
         </div>
         <div ref={modalElem} className="modalOverlay">
           <ChipCodeModal gmInfo={gmInfo} chipList={chipList} closeModal={closeModal} codeInfo={codeData} />

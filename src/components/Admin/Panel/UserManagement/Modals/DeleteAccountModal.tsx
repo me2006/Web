@@ -28,8 +28,9 @@ export default function DeleteAccountModal({ resetView }): ReactNode {
       account_id: playerDetails.accountId
     };
 
-    return postRequest(gmInfo, customFields, data, customFields.DELETE, "Failed to delete player's account.").then(() => {
-      alert(`${playerDetails.username}'s account was deleted successfully`);
+    return postRequest(gmInfo, customFields, data, customFields.DELETE, "Failed to delete player's account.").then((res) => {
+      if (res)
+        alert(`${playerDetails.username}'s account was deleted successfully`);
       closeModal();
       resetView();
     });

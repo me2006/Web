@@ -3,7 +3,9 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAtom, faKey, faList, IconDefinition } from "@fortawesome/free-solid-svg-icons";
-import ChipCodeTable from "./Pages/ChipCodePage";
+import ChipCodeTable from "./Tables/ChipCodeTable";
+import CollectionListTable from "./Tables/CollectionListTable";
+import FusionRecipeTable from "./Tables/FusionRecipeTable";
 import { postRequest } from "@site/src/utils/helpers";
 
 import styles from "./index.module.css";
@@ -54,11 +56,11 @@ export default function GameManagement({ gmInfo }): ReactNode {
 
   function getChipList() {
     postRequest(gmInfo, customFields, "", customFields.GET_CHIPS, "Failed to get chip list").then(data => {
-      if (!data.chipList || data.chipList.length === 0)
+      if (!data || !data.chipList || data.chipList.length === 0)
         return;
 
       const options = data.chipList.map((chip) => {
-        return { label: `${chip.id} - ${chip.name}`, value: chip.id };
+        return { label: `${chip.id} - ${chip.name}`, value: chip.id, name: chip.name };
       });
 
       setCL(options);

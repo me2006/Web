@@ -12,20 +12,23 @@ interface MultiSelectDropdownProps {
   options: Option[];
   label: string;
   value?: string[];
+  limit?: number
   onChange: (selected: string[]) => void;
 }
 
 // Slightly modified version of:
 // https://medium.com/@varimallashankar/multi-select-dropdown-in-react-build-a-reusable-and-fully-functional-component-623e7a119869
-export default function MultiSelectDropdown({ options, label, value = [], onChange }: MultiSelectDropdownProps ) {
+export default function MultiSelectDropdown({ options, label, value = [], limit, onChange }: MultiSelectDropdownProps ) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>(value);
   const [searchText, setSearchText] = useState("");
+  const [slotsLeft, setSL] = useState(limit || options.length);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setSelectedOptions(value);
+    setSL(limit - value.length);
   }, [value]);
 
 
@@ -42,11 +45,20 @@ export default function MultiSelectDropdown({ options, label, value = [], onChan
 
   // Handle selection
   const handleCheckboxChange = (optionValue: string) => {
-    const updatedOptions = selectedOptions.includes(optionValue)
+    if (!optionValue)
+      return;
+
+    const inList = selectedOptions.includes(optionValue);
+    if (!inList && slotsLeft === 0)
+      return;
+
+    const updatedOptions = inList
       ? selectedOptions.filter((val) => val !== optionValue)
       : [...selectedOptions, optionValue];
+    updatedOptions.sort((a, b) => Number(a) - Number(b));
     setSelectedOptions(updatedOptions);
     onChange(updatedOptions);
+    setSL(slotsLeft - 1);
   };
 
   // Handle "Select All"
@@ -64,7 +76,7 @@ export default function MultiSelectDropdown({ options, label, value = [], onChan
 
   return (
     <div ref={dropdownRef} className={styles.msdContainer}>
-      <label className="input--label">{label}</label>
+      <label className="input--label">{label}{limit ? " (Max = " + limit + " Chip(s))" : "" }:</label>
       <div className={styles.msdHeader} onClick={() => setIsOpen((prev) => !prev)}>
         <span className={selectedOptions.length > 0 ? styles.msdSelected : styles.msdPlaceholder}>
           {selectedOptions.length ? `${selectedOptions.join(", ")}` : "Select Chips"}
@@ -85,12 +97,16 @@ export default function MultiSelectDropdown({ options, label, value = [], onChan
             />
           </div>
 
-          <div className={styles.msdSelectAll} onClick={handleSelectAll} style={searchText ? { display: "none" } : {}}>
+          <div
+            className={styles.msdSelectAll}
+            onClick={() => handleSelectAll()}
+            style={searchText || limit <= 8 ? { display: "none" } : {}}
+          >
             <input
               type="checkbox"
               className={styles.msdCheckbox}
               checked={selectedOptions.length === options.length}
-              onChange={handleSelectAll}
+              onChange={() => handleSelectAll()}
             />
             <label className={styles.msdSelectAllLabel}>Select All</label>
           </div>

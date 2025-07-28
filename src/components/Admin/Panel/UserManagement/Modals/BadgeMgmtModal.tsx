@@ -1,9 +1,10 @@
 import { useState, useEffect, useContext, type ReactNode } from "react";
-import Heading from "@theme/Heading";
 import { UmContext } from "..";
+import Heading from "@theme/Heading";
+import { createTable, TableButton } from "@site/src/utils/helpers";
+
 
 import styles from "../index.module.css";
-
 export default function BadgeMgmtModal(): ReactNode {
   const { playerDetails, closeModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
@@ -39,23 +40,21 @@ export default function BadgeMgmtModal(): ReactNode {
 }
 
 function BadgeTable({ badgeData }): ReactNode {
+  const tableId = "badgeTable";
 
   useEffect(() => {
     if (!badgeData || badgeData.length == 0)
       return;
 
-    const tbody = document.getElementById("bTableBody") as HTMLTableElement;
-    badgeData.forEach((o) => {
-      const rowData = [o.id, o.name, o.metadata ? o.metadata : "No metadata", o.level, o.dateEarned];
-      const row = document.createElement("tr");
-      for (const colData of rowData) {
-        const td = document.createElement("td");
-        td.textContent = colData;
-        td.style.overflowX = "auto";
-        row.appendChild(td);
-      }
-      tbody.appendChild(row);
-    });
+    const headers = ["Badge ID", "Badge Name", "Metadata", "Badge Level", "Date Earned", "Actions"];
+    const headerStyles = ["", "", "w-40", "", "", ""];
+    const expKeys = ["id", "name", "metadata", "level", "dateEarned"];
+    const buttons : TableButton[] = [
+      { text: "🖋️ Edit", style: "button--bootstrap yellow", onClick: () => {}, objKeys: ["id"] },
+      { text: "🗑️ Delete", style: "button--bootstrap red", onClick: () => {}, objKeys: ["id"] }
+    ];
+
+    createTable(tableId, headers, expKeys, badgeData, buttons, headerStyles);
   }, [badgeData]);
 
   return (
@@ -63,18 +62,7 @@ function BadgeTable({ badgeData }): ReactNode {
       <Heading as="h3" className={styles.emptyListText}>This account has no badges</Heading>
       :
       <div className="mt-1">
-        <table id="badgeTable" className={styles.listTable}>
-          <thead>
-            <tr>
-              <th>Badge ID</th>
-              <th>Badge Name</th>
-              <th className="w-40">Metadata</th>
-              <th>Badge Level</th>
-              <th>Date Earned</th>
-            </tr>
-          </thead>
-          <tbody id="bTableBody"></tbody>
-        </table>
+        <table id="badgeTable" className={styles.listTable} />
       </div>
   );
 }

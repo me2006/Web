@@ -26,6 +26,8 @@ export default function Admin() {
 
     //security.fileuri.strict_origin_policy
     postRequest("", customFields, data, customFields.LOGIN, "Incorrect username / password").then((resData) => {
+      if (!resData || !resData.gm)
+        return;
       const d = new Date();
       d.setTime(d.getTime() + 3600 * 1000);
       document.cookie = "gmInfo=" + JSON.stringify(resData.gm) + ";path=/admin;expires=" + d.toUTCString();

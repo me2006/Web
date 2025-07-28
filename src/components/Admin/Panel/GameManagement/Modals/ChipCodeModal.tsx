@@ -9,19 +9,19 @@ export default function ChipCodeModal({ gmInfo, chipList, closeModal, codeInfo }
   const [selectedChips, setCL] = useState<string[]>();
   const [isEdit, setIE] = useState(false);
   const [codeToEdit, setCTE] = useState({
-    code: "", items: [], player_limit: "", global_limit: "", cooldown: "", start_date: "", end_date: ""
+    code: "", chips: [], player_limit: "", global_limit: "", cooldown: "", start_date: "", end_date: ""
   });
 
   useEffect(() => {
     setIE(codeInfo.code);
     setCTE({
       code: codeInfo.code ?? "",
-      items: codeInfo.items ?? [],
+      chips: codeInfo.chips ?? [],
       player_limit: codeInfo.playerLimit ?? 1,
       global_limit: codeInfo.globalLimit ?? 1,
       cooldown: codeInfo.cooldown ?? "",
       start_date: codeInfo.startDate ?? "",
-      end_date: codeInfo.ejdData ?? ""
+      end_date: codeInfo.endDate ?? ""
     });
   }, [codeInfo]);
 
@@ -69,9 +69,11 @@ export default function ChipCodeModal({ gmInfo, chipList, closeModal, codeInfo }
     };
 
     const reqLink = isEdit ? customFields.EDIT_CODE : customFields.ADD_CODE;
+    const resVer = isEdit ? "edit" : "add";
 
-    return postRequest(gmInfo, customFields, data, reqLink, "Failed to add chip code.").then(() => {
-      alert("Chip code was added successfully");
+    return postRequest(gmInfo, customFields, data, reqLink, `Failed to ${resVer} chip code`).then((res) => {
+      if (res)
+        alert(`Chip code was ${resVer}ed successfully`);
       closeModal();
     });
   }
@@ -87,13 +89,13 @@ export default function ChipCodeModal({ gmInfo, chipList, closeModal, codeInfo }
           <div className="col">
 
             <label htmlFor="chipCode" className="input--label">Secret Code:</label>
-            <div className={"inputGroup"}>
+            <div className="inputGroup">
               <input className="input--bootstrap" name="chipCode" id="chipCode" type="text" defaultValue={codeToEdit.code} />
               <button type="button" id="generateCode" onClick={() => setChipCode()}>Generate Random Code</button>
             </div>
           </div>
-          <div className="col">
-            <MultiSelectDropdown options={chipList} label={"Chip List:"} value={codeToEdit.items} onChange={(selected) => { setCL(selected); }} />
+          <div className="col w-50">
+            <MultiSelectDropdown options={chipList} label={"Chip List"} value={codeToEdit.chips} onChange={(selected) => { setCL(selected); }} />
           </div>
         </div>
 
