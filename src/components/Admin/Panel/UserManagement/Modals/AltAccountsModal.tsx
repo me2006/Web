@@ -6,7 +6,7 @@ import { createTable, TableButton } from "@site/src/utils/helpers";
 import styles from "../index.module.css";
 
 export default function AltAccountsModal(): ReactNode {
-  const { playerDetails, closeModal } = useContext(UmContext);
+  const { playerDetails, closeUmModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function AltAccountsModal(): ReactNode {
   return (
     <div className="modalContainer">
       <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#ff2994" }}>
-        <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
+        <span id="closeModal" className="closeModal" onClick={() => closeUmModal()}>&times;</span>
         <Heading as="h2" className="modalTitle">Alt Accounts</Heading>
       </div>
       <div id="modalBody" className="modalBody">
@@ -40,7 +40,7 @@ export default function AltAccountsModal(): ReactNode {
 }
 
 function AltTable( { altList }): ReactNode {
-  const { isAdmin, ModalTypes, viewDetails, openModal } = useContext(UmContext);
+  const { isAdmin, ModalTypes, viewDetails, openUmModal } = useContext(UmContext);
   const tableId = "altAccountsTable";
 
   useEffect(() => {
@@ -55,7 +55,7 @@ function AltTable( { altList }): ReactNode {
     }
     const buttons : TableButton[] = [
       { text: "👀 View Details", style: "button--bootstrap", onClick: viewDetails, objKeys: ["username"], extraArgs: [true] },
-      { text: "🖋️ Edit Info", style: "button--bootstrap yellow", onClick: openModal, objKeys: ["id"], extraArgs: [ModalTypes.EditInfo] }
+      { text: "🖋️ Edit Info", style: "button--bootstrap yellow", onClick: openUmModal, objKeys: ["id"], extraArgs: [ModalTypes.EditInfo] }
     ];
 
     createTable(tableId, headers, expKeys, altList, buttons);

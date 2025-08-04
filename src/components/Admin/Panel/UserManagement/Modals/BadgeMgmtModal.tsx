@@ -6,7 +6,7 @@ import { createTable, TableButton } from "@site/src/utils/helpers";
 
 import styles from "../index.module.css";
 export default function BadgeMgmtModal(): ReactNode {
-  const { playerDetails, closeModal } = useContext(UmContext);
+  const { playerDetails, closeUmModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function BadgeMgmtModal(): ReactNode {
   return (
     <div className="modalContainer">
       <div id="modalHeader" className="modalHeader light" style={{ backgroundColor: "#9933cc" }}>
-        <span id="closeModal" className="closeModal light" onClick={() => closeModal()}>&times;</span>
+        <span id="closeModal" className="closeModal light" onClick={() => closeUmModal()}>&times;</span>
         <Heading as="h2" className="modalTitle">Badge Management</Heading>
       </div>
       <div id="modalBody" className="modalBody">

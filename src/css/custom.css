@@ -160,6 +160,14 @@ summary {
 .m-0 { margin: 0; }
 .m-auto { margin: auto; }
 
+.p-1 { padding: 1rem; }
+.p-2 { padding: 2rem; }
+.p-3 { padding: 3rem; }
+
+.m-1 { margin: 1rem; }
+.m-2 { margin: 2rem; }
+.m-3 { margin: 3rem; }
+
 .m-a0 { margin: auto 0rem; }
 .m-a1 { margin: auto 1rem; }
 .m-a2 { margin: auto 2rem; }

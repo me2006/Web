@@ -95,7 +95,7 @@ export function createTable(
 
     expectedKeys.forEach((key, idx) => {
       const td = document.createElement("td");
-      td.innerHTML = obj[key].toString().replace(reg, "<br />") ?? "NULL";
+      td.innerHTML = obj[key]?.toString().replace(reg, "<br />") ?? "NULL";
       if (chipList && Array.isArray(obj[key]))
         td.title = getChipListNames(chipList, obj[key]);
       td.style.overflowX = "auto";

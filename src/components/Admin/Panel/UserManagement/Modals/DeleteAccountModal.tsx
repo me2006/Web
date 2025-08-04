@@ -6,7 +6,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 export default function DeleteAccountModal({ resetView }): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
-  const { gmInfo, playerDetails, closeModal } = useContext(UmContext);
+  const { gmInfo, playerDetails, closeUmModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
 
@@ -31,7 +31,7 @@ export default function DeleteAccountModal({ resetView }): ReactNode {
     return postRequest(gmInfo, customFields, data, customFields.DELETE, "Failed to delete player's account.").then((res) => {
       if (res)
         alert(`${playerDetails.username}'s account was deleted successfully`);
-      closeModal();
+      closeUmModal();
       resetView();
     });
   }
@@ -39,7 +39,7 @@ export default function DeleteAccountModal({ resetView }): ReactNode {
   return (
     <div className="modalContainer">
       <div id="modalHeader" className="modalHeader light" style={{ backgroundColor: "#1a1a1a" }}>
-        <span id="closeModal" className="closeModal light" onClick={() => closeModal()}>&times;</span>
+        <span id="closeModal" className="closeModal light" onClick={() => closeUmModal()}>&times;</span>
         <Heading as="h2" className="modalTitle">Delete Account</Heading>
       </div>
       <div id="modalBody" className="modalBody">
@@ -54,8 +54,10 @@ export default function DeleteAccountModal({ resetView }): ReactNode {
               <p className="text-center mb-0"><b>This action cannot be undone.</b></p>
               <p className="text-center mb-0">Are you sure you want to delete this account?</p>
               <br/>
-              <input type="checkbox" id="deleteAccBox" name="deleteAccBox" />
-              <label htmlFor="deleteAccBox"> Yes, I want to delete {playerDetails.username}'s account</label>
+              <div className="text-center mb-0">
+                <input type="checkbox" id="deleteAccBox" name="deleteAccBox" />
+                <label htmlFor="deleteAccBox"> Yes, I want to delete {playerDetails.username}'s account</label>
+              </div>
               <br/>
               {
                 confirmed ?

@@ -30,12 +30,12 @@ enum ModalTypes {
 export default function UserManagement({ gmInfo }): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
   const [searchTerm, setST] = useState("");
-  const [modalUser, setMU] = useState("");
   const [fromTable, setFT] = useState(false);
   const [currView, setCV] = useState("search");
   const [currModal, setCM] = useState(ModalTypes.None);
   const [playerList, setPL] = useState();
-  const [playerDetails, setPD] = useState();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [playerDetails, setPD] = useState<any>();
 
   function getPlayerRequest(noe, getList) {
     const data = { username: noe };
@@ -83,18 +83,17 @@ export default function UserManagement({ gmInfo }): ReactNode {
   const modalElem = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    addModalListeners(modalElem, closeModal);
+    addModalListeners(modalElem, closeUmModal);
   }, []);
 
-  function openModal(modalUser, currModal) {
-    setMU(modalUser);
+  function openUmModal(currModal) {
     setCM(currModal);
     modalElem.current.style.display = "block";
   }
 
-  function closeModal(refresh = false) {
+  function closeUmModal(refresh = false) {
     if (refresh) {
-      getPlayerRequest(modalUser, false).then(data => {
+      getPlayerRequest(playerDetails?.username ?? "", false).then(data => {
         if (!data) return;
         setPD(data.player);
       });
@@ -124,10 +123,9 @@ export default function UserManagement({ gmInfo }): ReactNode {
         isAdmin: gmInfo.type == 0,
         playerDetails,
         ModalTypes,
-        setPD,
         viewDetails,
-        openModal,
-        closeModal
+        openUmModal,
+        closeUmModal
       }}>
         { currView == "list" ?
           <AccountTable playerList={playerList} /> :
@@ -138,7 +136,7 @@ export default function UserManagement({ gmInfo }): ReactNode {
           <></>
         }
         <div ref={modalElem} className="modalOverlay">
-          { currModal == ModalTypes.EditInfo ? <EditInfoModal getPlayerRequest={getPlayerRequest} username={modalUser} /> : <></> }
+          { currModal == ModalTypes.EditInfo ? <EditInfoModal /> : <></> }
           { currModal == ModalTypes.BanUser ? <BanUserModal /> : <></> }
           { currModal == ModalTypes.UnbanUser ? <UnbanUserModal /> : <></> }
           { currModal == ModalTypes.BanHistory ? <BanHistoryModal /> : <></> }
@@ -154,7 +152,7 @@ export default function UserManagement({ gmInfo }): ReactNode {
 
 
 function AccountTable({ playerList }): ReactNode {
-  const { isAdmin, searchTerm, viewDetails, openModal } = useContext(UmContext);
+  const { isAdmin, searchTerm, viewDetails, openUmModal } = useContext(UmContext);
 
   const tableId = "playerListTable";
 
@@ -170,7 +168,7 @@ function AccountTable({ playerList }): ReactNode {
     }
     const buttons : TableButton[] = [
       { text: "👀 View Details", style: "button--bootstrap", onClick: viewDetails, objKeys: ["username"], extraArgs: [true] },
-      { text: "🖋️ Edit Info", style: "button--bootstrap yellow", onClick: openModal, objKeys: ["id"], extraArgs: [ModalTypes.EditInfo] }
+      { text: "🖋️ Edit Info", style: "button--bootstrap yellow", onClick: openUmModal, objKeys: ["id"], extraArgs: [ModalTypes.EditInfo] }
     ];
 
     createTable(tableId, headers, expKeys, playerList, buttons);

@@ -12,8 +12,10 @@ export default function ChipCodeTable({ gmInfo, customFields, chipList }): React
 
   function fetchChipCodes() {
     postRequest(gmInfo, customFields, "", customFields.GET_CODES, "Failed to get data for chip codes").then(res => {
-      if (!res || !res.chipCodes || res.chipCodes.length == 0)
+      if (!res || !res.chipCodes || res.chipCodes.length == 0) {
+        setData([]);
         return;
+      }
 
       setData(res.chipCodes);
 
@@ -56,6 +58,7 @@ export default function ChipCodeTable({ gmInfo, customFields, chipList }): React
     modalElem.current.style.display = "none";
     setCD({});
   }
+
   useEffect(() => {
     fetchChipCodes();
     addModalListeners(modalElem, closeModal);
@@ -63,7 +66,7 @@ export default function ChipCodeTable({ gmInfo, customFields, chipList }): React
 
   return (
     !data || data.length == 0 ?
-      <Heading as="h3">The database has no chip codes!</Heading>
+      <Heading as="h3" className="text-center p-1">The database has no chip codes!</Heading>
       :
       <>
         <button className="d-flex m-1a button--flat red" onClick={() => openModal()}>Add Chip Code</button>

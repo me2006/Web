@@ -12,8 +12,10 @@ export default function CollectionListTable({ gmInfo, customFields, chipList }):
 
   function fetchCollectionLists() {
     postRequest(gmInfo, customFields, "", customFields.GET_C_LISTS, "Failed to get data for collection lists").then(res => {
-      if (!res || !res.collectionLists || res.collectionLists.length == 0)
+      if (!res || !res.collectionLists || res.collectionLists.length == 0) {
+        setData([]);
         return;
+      }
 
       Array.prototype.forEach.call(res.collectionLists, (cList) => {
         if (cList.type === 1)
@@ -70,7 +72,7 @@ export default function CollectionListTable({ gmInfo, customFields, chipList }):
 
   return (
     !data || data.length == 0 ?
-      <Heading as="h3">The database has no collection lists!</Heading>
+      <Heading as="h3" className="text-center p-1">The database has no collection lists!</Heading>
       :
       <>
         <button className="d-flex m-1a button--flat blue" onClick={() => openModal()}>Add Collection List</button>

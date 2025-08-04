@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./index.module.css";
 
 export default function UserDetails( { fromTable, searchTerm, openListView }): ReactNode {
-  const { isAdmin, playerDetails, ModalTypes, openModal } = useContext(UmContext);
+  const { isAdmin, playerDetails, ModalTypes, openUmModal } = useContext(UmContext);
   const [isBanned, setIsBanned] = useState(false);
   const [banType, setBanType] = useState(0);
   const [hasHistory, setHistory] = useState(playerDetails.banList.length > 0);
@@ -18,7 +18,7 @@ export default function UserDetails( { fromTable, searchTerm, openListView }): R
     return (
       <div className={`row ${styles.actionsCard}`}>
         <button disabled={isDisabled} className={`button--flat ${colour}`} onClick={() => {
-          openModal(playerDetails.username, modalType);
+          openUmModal(modalType);
         }}>
           <FontAwesomeIcon icon={icon} className={ styles.buttonIcon } /> {name}
         </button>

@@ -6,7 +6,7 @@ import styles from "../index.module.css";
 import { createTable } from "@site/src/utils/helpers";
 
 export default function AltAccountsModal(): ReactNode {
-  const { playerDetails, closeModal } = useContext(UmContext);
+  const { playerDetails, closeUmModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function AltAccountsModal(): ReactNode {
   return (
     <div className="modalContainer">
       <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#ff4500" }}>
-        <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
+        <span id="closeModal" className="closeModal" onClick={() => closeUmModal()}>&times;</span>
         <Heading as="h2" className="modalTitle">Ban History</Heading>
       </div>
       <div id="modalBody" className="modalBody">

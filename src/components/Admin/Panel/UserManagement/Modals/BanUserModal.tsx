@@ -8,7 +8,7 @@ import styles from "../index.module.css";
 
 export default function BanUserModal(): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
-  const { gmInfo, isAdmin, playerDetails, setPD, closeModal } = useContext(UmContext);
+  const { gmInfo, isAdmin, playerDetails, closeUmModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
 
   useEffect(() => {
@@ -52,16 +52,15 @@ export default function BanUserModal(): ReactNode {
     return postRequest(gmInfo, customFields, data, customFields.BAN, "Failed to ban player.").then((res) => {
       if (res) {
         alert(`Player ${playerDetails.username} was succesfully banned`);
-        setPD({ ...playerDetails, banStatus: isBanned ? "Perma banned" : "Suspended" });
       }
-      closeModal(true);
+      closeUmModal(true);
     });
   }
 
   return (
     <div className="modalContainer">
       <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#cc0000" }}>
-        <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
+        <span id="closeModal" className="closeModal" onClick={() => closeUmModal()}>&times;</span>
         <Heading as="h2" className="modalTitle">{ isAdmin ? "Ban / Suspend User" : "Suspend User" }</Heading>
       </div>
       <div id="modalBody" className="modalBody">
@@ -100,7 +99,7 @@ export default function BanUserModal(): ReactNode {
 
 export function UnbanUserModal(): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
-  const { gmInfo, isAdmin, playerDetails, setPD, closeModal } = useContext(UmContext);
+  const { gmInfo, isAdmin, playerDetails, closeUmModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
   const title = isAdmin ? "Unban / Unsuspend User" : "Unsuspend User";
 
@@ -133,14 +132,14 @@ export function UnbanUserModal(): ReactNode {
     return postRequest(gmInfo, customFields, data, customFields.UNBAN, "Failed to unban player.").then((res) => {
       if (res)
         alert(playerDetails.username + " was successfully unbanned.");
-      closeModal(true);
+      closeUmModal(true);
     });
   }
 
   return (
     <div className="modalContainer">
       <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#57cc33" }}>
-        <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
+        <span id="closeModal" className="closeModal" onClick={() => closeUmModal()}>&times;</span>
         <Heading as="h2" className="modalTitle">{ title }</Heading>
       </div>
       <div id="modalBody" className="modalBody">

@@ -12,8 +12,10 @@ export default function FusionRecipeTable({ gmInfo, customFields, chipList }): R
 
   function fetchFusions() {
     postRequest(gmInfo, customFields, "", customFields.GET_FUSIONS, "Failed to get data for fusion recipes").then(res => {
-      if (!res || !res.fusionRecipes || res.fusionRecipes.length == 0)
+      if (!res || !res.fusionRecipes || res.fusionRecipes.length == 0) {
+        setData([]);
         return;
+      }
 
       setData(res.fusionRecipes);
 
@@ -63,7 +65,7 @@ export default function FusionRecipeTable({ gmInfo, customFields, chipList }): R
 
   return (
     !data || data.length == 0 ?
-      <Heading as="h3">The database has no fusion recipes!</Heading>
+      <Heading as="h3" className="text-center p-1">The database has no fusion recipes!</Heading>
       :
       <>
         <button className="d-flex m-1a button--flat green" onClick={() => openModal()}>Add Fusion Recipe</button>

@@ -4,26 +4,17 @@ import { UmContext } from "..";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { postRequest } from "@site/src/utils/helpers";
 
-export default function EditInfoModal({ getPlayerRequest, username }): ReactNode {
+export default function EditInfoModal(): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
-  const { gmInfo, isAdmin, closeModal, playerDetails, setPD } = useContext(UmContext);
+  const { gmInfo, isAdmin, closeUmModal, playerDetails } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
-  const [accountId, setAI] = useState(-1);
 
   useEffect(() => {
-    if (!username)
+    if (!playerDetails) {
+      setDE(true);
       return;
-
-    const getPlayer = async () => await getPlayerRequest(username, false);
-    getPlayer().then((data) => {
-      if (!data)
-        setDE(true);
-      else {
-        setPD(data.player);
-        setAI(data.player.accountId);
-      }
-    });
-  }, [username]);
+    }
+  }, []);
 
   function changeInfo() {
     const newEmail = (document.getElementById("changeEmail") as HTMLInputElement).value;
@@ -31,20 +22,24 @@ export default function EditInfoModal({ getPlayerRequest, username }): ReactNode
     const newSitekickName = (document.getElementById("changeSitekickName") as HTMLInputElement).value;
 
     const data = {
-      account_id: accountId,
+      account_id: playerDetails.accountId,
       values_to_change: `${newEmail != playerDetails.email}, ${newUsername != playerDetails.username}, ${newSitekickName != playerDetails.sitekickName}`,
       new_email: newEmail,
       new_username: newUsername,
       new_sitekick_name: newSitekickName
     };
 
-    return postRequest(gmInfo, customFields, data, customFields.CHANGE_INFO, "Failed to change player information.");
+    return postRequest(gmInfo, customFields, data, customFields.CHANGE_INFO, "Failed to change player information.").then((res) => {
+      if (res)
+        alert(playerDetails.username + "'s information was successfully changed.");
+      closeUmModal(true);
+    });
   }
 
   return (
     <div className="modalContainer">
       <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#e0a800" }}>
-        <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
+        <span id="closeModal" className="closeModal" onClick={() => closeUmModal()}>&times;</span>
         <Heading as="h2" className="modalTitle">Edit User Info</Heading>
       </div>
       <div id="modalBody" className="modalBody">
@@ -60,16 +55,16 @@ export default function EditInfoModal({ getPlayerRequest, username }): ReactNode
                 isAdmin ?
                   <>
                     <label htmlFor="changeEmail" className="input--label">Email:</label>
-                    <input className="input--bootstrap" name="changeEmail" id="changeEmail" type="email" defaultValue={playerDetails.email} />
+                    <input className="input--bootstrap" name="changeEmail" id="changeEmail" type="email" defaultValue={playerDetails.email} key={playerDetails.email} />
                     <br />
                   </>
                   : <></>
               }
               <label htmlFor="changeUsername" className="input--label">Username:</label>
-              <input className="input--bootstrap" name="changeUsername" id="changeUsername" type="text" defaultValue={playerDetails.username} />
+              <input className="input--bootstrap" name="changeUsername" id="changeUsername" type="text" defaultValue={playerDetails.username} key={playerDetails.username} />
               <br/>
               <label htmlFor="changeSitekickName" className="input--label">Sitekick Name:</label>
-              <input className="input--bootstrap" name="changeSitekickName" id="changeSitekickName" type="text" defaultValue={playerDetails.sitekickName} />
+              <input className="input--bootstrap" name="changeSitekickName" id="changeSitekickName" type="text" defaultValue={playerDetails.sitekickName} key={playerDetails.sitekickName} />
               <br/>
               <button type="button" className="d-flex m-auto button--bootstrap yellow" onClick={() => changeInfo()}>Change player info</button>
             </>
