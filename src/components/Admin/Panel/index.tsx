@@ -30,10 +30,13 @@ export default function Panel({ gmInfo }): ReactNode {
 
   // Open last tab on load. Open user management by default
   useEffect(() => {
-    if (!gmInfo || Object.keys(gmInfo).length === 0) return;
+    if (!gmInfo || Object.keys(gmInfo).length === 0)
+      return;
 
     let lastTab = localStorage.getItem("lastTab");
-    if (!lastTab) lastTab = "UserManagement";
+    if (!lastTab)
+      lastTab = "UserManagement";
+
     const btnElem = document.getElementById(lastTab + "Btn");
     const elem = document.getElementById(lastTab);
     btnElem.classList.add(styles.active);

@@ -374,7 +374,11 @@ summary {
 .modalBody {
   max-height: calc(80vh - 3.375rem);
   padding: 1.5rem;
-  overflow: visible;
+  overflow: auto;
+}
+
+.modalBody.overflow--visible {
+  overflow: visible !important;
 }
 
 .inputGroup {

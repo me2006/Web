@@ -46,8 +46,7 @@ export default function BanUserModal(): ReactNode {
       username: playerDetails.username,
       expiration: isBanned ? Date.now() : expiration,
       is_banned: isBanned,
-      reason: reason,
-      created_by: gmInfo.username
+      reason: reason
     };
 
     return postRequest(gmInfo, customFields, data, customFields.BAN, "Failed to ban player.").then((res) => {
@@ -55,7 +54,7 @@ export default function BanUserModal(): ReactNode {
         alert(`Player ${playerDetails.username} was succesfully banned`);
         setPD({ ...playerDetails, banStatus: isBanned ? "Perma banned" : "Suspended" });
       }
-      closeModal();
+      closeModal(true);
     });
   }
 
@@ -91,6 +90,72 @@ export default function BanUserModal(): ReactNode {
               <textarea className={styles.textareaReason} name= "reason" id="reason" maxLength={512} />
               <br/>
               <button type="button" className="d-flex m-auto button--bootstrap red" onClick={ () => banUser()}>{isAdmin ? "Ban / Suspend User" : "Suspend User" }</button>
+            </>
+        }
+      </div>
+    </div>
+  );
+}
+
+
+export function UnbanUserModal(): ReactNode {
+  const { siteConfig: { customFields } } = useDocusaurusContext();
+  const { gmInfo, isAdmin, playerDetails, setPD, closeModal } = useContext(UmContext);
+  const [dataError, setDE] = useState(false);
+  const title = isAdmin ? "Unban / Unsuspend User" : "Unsuspend User";
+
+  useEffect(() => {
+    if (!playerDetails.username){
+      setDE(true);
+      return;
+    }
+  }, [playerDetails]);
+
+
+  function unbanUser() {
+    const unbanReason = (document.getElementById("unbanReason") as HTMLInputElement).value;
+
+    if (unbanReason === null || unbanReason.match(/^ *$/) !== null) {
+      alert("Unban reason must not be empty!");
+      return;
+    }
+
+    const currentBan = playerDetails.banList.sort((a, b) => Number(b.id) - Number(a.id))[0];
+
+    const data = {
+      ban_id: currentBan.id,
+      username: playerDetails.username,
+      old_expiration: currentBan.expiration,
+      ban_reason: currentBan.reason,
+      unban_reason: unbanReason
+    };
+
+    return postRequest(gmInfo, customFields, data, customFields.UNBAN, "Failed to unban player.").then((res) => {
+      if (res)
+        alert(playerDetails.username + " was successfully unbanned.");
+      closeModal(true);
+    });
+  }
+
+  return (
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#57cc33" }}>
+        <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">{ title }</Heading>
+      </div>
+      <div id="modalBody" className="modalBody">
+        {
+          dataError ?
+            <p>
+              Error: There was an error getting this player's information.<br/>
+              Please try again later or contact the server admin.
+            </p> :
+            <>
+              <p className="text-center mb-0">Enter the information below.</p>
+              <label htmlFor="unbanReason" className="input--label">Unban Reason (max 512 characters):</label>
+              <textarea className={styles.textareaReason} name= "unbanReason" id="unbanReason" maxLength={512} />
+              <br/>
+              <button type="button" className="d-flex m-auto button--bootstrap green" onClick={ () => unbanUser()}>{title}</button>
             </>
         }
       </div>

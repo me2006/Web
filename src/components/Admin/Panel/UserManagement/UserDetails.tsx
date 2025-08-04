@@ -3,43 +3,22 @@ import Heading from "@theme/Heading";
 import { UmContext } from ".";
 import { faSquareCheck, faGavel, faLock, faPenToSquare, /*faShield,*/ faTrash, faClone, faBook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { postRequest } from "@site/src/utils/helpers";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import styles from "./index.module.css";
 
 export default function UserDetails( { fromTable, searchTerm, openListView }): ReactNode {
-  const { siteConfig: { customFields } } = useDocusaurusContext();
-  const { isAdmin, gmInfo, playerDetails, setPD, ModalTypes, openModal } = useContext(UmContext);
+  const { isAdmin, playerDetails, ModalTypes, openModal } = useContext(UmContext);
   const [isBanned, setIsBanned] = useState(false);
   const [banType, setBanType] = useState(0);
   const [hasHistory, setHistory] = useState(playerDetails.banList.length > 0);
   const [hasAlts, setHasAlts] = useState(playerDetails.associatedAccounts.length > 0);
-
-  function unbanUser() {
-
-    if (!confirm(`Are you sure you want to unban ${playerDetails.username}? This action cannot be undone.`))
-      return;
-
-    const data = {
-      email: isAdmin ? playerDetails.email : "",
-      username: playerDetails.username
-    };
-    return postRequest(gmInfo, customFields, data, customFields.UNBAN, "Failed to unban player.").then((res) => {
-      if (!res)
-        return;
-      alert(playerDetails.username + " was successfully unbanned.");
-      setPD({ ...playerDetails, banStatus: "Not banned" });
-    });
-  }
 
 
   function ActionButton({ colour, modalType, icon, name, isDisabled = false }) {
     return (
       <div className={`row ${styles.actionsCard}`}>
         <button disabled={isDisabled} className={`button--flat ${colour}`} onClick={() => {
-          if (!modalType) unbanUser();
-          else openModal(playerDetails.username, modalType);
+          openModal(playerDetails.username, modalType);
         }}>
           <FontAwesomeIcon icon={icon} className={ styles.buttonIcon } /> {name}
         </button>
@@ -92,7 +71,7 @@ export default function UserDetails( { fromTable, searchTerm, openListView }): R
                   { !isBanned || (isBanned && ((!isAdmin && banType != 2) || isAdmin)) ?
                     <ActionButton
                       colour={isBanned ? "green" : "red"}
-                      modalType={isBanned ? "" : ModalTypes.BanUser}
+                      modalType={isBanned ? ModalTypes.UnbanUser : ModalTypes.BanUser}
                       icon={isBanned ? faSquareCheck : faGavel}
                       name={isBanned ? (isAdmin ? "Unban / Unsuspend" : "Unsuspend") : (isAdmin ? "Ban / Suspend" : "Suspend") + " User"}/>
                     :

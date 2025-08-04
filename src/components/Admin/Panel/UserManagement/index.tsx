@@ -3,7 +3,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { addModalListeners, createTable, postRequest, TableButton } from "@site/src/utils/helpers";
 import Heading from "@theme/Heading";
 // import BadgeMgmtModal from "./Modals/BadgeMgmtModal";
-import BanUserModal from "./Modals/BanUserModal";
+import BanUserModal, { UnbanUserModal } from "./Modals/BanUserModal";
 import BanHistoryModal from "./Modals/BanHistoryModal";
 import AltAccountsModal from "./Modals/AltAccountsModal";
 import DeleteAccountModal from "./Modals/DeleteAccountModal";
@@ -19,6 +19,7 @@ enum ModalTypes {
   None,
   EditInfo,
   BanUser,
+  UnbanUser,
   BanHistory,
   AltAccounts,
   ResetPass,
@@ -91,7 +92,13 @@ export default function UserManagement({ gmInfo }): ReactNode {
     modalElem.current.style.display = "block";
   }
 
-  function closeModal() {
+  function closeModal(refresh = false) {
+    if (refresh) {
+      getPlayerRequest(modalUser, false).then(data => {
+        if (!data) return;
+        setPD(data.player);
+      });
+    }
     modalElem.current.style.display = "none";
   }
 
@@ -133,6 +140,7 @@ export default function UserManagement({ gmInfo }): ReactNode {
         <div ref={modalElem} className="modalOverlay">
           { currModal == ModalTypes.EditInfo ? <EditInfoModal getPlayerRequest={getPlayerRequest} username={modalUser} /> : <></> }
           { currModal == ModalTypes.BanUser ? <BanUserModal /> : <></> }
+          { currModal == ModalTypes.UnbanUser ? <UnbanUserModal /> : <></> }
           { currModal == ModalTypes.BanHistory ? <BanHistoryModal /> : <></> }
           { currModal == ModalTypes.AltAccounts ? <AltAccountsModal /> : <></> }
           { currModal == ModalTypes.ResetPass ? <ResetPassModal /> : <></> }

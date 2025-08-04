@@ -62,7 +62,7 @@ export default function CollectionListModal({ gmInfo, chipList, closeModal, cLis
         <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
         <Heading as="h2" className="modalTitle">{ isEdit ? "Edit Collection List" : "Add Collection List"}</Heading>
       </div>
-      <div id="modalBody" className="modalBody">
+      <div id="modalBody" className="modalBody overflow--visible">
         <div className="row mb-1">
           <div className="col">
             <label htmlFor="cListName" className="input--label">Collection List Name:</label>

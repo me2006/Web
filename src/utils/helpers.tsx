@@ -17,13 +17,45 @@ export function postRequest(gmInfo, customFields, data, listLink, customError?) 
     },
     credentials: "include",
     body: encodeURIComponent(JSON.stringify(body))
-  }).then(res => {
+  }).then(async res => {
     if (!res.ok) {
+      const resJson = await res.json();
+      if (resJson.errorCode === 103) {
+        clearCookies();
+        throw new Error("Session expired");
+      }
       if (customError) throw new Error(customError);
       throw new Error(`Failed to get data from ${listLink}`);
     }
     return res.json();
   }).catch(error => alert(error));
+}
+
+export function getGmInfo() {
+  const gmInfo = getCookie("gmInfo");
+  return (gmInfo) ? JSON.parse(gmInfo) : null;
+}
+
+export function getCookie(cName) {
+  const name = cName + "=";
+  const ca = document.cookie.split(";");
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+export function clearCookies() {
+  if (getCookie("gmInfo"))
+    document.cookie = "gmInfo=;path=/admin;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+  if (getCookie("Session-Id"))
+    document.cookie = "Session-Id=;path=/admin;expires=Thu, 01 Jan 1970 00:00:01 GMT";
 }
 
 export interface TableButton {
@@ -47,24 +79,27 @@ export function createTable(
   table.innerHTML = "";
 
   const thead = document.createElement("thead");
-  tableHeaders.forEach(colData => {
+  tableHeaders.forEach((colData, idx) => {
     const th = document.createElement("th");
     th.textContent = colData;
+    if (headerStyles?.length > 0 && headerStyles[idx] !== "")
+      th.classList.add(headerStyles[idx]);
     thead.appendChild(th);
   });
   table.appendChild(thead);
 
   const tbody = document.createElement("tbody");
+  const reg = new RegExp("\\n", "g");
   objArr.forEach((obj) => {
     const row = document.createElement("tr");
 
     expectedKeys.forEach((key, idx) => {
       const td = document.createElement("td");
-      td.textContent = obj[key] ?? "NULL";
+      td.innerHTML = obj[key].toString().replace(reg, "<br />") ?? "NULL";
       if (chipList && Array.isArray(obj[key]))
         td.title = getChipListNames(chipList, obj[key]);
       td.style.overflowX = "auto";
-      if (headerStyles?.length > 0)
+      if (headerStyles?.length > 0 && headerStyles[idx] !== "")
         td.classList.add(headerStyles[idx]);
       row.appendChild(td);
     });

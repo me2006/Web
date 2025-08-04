@@ -53,7 +53,7 @@ export default function FusionRecipeModal({ gmInfo, chipList, closeModal, fusion
         <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
         <Heading as="h2" className="modalTitle">{ isEdit ? "Edit Fusion Recipe" : "Add Fusion Recipe"}</Heading>
       </div>
-      <div id="modalBody" className="modalBody">
+      <div id="modalBody" className="modalBody overflow--visible">
         <div className="row mb-1">
           <div className="col w-50">
             <MultiSelectDropdown options={chipList} label={"Chip List"} value={listToEdit.chips} limit={8} onChange={(selected) => { setCL(selected); }} />

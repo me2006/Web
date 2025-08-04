@@ -84,7 +84,7 @@ export default function ChipCodeModal({ gmInfo, chipList, closeModal, codeInfo }
         <span id="closeModal" className="closeModal" onClick={() => closeModal()}>&times;</span>
         <Heading as="h2" className="modalTitle">{ isEdit ? "Edit Chip Code" : "Add Chip Code"}</Heading>
       </div>
-      <div id="modalBody" className="modalBody">
+      <div id="modalBody" className="modalBody overflow--visible">
         <div className="row mb-1">
           <div className="col">
 
