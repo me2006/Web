@@ -233,6 +233,7 @@ summary {
 .border-radius-50 { border-radius: 50%; }
 
 .d-flex { display: flex !important; }
+.d-inline-table { display: inline-table !important; }
 
 .flex-row { flex-direction: row; }
 .flex-col { flex-direction: column; }

@@ -34,6 +34,8 @@ const config: Config = {
     ADD_FUSION: process.env.ADD_FUSION,
     EDIT_FUSION: process.env.EDIT_FUSION,
     DEL_FUSION: process.env.DEL_FUSION,
+    GET_ACTIVITY_LOG: process.env.GET_ACTIVITY_LOG,
+    GET_CONSOLE_LOG: process.env.GET_CONSOLE_LOG
   },
 
   // Github Deployment and repo name
