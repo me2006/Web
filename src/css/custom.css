@@ -1248,6 +1248,10 @@ article.margin-bottom--xl {
     scale: 1.25;
   }
 
+  .algolia-autocomplete {
+    font-size: 1rem !important;
+  }
+
   .sm {
     --ifm-button-size-multiplier: 1 !important;
   }
@@ -1322,6 +1326,10 @@ article.margin-bottom--xl {
 
   .navbar__items--right {
     scale: 1.5;
+  }
+
+  .algolia-autocomplete {
+    font-size: 1.1rem !important;
   }
 
   .navbar__search {
