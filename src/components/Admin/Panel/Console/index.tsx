@@ -8,10 +8,12 @@ import styles from "./index.module.css";
 export default function Console({ gmInfo }): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
 
-  const [data, setData] = useState(["log"]); // Set temp code in array so it can render
+  const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
-  function fetchConsoleLog() {
+  function fetchConsoleLogs() {
     postRequest(gmInfo, customFields, "", customFields.GET_CONSOLE_LOG, "Failed to get console logs").then(res => {
+      setLoading(false);
       if (!res || !res.consoleLogs || res.consoleLogs.length == 0) {
         setData([]);
         return;
@@ -22,15 +24,22 @@ export default function Console({ gmInfo }): ReactNode {
   }
 
   useEffect(() => {
-    fetchConsoleLog();
+    fetchConsoleLogs();
   }, []);
 
   return (
-    !data || data.length == 0 ?
-      <Heading as="h3" className="text-center p-1">The database has no mod activity!</Heading>
-      :
-      <div className={styles.console}>
-        {data.map((line) => <p>{line}</p>)}
-      </div>
+    <>
+      <button className="d-flex m-1a" onClick={() => fetchConsoleLogs()}>Refresh Logs</button>
+      { isLoading ?
+        <img className="d-flex text-center m-auto"src="/img/loading.png" alt="Loading image" />
+        :
+        !data || data.length == 0 ?
+          <Heading as="h3" className="text-center p-1">There is no console logs. Please check again later.</Heading>
+          :
+          <div className={styles.console}>
+            { data.map((line, idx) => <p key={"line" + idx} className={line.startsWith(" ") && styles.indent}>{line}</p>) }
+          </div>
+      }
+    </>
   );
 }

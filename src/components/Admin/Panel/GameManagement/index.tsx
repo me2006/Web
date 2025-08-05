@@ -80,16 +80,13 @@ export default function GameManagement({ gmInfo }): ReactNode {
           ))}
         </div> :
         <div>
-          <button className="d-flex m-1a" onClick={() => setCV("main")}>Back to Game Management Menu</button>
-          { currView == "codes" ?
-            <ChipCodeTable gmInfo={gmInfo} customFields={customFields} chipList={chipList}/> : <></>
-          }
-          { currView == "clists" ?
-            <CollectionListTable gmInfo={gmInfo} customFields={customFields} chipList={chipList} /> : <></>
-          }
-          { currView == "fuse" ?
-            <FusionRecipeTable gmInfo={gmInfo} customFields={customFields} chipList={chipList} /> : <></>
-          }
+          <div>
+            <button className="d-flex m-1a" onClick={() => setCV("main")}>Back to Game Management Menu</button>
+            <button className="d-flex m-1a" onClick={() => getChipList()}>Refresh Chip List</button>
+          </div>
+          { currView == "codes" && <ChipCodeTable gmInfo={gmInfo} customFields={customFields} chipList={chipList}/> }
+          { currView == "clists" && <CollectionListTable gmInfo={gmInfo} customFields={customFields} chipList={chipList} /> }
+          { currView == "fuse" && <FusionRecipeTable gmInfo={gmInfo} customFields={customFields} chipList={chipList} /> }
         </div>
       }
     </>

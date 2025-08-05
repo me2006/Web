@@ -22,6 +22,7 @@ export function postRequest(gmInfo, customFields, data, listLink, customError?) 
       const resJson = await res.json();
       if (resJson.errorCode === 103) {
         clearCookies();
+        window.dispatchEvent(new Event("sessionInvalidated"));
         throw new Error("Session expired");
       }
       if (customError) throw new Error(customError);
@@ -29,11 +30,6 @@ export function postRequest(gmInfo, customFields, data, listLink, customError?) 
     }
     return res.json();
   }).catch(error => alert(error));
-}
-
-export function getGmInfo() {
-  const gmInfo = getCookie("gmInfo");
-  return (gmInfo) ? JSON.parse(gmInfo) : null;
 }
 
 export function getCookie(cName) {

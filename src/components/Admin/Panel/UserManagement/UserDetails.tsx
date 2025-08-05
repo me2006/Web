@@ -38,10 +38,7 @@ export default function UserDetails( { fromTable, searchTerm, openListView }): R
       <Heading as="h3" className={styles.emptyListText}>No players were found with the Email / Username: "${searchTerm}"</Heading>
       :
       <>
-        { fromTable ?
-          <button className="d-flex m-auto mb-1" onClick={() => openListView()}>Back to List</button> :
-          <></>
-        }
+        { fromTable && <button className="d-flex m-auto mb-1" onClick={() => openListView()}>Back to List</button> }
         <div className="d-flex">
           <div>
             <div id="playerDetailsContainer" className={styles.playerDetailsContainer}>
@@ -49,14 +46,14 @@ export default function UserDetails( { fromTable, searchTerm, openListView }): R
               <Heading as="h2" className={styles.playerDetailsName}>{playerDetails.username}</Heading>
               <div id="infoContainer">
                 <div className={styles.playerDetailsInfoBlock}>Account ID<span>{playerDetails.accountId}</span></div>
-                {isAdmin ? <div className={styles.playerDetailsInfoBlock}>Email<span>{playerDetails.email}</span></div> : <></> }
+                {isAdmin && <div className={styles.playerDetailsInfoBlock}>Email<span>{playerDetails.email}</span></div> }
                 <div className={styles.playerDetailsInfoBlock}>Username<span>{playerDetails.username}</span></div>
                 <div className={styles.playerDetailsInfoBlock}>Sitekick Name<span>{playerDetails.sitekickName}</span></div>
                 <div className={styles.playerDetailsInfoBlock}>Total XP<span>{playerDetails.xp}</span></div>
                 <div className={styles.playerDetailsInfoBlock}>Verified Status<span>{playerDetails.verified ? "Verified" : "Not Verified"}</span></div>
                 <div className={styles.playerDetailsInfoBlock}>Banned Status<span>{playerDetails.banStatus}</span></div>
-                {isAdmin ? <div className={styles.playerDetailsInfoBlock}>Account Type<span>{playerDetails.isMain ? "Main" : "Alt"}</span></div> : <></> }
-                {isAdmin ? <div className={styles.playerDetailsInfoBlock}>Number of Alts<span>{playerDetails.numAlts}</span></div> : <></> }
+                {isAdmin && <div className={styles.playerDetailsInfoBlock}>Account Type<span>{playerDetails.isMain ? "Main" : "Alt"}</span></div> }
+                {isAdmin && <div className={styles.playerDetailsInfoBlock}>Number of Alts<span>{playerDetails.numAlts}</span></div> }
                 <div className={styles.playerDetailsInfoBlock}>Date Created<span>{playerDetails.dateCreated}</span></div>
                 <div className={styles.playerDetailsInfoBlock}>Last Interaction<span>{playerDetails.lastInteraction}</span></div>
               </div>
@@ -68,24 +65,22 @@ export default function UserDetails( { fromTable, searchTerm, openListView }): R
               <div className="row">
                 <div className="col">
                   <ActionButton colour="" modalType={ModalTypes.EditInfo} icon={faPenToSquare} name="Edit Info" />
-                  { !isBanned || (isBanned && ((!isAdmin && banType != 2) || isAdmin)) ?
+                  { !isBanned || (isBanned && ((!isAdmin && banType != 2) || isAdmin)) &&
                     <ActionButton
                       colour={isBanned ? "green" : "red"}
                       modalType={isBanned ? ModalTypes.UnbanUser : ModalTypes.BanUser}
                       icon={isBanned ? faSquareCheck : faGavel}
                       name={isBanned ? (isAdmin ? "Unban / Unsuspend" : "Unsuspend") : (isAdmin ? "Ban / Suspend" : "Suspend") + " User"}/>
-                    :
-                    <></>
                   }
                   <ActionButton colour={hasHistory ? "orange" : "white"} modalType={ModalTypes.BanHistory} icon={faBook} name={hasHistory ? "Ban History" : "User has no ban history"} isDisabled={!hasHistory} />
                   {
-                    isAdmin ?
+                    isAdmin &&
                       <>
                         <ActionButton colour={hasAlts ? "pink" : "white"} modalType={ModalTypes.AltAccounts} icon={faClone} name={hasAlts ? "Alternate Accounts" : "User has no alt accounts"} isDisabled={!hasAlts} />
                         <ActionButton colour="blue" modalType={ModalTypes.ResetPass} icon={faLock} name="Reset Password" />
                         {/*<ActionButton colour="purple" modalType={ModalTypes.BadgeMgmt} icon={faShield} name="Badge Management" />*/}
                         <ActionButton colour="black" modalType={ModalTypes.DeleteAcc} icon={faTrash} name="Delete Account" />
-                      </> : <></>
+                      </>
                   }
                 </div>
               </div>

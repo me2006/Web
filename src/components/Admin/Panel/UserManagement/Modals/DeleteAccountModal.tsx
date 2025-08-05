@@ -59,11 +59,7 @@ export default function DeleteAccountModal({ resetView }): ReactNode {
                 <label htmlFor="deleteAccBox"> Yes, I want to delete {playerDetails.username}'s account</label>
               </div>
               <br/>
-              {
-                confirmed ?
-                  <button type="button" className="d-flex m-auto button--bootstrap red" onClick={ () => deleteAccount()}>Delete Account</button> :
-                  <></>
-              }
+              { confirmed && <button type="button" className="d-flex m-auto button--bootstrap red" onClick={ () => deleteAccount()}>Delete Account</button> }
             </>
         }
       </div>

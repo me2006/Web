@@ -29,14 +29,19 @@ export default function ActivityLog({ gmInfo }): ReactNode {
   }, []);
 
   return (
-    !data || data.length == 0 ?
-      <Heading as="h3" className="text-center p-1">The database has no mod activity!</Heading>
-      :
-      <div className="p-2">
-        <p className="text-center mb-1">Mod logs are sorted in descending order. The most recent log will be displayed at the top.</p>
-        <div className="d-flex align-items-center flex-col">
-          <table id={tableId} className="w-100 d-inline-table" />
-        </div>
-      </div>
+    <>
+      <button className="d-flex m-1a" onClick={() => fetchModActivity()}>Refresh Logs</button>
+      {
+        !data || data.length == 0 ?
+          <Heading as="h3" className="text-center p-1">The database has no mod activity!</Heading>
+          :
+          <div>
+            <p className="text-center mb-1">Mod logs are sorted in descending order. The most recent log will be displayed at the top.</p>
+            <div className="d-flex align-items-center flex-col">
+              <table id={tableId} className="w-100 d-inline-table" />
+            </div>
+          </div>
+      }
+    </>
   );
 }

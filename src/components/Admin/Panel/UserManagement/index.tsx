@@ -127,23 +127,18 @@ export default function UserManagement({ gmInfo }): ReactNode {
         openUmModal,
         closeUmModal
       }}>
-        { currView == "list" ?
-          <AccountTable playerList={playerList} /> :
-          <></>
-        }
-        { currView == "details" ?
-          <UserDetails fromTable={fromTable} searchTerm={searchTerm} openListView={() => setCV("list")}/> :
-          <></>
-        }
+        { currView == "list" && <AccountTable playerList={playerList} /> }
+        { currView == "details" && <UserDetails fromTable={fromTable} searchTerm={searchTerm} openListView={() => setCV("list")}/> }
+
         <div ref={modalElem} className="modalOverlay">
-          { currModal == ModalTypes.EditInfo ? <EditInfoModal /> : <></> }
-          { currModal == ModalTypes.BanUser ? <BanUserModal /> : <></> }
-          { currModal == ModalTypes.UnbanUser ? <UnbanUserModal /> : <></> }
-          { currModal == ModalTypes.BanHistory ? <BanHistoryModal /> : <></> }
-          { currModal == ModalTypes.AltAccounts ? <AltAccountsModal /> : <></> }
-          { currModal == ModalTypes.ResetPass ? <ResetPassModal /> : <></> }
-          {/*{ currModal == ModalTypes.BadgeMgmt ? <BadgeMgmtModal /> : <></> }*/}
-          { currModal == ModalTypes.DeleteAcc ? <DeleteAccountModal resetView={() => setCV("search")} /> : <></> }
+          { currModal == ModalTypes.EditInfo && <EditInfoModal /> }
+          { currModal == ModalTypes.BanUser && <BanUserModal /> }
+          { currModal == ModalTypes.UnbanUser && <UnbanUserModal /> }
+          { currModal == ModalTypes.BanHistory && <BanHistoryModal /> }
+          { currModal == ModalTypes.AltAccounts && <AltAccountsModal /> }
+          { currModal == ModalTypes.ResetPass && <ResetPassModal /> }
+          {/*{ currModal == ModalTypes.BadgeMgmt && <BadgeMgmtModal /> */}
+          { currModal == ModalTypes.DeleteAcc && <DeleteAccountModal resetView={() => setCV("search")} /> }
         </div>
       </UmContext.Provider>
     </div>

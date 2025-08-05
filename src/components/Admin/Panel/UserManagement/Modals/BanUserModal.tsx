@@ -75,13 +75,12 @@ export default function BanUserModal(): ReactNode {
               <div>
                 <label htmlFor="expiration" className="input--label">Expiration:</label>
                 <input className="input--bootstrap sm" name="expiration" id="expiration" type="date" />
-                { isAdmin ?
+                { isAdmin &&
                   <>
                     <br/>
                     <input type="checkbox" id="permaBanBox" name="permaBanBox" />
                     <label htmlFor="permaBanBox"> Permanently Ban</label>
-                  </> :
-                  <></>
+                  </>
                 }
               </div>
               <br/>

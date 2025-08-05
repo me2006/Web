@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOut, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { clearCookies, getCookie, getGmInfo, postRequest } from "@site/src/utils/helpers";
+import { clearCookies, getCookie, postRequest } from "@site/src/utils/helpers";
 
 import styles from "./index.module.css";
 
@@ -39,11 +39,24 @@ export default function Admin() {
     setGM(null);
   }
 
+  function getGmInfo() {
+    const gmInfo = getCookie("gmInfo");
+    return (gmInfo) ? JSON.parse(gmInfo) : null;
+  }
+
   useEffect(() => {
     const cUser = getGmInfo();
     const session = getCookie("Session-Id");
     setGM(cUser);
     setLoggedIn(cUser && cUser != null && Object.keys(cUser).length != 0 && session != "");
+
+    const handleSessionInvalidation = () => {
+      setGM(null);
+      setLoggedIn(false);
+      return;
+    };
+    window.addEventListener("sessionInvalidated", handleSessionInvalidation);
+    return () => window.removeEventListener("sessionInvalidated", handleSessionInvalidation);
   },[]);
 
   return (

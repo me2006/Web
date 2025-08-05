@@ -52,13 +52,12 @@ export default function EditInfoModal(): ReactNode {
             <>
               <p className="text-center">Modify the input boxes below and click save to change the user's information.</p>
               {
-                isAdmin ?
+                isAdmin &&
                   <>
                     <label htmlFor="changeEmail" className="input--label">Email:</label>
                     <input className="input--bootstrap" name="changeEmail" id="changeEmail" type="email" defaultValue={playerDetails.email} key={playerDetails.email} />
                     <br />
                   </>
-                  : <></>
               }
               <label htmlFor="changeUsername" className="input--label">Username:</label>
               <input className="input--bootstrap" name="changeUsername" id="changeUsername" type="text" defaultValue={playerDetails.username} key={playerDetails.username} />

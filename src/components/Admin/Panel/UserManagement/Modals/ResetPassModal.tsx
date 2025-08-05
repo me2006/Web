@@ -59,11 +59,7 @@ export default function ResetPassModal(): ReactNode {
                 <label htmlFor="resetPassBox"> Yes, I want to reset {playerDetails.username}'s password</label>
               </div>
               <br/>
-              {
-                confirmed ?
-                  <button type="button" className="d-flex m-auto button--bootstrap" onClick={ () => resetPassword()}>Reset Password</button> :
-                  <></>
-              }
+              { confirmed && <button type="button" className="d-flex m-auto button--bootstrap" onClick={ () => resetPassword()}>Reset Password</button> }
             </>
         }
       </div>
