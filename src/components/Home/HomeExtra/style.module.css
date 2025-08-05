@@ -37,11 +37,11 @@
   }
 
   .extraCard h1 {
-    font-size: 2rem !important;
+    font-size: 1.75rem !important;
   }
 
   .extraCardContent {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
 
   .extraCardContent div {
@@ -49,7 +49,11 @@
   }
 
   .extraCardContent img {
-    width: 60%;
+    width: 40%;
+  }
+
+  .imgTwo {
+    width: 60% !important;
   }
 }
 
@@ -59,39 +63,45 @@
   }
 
   .extraCardContent {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .extraCardContent img {
-    width: 100%;
+    width: 70%;
+  }
+
+  .imgTwo {
+    width: 100% !important;
   }
 }
 
 @media screen and (min-width: 2000px) {
 
+  .extraCardContainer {
+    width: 60%;
+  }
+
   .extraCard {
     border-radius: 40px;
   }
 
   .extraCard h1 {
-    font-size: 4rem;
+    font-size: 2rem;
   }
 
   .extraCardContent div {
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 }
 
 @media screen and (min-width: 4000px) {
-  .extraCard {
-    border-radius: 40px;
-  }
 
   .extraCard h1 {
-    font-size: 5rem;
+    font-size: 3.5rem;
+    margin-top: 20px;
   }
 
   .extraCardContent div {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }

@@ -43,7 +43,7 @@ function Feature({ title, imgUrl, description }: FeatureItem) {
   return (
     <div className={`col padding-vert--lg text--center ${styles.featureCard}`}>
       <img src={useBaseUrl(imgUrl)} className={styles.featureImg} role="img" alt={title} />
-      <div className="padding-horiz--md">
+      <div className="padding-horiz--md w-100">
         <Heading as="h1">{title}</Heading>
         <p>{description}</p>
       </div>
@@ -54,7 +54,7 @@ function Feature({ title, imgUrl, description }: FeatureItem) {
 export default function HomeFeatures(): ReactNode {
   return (
     <section className={styles.features}>
-      <div className="row m-auto w-80">
+      <div className="row m-auto">
         {FeatureList.map((props, idx) => (
           <Feature key={idx} {...props} />
         ))}

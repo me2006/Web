@@ -66,6 +66,27 @@
   margin: 0px 1rem;
 }
 
+
+@media screen and (max-width: 498px) {
+  .downloadLogo {
+    width: 80%;
+  }
+
+  .slogan {
+    font-size: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 747px) {
+  .downloadLogo {
+    width: 70%;
+  }
+
+  .slogan {
+    font-size: 2rem;
+  }
+}
+
 @media screen and (max-width: 996px) {
   .downloadMain {
     margin-top: 0;
@@ -108,26 +129,6 @@
     scale: 1;
   }
 
-}
-
-@media screen and (max-width: 747px) {
-  .downloadLogo {
-    width: 70%;
-  }
-
-  .slogan {
-    font-size: 2rem;
-  }
-}
-
-@media screen and (max-width: 498px) {
-  .downloadLogo {
-    width: 80%;
-  }
-
-  .slogan {
-    font-size: 1.75rem;
-  }
 }
 
 @media screen and (min-width: 2000px) {
