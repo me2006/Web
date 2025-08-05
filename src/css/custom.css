@@ -525,6 +525,29 @@ summary {
   margin-bottom: 0 !important;
 }
 
+.toggleIcon_g3eP {
+  color: #134900 !important;
+}
+
+.toggleButton_gllP:hover {
+  background: #ebdef0 !important;
+}
+
+.navbar__search {
+  line-height: 1rem !important;
+}
+
+.search-icon {
+  color: #FFF !important;
+}
+
+.navbar__search-input {
+  background: #134900 !important;
+  color: #FFF !important;
+  height: 1.75rem !important;
+  opacity: 0.9;
+}
+
 @media screen and (max-width: 996px) {
   .homeBg .ytvContainer.orange {
     border-radius: 0;

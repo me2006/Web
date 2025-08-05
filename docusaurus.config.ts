@@ -61,6 +61,8 @@ const config: Config = {
     experimental_faster: true,
   },
 
+  plugins: [require.resolve("docusaurus-lunr-search")],
+
   presets: [
     [
       "classic",
