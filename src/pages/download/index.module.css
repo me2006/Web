@@ -67,26 +67,6 @@
 }
 
 
-@media screen and (max-width: 498px) {
-  .downloadLogo {
-    width: 80%;
-  }
-
-  .slogan {
-    font-size: 1.75rem;
-  }
-}
-
-@media screen and (max-width: 747px) {
-  .downloadLogo {
-    width: 70%;
-  }
-
-  .slogan {
-    font-size: 2rem;
-  }
-}
-
 @media screen and (max-width: 996px) {
   .downloadMain {
     margin-top: 0;
@@ -99,12 +79,11 @@
   }
   
   .downloadLogo {
-    width: 60%;
+    width: 70%;
   }
 
-
   .slogan {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
   
   .downloadInfoDiv{
@@ -128,57 +107,105 @@
   .platformBlock {
     scale: 1;
   }
+}
 
+@media screen and (max-width: 747px) {
+  .downloadLogo {
+    width: 90% !important;
+  }
+
+  .slogan {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media screen and (max-width: 498px) {
+  .downloadLogo {
+    width: 100% !important;
+  }
+
+  .slogan {
+    font-size: 1.25rem !important;
+  }
+
+  .downloadInfoDiv, .alertFont {
+    font-size: 0.8rem !important;
+  }
 }
 
 @media screen and (min-width: 2000px) {
   .downloadMain {
-    margin-top: -12rem;
+    margin-top: -7rem;
   }
   
   .downloadInner {
-    margin-top: 10rem;
+    margin-top: 0rem;
   }
   
   .downloadLogo {
-    width: 40%;
+    width: 40rem;
+  }
+
+  .slogan {
+    font-size: 2.5rem;
   }
   
-  .downloadInfoDiv{
-    font-size: 1.6rem;
+  .downloadInfoDiv {
+    font-size: 1.3rem;
     margin-bottom: 4rem;
   }
 
   .alertFont {
-    font-size: 1.75rem;
+    font-size: 1.3rem;
   }
 
   .downloadButtonContainer{
-    margin-top: 6rem;
+    margin-top: 4rem;
   }
 
   .platformBlock {
-    scale: 1.75;
+    scale: 1.5;
     margin: 0px 6.5rem;
   }
 }
 
 @media screen and (min-width: 4000px) {
   .downloadMain {
-    margin-top: -14rem;
+    margin-top: -9rem;
   }
   
+  .downloadInner {
+    margin-top: 0rem;
+  }
+  
+  .downloadLogo {
+    width: 60rem;
+  }
+
+  .slogan {
+    font-size: 4rem;
+  }
+
   .downloadInfoDiv{
     font-size: 2.6rem;
     margin-bottom: 4rem;
   }
+  
+  .downloadInfoDiv{
+    font-size: 1.75rem;
+    margin-bottom: 4rem;
+  }
 
   .alertFont {
-    font-size: 2.6rem;
+    font-size: 2rem;
+  }
+
+  .downloadButtonContainer{
+    margin-top: 4rem;
   }
 
   .platformBlock {
-    scale: 2.5;
+    scale: 2;
     margin: 0px 12rem;
   }
 }

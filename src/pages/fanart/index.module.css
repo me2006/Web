@@ -139,6 +139,26 @@
 @media screen and (min-width: 2000px) {
  
   .pageTitleInner {
+    font-size: 3rem;
+  }
+
+  .pageInfoInner {
+    font-size:1.25rem;
+  }
+  .galleryItem {
+    font-size: 1.25rem;
+  }
+
+  .masonry {
+      -moz-column-count: 5;
+      -webkit-column-count: 5;
+      column-count: 5;
+  }
+}
+
+@media screen and (min-width: 4000px) {
+ 
+  .pageTitleInner {
     font-size: 4rem;
   }
 
@@ -148,18 +168,10 @@
   .galleryItem {
     font-size: 1.5rem;
   }
-}
 
-@media screen and (min-width: 4000px) {
- 
-  .pageTitleInner {
-    font-size: 6rem;
-  }
-
-  .pageInfoInner {
-    font-size:2.5rem;
-  }
-  .galleryItem {
-    font-size: 2.5rem;
+  .masonry {
+      -moz-column-count: 6;
+      -webkit-column-count: 6;
+      column-count: 6;
   }
 }
