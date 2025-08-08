@@ -1069,15 +1069,33 @@ article.margin-bottom--xl {
 
 /*#region Admonitions*/
 .alert--discord {
-  border-left: 5px solid #5865F2 !important;
+  border-left: 5px solid #8791ff !important;
   background-color: #404EED !important;
   color: white !important;
+}
+
+.alert--discord a {
+  color: #bfb112 !important;
 }
 
 .alert--frantic {
   border-left: 5px solid #cc66ff !important;
   background-color: #640097 !important;
   color: white !important;
+}
+
+.alert--frantic a {
+  color: #9bff68 !important;
+}
+
+.alert--yap {
+  border-left: 5px solid #ffb780 !important;
+  background-color: #e86500 !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.alert--yap a {
+  color: #236d83 !important;
 }
 /*#endregion Admonitions*/
 
