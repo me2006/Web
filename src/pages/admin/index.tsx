@@ -67,7 +67,7 @@ export default function Admin() {
             { !loggedIn && !gm ?
               /* Login Page */
               <div className={styles.loginContainer}>
-                <img src="img/deadkick.png" alt="deadkick" />
+                <img src="/img/deadkick.png" alt="deadkick" />
                 <form className={styles.loginForm}>
                   <label htmlFor="email">Email</label>
                   <div className={styles.inputContainer}>
