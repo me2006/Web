@@ -12,10 +12,9 @@ type InfoBoxItem = {
 function InfoBoxDataGroup({ categoryTitle, categoryChildren, prevChild }) {
   return (
     <>
-      { prevChild && !(categoryChildren instanceof Object) && !(prevChild instanceof Object) ?
-        <></>
-        :
-        <div className={styles.separator} />
+      {
+        !(prevChild && !(categoryChildren instanceof Object) && !(prevChild instanceof Object)) &&
+          <div className={styles.separator} />
       }
       {
         !(categoryChildren instanceof Object) ?

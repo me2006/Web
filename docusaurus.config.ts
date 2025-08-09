@@ -21,6 +21,21 @@ const config: Config = {
     BAN: process.env.BAN,
     UNBAN: process.env.UNBAN,
     DELETE: process.env.DELETE,
+    GET_CHIPS: process.env.GET_CHIPS,
+    GET_CODES: process.env.GET_CODES,
+    ADD_CODE: process.env.ADD_CODE,
+    EDIT_CODE: process.env.EDIT_CODE,
+    DEL_CODE: process.env.DEL_CODE,
+    GET_C_LISTS: process.env.GET_C_LISTS,
+    ADD_C_LIST: process.env.ADD_C_LIST,
+    EDIT_C_LIST: process.env.EDIT_C_LIST,
+    DEL_C_LIST: process.env.DEL_C_LIST,
+    GET_FUSIONS: process.env.GET_FUSIONS,
+    ADD_FUSION: process.env.ADD_FUSION,
+    EDIT_FUSION: process.env.EDIT_FUSION,
+    DEL_FUSION: process.env.DEL_FUSION,
+    GET_ACTIVITY_LOG: process.env.GET_ACTIVITY_LOG,
+    GET_CONSOLE_LOG: process.env.GET_CONSOLE_LOG
   },
 
   // Github Deployment and repo name
@@ -46,6 +61,8 @@ const config: Config = {
     experimental_faster: true,
   },
 
+  plugins: [require.resolve("docusaurus-lunr-search")],
+
   presets: [
     [
       "classic",
@@ -55,7 +72,7 @@ const config: Config = {
           // Remove this to get rid of the "Edit this page" button
           editUrl:  "https://github.com/sitekickremastered/Web/",
           admonitions: {
-            keywords: ["discord","frantic"],
+            keywords: ["discord","frantic","yap"],
             extendDefaults: true,
           },
         },
@@ -98,6 +115,7 @@ const config: Config = {
         { type: "dropdown", label: "Community", position: "left", activeBaseRegex: "/fanart",
           items: [
             { to: "https://discord.sitekickremastered.com", label: "Discord", },
+            { to: "https://yap.sitekickremastered.com/", label: "YAP! Forums", },
             { to: "/fanart", label: "Fan Art", }
           ],
         },
@@ -128,10 +146,17 @@ const config: Config = {
         {
           title: "General",
           items: [
-            { label: "Fan Art", to: "/fanart" },
             { label: "Metrics", to: "/metrics" },
             { label: "Rules", to: "/docs/rules" },
             { label: "Server Status", to: "/status" }
+          ]
+        },
+        {
+          title: "Community",
+          items: [
+            { label: "Discord", to: "https://discord.sitekickremastered.com" },
+            { label: "YAP! Forums", to: "https://yap.sitekickremastered.com/" },
+            { label: "Fan Art", to: "/fanart" },
           ]
         },
         {
@@ -145,9 +170,9 @@ const config: Config = {
         {
           title: "Legal",
           items: [
-            { label: "Privacy Policy", to: "/legal/privacy" },
-            { label: "Terms of Service", to: "/legal/tos" },
-            { label: "Cookies Policy", to: "/legal/cookies" },
+            { label: "Privacy Policy", to: "/legal/privacy-policy" },
+            { label: "Terms of Service", to: "/legal/terms-of-service" },
+            { label: "Cookies Policy", to: "/legal/cookies-policy" },
             { label: "Contact Us", to: "/contact" },
           ]
         }

@@ -1,11 +1,12 @@
 import { useState, useEffect, useContext, type ReactNode } from "react";
-import Heading from "@theme/Heading";
 import { UmContext } from "..";
+import Heading from "@theme/Heading";
+import { createTable, TableButton } from "@site/src/utils/helpers";
 
 import styles from "../index.module.css";
 
 export default function AltAccountsModal(): ReactNode {
-  const { playerDetails, closeModal } = useContext(UmContext);
+  const { playerDetails, closeUmModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
 
   useEffect(() => {
@@ -16,12 +17,12 @@ export default function AltAccountsModal(): ReactNode {
   }, [playerDetails]);
 
   return (
-    <div className={styles.modalContainer}>
-      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#ff2994" }}>
-        <span id="closeModal" className={styles.closeModal} onClick={() => closeModal()}>&times;</span>
-        <Heading as="h2" className={styles.modalTitle}>Alt Accounts</Heading>
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#ff2994" }}>
+        <span id="closeModal" className="closeModal" onClick={() => closeUmModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">Alt Accounts</Heading>
       </div>
-      <div id="modalBody" className={styles.modalBody}>
+      <div id="modalBody" className="modalBody">
         {
           dataError ?
             <p>
@@ -39,49 +40,33 @@ export default function AltAccountsModal(): ReactNode {
 }
 
 function AltTable( { altList }): ReactNode {
-
-  const { isAdmin, addActionButtons } = useContext(UmContext);
+  const { isAdmin, ModalTypes, viewDetails, openUmModal } = useContext(UmContext);
+  const tableId = "altAccountsTable";
 
   useEffect(() => {
     if (!altList || altList.length == 0)
       return;
 
-    const tbody = document.getElementById("aaTableBody") as HTMLTableElement;
-    altList.forEach((o) => {
-      const isMainText = o.isMain ? "Main" : "Alt";
-      const rowData = isAdmin ?
-        [o.accountId, o.email, o.username, o.sitekickName, isMainText] :
-        [o.accountId, o.username, o.sitekickName, isMainText];
-      const row = document.createElement("tr");
-      for (const colData of rowData) {
-        const td = document.createElement("td");
-        td.textContent = colData;
-        row.appendChild(td);
-      }
-      addActionButtons(row, o);
-      tbody.appendChild(row);
-    });
+    const headers = ["Account ID", "Email", "Username", "Sitekick Name", "Account Type", "Actions"];
+    const expKeys = ["accountId", "email", "username", "sitekickName", "isMainText"];
+    if (!isAdmin) {
+      headers.splice(1, 1);
+      expKeys.splice(1, 1);
+    }
+    const buttons : TableButton[] = [
+      { text: "👀 View Details", style: "button--bootstrap", onClick: viewDetails, objKeys: ["username"], extraArgs: [true] },
+      { text: "🖋️ Edit Info", style: "button--bootstrap yellow", onClick: openUmModal, objKeys: ["id"], extraArgs: [ModalTypes.EditInfo] }
+    ];
+
+    createTable(tableId, headers, expKeys, altList, buttons);
   }, [altList]);
 
   return (
     !altList || altList.length == 0 ?
       <Heading as="h3" className={styles.emptyListText}>No alts were found for this account</Heading>
       :
-      <div className={`${styles.modalTableContainer} mt-1`}>
-        <table id="altAccountsTable" className={styles.listTable}>
-          <thead>
-            <tr>
-              <th>Account ID</th>
-              {isAdmin ? <th>Email</th> : <></>}
-              <th>Username</th>
-              <th>Sitekick Name</th>
-              <th>Account Type</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="aaTableBody"></tbody>
-        </table>
+      <div className="mt-1">
+        <table id="altAccountsTable" className={styles.listTable} />
       </div>
   );
 }
-

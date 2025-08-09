@@ -1,13 +1,14 @@
 import { useState, useEffect, useContext, type ReactNode } from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Heading from "@theme/Heading";
 import { UmContext } from "..";
+import { postRequest } from "@site/src/utils/helpers";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import styles from "../index.module.css";
 
 export default function BanUserModal(): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
-  const { gmInfo, isAdmin, playerDetails, setPD, closeModal } = useContext(UmContext);
+  const { gmInfo, isAdmin, playerDetails, closeUmModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
 
   useEffect(() => {
@@ -41,43 +42,28 @@ export default function BanUserModal(): ReactNode {
     }
 
     const data = {
-      author: gmInfo.username,
-      token: gmInfo.token,
       email: isAdmin ? playerDetails.email : "",
       username: playerDetails.username,
       expiration: isBanned ? Date.now() : expiration,
       is_banned: isBanned,
-      reason: reason,
-      created_by: gmInfo.username
+      reason: reason
     };
 
-    return fetch(`${customFields.BASE_URL}${customFields.BAN}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
-      credentials: "include",
-      body: encodeURIComponent(JSON.stringify(data))
-    }).then(res => {
-      if (!res.ok) {
-        throw new Error("Failed to ban player.");
+    return postRequest(gmInfo, customFields, data, customFields.BAN, "Failed to ban player.").then((res) => {
+      if (res) {
+        alert(`Player ${playerDetails.username} was succesfully banned`);
       }
-      alert(`Player ${playerDetails.username} was succesfully banned`);
-      setPD({ ...playerDetails, banStatus: isBanned ? "Perma banned" : "Suspended" });
-      closeModal();
-    }).catch(() => {
-      alert("Failed to ban player.");
+      closeUmModal(true);
     });
   }
 
   return (
-    <div className={styles.modalContainer}>
-      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#cc0000" }}>
-        <span id="closeModal" className={styles.closeModal} onClick={() => closeModal()}>&times;</span>
-        <Heading as="h2" className={styles.modalTitle}>{ isAdmin ? "Ban / Suspend User" : "Suspend User" }</Heading>
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#cc0000" }}>
+        <span id="closeModal" className="closeModal" onClick={() => closeUmModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">{ isAdmin ? "Ban / Suspend User" : "Suspend User" }</Heading>
       </div>
-      <div id="modalBody" className={styles.modalBody}>
+      <div id="modalBody" className="modalBody">
         {
           dataError ?
             <p>
@@ -87,22 +73,87 @@ export default function BanUserModal(): ReactNode {
             <>
               <p className="text-center mb-0">Enter the information below.</p>
               <div>
-                <label htmlFor="expiration" className={styles.infoLabel}>Expiration:</label>
-                <input className={`${styles.infoInput} ${styles.sm}`} name="expiration" id="expiration" type="date" />
-                { isAdmin ?
+                <label htmlFor="expiration" className="input--label">Expiration:</label>
+                <input className="input--bootstrap sm" name="expiration" id="expiration" type="date" />
+                { isAdmin &&
                   <>
                     <br/>
                     <input type="checkbox" id="permaBanBox" name="permaBanBox" />
                     <label htmlFor="permaBanBox"> Permanently Ban</label>
-                  </> :
-                  <></>
+                  </>
                 }
               </div>
               <br/>
-              <label htmlFor="reason" className={styles.infoLabel}>Reason (max 512 characters):</label>
+              <label htmlFor="reason" className="input--label">Reason (max 512 characters):</label>
               <textarea className={styles.textareaReason} name= "reason" id="reason" maxLength={512} />
               <br/>
-              <button type="button" className={styles.banUserBtn} onClick={ () => banUser()}>{isAdmin ? "Ban / Suspend User" : "Suspend User" }</button>
+              <button type="button" className="d-flex m-auto button--bootstrap red" onClick={ () => banUser()}>{isAdmin ? "Ban / Suspend User" : "Suspend User" }</button>
+            </>
+        }
+      </div>
+    </div>
+  );
+}
+
+
+export function UnbanUserModal(): ReactNode {
+  const { siteConfig: { customFields } } = useDocusaurusContext();
+  const { gmInfo, isAdmin, playerDetails, closeUmModal } = useContext(UmContext);
+  const [dataError, setDE] = useState(false);
+  const title = isAdmin ? "Unban / Unsuspend User" : "Unsuspend User";
+
+  useEffect(() => {
+    if (!playerDetails.username){
+      setDE(true);
+      return;
+    }
+  }, [playerDetails]);
+
+
+  function unbanUser() {
+    const unbanReason = (document.getElementById("unbanReason") as HTMLInputElement).value;
+
+    if (unbanReason === null || unbanReason.match(/^ *$/) !== null) {
+      alert("Unban reason must not be empty!");
+      return;
+    }
+
+    const currentBan = playerDetails.banList.sort((a, b) => Number(b.id) - Number(a.id))[0];
+
+    const data = {
+      ban_id: currentBan.id,
+      username: playerDetails.username,
+      old_expiration: currentBan.expiration,
+      ban_reason: currentBan.reason,
+      unban_reason: unbanReason
+    };
+
+    return postRequest(gmInfo, customFields, data, customFields.UNBAN, "Failed to unban player.").then((res) => {
+      if (res)
+        alert(playerDetails.username + " was successfully unbanned.");
+      closeUmModal(true);
+    });
+  }
+
+  return (
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#57cc33" }}>
+        <span id="closeModal" className="closeModal" onClick={() => closeUmModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">{ title }</Heading>
+      </div>
+      <div id="modalBody" className="modalBody">
+        {
+          dataError ?
+            <p>
+              Error: There was an error getting this player's information.<br/>
+              Please try again later or contact the server admin.
+            </p> :
+            <>
+              <p className="text-center mb-0">Enter the information below.</p>
+              <label htmlFor="unbanReason" className="input--label">Unban Reason (max 512 characters):</label>
+              <textarea className={styles.textareaReason} name= "unbanReason" id="unbanReason" maxLength={512} />
+              <br/>
+              <button type="button" className="d-flex m-auto button--bootstrap green" onClick={ () => unbanUser()}>{title}</button>
             </>
         }
       </div>

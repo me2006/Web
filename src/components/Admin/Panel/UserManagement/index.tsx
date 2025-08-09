@@ -1,8 +1,9 @@
-import { useContext, useEffect, useState, createContext, type ReactNode } from "react";
+import { useContext, useEffect, useState, createContext, type ReactNode, useRef } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { addModalListeners, createTable, postRequest, TableButton } from "@site/src/utils/helpers";
 import Heading from "@theme/Heading";
 // import BadgeMgmtModal from "./Modals/BadgeMgmtModal";
-import BanUserModal from "./Modals/BanUserModal";
+import BanUserModal, { UnbanUserModal } from "./Modals/BanUserModal";
 import BanHistoryModal from "./Modals/BanHistoryModal";
 import AltAccountsModal from "./Modals/AltAccountsModal";
 import DeleteAccountModal from "./Modals/DeleteAccountModal";
@@ -18,6 +19,7 @@ enum ModalTypes {
   None,
   EditInfo,
   BanUser,
+  UnbanUser,
   BanHistory,
   AltAccounts,
   ResetPass,
@@ -28,38 +30,17 @@ enum ModalTypes {
 export default function UserManagement({ gmInfo }): ReactNode {
   const { siteConfig: { customFields } } = useDocusaurusContext();
   const [searchTerm, setST] = useState("");
-  const [modalUser, setMU] = useState("");
   const [fromTable, setFT] = useState(false);
   const [currView, setCV] = useState("search");
   const [currModal, setCM] = useState(ModalTypes.None);
   const [playerList, setPL] = useState();
-  const [playerDetails, setPD] = useState();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [playerDetails, setPD] = useState<any>();
 
   function getPlayerRequest(noe, getList) {
-    const data = {
-      author: gmInfo.username,
-      token: gmInfo.token,
-      username: noe
-    };
-
+    const data = { username: noe };
     const requestLink = (getList) ? customFields.GET_LIST: customFields.GET_ONE;
-
-    return fetch(`${customFields.BASE_URL}${requestLink}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
-      credentials: "include",
-      body: encodeURIComponent(JSON.stringify(data))
-    }).then(res => {
-      if (!res.ok) {
-        throw new Error("Failed to get player(s)");
-      }
-      return res.json();
-    }).catch(error => {
-      console.error(error);
-    });
+    return postRequest(gmInfo, customFields, data, requestLink, "Failed to get player(s)");
   }
 
   function searchBtn() {
@@ -99,42 +80,26 @@ export default function UserManagement({ gmInfo }): ReactNode {
     });
   }
 
-  function addActionButtons(row, o) {
-    const buttonCol = document.createElement("td");
-    const viewDetailsBtn = document.createElement("button");
-    viewDetailsBtn.textContent = "👀 View Details";
-    viewDetailsBtn.classList.add(styles.viewDetailsBtn);
-    viewDetailsBtn.onclick = () => viewDetails(o.username, true);
-    const editInfoBtn = document.createElement("button");
-    editInfoBtn.textContent = "🖋️ Edit Info";
-    editInfoBtn.classList.add(styles.editInfoBtn);
-    editInfoBtn.onclick = () => openModal(o.username, ModalTypes.EditInfo);
-    buttonCol.append(viewDetailsBtn, editInfoBtn);
-    row.append(buttonCol);
-  }
+  const modalElem = useRef<HTMLDivElement>(null);
 
-  const modalElem = document.getElementById("actionsModal");
+  useEffect(() => {
+    addModalListeners(modalElem, closeUmModal);
+  }, []);
 
-  function openModal(modalUser, currModal) {
-    setMU(modalUser);
+  function openUmModal(currModal) {
     setCM(currModal);
-    modalElem.style.display = "block";
+    modalElem.current.style.display = "block";
   }
 
-  function closeModal() {
-    modalElem.style.display = "none";
+  function closeUmModal(refresh = false) {
+    if (refresh) {
+      getPlayerRequest(playerDetails?.username ?? "", false).then(data => {
+        if (!data) return;
+        setPD(data.player);
+      });
+    }
+    modalElem.current.style.display = "none";
   }
-
-  // Close the modal if the user clicks anywhere outside
-  window.onclick = function(event) {
-    if (event.target == modalElem)
-      modalElem.style.display = "none";
-  };
-
-  document.onkeyup = function(event) {
-    if (event.key === "Escape" || event.key === "Esc")
-      modalElem.style.display = "none";
-  };
 
   return (
     <div className={styles.searchContainer}>
@@ -144,8 +109,8 @@ export default function UserManagement({ gmInfo }): ReactNode {
         Single mode will find a user with the exact email or username specified
       </p>
 
-      <div className={styles.inputGroup}>
-        <input className={styles.searchInput} name="email" id="email" type="email" placeholder="Username or Email" />
+      <div className="inputGroup w-30 pb-1">
+        <input className="input--bootstrap" name="email" id="email" type="email" placeholder="Username or Email" />
         <select className={styles.searchDropdown} name="searchType" id="searchType" defaultValue="list">
           <option value="list">List</option>
           <option value="single">Single</option>
@@ -156,33 +121,24 @@ export default function UserManagement({ gmInfo }): ReactNode {
       <UmContext.Provider value={{
         gmInfo,
         isAdmin: gmInfo.type == 0,
-        searchTerm,
-        ModalTypes,
         playerDetails,
-        resetView: () => setCV("search"),
-        setPD,
-        openModal,
-        closeModal,
-        addActionButtons,
-        getPlayerRequest,
-
+        ModalTypes,
+        viewDetails,
+        openUmModal,
+        closeUmModal
       }}>
-        { currView == "list" ?
-          <AccountTable playerList={playerList}/> :
-          <></>
-        }
-        { currView == "details" ?
-          <UserDetails fromTable={fromTable} openListView={() => setCV("list")}/> :
-          <></>
-        }
-        <div id="actionsModal" className={styles.actionsModal}>
-          { currModal == ModalTypes.EditInfo ? <EditInfoModal username={modalUser} /> : <></> }
-          { currModal == ModalTypes.BanUser ? <BanUserModal /> : <></> }
-          { currModal == ModalTypes.BanHistory ? <BanHistoryModal /> : <></> }
-          { currModal == ModalTypes.AltAccounts ? <AltAccountsModal /> : <></> }
-          { currModal == ModalTypes.ResetPass ? <ResetPassModal /> : <></> }
-          {/*{ currModal == ModalTypes.BadgeMgmt ? <BadgeMgmtModal /> : <></> }*/}
-          { currModal == ModalTypes.DeleteAcc ? <DeleteAccountModal /> : <></> }
+        { currView == "list" && <AccountTable playerList={playerList} /> }
+        { currView == "details" && <UserDetails fromTable={fromTable} searchTerm={searchTerm} openListView={() => setCV("list")}/> }
+
+        <div ref={modalElem} className="modalOverlay">
+          { currModal == ModalTypes.EditInfo && <EditInfoModal /> }
+          { currModal == ModalTypes.BanUser && <BanUserModal /> }
+          { currModal == ModalTypes.UnbanUser && <UnbanUserModal /> }
+          { currModal == ModalTypes.BanHistory && <BanHistoryModal /> }
+          { currModal == ModalTypes.AltAccounts && <AltAccountsModal /> }
+          { currModal == ModalTypes.ResetPass && <ResetPassModal /> }
+          {/*{ currModal == ModalTypes.BadgeMgmt && <BadgeMgmtModal /> */}
+          { currModal == ModalTypes.DeleteAcc && <DeleteAccountModal resetView={() => setCV("search")} /> }
         </div>
       </UmContext.Provider>
     </div>
@@ -191,44 +147,33 @@ export default function UserManagement({ gmInfo }): ReactNode {
 
 
 function AccountTable({ playerList }): ReactNode {
-  const { isAdmin, searchTerm, addActionButtons } = useContext(UmContext);
+  const { isAdmin, searchTerm, viewDetails, openUmModal } = useContext(UmContext);
 
+  const tableId = "playerListTable";
 
   useEffect(() => {
     if (!playerList || playerList.length == 0)
       return;
 
-    const tbody = document.getElementById("plTableBody") as HTMLTableElement;
-    playerList.forEach((o) => {
-      const rowData = isAdmin ?
-        [o.accountId, o.email, o.username, o.sitekickName] :
-        [o.accountId, o.username, o.sitekickName];
-      const row = document.createElement("tr");
-      for (const colData of rowData) {
-        const td = document.createElement("td");
-        td.textContent = colData;
-        row.appendChild(td);
-      }
-      addActionButtons(row, o);
-      tbody.appendChild(row);
-    });
+    const headers = ["Account ID", "Email", "Username", "Sitekick Name", "Actions"];
+    const expKeys = ["accountId", "email", "username", "sitekickName"];
+    if (!isAdmin) {
+      headers.splice(1, 1);
+      expKeys.splice(1, 1);
+    }
+    const buttons : TableButton[] = [
+      { text: "👀 View Details", style: "button--bootstrap", onClick: viewDetails, objKeys: ["username"], extraArgs: [true] },
+      { text: "🖋️ Edit Info", style: "button--bootstrap yellow", onClick: openUmModal, objKeys: ["id"], extraArgs: [ModalTypes.EditInfo] }
+    ];
+
+    createTable(tableId, headers, expKeys, playerList, buttons);
+
   }, [playerList]);
 
   return (
     !playerList || playerList.length == 0 ?
       <Heading as='h3' className={styles.emptyListText}>No players were found with the Email / Username: "${searchTerm}"</Heading>
       :
-      <table id="playerListTable" className={`${styles.listTable} ${styles.playerListTable}`}>
-        <thead>
-          <tr>
-            <th>Account ID</th>
-            {isAdmin ? <th>Email</th> : <></>}
-            <th>Username</th>
-            <th>Sitekick Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="plTableBody"></tbody>
-      </table>
+      <table id={tableId} className={`${styles.listTable} ${styles.playerListTable}`} />
   );
 }

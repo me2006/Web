@@ -21,7 +21,7 @@ export default function AdmonitionTypeFrantic(props: Props): JSX.Element {
     <AdmonitionLayout
       {...defaultProps}
       {...props}
-      className={`${infimaClassName}, ${props.className}`}>
+      className={`${infimaClassName} ${props.className}`}>
       {props.children}
     </AdmonitionLayout>
   );

@@ -3,9 +3,10 @@ import Heading from "@theme/Heading";
 import { UmContext } from "..";
 
 import styles from "../index.module.css";
+import { createTable } from "@site/src/utils/helpers";
 
 export default function AltAccountsModal(): ReactNode {
-  const { playerDetails, closeModal } = useContext(UmContext);
+  const { playerDetails, closeUmModal } = useContext(UmContext);
   const [dataError, setDE] = useState(false);
 
   useEffect(() => {
@@ -16,12 +17,12 @@ export default function AltAccountsModal(): ReactNode {
   }, [playerDetails]);
 
   return (
-    <div className={styles.modalContainer}>
-      <div id="modalHeader" className={styles.modalHeader} style={{ backgroundColor: "#ff4500" }}>
-        <span id="closeModal" className={styles.closeModal} onClick={() => closeModal()}>&times;</span>
-        <Heading as="h2" className={styles.modalTitle}>Ban History</Heading>
+    <div className="modalContainer">
+      <div id="modalHeader" className="modalHeader" style={{ backgroundColor: "#ff4500" }}>
+        <span id="closeModal" className="closeModal" onClick={() => closeUmModal()}>&times;</span>
+        <Heading as="h2" className="modalTitle">Ban History</Heading>
       </div>
-      <div id="modalBody" className={styles.modalBody}>
+      <div id="modalBody" className="modalBody">
         {
           dataError ?
             <p>
@@ -40,40 +41,25 @@ export default function AltAccountsModal(): ReactNode {
 }
 
 function BanTable( { banData }): ReactNode {
+  const tableId = "banTable";
 
   useEffect(() => {
     if (!banData || banData.length == 0)
       return;
 
-    const tbody = document.getElementById("banTableBody") as HTMLTableElement;
-    banData.forEach((o) => {
-      const rowData = [o.expiration, o.reason, o.createdBy, o.dateCreated];
-      const row = document.createElement("tr");
-      for (const colData of rowData) {
-        const td = document.createElement("td");
-        td.textContent = colData;
-        row.appendChild(td);
-      }
-      tbody.appendChild(row);
-    });
+    const headers = ["Expiration", "Reason", "Ban Author", "Date Created"];
+    const headerStyles = ["", "w-50", "", ""];
+    const expKeys =  ["expiration", "reason", "createdBy", "dateCreated"];
+
+    createTable(tableId, headers, expKeys, banData, undefined, headerStyles);
   }, [banData]);
 
   return (
     !banData || banData.length == 0 ?
       <Heading as="h3" className={styles.emptyListText}>This account has not been banned</Heading>
       :
-      <div className={`${styles.modalTableContainer} mt-1`}>
-        <table id="banTable" className={styles.listTable}>
-          <thead>
-            <tr>
-              <th>Expiration</th>
-              <th className="w-50">Reason</th>
-              <th>Ban Author</th>
-              <th>Date Created</th>
-            </tr>
-          </thead>
-          <tbody id="banTableBody"></tbody>
-        </table>
+      <div className="mt-1">
+        <table id="banTable" className={styles.listTable} />
       </div>
   );
 }

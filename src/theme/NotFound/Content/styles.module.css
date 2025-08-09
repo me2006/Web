@@ -1,0 +1,28 @@
+.errorBg {
+  background: url("/static/img/404.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+  min-height: calc(100vh - 25vh);
+  display: flex;
+  justify-content: center;
+}
+
+.errorBg main {
+  margin: 7rem 0;
+  display: flex;
+  justify-content:center;
+}
+
+.errorContent {
+  background: rgba(0, 0, 0, 0.34) !important;
+  border-radius: 50px !important;
+  color: #FFF !important;
+  padding: 3rem;
+}
+
+@media screen and (max-width: 996px) {
+  .errorBg {
+    padding: 0
+  }
+}

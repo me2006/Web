@@ -96,6 +96,7 @@
   margin-bottom: 1rem;
   border-bottom: 2px solid #CCC;
   z-index: 999;
+  color: #FFF;
 }
 
 .panelNavbar h1, h2, h3, h4, h5, h6 {

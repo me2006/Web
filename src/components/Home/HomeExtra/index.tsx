@@ -36,12 +36,12 @@ export default function HomeExtra(): ReactNode {
           <div className="ytvContainerInner green">
             <Heading as="h1" >Multi-Device Support</Heading>
             <div className={`row ${styles.extraCardContent}`}>
-              <div className={`col ${styles.lOrder}`}>
+              <div className="col">
                 <p>Sitekick Remastered is available on Google Play and the Microsoft Store. MacOS and Linux users can play using an Android emulator.</p>
                 <p><b>iOS support is not planned at this time.</b></p>
               </div>
-              <div className={`col ${styles.rOrder}`}>
-                <img src={useBaseUrl("/img/home/devices.png")} alt="Picture of devices sitekick is available on (Mobile, Desktop, Smart Fridge, etc.)" />
+              <div className="col">
+                <img className={styles.imgTwo} src={useBaseUrl("/img/home/devices.png")} alt="Picture of devices sitekick is available on (Mobile, Desktop, Smart Fridge, etc.)" />
               </div>
             </div>
           </div>

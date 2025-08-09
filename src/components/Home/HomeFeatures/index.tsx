@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
     imgUrl: "/img/home/chips.gif",
     description: (
       <>
-        Nearly every chip is being restored for use in Sitekick Remastered, with new chips being created and added in every update.
+        1000 original chips are being restored in Sitekick Remastered, with brand new chips being created regularly.
       </>
     ),
   },
@@ -41,11 +41,9 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({ title, imgUrl, description }: FeatureItem) {
   return (
-    <div className={`col padding-vert--lg ${styles.featureCard}`}>
-      <div className="text--center">
-        <img src={useBaseUrl(imgUrl)} className={styles.featureImg} role="img" alt={title} />
-      </div>
-      <div className="text--center padding-horiz--md">
+    <div className={`col padding-vert--lg text--center ${styles.featureCard}`}>
+      <img src={useBaseUrl(imgUrl)} className={styles.featureImg} role="img" alt={title} />
+      <div className="padding-horiz--md w-100">
         <Heading as="h1">{title}</Heading>
         <p>{description}</p>
       </div>
@@ -56,7 +54,7 @@ function Feature({ title, imgUrl, description }: FeatureItem) {
 export default function HomeFeatures(): ReactNode {
   return (
     <section className={styles.features}>
-      <div className="row m-auto w-80">
+      <div className="row m-auto">
         {FeatureList.map((props, idx) => (
           <Feature key={idx} {...props} />
         ))}

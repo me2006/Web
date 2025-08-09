@@ -12,6 +12,10 @@
   color: #FFF;
 }
 
+.features div {
+  width: 80%;
+}
+
 .featureCard {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
@@ -47,21 +51,26 @@
 
   .featureCard {
     border-radius: 40px;
-    font-size: 1.6rem;
+    font-size: 1.1rem;
   }
 
   .featureCard h1 {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
   }
 }
 
 @media screen and (max-width: 498px) {
   .featureCard {
-    font-size: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .featureImg {
+    min-width: 7rem;
+    width: 7vw;
   }
 
   .featureCard h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -70,13 +79,24 @@
     --feature-card-margin-modifier: 10px;
   }
 
+  .features div {
+    width: 60%;
+  }
+
   .featureCard {
     border-radius: 40px;
-    font-size: 2rem;
+    font-size: 1.25rem;
+  }
+
+  .featureImg {
+    min-width: 7rem;
+    width: 7vw;
+    height: auto;
+    margin-bottom: 10px;
   }
 
   .featureCard h1 {
-    font-size: 4rem;
+    font-size: 2rem;
   }
 }
 
@@ -86,10 +106,17 @@
   }
 
   .featureCard {
-    font-size: 3rem;
+    font-size: 2rem;
+  }
+
+  .featureImg {
+    min-width: 7rem;
+    width: 7vw;
+    height: auto;
+    margin-bottom: 10px;
   }
 
   .featureCard h1 {
-    font-size: 5rem;
+    font-size: 3.5rem;
   }
 }
