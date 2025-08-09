@@ -498,7 +498,6 @@ summary {
 }
 
 .dropdown__menu {
-  width: 100%;
   border: 5px solid var(--a-tag-colour);
 }
 

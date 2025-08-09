@@ -28,11 +28,11 @@ export default function HomeBanner() {
                 </Link>
                 <div className={styles.spacer} />
                 <Link to="https://yap.sitekickremastered.com" className="button red lg margin--sm">
-                  Message Boards <FontAwesomeIcon icon={faComments} />
+                  Message Boards <FontAwesomeIcon icon={faComments} size="1x" />
                 </Link>
                 <div className={styles.spacer} />
                 <Link to="https://discord.com/sitekickremastered" className="button blurple lg margin--sm">
-                  Join Discord <FontAwesomeIcon icon={faDiscord} />
+                  Join Discord <FontAwesomeIcon icon={faDiscord} size="1x" />
                 </Link>
               </div>
             </div>
