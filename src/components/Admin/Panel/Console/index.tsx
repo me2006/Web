@@ -37,7 +37,7 @@ export default function Console({ gmInfo }): ReactNode {
           <Heading as="h3" className="text-center p-1">There is no console logs. Please check again later.</Heading>
           :
           <div className={styles.console}>
-            { data.map((line, idx) => <p key={"line" + idx} className={line.startsWith(" ") && styles.indent}>{line}</p>) }
+            { data.map((line, idx) => <p key={"line" + idx} className={line.startsWith(" ") ? styles.indent : ""}>{line}</p>) }
           </div>
       }
     </>

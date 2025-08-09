@@ -13,8 +13,7 @@ export function postRequest(gmInfo, customFields, data, listLink, customError?) 
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization, X-Requested-With, session-id",
-      "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
       "Access-Control-Allow-Origin": customFields.BASE_URL
     },
     credentials: "include",
