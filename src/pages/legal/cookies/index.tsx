@@ -3,7 +3,7 @@ import Layout from "@theme/Layout";
 import Heading from "@theme/Heading";
 import Link from "@docusaurus/Link";
 
-export default function CookiesPolicy(): ReactNode {
+export default function Cookies(): ReactNode {
   return (
     <Layout title={"Cookies Policy"} description="Clickity-click, it's Sitekick!">
       <main className="w-80 m-3a">

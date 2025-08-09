@@ -172,7 +172,7 @@ const config: Config = {
           items: [
             { label: "Privacy Policy", to: "/legal/privacy-policy" },
             { label: "Terms of Service", to: "/legal/terms-of-service" },
-            { label: "Cookies Policy", to: "/legal/cookies-policy" },
+            { label: "Cookies Policy", to: "/legal/cookies" },
             { label: "Contact Us", to: "/contact" },
           ]
         }
