@@ -3,7 +3,7 @@ import Layout from "@theme/Layout";
 import Heading from "@theme/Heading";
 import Link from "@docusaurus/Link";
 
-export default function Cookies(): ReactNode {
+export default function TermsOfService(): ReactNode {
   return (
     <Layout title={"Terms of Service"} description="Clickity-click, it's Sitekick!">
       <main className="w-80 m-3a">

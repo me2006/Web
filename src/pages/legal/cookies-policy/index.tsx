@@ -3,7 +3,7 @@ import Layout from "@theme/Layout";
 import Heading from "@theme/Heading";
 import Link from "@docusaurus/Link";
 
-export default function Cookies(): ReactNode {
+export default function CookiesPolicy(): ReactNode {
   return (
     <Layout title={"Cookies Policy"} description="Clickity-click, it's Sitekick!">
       <main className="w-80 m-3a">
@@ -133,7 +133,7 @@ export default function Cookies(): ReactNode {
 
         <br />
         <Heading as="h2">Do you use Flash cookies or Local Shared Objects?</Heading>
-        <p>Websites and applications may also use so-called "Flash Cookies" (also known as Local Shared Objects or "LSOs") to, among other things, collect and store information about your use of our Services, fraud prevention, and for other operations. </p> 
+        <p>Websites and applications may also use so-called "Flash Cookies" (also known as Local Shared Objects or "LSOs") to, among other things, collect and store information about your use of our Services, fraud prevention, and for other operations. </p>
         <p>If you do not want Flash Cookies stored on your computer, you can adjust the settings of your Flash player to block Flash Cookies storage using the tools contained in the <Link to="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html" target="_blank">Website Storage Settings Panel</Link>. You can also control Flash Cookies by going to the <Link to="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager03.html" target="_blank">Global Storage Settings Panel</Link> and following the instructions (which may include instructions that explain, for example, how to delete existing Flash Cookies (referred to "information" on the Macromedia site), how to prevent Flash LSOs from being placed on your computer without your being asked, and (for Flash Player 8 and later) how to block Flash Cookies that are not being delivered by the operator of the page you are on at the time).</p>
         <p>Please note that setting the Flash Player to restrict or limit acceptance of Flash Cookies may reduce or impede the functionality of some Flash applications, including, potentially, Flash applications used in connection with our Services or online content. </p>
 
