@@ -10,7 +10,7 @@ export default function TermsOfService(): ReactNode {
         <Heading as="h1">Terms of Service</Heading>
 
         <br />
-        <Heading as="h6">Last updated July 23, 2025</Heading>
+        <Heading as="h6">Last updated August 9, 2025</Heading>
 
         <br />
         <p>We are the Sitekick Remastered Team("<b>we</b>," "<b>us</b>," and "<b>our</b>").</p>

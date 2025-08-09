@@ -10,7 +10,7 @@ export default function CookiesPolicy(): ReactNode {
         <Heading as="h1">Cookies Policy</Heading>
 
         <br />
-        <Heading as="h6">Last updated July 23, 2025</Heading>
+        <Heading as="h6">Last updated August 9, 2025</Heading>
 
         <br />
         <p>This Cookie Policy explains how The Sitekick Remastered Team ("<b>we</b>," "<b>us</b>," and "<b>our</b>") uses cookies and similar technologies to recognize you when you visit our website at <Link to="https://sitekickremastered.com" target="_blank">https://sitekickremastered.com</Link>, our mobile application (Sitekick Remastered), or our "YAP! Message Boards" powered by NodeBB (the "<b>Forum</b>") (collectively, the "<b>Services</b>"). It explains what these technologies are and why we use them, as well as your rights to control our use of them. </p>
