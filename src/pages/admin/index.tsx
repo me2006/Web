@@ -21,7 +21,6 @@ export default function Admin() {
       password: (document.getElementById("password") as HTMLInputElement).value
     };
 
-    //security.fileuri.strict_origin_policy
     postRequest("", customFields, data, customFields.LOGIN, "Incorrect username / password").then((resData) => {
       if (!resData || !resData.gm)
         return;
