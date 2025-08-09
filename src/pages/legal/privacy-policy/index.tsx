@@ -98,7 +98,7 @@ export default function PrivacyPolicy(): ReactNode {
         <Heading as="h4">Information automatically collected</Heading>
         <p><i><b>In Short:</b> Some information — such as your Internet Protocol (IP) address and/or browser and device characteristics — is collected automatically when you visit our Services.</i></p>
         <p>We automatically collect certain information when you visit, use, or navigate the Services, including the Forum. This information does not reveal your specific identity (like your name or contact information) but may include device and usage information, such as your IP address, browser and device characteristics, operating system, language preferences, referring URLs, device name, country, location, information about how and when you use our Services, and other technical information. This information is primarily needed to maintain the security and operation of our Services, and for our internal analytics and reporting purposes.</p>
-        <p>Like many businesses, we also collect information through cookies and similar technologies. You can find out more about this in <Link to="/legal/cookies-policy">our Cookie Notice</Link>.</p>
+        <p>Like many businesses, we also collect information through cookies and similar technologies. You can find out more about this in <Link to="/legal/cookies">our Cookie Notice</Link>.</p>
         <p>The information we collect includes:</p>
         <ul>
           <li><i>Log and Usage Data.</i> Log and usage data is service-related, diagnostic, usage, and performance information our servers automatically collect when you access or use our Services, including the Forum, and which we record in log files. Depending on how you interact with us, this log data may include your IP address, device information, browser type, and settings and information about your activity in the Services (such as the date/time stamps associated with your usage, pages and files viewed, searches, and other actions you take such as which features you use), device event information (such as system activity, error reports (sometimes called "crash dumps"), and hardware settings).</li>
@@ -150,7 +150,7 @@ export default function PrivacyPolicy(): ReactNode {
         <br />
         <Heading as="h2" id="cookies">5. Do We Use Cookies and Other Tracking Technologies?</Heading>
         <p><i><b>In Short:</b> We may use cookies and other tracking technologies to collect and store your information.</i></p>
-        <p>We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in <Link to="/legal/cookies-policy">our Cookie Notice</Link>.</p>
+        <p>We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in <Link to="/legal/cookies">our Cookie Notice</Link>.</p>
 
         <br />
         <Heading as="h2" id="infoRetain">6. How Long Do We Keep Your Information?</Heading>
@@ -175,7 +175,7 @@ export default function PrivacyPolicy(): ReactNode {
         <Heading as="h4">Account Information</Heading>
         <p>If you would at any time like to review or change the information in your account or terminate your account, you can contact us using the contact information <Link to="#contact">provided on this website and within this document</Link>. You can also visit <Link to="/docs/tutorials/delete_account">sitekickremastered.com/docs/tutorials/delete_account</Link> to delete your account.</p>
         <p>Upon your request to terminate your account, we will deactivate or delete your account and information, including your Forum profile, from our active databases. However, Forum posts you have made will remain accessible, as they are considered public contributions and are not deleted. We may retain some information in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our legal terms, and/or comply with applicable legal requirements.</p>
-        <p><b><u>Cookies and similar technologies:</u></b> Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services, including the Forum. For further information, please see <Link to="/legal/cookies-policy">our Cookie Notice</Link>.</p>
+        <p><b><u>Cookies and similar technologies:</u></b> Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services, including the Forum. For further information, please see <Link to="/legal/cookies">our Cookie Notice</Link>.</p>
         <p>If you have questions or comments about your privacy rights, you may email us at <Link to="mailto:admin@sitekickremastered.com" target="_blank">admin@sitekickremastered.com</Link>.</p>
 
         <br />
