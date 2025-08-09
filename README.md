@@ -39,3 +39,4 @@ You can read more about `.mdx` files on the [Docusaurus docs](https://docusaurus
 
 ### Note for archiving images
 We use a CDN to store / archive very large images. This way, the build doesn't take as long and the website is updated faster. If you have files for our archive, please contact someone on the team so we can upload them.
+
