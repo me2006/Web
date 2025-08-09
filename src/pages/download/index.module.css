@@ -3,7 +3,7 @@
   background: var(--bg-splash);
   background-size: cover;
   background-repeat: no-repeat;
-  margin-top: -7rem;
+  margin-top: -6rem;
   display: flex;
   justify-content: center;
   min-height: 100vh;
@@ -14,7 +14,7 @@
   since the antenna makes the content look lower than it is 
 */
 .downloadInner {
-  margin-top: 7rem;
+  margin-top: 6rem;
   width: 80%;
   display: flex;
   align-items: center;
