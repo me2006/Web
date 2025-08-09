@@ -115,7 +115,7 @@ const config: Config = {
         { type: "dropdown", label: "Community", position: "left", activeBaseRegex: "/fanart",
           items: [
             { to: "https://discord.sitekickremastered.com", label: "Discord", },
-            { to: "https://yap.sitekickremastered.com/", label: "YAP! Forums", },
+            { to: "https://yap.sitekickremastered.com/", label: "Message Boards", },
             { to: "/fanart", label: "Fan Art", }
           ],
         },
@@ -155,7 +155,7 @@ const config: Config = {
           title: "Community",
           items: [
             { label: "Discord", to: "https://discord.sitekickremastered.com" },
-            { label: "YAP! Forums", to: "https://yap.sitekickremastered.com/" },
+            { label: "Message Boards", to: "https://yap.sitekickremastered.com/" },
             { label: "Fan Art", to: "/fanart" },
           ]
         },
