@@ -1,0 +1,28 @@
+.metricsContainer {
+  width: 90%;
+  margin: 2rem auto;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 70vh;
+  /*min-height: calc(100vh - 11vh);*/
+}
+
+.metricsContainer img {
+  max-height: 55vh;
+}
+
+.title {
+  font-size: 4rem;
+}
+
+.metricsCard {
+  text-align: center;
+  border-radius: 25px;
+  border: 2px solid var(--text-colour);
+  padding: 2rem;
+  margin: 1rem;
+  min-width: 400px;
+  max-width: 400px;
+}

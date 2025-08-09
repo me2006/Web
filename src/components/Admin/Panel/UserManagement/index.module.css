@@ -1,0 +1,114 @@
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem 0rem;
+}
+
+.searchDropdown {
+  font-size: 1rem;
+  padding: .375rem .75rem;
+  background-color: #CCC;
+  color: #000;
+  border: 2px solid var(--ytv-purple);
+  cursor: pointer;
+}
+
+.searchDropdown:hover {
+  filter: brightness(70%);
+}
+
+.searchBtn {  
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #CCC;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  border: 2px solid var(--ytv-purple);
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.searchBtn:hover {
+  background-color: var(--ytv-purple);
+  color: #FFF;
+}
+
+.emptyListText {
+  text-align: center;
+}
+
+.listTable {
+  width: 100%;
+  display: inline-table;
+  table-layout: fixed;
+}
+
+.playerListTable {
+  width: 90%;
+}
+
+.playerListTable > tbody > tr > td:last-child {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.playerDetailsContainer {
+  width: 30rem;
+  margin: 3px 0 0.5rem 0;
+  padding: 10px;
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.15);
+  font-size: 0.9em;
+}
+
+.playerDetailsImg {
+  float: left;
+  width: 75px;
+  height: 75px;
+  margin: 5px 10px 5px 0;
+  padding: 1px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  clear: both;
+}
+
+.playerDetailsName {
+  margin: 1px 0 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  word-break: break-word;
+  font-size: 1.5em;
+  line-height: 1.8em;
+}
+
+.playerDetailsInfoBlock {
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.playerDetailsInfoBlock span {
+  float: right;
+  color: #6E7879;
+}
+
+.actionsCard {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.buttonIcon {
+  margin-right: 3px;
+}
+
+.textareaReason {
+  width: 100%;
+  height: 5rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}

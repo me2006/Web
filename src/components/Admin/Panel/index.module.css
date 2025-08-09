@@ -1,0 +1,57 @@
+.panelContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  background: #242526;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  color: #FFF;
+  margin-bottom:4rem;
+  flex-direction: unset;
+  justify-content: unset;
+  align-items: unset;
+}
+
+.panelContent {
+  width: 100%;
+}
+
+.tabContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.tabContainer button {
+  width: 100%;
+  float: left;
+  border: 4px solid var(--ytv-purple);
+  font-family: "CCSmash";
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.9rem 1rem;
+  transition: 0.3s ease-in-out;  
+  background:#242526;
+  color: #FFF !important;
+}
+
+.tabContainer button:hover {
+  background-color: var(--ytv-green);
+  color: #000 !important;
+}
+
+.tabContainer button.active {
+  background-color: var(--ytv-purple);
+}
+
+.tabContent {
+  width: 100%;
+  padding: 0.4rem 0.75rem;
+  border: 2px solid #CCC;
+}
