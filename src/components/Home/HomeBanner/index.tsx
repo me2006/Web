@@ -1,6 +1,10 @@
 import Link from "@docusaurus/Link";
 import Heading from "@theme/Heading";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
+
 import styles from "./style.module.css";
 
 export default function HomeBanner() {
@@ -23,8 +27,12 @@ export default function HomeBanner() {
                   Play now! 🕹️
                 </Link>
                 <div className={styles.spacer} />
+                <Link to="https://yap.sitekickremastered.com" className="button red lg margin--sm">
+                  YAP! Forums <FontAwesomeIcon icon={faComments} />
+                </Link>
+                <div className={styles.spacer} />
                 <Link to="https://discord.com/sitekickremastered" className="button blurple lg margin--sm">
-                  Join Discord
+                  Join Discord <FontAwesomeIcon icon={faDiscord} />
                 </Link>
               </div>
             </div>
