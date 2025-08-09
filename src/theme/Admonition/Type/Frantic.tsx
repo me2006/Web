@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import Translate from "@docusaurus/Translate";
 import type { Props } from "@theme/Admonition/Type/Tip";
 import AdmonitionLayout from "@theme/Admonition/Layout";
