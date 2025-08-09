@@ -21,7 +21,6 @@ export default function Admin() {
       password: (document.getElementById("password") as HTMLInputElement).value
     };
 
-    //security.fileuri.strict_origin_policy
     postRequest("", customFields, data, customFields.LOGIN, "Incorrect username / password").then((resData) => {
       if (!resData || !resData.gm)
         return;
@@ -67,7 +66,7 @@ export default function Admin() {
             { !loggedIn && !gm ?
               /* Login Page */
               <div className={styles.loginContainer}>
-                <img src="img/deadkick.png" alt="deadkick" />
+                <img src="/img/deadkick.png" alt="deadkick" />
                 <form className={styles.loginForm}>
                   <label htmlFor="email">Email</label>
                   <div className={styles.inputContainer}>

@@ -10,7 +10,7 @@ export default function PrivacyPolicy(): ReactNode {
         <Heading as="h1">Privacy Policy</Heading>
 
         <br />
-        <Heading as="h6">Last updated July 23, 2025</Heading>
+        <Heading as="h6">Last updated August 9, 2025</Heading>
 
         <br />
         <p>This Privacy notice for The Sitekick Remastered Team ("<b>we</b>," "<b>us</b>," and "<b>our</b>") describes how and why we might collect, store, use, and/or share ("<b>process</b>") your information when you use our services ("<b>Services</b>"), such as when you:</p>
