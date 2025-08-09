@@ -60,7 +60,7 @@
 .heroPanelSitekickLeft {
   animation-name: float;
   /* Legitimately don't ask me how this works */
-  top: calc(50% - max(14vw, 14vh)); 
+  top: calc(50% - max(13vw, 13vh)); 
   left: 10%;
 }
 
@@ -68,7 +68,7 @@
   animation-name: float-inverse;
   /* Like, seriously. No clue. */
   bottom: calc(50% - max(10vw, 10vh));
-  right: 20%;
+  right: 15%;
 }
 
 @media screen and (max-width: 996px) {

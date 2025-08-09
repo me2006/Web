@@ -2,7 +2,7 @@
 
 Welcome to the repository for [Sitekick Remastered](https://sitekickremastered.com/)'s website! 
 
-This website is made using [Docusaurus 3.7](https://docusaurus.io/).
+This website is made using [Docusaurus](https://docusaurus.io/).
 
 ## Software Needed
 1. Git
@@ -32,3 +32,6 @@ From there, you can create pages through an `.mdx` file.
 `.mdx` is essentially markdown with a few more added features; specifically the ability to write JSX within the markdown files and render React components. You don't need JSX to create pages, but if you choose to create some components, please put them into `/src/components/Wiki/`.
 
 You can read more about `.mdx` files on the [Docusaurus docs](https://docusaurus.io/docs/markdown-features/react).
+
+### Note for large archive images
+We use a CDN to store / archive very large images. This way, the build doesn't take as long and the website is updated faster. If you have files for our archive, please contact someone on the team so we can upload them.

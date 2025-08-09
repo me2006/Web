@@ -115,6 +115,7 @@ const config: Config = {
         { type: "dropdown", label: "Community", position: "left", activeBaseRegex: "/fanart",
           items: [
             { to: "https://discord.sitekickremastered.com", label: "Discord", },
+            { to: "https://yap.sitekickremastered.com/", label: "YAP! Forums", },
             { to: "/fanart", label: "Fan Art", }
           ],
         },
@@ -145,10 +146,17 @@ const config: Config = {
         {
           title: "General",
           items: [
-            { label: "Fan Art", to: "/fanart" },
             { label: "Metrics", to: "/metrics" },
             { label: "Rules", to: "/docs/rules" },
             { label: "Server Status", to: "/status" }
+          ]
+        },
+        {
+          title: "Community",
+          items: [
+            { label: "Discord", to: "https://discord.sitekickremastered.com" },
+            { label: "YAP! Forums", to: "https://yap.sitekickremastered.com/" },
+            { label: "Fan Art", to: "/fanart" },
           ]
         },
         {
@@ -164,7 +172,7 @@ const config: Config = {
           items: [
             { label: "Privacy Policy", to: "/legal/privacy-policy" },
             { label: "Terms of Service", to: "/legal/terms-of-service" },
-            { label: "Cookies Policy", to: "/legal/cookies" },
+            { label: "Cookies Policy", to: "/legal/cookies-policy" },
             { label: "Contact Us", to: "/contact" },
           ]
         }
