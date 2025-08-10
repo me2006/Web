@@ -107,11 +107,11 @@ function ResetPasswordForm({ token, passData, setPassData, setSubmitted, setStat
       },
       body: postBody
     }).then(response => {
-      setStatus(response.ok);
       if (!response.ok)
         throw new Error("Failed to reset password: " + response.statusText);
+      setStatus(true);
     }).catch(error => {
-      console.error("Error:", error);
+      console.error(error);
       setStatus(false);
     });
   };
