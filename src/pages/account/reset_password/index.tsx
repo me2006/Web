@@ -105,7 +105,6 @@ function ResetPasswordForm({ token, passData, setPassData, setSubmitted, setStat
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      credentials: "include",
       body: postBody
     }).then(response => {
       setStatus(response.ok);
