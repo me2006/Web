@@ -11,11 +11,7 @@ export function postRequest(gmInfo, customFields, data, listLink, customError?) 
 
   return fetch(`${customFields.BASE_URL}${listLink}`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Origin": customFields.BASE_URL
-    },
+    headers: { "Content-Type": "application/json" },
     credentials: "include",
     body: encodeURIComponent(JSON.stringify(body))
   }).then(async res => {

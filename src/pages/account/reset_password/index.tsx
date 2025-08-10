@@ -102,9 +102,7 @@ function ResetPasswordForm({ token, passData, setPassData, setSubmitted, setStat
 
     fetch(`${customFields.GAME_URL}${customFields.PASS_RESET}`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: postBody
     }).then(response => {
       if (!response.ok)
