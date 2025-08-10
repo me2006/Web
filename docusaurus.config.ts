@@ -11,6 +11,7 @@ const config: Config = {
   baseUrl: "/",
   customFields: {
     BASE_URL: process.env.BASE_URL,
+    GAME_URL: process.env.GAME_URL,
     METRICS: process.env.METRICS,
     LOGIN: process.env.LOGIN,
     GET_ONE: process.env.GET_ONE,

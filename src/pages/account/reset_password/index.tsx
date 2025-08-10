@@ -100,7 +100,7 @@ function ResetPasswordForm({ token, passData, setPassData, setSubmitted, setStat
     setSubmitted(true);
     const postBody = "password=" + encodeURIComponent(passData["new_password"]) + "&vpassword=" + encodeURIComponent(passData["confirm_password"]) + "&token=" + encodeURIComponent(token);
 
-    fetch(`${customFields.BASE_URL}${customFields.RESET_PASS}`, {
+    fetch(`${customFields.GAME_URL}${customFields.PASS_RESET}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"

@@ -16,8 +16,6 @@ This website is made using [Docusaurus](https://docusaurus.io/).
 1. Use `npm start` to start the site
     - The site should run locally on http://localhost:3000/
 
-#### Note: An `.env` file is required for some pages. `example.env` is an example of what that file should look like and how it works.
-
 ## Note for Wiki Editors
 If you're editing the wiki, the only folder you need is `/docs/`.
 
