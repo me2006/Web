@@ -125,8 +125,9 @@ function MetricsCard(props) {
 }
 
 function MetricsCardChip(props) {
-  const chipIcon = `/img/wiki/chipendium/icons/chip_${props.data[props.keyStr]}_icon.png`;
-  const iconAlt = `Chip #${props.data[props.keyStr]} icon`;
+  const chipDetails = props.data[props.keyStr].split(",");
+  const chipIcon = `/img/wiki/chipendium/icons/chip_${chipDetails[0]}_icon.png`;
+  const iconAlt = `Chip #${chipDetails[1]} icon`;
   return (
     <div className={`col ${styles.metricsCard}`}>
       <Heading as="h2" className="mb-1">{ props.title }</Heading>
