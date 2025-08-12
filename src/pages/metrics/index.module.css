@@ -13,6 +13,11 @@
   max-height: 55vh;
 }
 
+.chipImg {
+  width: 100px;
+  height: 100px;
+}
+
 .title {
   font-size: 4rem;
 }

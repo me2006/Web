@@ -133,7 +133,7 @@ function MetricsCardChip(props) {
       <Heading as="h2" className="mb-1">{ props.title }</Heading>
       {
         (props.data[props.keyStr]) ?
-          <img src={useBaseUrl(chipIcon)} role="img" alt={iconAlt} /> :
+          <img src={useBaseUrl(chipIcon)} className={styles.chipImg} role="img" alt={iconAlt} /> :
           <FontAwesomeIcon icon={props.nullIcon} size="6x" />
       }
       <hr />
@@ -141,7 +141,7 @@ function MetricsCardChip(props) {
         {
           props.data[props.keyStr] == 0 ?
             props.emptyText :
-            "Chip #" + props.data[props.keyStr] + props.text
+            "Chip #" + chipDetails[1] + props.text
         }
       </p>
     </div>
