@@ -87,7 +87,7 @@ const ChipMetricsList: ChipMetricsItem[] = [
   {
     title: "Most Wanted Chip",
     nullIcon: faStar,
-    keyStr: "most_common",
+    keyStr: "most_wanted",
     emptyText: "There are currently no trades.",
     text: " is the most wanted chip in the game!"
   },
@@ -99,11 +99,11 @@ const ChipMetricsList: ChipMetricsItem[] = [
     text: " is the most common chip in the game!"
   },
   {
-    title: "Rarest Legendary",
+    title: "Rarest Chip",
     nullIcon: faPercent,
-    keyStr: "rarest_legendary",
-    emptyText: "There are currently no legendaries in the game.",
-    text: " is the least owned legendary chip!"
+    keyStr: "rarest_chip",
+    emptyText: "There are currently no chips in the game.",
+    text: " is the least owned chip!"
   },
 ];
 
@@ -125,9 +125,9 @@ function MetricsCard(props) {
 }
 
 function MetricsCardChip(props) {
-  const chipDetails = props.data[props.keyStr].split(",");
-  const chipIcon = `/img/wiki/chipendium/icons/chip_${chipDetails[0]}_icon.png`;
-  const iconAlt = `Chip #${chipDetails[1]} icon`;
+  const chipDetails = (props.data[props.keyStr]) ? props.data[props.keyStr].split(",") : "";
+  const chipIcon = (chipDetails) ? `/img/wiki/chipendium/icons/chip_${chipDetails[0]}_icon.png` : "";
+  const iconAlt = (chipDetails) ? `Chip #${chipDetails[1]} icon` : "";
   return (
     <div className={`col ${styles.metricsCard}`}>
       <Heading as="h2" className="mb-1">{ props.title }</Heading>
