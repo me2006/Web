@@ -154,7 +154,7 @@ export default function Status() {
   const [data, setData] = useState({});
 
   const url = `${customFields.BASE_URL}${customFields.METRICS}`;
-  const token = "online_players,total_players,daily_registrations,daily_online_players,total_chips,released_chips,most_common,most_common,rarest_legendary";
+  const token = "online_players,total_players,daily_registrations,daily_online_players,total_chips,released_chips,most_wanted,most_common,rarest_chip";
 
   const getData = () => {
     fetch(`${url}?q=${token}`)
