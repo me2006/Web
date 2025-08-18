@@ -113,18 +113,18 @@ const config: Config = {
       items: [
         { to: "/download", label: "Download", position: "left" },
         { to: "/blog", label: "News", position: "left" },
+        {
+          type: "docSidebar",
+          sidebarId: "wikiSidebar",
+          position: "left",
+          label: "Wiki",
+        },
         { type: "dropdown", label: "Community", position: "left", activeBaseRegex: "/fanart",
           items: [
             { to: "https://discord.sitekickremastered.com", label: "Discord", },
             { to: "https://yap.sitekickremastered.com/", label: "Message Boards", },
             { to: "/fanart", label: "Fan Art", }
           ],
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "wikiSidebar",
-          position: "left",
-          label: "Wiki",
         },
         /*
         { to: "/contact", label: "Contact Us", position: "left"}
