@@ -16,8 +16,8 @@ export default function UserDetails( { fromTable, searchTerm, openListView }): R
   const { isAdmin, playerDetails, ModalTypes, openUmModal } = useContext(UmContext);
   const [isBanned, setIsBanned] = useState(false);
   const [banType, setBanType] = useState(0);
-  const [hasHistory, setHistory] = useState(playerDetails.banList.length > 0);
-  const [hasAlts, setHasAlts] = useState(playerDetails.associatedAccounts.length > 0);
+  const [hasHistory, setHistory] = useState(playerDetails.banList && playerDetails.banList.length > 0);
+  const [hasAlts, setHasAlts] = useState(playerDetails.associatedAccounts && playerDetails.associatedAccounts.length > 0);
 
 
   function ActionButton({ colour, modalType, icon, name, isDisabled = false }) {
@@ -35,8 +35,8 @@ export default function UserDetails( { fromTable, searchTerm, openListView }): R
   useEffect(() => {
     setIsBanned(playerDetails.banStatus != "Not banned");
     setBanType(playerDetails.banStatus == "Perma banned" ? 2 : playerDetails.banStatus == "Suspended" ? 1 : 0);
-    setHistory(playerDetails.banList.length > 0);
-    setHasAlts(playerDetails.associatedAccounts.length > 0);
+    setHistory(playerDetails.banList && playerDetails.banList.length > 0);
+    setHasAlts(playerDetails.associatedAccounts && playerDetails.associatedAccounts.length > 0);
   }, [playerDetails]);
 
   return (
