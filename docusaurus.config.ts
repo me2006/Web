@@ -71,7 +71,7 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           // Remove this to get rid of the "Edit this page" button
-          editUrl:  "https://github.com/sitekickremastered/Web/",
+          editUrl:  "https://github.com/SitekickRemastered/Web/tree/main/",
           admonitions: {
             keywords: ["discord","frantic","yap"],
             extendDefaults: true,
