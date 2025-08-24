@@ -125,10 +125,13 @@ export function createTableButton(buttonCol: HTMLTableCellElement, btnData: Tabl
   btn.classList.add(...(btnData.style.split(" ")));
   btn.onclick = () => {
     if (btnData.objKeys && btnData.objKeys.length > 0){
+      const containsAll = btnData.extraArgs && btnData.extraArgs.includes("-a");
       const args = [
-        ...btnData.objKeys.map((arg) => rowData[arg]),
+        ...(btnData.objKeys.map((arg) => rowData[arg]) ?? []),
         ...(btnData.extraArgs ?? [])
-      ];
+      ].filter(x => x && x !== "-a");
+      if (containsAll)
+        args.push(rowData);
       btnData.onClick(...args);
     }
     else

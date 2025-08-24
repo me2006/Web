@@ -86,7 +86,9 @@ export default function UserManagement({ gmInfo }): ReactNode {
     addModalListeners(modalElem, closeUmModal);
   }, []);
 
-  function openUmModal(currModal) {
+  function openUmModal(currModal, playerDetails?) {
+    if (playerDetails)
+      setPD(playerDetails);
     setCM(currModal);
     modalElem.current.style.display = "block";
   }
@@ -163,7 +165,7 @@ function AccountTable({ playerList }): ReactNode {
     }
     const buttons : TableButton[] = [
       { text: "👀 View Details", style: "button--bootstrap", onClick: viewDetails, objKeys: ["username"], extraArgs: [true] },
-      { text: "🖋️ Edit Info", style: "button--bootstrap yellow", onClick: openUmModal, objKeys: ["id"], extraArgs: [ModalTypes.EditInfo] }
+      { text: "🖋️ Edit Info", style: "button--bootstrap yellow", onClick: openUmModal, objKeys: ["id"], extraArgs: [ModalTypes.EditInfo, "-a"] }
     ];
 
     createTable(tableId, headers, expKeys, playerList, buttons);
