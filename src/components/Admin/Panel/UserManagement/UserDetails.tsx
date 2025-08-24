@@ -71,7 +71,7 @@ export default function UserDetails( { fromTable, searchTerm, openListView }): R
               <div className="row">
                 <div className="col">
                   <ActionButton colour="" modalType={ModalTypes.EditInfo} icon={faPenToSquare} name="Edit Info" />
-                  { !isBanned || (isBanned && ((!isAdmin && banType != 2) || isAdmin)) &&
+                  { ((!isAdmin && banType != 2) || isAdmin) &&
                     <ActionButton
                       colour={isBanned ? "green" : "red"}
                       modalType={isBanned ? ModalTypes.UnbanUser : ModalTypes.BanUser}
