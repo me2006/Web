@@ -7,7 +7,7 @@ export default function Status() {
       <iframe
         src="https://status.sitekickremastered.com/status/site"
         title="Sitekick Remastered Uptime Kuma Status Page"
-        style={{ minHeight: "1285.6px" }}
+        style={{ minHeight: "1523.8px" }}
       />
     </Layout>
   );
